@@ -1,0 +1,77 @@
+## ffmpeg开发环境搭建
+
+1. 使用ubuntu系统
+2. 下载编译ffmpeg，编译之后目录有include目录和lib目录
+3. 安装clion，创建项目，比如项目名称为 ffmpeg
+4. 将2中所得的include和lib目录文件复制到 project/lib/ffmpeg/ 目录下
+5. 在CMakeLists.txt中引入include和lib
+
+其中要使用到CMake的几个方法：
+
+include_directories 用于引入.h文件
+link_directories 用于告诉工程lib的位置
+target_link_libraries 将lib link 到工程中
+其中target_link_libraries的位置要放在add_executable之后。
+
+另外注意
+
+target_link_libraries的第一个参数是工程name，也就是CMakeLists.txt中的project(ffmpeg)。
+target_link_libraries的lib名是类似于libavcodec.a中lib*.a中*的位置，也即是说libavcodec.a的lib名是avcodec
+
+target_link_libraries(
+        ffmpeg
+        avcodec
+        avdevice
+        avfilter
+        avformat
+        avresample
+        avutil
+        postproc
+        swresample
+        swscale)
+
+
+此时CmakeLists.txt可能如下
+
+cmake_minimum_required(VERSION 3.14)
+project(ffmpegDemo)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(ffmpeg src/main/cpp/main/main.cpp)
+
+include_directories(${PROJECT_SOURCE_DIR}/lib/ffmpeg/include)
+target_link_libraries(ffmpegDemo ${PROJECT_SOURCE_DIR}/lib/ffmpeg/lib)
+
+6. 源码中引入ffmpeg头文件即可调用ffmpeg了，但是要注意：
+
+6.1 在cpp项目中，由于ffmpeg是纯C项目，因此引入头文件时要有 
+
+```C
+
+extern "C" {
+    include <...>
+}
+
+```
+
+6.2 使用ffmpeg头文件之前需要引用 #include <stdint.h> 来定义基本数据类型信息
+
+示例：
+
+```cpp
+
+extern "C" {
+#include <stdint.h>
+#include <libavutil/log.h>
+}
+
+int main() {
+    av_log_set_level(AV_LOG_INFO);
+
+    av_log(NULL, AV_LOG_INFO, "hello %s", "ffmpeg");
+
+    return 0;
+}
+
+```

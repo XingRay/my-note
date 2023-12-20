@@ -1,0 +1,58 @@
+# server:
+#   port: 8203
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      default:   #配置全局的feign的调用超时时间  如果 有指定的服务配置 默认的配置不会生效
+        connectTimeout: 30000 # 指定的是 消费者 连接服务提供者的连接超时时间 是否能连接  单位是毫秒
+        readTimeout: 50000  # 指定的是调用服务提供者的 服务 的超时时间（）  单位是毫秒
+spring:
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  cloud:
+    sentinel:
+      transport:
+        dashboard: http://sentinel-standalone.project-test:8080
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql-standalone.project-test:3306/yygh_user?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 12
+      minimum-idle: 10
+      pool-name: GuliHikariPool
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+wx:
+  open:
+    # 微信开放平台 appid
+    app_id: wxc606fb748aedee7c
+    # 微信开放平台 appsecret
+    app_secret: 073e8e1117c1054b14586c8aa922bc9c
+    # 微信开放平台 重定向url（需要在微信开放平台配置）
+    redirect_url: http://qyben.free.idcfengye.com/api/user/weixin/callback
+    #redirect_url: http://qyben.free.idcfengye.com/api/user/weixin/callback
+#wx:
+#  open:
+#    # 微信开放平台 appid
+#    app_id: wxed9954c01bb89b47
+#    # 微信开放平台 appsecret
+#    app_secret: 2cf9a4a81b6151d560e9bbc625c3297b
+#    # 微信开放平台 重定向url（需要在微信开放平台配置）
+#    redirect_url: http://guli.shop/api/ucenter/wx/callback
+yygh:
+  #预约挂号平台baserul
+  baseUrl: http://localhost:3000

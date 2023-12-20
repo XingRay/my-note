@@ -1,0 +1,1 @@
+在centos中安装elasticsearch 

@@ -1,0 +1,57 @@
+# server:
+#   port: 8206
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      default:   #配置全局的feign的调用超时时间  如果 有指定的服务配置 默认的配置不会生效
+        connectTimeout: 30000 # 指定的是 消费者 连接服务提供者的连接超时时间 是否能连接  单位是毫秒
+        readTimeout: 50000  # 指定的是调用服务提供者的 服务 的超时时间（）  单位是毫秒
+spring:
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  cloud:
+    sentinel:
+      transport:
+        dashboard: http://sentinel-standalone.project-test:8080
+  rabbitmq:
+    host: rabbitmq-standalone.project-test
+    port: 5672
+    username: admin
+    password: admin
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql-standalone.project-test:3306/yygh_order?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 12
+      minimum-idle: 10
+      pool-name: GuliHikariPool
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: redis-standalone.project-test
+# 微信
+#weixin:
+#  appid: wx8397f8696b538317
+#  partner: 1473426802
+#  partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+#  notifyurl: http://a31ef7db.ngrok.io/WeChatPay/WeChatPayNotify
+weixin:
+  appid: wx74862e0dfcf69954
+  partner: 1558950191
+  partnerkey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+  notifyurl: http://qyben.free.idcfengye.com/api/order/weixin/notify
+  cert: C:\Users\lfy\Desktop\yygh-parent\service\service-order\src\main\resources\apiclient_cert.p12

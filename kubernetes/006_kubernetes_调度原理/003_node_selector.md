@@ -1,0 +1,2 @@
+# kubernetes  node selector
+

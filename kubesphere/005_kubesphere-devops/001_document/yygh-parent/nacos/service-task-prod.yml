@@ -1,0 +1,12 @@
+# server:
+#   port: 8207
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: sentinel-standalone.project-test:8080
+  rabbitmq:
+    host: rabbitmq-standalone.project-test
+    port: 5672
+    username: admin
+    password: admin

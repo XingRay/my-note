@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rabbitmq-standalone
+  namespace: project-test
+  labels:
+    app.kubernetes.io/instance: rabbitmq-standalone
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/version: 3.8.1
+    app.kubesphere.io/instance: rabbitmq-standalone
+    helm.sh/chart: rabbitmq-0.3.2
+  annotations:
+    kubesphere.io/creator: dev-zhao
+    meta.helm.sh/release-name: rabbitmq-standalone
+    meta.helm.sh/release-namespace: project-test
+data:
+  advanced.config: |
+    [
+      {rabbitmq_auth_backend_ldap, [
+        %% Authorisation
+      ]}
+    ].
+  enabled_plugins: |
+    [
+      rabbitmq_management
+    ].
+  rabbitmq.conf: |
+    loopback_users.guest = false
+    default_user = admin
+    default_pass = admin
+    ## Number of Erlang processes that will accept connections for the TCP
+    ## and TLS listeners.
+    ##
+    # num_acceptors.tcp = 10
+    # num_acceptors.ssl = 10

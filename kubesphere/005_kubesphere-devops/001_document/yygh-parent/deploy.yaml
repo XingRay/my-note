@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: service-hosp
+  name: service-hosp
+  namespace: project-test
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-hosp
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: service-hosp
+    spec:
+      imagePullSecrets:
+        - name: harbor-robot-test
+      containers:
+        - image: $REGISTRY/$REGISTRY_NAMESPACE/service-hosp:SNAPSHOT-$BUILD_NUMBER
+ #         readinessProbe:
+ #           httpGet:
+ #             path: /actuator/health
+ #             port: 8080
+ #           timeoutSeconds: 10
+ #           failureThreshold: 30
+ #           periodSeconds: 5
+          imagePullPolicy: Always
+          name: app
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1024Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: service-hosp
+  name: service-hosp
+  namespace: project-test
+spec:
+  ports:
+    - name: tcp-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: service-hosp
+  sessionAffinity: None
+  type: ClusterIP

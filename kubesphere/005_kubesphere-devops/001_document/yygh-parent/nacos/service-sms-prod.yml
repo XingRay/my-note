@@ -1,0 +1,21 @@
+# server:
+#   port: 8204
+
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: http://sentinel-standalone.project-test:8080
+  rabbitmq:
+    host: rabbitmq-standalone.project-test
+    port: 5672
+    username: admin
+    password: admin
+  redis:
+    host: redis-standalone.project-test
+#阿里云 短信
+aliyun:
+  sms:
+    regionId: default
+    accessKeyId: LTAI0YbQf3pX8WqC
+    secret: jX8D04DmDI3gGKjW5kaFYSzugfqmmT

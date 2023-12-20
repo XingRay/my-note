@@ -1,0 +1,42 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mysql-conf
+  namespace: project-test
+  annotations:
+    kubesphere.io/alias-name: project-test-mysql-configmap
+    kubesphere.io/creator: dev-zhao
+    kubesphere.io/description: mysql的配置文件
+data:
+  my.cnf: |-
+    [client]
+    # 设置mysql客户端默认字符集
+    default-character-set=utf8mb4
+     
+    [mysql]
+    # 设置mysql客户端默认字符集
+    default-character-set=utf8mb4
+     
+    [mysqld]
+    # 服务端使用的字符集
+    init_connect='SET collation_connection = utf8mb4_unicode_ci'
+    init_connect='SET NAMES utf8mb4'
+    character-set-server=utf8mb4
+    collation-server=utf8mb4_unicode_ci
+
+    skip-character-set-client-handshake
+    skip-name-resolve
+
+    # 创建新表时将使用的默认存储引擎
+    default-storage-engine=INNODB
+    # 设置时区
+    default-time_zone='+8:00'
+    # 允许最大连接数
+    max_connections=200
+    # 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统
+    max_connect_errors=10
+
+    # 服务器标识ID
+    server-id=13306
+    #二进制日志文件格式
+    log-bin=mysql-bin

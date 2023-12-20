@@ -1,0 +1,52 @@
+# server:
+#   port: 8201
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 30000
+        readTimeout: 50000
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    sentinel:
+      transport:
+        dashboard: http://sentinel-standalone.project-test:8080
+  data:
+    mongodb:
+      host: mongodb-standalone.project-test
+      port: 27017
+      database: yygh_hosps
+      username: root
+      password: '123456'
+  rabbitmq:
+    host: rabbitmq-standalone.project-test
+    port: 5672
+    username: admin
+    password: admin
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://mysql-standalone.project-test:3306/yygh_hosp?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 12
+      minimum-idle: 10
+      pool-name: GuliHikariPool
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: redis-standalone.project-test
