@@ -1,4 +1,4 @@
-# Android OpenGL 渲染图像读取哪家强？
+# Android OpenGL 渲染图像读取
 
 **glReadPixels**
 
