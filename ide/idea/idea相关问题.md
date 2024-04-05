@@ -1,4 +1,4 @@
-# [IDEA手工添加webapp目录](https://www.cnblogs.com/wormday/p/8431470.html)
+# IDEA手工添加webapp目录
 
 自己手工建目录，是没法识别的，
 在自己手工建的webapp文件夹上右键菜单，Make Directory As也没有相应的选项
