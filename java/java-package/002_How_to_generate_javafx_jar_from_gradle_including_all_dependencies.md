@@ -1,4 +1,4 @@
-# [How to generate javafx jar from gradle including all dependencies](https://stackoverflow.com/questions/70175403/how-to-generate-javafx-jar-from-gradle-including-all-dependencies)
+# How to generate javafx jar from gradle including all dependencies
 
 
 
