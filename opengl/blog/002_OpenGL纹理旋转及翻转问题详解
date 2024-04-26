@@ -1,0 +1,172 @@
+# OpenGL纹理旋转及翻转问题详解
+
+[程序员kenney](https://juejin.cn/user/1961184473926766/posts)
+
+2020-07-2618,717阅读8分钟
+
+大家好，我是程序员kenney，今天给大家讲解一下Android上OpenGL开发可能会遇到的一些纹理旋转及翻转的问题，其中有些原理在其它平台上如ios，osx上也是类似的。纹理旋转的问题一定要搞清楚，不能每当碰到一个方向不对的就自己旋转一下把它转正而不去研究背后的原因，这样虽然这一步旋转正确了，但之后的处理步骤可能都是建立在错误的认知上进行的，容易错上加错。
+
+我们先来了解一下几个坐标系
+
+首先看下**图片坐标系**和**纹理坐标系**。图片坐标系的原点在图片左上角，`x`轴向右，`y`轴向下，`x`和`y`的取值范围都是0到对应的图片宽高。纹理坐标的原点在纹理左下角，`x`轴向右，`y`轴向上，`x`和`y`的取值范围都是0到1。把一张图片加载到纹理中，图片数据就会从图片坐标系到了纹理坐标系。
+
+
+
+![img](./assets/1738a260bee2e88dtplv-t2oaga2asx-jj-mark3024000q75.png)
+
+
+
+再来看看**NDC坐标系**和**屏幕坐标系**。NDC坐标系就是设备标准化坐标系，是投影变换后将坐标归一化后就转换到了NDC坐标系，它的`x`轴向右，`y`轴向上，`x`和`y`的取值范围都是-1到1，这个范围就是显示的区域，超出这个范围的都不可见，NDC坐标系这个词可能稍显陌生，其实就是通常说的**顶点坐标系**，但从严格意义上说还是应该叫NDC坐标系，因为顶点严格来说是世界坐标系中的，世界坐标系是三维的，NDC坐标系中的顶点其实是投影变换后将坐标归一化后得到的顶点。
+
+屏幕坐标系`x`轴向右，`y`轴向下，`x`和`y`的取值范围都是0到对应的屏幕宽高。
+
+在矩阵变换的最后一步变换中`OpenGL`会将NDC坐标系变换成屏幕坐标系然后上屏显示。
+
+
+
+![img](./assets/1738a26478e226c3tplv-t2oaga2asx-jj-mark3024000q75.png)
+
+除此之后还有模型坐标系、视图坐标系等（可以参考：[OpenGL ES 高级进阶：坐标系及矩阵变换](https://juejin.cn/post/6844903862973759496)），这里就不一一介绍了，因为不是讨论的重点。
+
+
+
+另外，我们说"倒"的时候，实际上有两种倒，一种是上下倒置，一种是旋转了180度，是不一样的，要注意区别，看下图：
+
+
+
+![img](./assets/1738a267c9eca1b4tplv-t2oaga2asx-jj-mark3024000q75.png)
+
+我们来看一些经常会遇到的问题：
+
+
+
+**1. 我的图片在图片查看器中看到是正的，程序中解码后查看是旋转过的**
+
+这时考虑是没处理`exif`中的旋转信息导致的，`exif`中有一个记录图片旋转值的信息，它会告诉你将图片旋转一个角度才是这张图的正确效果。`exif`信息可以有也可以没有，即使有`exif`信息，这个旋转值也不一定有，要看生成这个图片的逻辑有没有将它写进去。总之如果有`exif`信息并且其的旋转角度不是0，则要处理一下旋转让图片旋转到一个正确状态。在图片查看器中查看之所以是正常的，是因为图片查看器一般都处理了`exif`信息，会旋转后再展示出来。
+
+**2. 我的图片在程序中解码后查看是正的，OpenGL渲染出来是上下倒置的**
+
+在整个渲染管线中，有很多地方能影响翻转，比如将顶点坐标上下flip，或者将纹理坐标上下flip，或者将`OpenGL`摄像机y方向向量上下flip等，我们本文中都先将这些因素先排除，来看最简单的情况，直接使用`NDC`坐标作为顶点坐标，不进行`MVP`矩阵变换。
+
+假设我们渲染用的顶点坐标、纹理坐标配置分别是：
+
+顶点坐标`(-1, -1)`对应纹理坐标`(0, 0)`、顶点坐标`(-1, 1)`对应纹理坐标`(0, 1)`、顶点坐标`(1, 1)`对应纹理坐标`(1, 1)`、顶点坐标`(1, -1)`对应纹理坐标`(1, 0)`。
+
+
+
+![img](./assets/1738a26c9ae11f4etplv-t2oaga2asx-jj-mark3024000q75.png)
+
+
+
+那么渲染出来的结果是？
+
+
+
+![img](./assets/1738a26f1dab4054tplv-t2oaga2asx-jj-mark3024000q75.png)
+
+
+
+发现上下倒了过来，这是什么原因呢？是因为在程序中查看解码后的图片，实际上还是在图片坐标系下显示的，图片坐标系和纹理坐标系`y`是相反的，当你把图片加载到纹理中的那一刻，图片在纹理坐标系下就已经倒了：
+
+
+
+![img](./assets/1738a27412cbb51atplv-t2oaga2asx-jj-mark3024000q75.png)
+
+
+
+因此渲染一个倒的纹理，看到的自然是倒的。有细心的同学会发现，NDC坐标系和屏幕坐标系也是`y`轴相反的，为什么从NDC坐标系到最后的屏幕坐标系时它不会倒一下？因为NDC坐标系变换成屏幕坐标系的过程中`OpenGL`进行了相应的处理使得它不会倒过来，而把一张图片加载到纹理中是没有这样的变换过程的，是直接把数据扔进去，原点对齐，然后数据往对应轴的方向填充。
+
+**这就是为什么常常发现在图片渲染场景下，在上屏的那一步渲染中要再上下翻转一下，而在相机和视频渲染中却不用的原因。**因为相机和视频渲染开发中，只要设置正确，相机和视频吐出来的纹理就是正的（后面会讲解），而图片场景下却没有办法让它加载到纹理后让它在纹理坐标系下的方向保持和图片坐标系下一致。
+
+**3. 我把纹理用glReadPixels读出来查看是正的，OpenGL渲染出来是上下倒置的**
+
+这个问题和问题2很类似，问题2的原因在于图片加载到纹理中产生了上下倒置，相反，从纹理将数据读出来显示也一样没有变换过程，也是直接把数据读出来，原点对齐，然后数据往对应轴的方向填充，因此**如果glReadPixels出来的图片是正的，说明纹理在纹理坐标系中是上下倒置的**，因此相当于渲染一个上下倒置的纹理。
+
+**4. 我的相机渲染画面是旋转过的**
+
+首先检测一下相机的`display orientation`设置是否正确，设置方法可参考`android`官方给出的一个标准写法：
+
+```
+复制代码public static void setCameraDisplayOrientation(Activity activity,
+         int cameraId, android.hardware.Camera camera) {
+     android.hardware.Camera.CameraInfo info =
+             new android.hardware.Camera.CameraInfo();
+     android.hardware.Camera.getCameraInfo(cameraId, info);
+     int rotation = activity.getWindowManager().getDefaultDisplay()
+             .getRotation();
+     int degrees = 0;
+     switch (rotation) {
+         case Surface.ROTATION_0: degrees = 0; break;
+         case Surface.ROTATION_90: degrees = 90; break;
+         case Surface.ROTATION_180: degrees = 180; break;
+         case Surface.ROTATION_270: degrees = 270; break;
+     }
+
+     int result;
+     if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+         result = (info.orientation + degrees) % 360;
+         result = (360 - result) % 360;  // compensate the mirror
+     } else {  // back-facing
+         result = (info.orientation - degrees + 360) % 360;
+     }
+     camera.setDisplayOrientation(result);
+ }
+```
+
+此时从相机得到的图像还不一定是正的，如果将`OES`纹理`glReadPixels`出来查看，会发现它可能有各种旋转情况，不用担心，这是正常的，因为还需要做一步转换，`SurfaceTexture`有一个`getTransformMatrix`方法，它返回一个纹理坐标变换矩阵，我们在将`OES`纹理转换成普通纹理的时候可以顺带把纹理坐标用这个矩阵变换一下，这样转换后得到的纹理在纹理坐标系下就是正的，以下是shader：
+
+```
+复制代码val OES_VERTEX_SHADER =
+    "precision mediump float;\n" +
+    "attribute vec4 a_position;\n" +
+    "attribute vec4 a_textureCoordinate;\n" +
+    "varying vec2 v_textureCoordinate;\n" +
+    "uniform mat4 u_stMatrix;\n" +
+    "void main() {\n" +
+    "    v_textureCoordinate = (u_stMatrix * a_textureCoordinate).xy;\n" +
+    "    gl_Position = a_position;\n" +
+    "}"
+
+val OES_FRAGMENT_SHADER =
+    "#extension GL_OES_EGL_image_external : require\n" +
+    "precision mediump float;\n" +
+    "varying vec2 v_textureCoordinate;\n" +
+    "uniform samplerExternalOES u_texture;\n" +
+    "void main() {\n" +
+    "   gl_FragColor = texture2D(u_texture, v_textureCoordinate);\n" +
+    "}"
+```
+
+**5. 我的视频渲染画面是旋转过的**
+
+这里讨论的是视频硬解码到`SurfaceTexture`上的场景，它和相机很类似，不过不像相机那样先要设置一下旋转。它解码到`SurfaceTexture`上后也同样要做纹理坐标的变换才能变正，这里有一个兼容性问题要处理下，就是`android` 5.0 以下的系统`SurfaceTexture`返回的矩阵中是不包含视频旋转角度的，因此需要将旋转变换加到矩阵中：
+
+```
+复制代码private fun getStMatrix(surfaceTexture: SurfaceTexture, videoPath: String): FloatArray {
+    val stMatrix = FloatArray(16)
+    surfaceTexture.getTransformMatrix(stMatrix)
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        val rotateStMatrix = FloatArray(16)
+        val rotateMatrix = FloatArray(16)
+        Matrix.setIdentityM(rotateMatrix,0)
+        Matrix.translateM(rotateMatrix, 0, 0.5f, 0.5f, 0f)
+        Matrix.rotateM(rotateMatrix, 0, 视频旋转角度, 0f, 0f, -1f)
+        Matrix.translateM(rotateMatrix, 0, -0.5f, -0.5f, 0f)
+        Matrix.multiplyMM(rotateStMatrix, 0, rotateMatrix, 0, stMatrix, 0)
+        return rotateStMatrix
+    }
+    return stMatrix
+}
+```
+
+视频旋转角度的获取方法多种多样，最简单的就是用系统的`MediaMetadataRetriever`就可以。这里注意旋转时先要纹理的中心点移动到原点再旋转，旋转完后再移回原位置。否则效果就会是基于(0,0)点也就是纹理左下角的旋转，这样就不对了，看下图：
+
+
+
+![img](./assets/1738a631b3e863catplv-t2oaga2asx-jj-mark3024000q75.png)
+
+
+
+最后再乘上原矩阵，就是最终的变换矩阵，这样视频帧就会转成正的了。
+
+好了，以上就是一些纹理旋转方向问题的分析，感谢阅读，我的github：[github.com/kenneycode](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fkenneycode)
