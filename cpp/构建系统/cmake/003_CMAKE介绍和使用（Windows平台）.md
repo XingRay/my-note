@@ -9,13 +9,13 @@ cmake工具下载官网： Download | CMake
 
 https://cmake.org/download/
 
-![img](D:\my-note\cmake\assets\e41dc7acbebd41f6bfb2378f31a9ad0b.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\e41dc7acbebd41f6bfb2378f31a9ad0b.png)
 
 下载压缩包后解压，解压后的bin文件路径加到电脑系统环境变量中 
 
 设置完成后打开命令行(cmd)，输入命令cmake -version可查看版本号
 
-![img](D:\my-note\cmake\assets\3040dc63f9b54c6bba8ffe63b6a28a54.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\3040dc63f9b54c6bba8ffe63b6a28a54.png)
 
 编译和执行
 在windows 平台下使用 CMake 生成 Makefile 并编译的流程如下：
@@ -29,7 +29,7 @@ https://cmake.org/download/
 入门案例：
 假设测试代码是如下结构：
 
-![img](D:\my-note\cmake\assets\75a141dc752647dfb3b8ce38b998bb91.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\75a141dc752647dfb3b8ce38b998bb91.png)
 
 func.c的示例代码：
 
@@ -98,22 +98,22 @@ set_tests_properties(test PROPERTIES PASS_REGULAR_EXPRESSION "6")
 
 cmake生成Makefile文件
 
-![img](D:\my-note\cmake\assets\be1ebdabd34a439eb5b31ba44b53a39b.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\be1ebdabd34a439eb5b31ba44b53a39b.png)
 
 
 
 cmake 命令进行编译生成exe可执行程序Demo.exe
 
-![img](D:\my-note\cmake\assets\69d2e3221e70450c9d8f8b4ec4e65fe4.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\69d2e3221e70450c9d8f8b4ec4e65fe4.png)
 
 
 
 执行程序
 
-![img](D:\my-note\cmake\assets\c441510529334c4095cb9151b8430d30.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\c441510529334c4095cb9151b8430d30.png)
 
 
 
 ctest执行自动测试
 
-![img](D:\my-note\cmake\assets\7b14e5e6995b45bfa79818b6f459d468.png)
+![img](D:\my-note\cpp\构建系统\cmake\assets\7b14e5e6995b45bfa79818b6f459d468.png)

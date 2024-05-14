@@ -35,9 +35,9 @@ yum -y install cmake
 1、准备工作
 先在/backup/cmake下建立第一个练习目录t1。在t1下添加两个文件，分别是main.c和CMakeLists.txt。内容如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200929233202903.png)
+![在这里插入图片描述](./assets/20200929233202903.png)
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200929233115873.png)
+![在这里插入图片描述](./assets/20200929233115873.png)
 
 
 
@@ -45,22 +45,22 @@ yum -y install cmake
 指令： cmake .
 成功建立如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200929233328943.png)
+![在这里插入图片描述](./assets/20200929233328943.png)
 
 可以发现，系统自动生成了如下的文件
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200929233408603.png)
+![在这里插入图片描述](./assets/20200929233408603.png)
 
 包括：CMakeCache.txt、CMakeFiles、cmake_install.cmake、Makefile等中间文件。
 指令：make
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200929233623304.png)
+![在这里插入图片描述](./assets/20200929233623304.png)
 
 PS：可以使用make VERBOSE=1来查看make构建的详细过程。
 这个时候已经生成了hello.
 指令：./hello
 
-![在这里插入图片描述](D:\my-note\cmake\assets\2020092923380874.png)
+![在这里插入图片描述](./assets/2020092923380874.png)
 
 以上是cmake构建的全部过程。
 
@@ -175,11 +175,11 @@ mv main.c src
 
 需要在任何一个子目录下建立一个CMakeLists.txt，进入到子目录src下，编写CMakeLists.txt如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200930103626678.png)
+![在这里插入图片描述](./assets/20200930103626678.png)
 
 将t2目录下的CMakeLists.txt,修改为：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20200930103751992.png)
+![在这里插入图片描述](./assets/20200930103751992.png)
 
 然后建立build文件。
 指令：
@@ -395,17 +395,17 @@ mkdir lib
 
 在t3目录下建立CMakeLists.txt，内容如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201001114701102.png)
+![在这里插入图片描述](./assets/20201001114701102.png)
 
 在lib目录下建立两个两个源文件hello.c和hello.h，
 
-![在这里插入图片描述](D:\my-note\cmake\assets\2020100111580748.png)
+![在这里插入图片描述](./assets/2020100111580748.png)
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201001115834765.png)
+![在这里插入图片描述](./assets/20201001115834765.png)
 
 在lib的目录下建立CMakeLists.txt，内容如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201001120034897.png)
+![在这里插入图片描述](./assets/20201001120034897.png)
 
 3、编译共享库
 在build目录下：
@@ -520,15 +520,15 @@ INSTALL安装头文件和动态库和静态库。
 2、编码
 编写源文件main.c如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201006155519479.png)
+![在这里插入图片描述](./assets/20201006155519479.png)
 
 t4下的CMakeLists.txt如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201006155646861.png)
+![在这里插入图片描述](./assets/20201006155646861.png)
 
 t4下的src下的CMakeLists.txt如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201006155805679.png)
+![在这里插入图片描述](./assets/20201006155805679.png)
 
 3、外部构建
 建立build文件夹，使用cmake …来构建。
@@ -569,7 +569,7 @@ CMAKE_INCLUDE_DIRECTORIES_BEFORE
 INCLUDE_DIRECTORIES(/usr/include/hello)
 ```
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201006234750120.png)
+![在这里插入图片描述](./assets/20201006234750120.png)
 
 如果只添加头文件搜索路径，则还是会出现一个错误：
 
@@ -598,7 +598,7 @@ TARGET_LINK_LIBRARIES(target library1 <debug | optimized> library2...)
 
 进入build/src目录，运行main的结果可能还会出现错误+_+.
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201007001022545.png)
+![在这里插入图片描述](./assets/20201007001022545.png)
 
 出现错误的原因是：链接器ld找不到库文件。ld默认目录是/lib和/usr/lib，如果放在其他路径也可以，需要让ld知道文件的所在路径。
 解决方法如下：
@@ -626,11 +626,11 @@ TARGET_LINK_LIBRARIES(target library1 <debug | optimized> library2...)
 
 得到的结果是：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201007100341296.png)
+![在这里插入图片描述](./assets/20201007100341296.png)
 
 查看main的动态链接库情况：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201007100413284.png)
+![在这里插入图片描述](./assets/20201007100413284.png)
 
 可以看到main确实连接到了共享库libhello，而且链接的是动态库libhello.so.1.
 
@@ -640,7 +640,7 @@ TARGET_LINK_LIBRARIES(target library1 <debug | optimized> library2...)
 指令：ldd src/main(在目录build下）
 结果如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\202010071009500.png)
+![在这里插入图片描述](./assets/202010071009500.png)
 
 可以看到，main确实连接到了静态库libhello.a。
 
@@ -652,11 +652,11 @@ cmake …等方式。
 为了将程序更智能一点，我们可以使用CMAKE_INCLUDE_PATH来进行，使用bash的方法如下：
 在指令行中输入：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\2020100710302057.png)
+![在这里插入图片描述](./assets/2020100710302057.png)
 
 然后，再将src/CMakeLisrs.txt中的INCLUDE_DIRECTORIES(/usr/include/hello)替换为：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201007103359170.png)
+![在这里插入图片描述](./assets/20201007103359170.png)
 
 指令：FIND_PATH(myHeader NAMES hello.h PATHS /usr/include /usr/include/hello)
 这里cmake.h仍然可以找到hello.h存放的路径，就是因为我们设置了环境变量CMAKE_INCLUDE_PATH.
@@ -847,12 +847,12 @@ testname是自定义的test名称，Exename可以是构建的目标文件也可�
 
 举例：比如在t4中的主工程文件CMakeLists.txt中加入
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201007153521139.png)
+![在这里插入图片描述](./assets/20201007153521139.png)
 
 cmake …
 make test
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201007153556399.png)
+![在这里插入图片描述](./assets/20201007153556399.png)
 
 (5) AUX_SOURCE_DIRECTORY
 基本语法是：
@@ -911,7 +911,7 @@ ENDIF(not LS_RVALUE)
 
 在cmake生成Makefile的过程中，就会执行ls命令，如果返回0，则会说明成功执行，那么久输出ls *.c的结果。关于IF语句，后面的控制指令会提到。
 
-![在这里插入图片描述](D:\my-note\cmake\assets\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0Nzk2MTQ2,size_16,color_FFFFFF,t_70#pic_center.png)
+![在这里插入图片描述](./assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0Nzk2MTQ2,size_16,color_FFFFFF,t_70#pic_center.png)
 
 (8)FILE指令
 文件操作指令，基本语法为:
@@ -1158,16 +1158,16 @@ ENDFOREACH(A)
 1、使用FindCURL模块
 建立t5目录，用于存放我们的例子，建立src目录，并建立src/main.c，内容如下：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0Nzk2MTQ2,size_16,color_FFFFFF,t_70#pic_center-1706620315836-51.png)
+![在这里插入图片描述](./assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0Nzk2MTQ2,size_16,color_FFFFFF,t_70#pic_center-1706620315836-51.png)
 
 作用是使用curl取回www.linux-ren.org的首页并写入/tmp/curl-test文件中。
 建立主工程文件：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\2020100810331212.png)
+![在这里插入图片描述](./assets/2020100810331212.png)
 
 src/CMakeLists.txt：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201008103406198.png)
+![在这里插入图片描述](./assets/20201008103406198.png)
 
 现在需要添加curl的头文件和库文件。
 方法一：
@@ -1234,7 +1234,7 @@ TARGET_LINK_LIBRARIES(viewer ${optionalLibs}
 
 (1) 定义cmake/FindHELLO.camke模块
 
-![在这里插入图片描述](D:\my-note\cmake\assets\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0Nzk2MTQ2,size_16,color_FFFFFF,t_70#pic_center-1706620438849-58.png)
+![在这里插入图片描述](./assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0Nzk2MTQ2,size_16,color_FFFFFF,t_70#pic_center-1706620438849-58.png)
 
 解释一下FIND_PACKAGE指令：
 
@@ -1256,15 +1256,15 @@ FindHELLO.cmake 模块中的 HELLO_FIND_REQUIRED 变量。
 
 建立src/main.c内容：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201008111456552.png)
+![在这里插入图片描述](./assets/20201008111456552.png)
 
 建立src/CMakeLists.txt文件，内容：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201008111543453.png)
+![在这里插入图片描述](./assets/20201008111543453.png)
 
 主工程文件CMakeLists.txt中加入：
 
-![在这里插入图片描述](D:\my-note\cmake\assets\20201008111805731.png)
+![在这里插入图片描述](./assets/20201008111805731.png)
 
 
 (3) 使用自定义的FindHELLO模块构建工程
