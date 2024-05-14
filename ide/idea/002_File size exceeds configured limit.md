@@ -168,3 +168,38 @@ Idea.max.intellisense.filesize=999999
 
 WINDOWS: IDE_HOME\bin\idea.properties
 ```
+
+
+
+
+
+Go to ` Help | Edit Custom Properties... ` and add the following lines:
+
+
+
+```csharp
+#---------------------------------------------------------------------
+# Maximum file size (kilobytes) IDE should provide code assistance for.
+# The larger file is the slower its editor works and higher overall system memory requirements are
+# if code assistance is enabled. Remove this property or set to very large number if you need
+# code assistance for any files available regardless their size.
+#---------------------------------------------------------------------
+idea.max.intellisense.filesize=4000
+
+#---------------------------------------------------------------------
+# Maximum file size (kilobytes) IDE is able to open.
+#---------------------------------------------------------------------
+idea.max.content.load.filesize=20000
+```
+
+
+
+C# detected
+
+You can change the values to whatever suits your needs.
+
+You can also read more about the ` idea.properties ` file here: https://intellij-support.jetbrains.com/hc/articles/206544869
+
+Subsystem: Inspections → IDE
+
+State: Submitted → Wait for Reply
