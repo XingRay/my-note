@@ -1,5 +1,7 @@
 # File size exceeds configured limit (2560000), code insight features not available
 
+
+
 In IntelliJ 2016 and newer you can change this setting from the Help menu, Edit Custom Properties (as commented by @eggplantbr).
 
 On older versions, there's no GUI to do it. But you can change it if you [edit the IntelliJ IDEA Platform Properties](https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties) file:
@@ -203,3 +205,10 @@ You can also read more about the ` idea.properties ` file here: https://intellij
 Subsystem: Inspections → IDE
 
 State: Submitted → Wait for Reply
+
+
+
+https://www.jetbrains.com/help/clion/configuring-file-size-limit.html
+
+https://stackoverflow.com/questions/23057988/file-size-exceeds-configured-limit-2560000-code-insight-features-not-availabl
+
