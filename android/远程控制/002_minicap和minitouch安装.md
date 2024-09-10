@@ -9,6 +9,8 @@ https://dl.google.com/android/repository/platform-tools-latest-windows.zip
 
 如果adb安装成功，在cmd中输入adb会有相应提示。
 
+
+
 安装 NDK
 minicap需要使用ndk-build进行编译。
 
@@ -26,24 +28,82 @@ https://developer.android.com/ndk/downloads/
 然后将下载下来的make.exe位置加入环境变量。
 
 安装 minicap
+
+```bash
 git clone https://github.com/openstf/minicap
 cd minicap
 git submodule init
 git submodule update
-ndk-build
+ndk-build APP_PLATFORM=android-28 PLATFORM_SDK_VERSION=28
+
+adb shell getprop ro.product.cpu.abi
+arm64-v8a
+
+adb shell getprop ro.build.version.sdk
+34
+
+# 注意根据上面的输出修改下面的ABI和SDK
+adb push libs/arm64-v8a/minicap /data/local/tmp/
+adb push jni/minicap-shared/aosp/libs/android-34/arm64-v8a/minicap.so /data/local/tmp/
+
+adb shell chmod 755 /data/local/tmp/minicap
+```
 
 测试
-adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P : Display projection (x@x/{0|90|180|270}).
 
-adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1080x1920@1080x1920/0
+```
+adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -h
+
+Usage: /data/local/tmp/minicap [-h] [-n <name>]
+  -d <id>:       Display ID. (0)
+  -n <name>:     Change the name of the abtract unix domain socket. (minicap)
+  -P <value>:    Display projection (<w>x<h>@<w>x<h>/{0|90|180|270}).
+  -Q <value>:    JPEG quality (0-100).
+  -s:            Take a screenshot and output it to stdout. Needs -P.
+  -S:            Skip frames when they cannot be consumed quickly enough.
+  -r <value>:    Frame rate (frames/s)  -t:            Attempt to get the capture method running, then exit.
+  -i:            Get display information in JSON format. May segfault.
+  -h:            Show help.
+```
+
+
+
+查看屏幕分辨率
+
+```
+adb shell wm size
+Physical size: 1440x3120
+```
+
+
+
+
+
+```
+adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P : Display projection (x@x/{0|90|180|270}).
+```
+
+```
+adb shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1440x3120@1440x3120/0
+```
+
 这里和分别表示设备屏幕的宽和高，中间是小写字母 x 。
 
 cmd下 安装minitouch：
+
+```bash
 git clone https://github.com/openstf/minitouch
 cd minitouch
 git submodule init
 git submodule update
 ndk-build
+
+adb shell getprop ro.product.cpu.abi
+
+adb push libs\arm64-v8a\minitouch /data/local/tmp/
+
+adb shell chmod 755 /data/local/tmp/minitouch
+```
 
 执行 git submodule update 这一步出现两个问题，解决方法如下：
 
