@@ -106,43 +106,144 @@ adb shell chmod 755 /data/local/tmp/minitouch
 
 ### 启动 server
 
-- 参考这个 [issue](https://github.com/openstf/stf/issues/1040) 运行`adb shell am start -n jp.co.cyberagent.stf/.IdentityActivity`以及 `adb shell am startservice -n jp.co.cyberagent.stf/.Service`先启动 apk
+参考这个 [issue](https://github.com/openstf/stf/issues/1040) 运行
 
-  
+```
+adb shell am start -n jp.co.cyberagent.stf/.IdentityActivity
+```
 
-- 接着运行`adb shell am start-foreground-service --user 0 -a jp.co.cyberagent.stf.ACTION_START -n jp.co.cyberagent.stf/.Service`
+以及
 
-- 接着运行`adb forward tcp:1100 localabstract:stfservice`和`nc localhost 1100`,可能会出现乱码，但是不影响后续进行
+```
+adb shell am startservice -n jp.co.cyberagent.stf/.Service
+```
 
-  ![https://cdn.jsdelivr.net/gh/ShaohanTian/MyBlog/img/20220321111431.png](./assets/20220321111431.png)
+先启动 apk
+
+
+
+接着运行
+
+```
+adb shell am start-foreground-service --user 0 -a jp.co.cyberagent.stf.ACTION_START -n jp.co.cyberagent.stf/.Service
+```
+
+接着运行
+
+```
+adb forward tcp:1100 localabstract:stfservice
+```
+
+和
+
+```
+nc localhost 1100
+```
+
+可能会出现乱码，但是不影响后续进行
+
+![https://cdn.jsdelivr.net/gh/ShaohanTian/MyBlog/img/20220321111431.png](./assets/20220321111431.png)
 
 ### 启动 agent
 
-- adb forward tcp:1090 localabstract:stfagent
-- 将`adb shell pm path jp.co.cyberagent.stf`命令输出替换到下一行命名黄色字体
-- adb shell export CLASSPATH="package:/data/app/~~zB9xl9M-zGIyGRMCCW55fQ==/jp.co.cyberagent.stf-bRDi125T34moZQVkvAHr3A==/base.apk";exec app_process /system/bin jp.co.cyberagent.stf.Agent
+```
+adb forward tcp:1090 localabstract:stfagent
+```
+
+将
+
+```
+adb shell pm path jp.co.cyberagent.stf
+```
+
+命令输出替换到下一行命名黄色字体
+
+```
+adb shell
+```
+
+进入shell后
+
+```
+export CLASSPATH="package:/data/app/jp.co.cyberagent.stf-D7e7MTpmizad4hzO-QTZ4Q==/base.apk"
+exec app_process /system/bin jp.co.cyberagent.stf.Agent
+```
 
 ![https://cdn.jsdelivr.net/gh/ShaohanTian/MyBlog/img/20220321112103.png](./assets/20220321112103.png)
 
 ### 启动 minitouch
 
-- 我在输入`adb shell /data/local/tmp/minitouch`时候，权限无法获取，输入`adb shell chmod 755 /data/local/tmp/minitouch`解决
+我在输入
 
-  ![img](./assets/20220321203102.png)
+```
+adb shell /data/local/tmp/minitouch
+```
 
-- 接着运行`adb shell /data/local/tmp/minitouch`出现 **using Android InputManager**
+时候，权限无法获取，输入
+
+```
+adb shell chmod 755 /data/local/tmp/minitouch
+```
+
+解决
+
+
+
+![img](./assets/20220321203102.png)
+
+
+
+接着运行
+
+```
+adb shell /data/local/tmp/minitouch
+```
+
+出现 **using Android InputManager**
+
+
 
 ### 启动 minitouch-2
 
-- adb forward tcp:1090 localabstract:minitouch
+```
+adb forward tcp:1090 localabstract:minitouch
+```
 
-- nc localhost 1090
+```
+nc localhost 1090
+```
 
-- 输入 socket 相关指令就可以，下图为输入指令以及对应界面相应
 
-  
 
-  ![https://cdn.jsdelivr.net/gh/ShaohanTian/MyBlog/img/20220320230455.png](./assets/20220320230455.png)
+输入 socket 相关指令就可以，下图为输入指令以及对应界面相应
+
+
+
+![https://cdn.jsdelivr.net/gh/ShaohanTian/MyBlog/img/20220320230455.png](./assets/20220320230455.png)
+
+
+
+```
+d 0 500 2031 50
+c
+m 0 558 1764 50
+c
+m 0 604 1357 50
+c
+m 0 648 954 50
+c
+m 0 692 652 50
+c
+m 0 735 413 50
+c
+u 0
+c
+
+```
+
+
+
+
 
 ## 📖 参考文献
 
