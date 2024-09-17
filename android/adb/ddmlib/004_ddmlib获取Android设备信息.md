@@ -5,98 +5,54 @@
 
 
 
-InfPhnoe.java
+### InfPhnoe.java
 
-public class InfPhone {
-	private String phonebrand; //手机品牌
-	private String phoneandroidversion; //手机信息的系统版本
-	private String phonemodel; //机器型号
-	private String phonecpu; //cpu版本
-	private String phoneplatform; //主板平台
-	private String phonefingerprint; //系统指纹 
+	public class InfPhone {
+		private String phonebrand; //手机品牌
+		private String phoneandroidversion; //手机信息的系统版本
+		private String phonemodel; //机器型号
+		private String phonecpu; //cpu版本
+		private String phoneplatform; //主板平台
+		private String phonefingerprint; //系统指纹 
+	
+	    public String getPhonebrand() {
+	        return phonebrand;
+	    }
+	    public void setPhonebrand(String phonebrand) {
+	        this.phonebrand = phonebrand;
+	    }
+	    public String getPhoneandroidversion() {
+	        return phoneandroidversion;
+	    }
+	    public void setPhoneandroidversion(String phoneandroidversion) {
+	        this.phoneandroidversion = phoneandroidversion;
+	    }
+	    public String getPhonemodel() {
+	        return phonemodel;
+	    }
+	    public void setPhonemodel(String phonemodel) {
+	        this.phonemodel = phonemodel;
+	    }
+	    public String getPhonecpu() {
+	        return phonecpu;
+	    }
+	    public void setPhonecpu(String phonecpu) {
+	        this.phonecpu = phonecpu;
+	    }
+	    public String getPhoneplatform() {
+	        return phoneplatform;
+	    }
+	    public void setPhoneplatform(String phoneplatform) {
+	        this.phoneplatform = phoneplatform;
+	    }
+	    public String getPhonefingerprint() {
+	        return phonefingerprint;
+	    }
+	    public void setPhonefingerprint(String phonefingerprint) {
+	        this.phonefingerprint = phonefingerprint;
+	    }
+	}
 
-	public String getPhonebrand() {
-		return phonebrand;
-	}
-	public void setPhonebrand(String phonebrand) {
-		this.phonebrand = phonebrand;
-	}
-	public String getPhoneandroidversion() {
-		return phoneandroidversion;
-	}
-	public void setPhoneandroidversion(String phoneandroidversion) {
-		this.phoneandroidversion = phoneandroidversion;
-	}
-	public String getPhonemodel() {
-		return phonemodel;
-	}
-	public void setPhonemodel(String phonemodel) {
-		this.phonemodel = phonemodel;
-	}
-	public String getPhonecpu() {
-		return phonecpu;
-	}
-	public void setPhonecpu(String phonecpu) {
-		this.phonecpu = phonecpu;
-	}
-	public String getPhoneplatform() {
-		return phoneplatform;
-	}
-	public void setPhoneplatform(String phoneplatform) {
-		this.phoneplatform = phoneplatform;
-	}
-	public String getPhonefingerprint() {
-		return phonefingerprint;
-	}
-	public void setPhonefingerprint(String phonefingerprint) {
-		this.phonefingerprint = phonefingerprint;
-	}
-}
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
 MyDevice.java
 
 	/*
@@ -113,39 +69,27 @@ MyDevice.java
 	
 		return infPhone;
 	}
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+```
 /*
+
 * 一个简单的方法，它尝试通过{@link #getSystemProperty(String)}检索一个属性，
 * 等待时间很短，并且可以处理异常。
 * 注意:如果希望控制超时，最好使用{@link #getSystemProperty(String)}。
 * @return值，如果属性值不是立即可用的，则返回null
-*/
+  */
 String getProperty(@NonNull String name);
-1
-2
-3
-4
-5
-6
-7
+  
+```
+
+
+
 App.java
 
-private static AdbVersion AdbVersion;
-    private static InfPhone phoneInfo;
 
+
+	private static AdbVersion AdbVersion;
+	private static InfPhone phoneInfo;
+	    
 	public static void main( String[] args )
 	{
 	    System.out.println( "Hello Springboot!" );
@@ -169,30 +113,5 @@ private static AdbVersion AdbVersion;
 	    	System.out.println(phonefingerprint);
 	    }    
 	}
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
+
 运行结果：

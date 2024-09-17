@@ -1004,19 +1004,19 @@ Removes the listener from the collection of listeners who will be notified when 
  * @param device the disconnected <code>IDevice</code>.
  * @see #getLock()
  */
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
- 10
- 11
- 12
- static void deviceDisconnected(@NonNull IDevice device) {
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
+  12
+  static void deviceDisconnected(@NonNull IDevice device) {
         for (IDeviceChangeListener listener : sDeviceListeners) {
             // we attempt to catch any exception so that a bad listener doesn't kill our
             // thread
@@ -1027,17 +1027,17 @@ Removes the listener from the collection of listeners who will be notified when 
             }
         }
     }
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
- 10
- 11
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
  * Notify the listener of a modified {@link IDevice}.
  * <p>
  * The notification of the listeners is done in a synchronized block. It is important to
