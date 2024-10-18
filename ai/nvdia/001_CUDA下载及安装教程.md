@@ -126,23 +126,42 @@ Ok啦，点击下一步即可
 
 这两个变量放在下面啦，方便复制
 
+```
 NVCUDASAMPLES_ROOT
-
 NVCUDASAMPLES11_0_ROOT
+```
 
 验证是否安装成功：
 
-运行cmd，输入nvcc --version 即可查看版本号；
+运行cmd，输入
 
-set cuda，可以查看 CUDA 设置的环境变量。
+```
+nvcc --version 
+```
 
+即可查看版本号；
+
+```
+set cuda
+```
+
+可以查看 CUDA 设置的环境变量。
+
+```
 nvcc --version
+```
 
 OR
 
+```
 nvcc -V
+```
 
+```
 set cuda
+```
+
+
 
 ![img](./assets/v2-5028ced0d72fa24027dd24b4d2626d77_1440w.webp)
 
@@ -188,7 +207,9 @@ cuDNN叫配置更为准确，我们先把下载的 cuDNN 解压缩，会得到�
 
 下载的文件都在这个目录下：
 
+```
 D:\software\cuda\package
+```
 
 解压后的文件：
 
@@ -198,7 +219,9 @@ D:\software\cuda\package
 
 CUDA 的安装路径在前面截图中有，或者打开电脑的环境变量查看，默认的安装路径如下：
 
+```
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0
+```
 
 拷贝时看到，CUDA 的安装目录中，有和 cuDNN 解压缩后的同名文件夹，这里注意，不需要担心，直接复制即可。cuDNN 解压缩后的同名文件夹中的配置文件会添加到 CUDA安装目录中的同名文件夹中。【此处还是建议还是分别把文件夹的内容复制到对应文件夹中去】
 
