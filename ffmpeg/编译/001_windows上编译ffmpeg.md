@@ -160,9 +160,21 @@ make install
 
 执行完如上命令后是没有生成libx264.lib的，需要手动生成；
 
-首先执行完 configure 命令后，会生成 libx264.def 文件，将其拷贝到  /home/17634/ffmpeg/build/libx264/lib （修改自己的路径）
+首先执行完 configure 命令后，会生成 libx264.def 文件，将其拷贝到   （修改自己的路径）
 
-然后进入该路径，执行命令 lib /machine:x64 /def:libx264.def 即可，如下：
+```
+/home/leixing/code/ffmpeg/build/libx264/lib
+```
+
+
+
+然后进入该路径，执行命令 
+
+```
+lib /machine:x64 /def:libx264.def
+```
+
+ 即可，如下：
 
 ```
 cp libx264.def /home/leixing/code/ffmpeg/build/libx264/lib/
@@ -296,16 +308,20 @@ make install
 
 代码测试:
 
-```
-INCLUDEPATH += \
-            $$PWD/ffmpeg/include
+CMake
 
-LIBS += $$PWD/ffmpeg/bin/avformat.lib       \
-        $$PWD/ffmpeg/bin/avcodec.lib        \
-        $$PWD/ffmpeg/bin/avdevice.lib       \
-        $$PWD/ffmpeg/bin/avfilter.lib       \
-        $$PWD/ffmpeg/bin/avutil.lib         \
-        $$PWD/ffmpeg/bin/swresample.lib     \
-        $$PWD/ffmpeg/bin/swscale.lib
+```
+#手动引入 ffmpeg
+set(ffmpeg_ROOT "D:\\develop\\cpp\\ffmpeg\\7.1\\build\\ffmpeg")
+set(ffmpeg_INCLUDE_DIRS "${ffmpeg_ROOT}\\include")
+set(ffmpeg_LIBRARIES
+        "${ffmpeg_ROOT}\\bin\\avformat.lib"
+        "${ffmpeg_ROOT}\\bin\\avcodec.lib"
+        "${ffmpeg_ROOT}\\bin\\avdevice.lib"
+        "${ffmpeg_ROOT}\\bin\\avfilter.lib"
+        "${ffmpeg_ROOT}\\bin\\avutil.lib"
+        "${ffmpeg_ROOT}\\bin\\swresample.lib"
+        "${ffmpeg_ROOT}\\bin\\swscale.lib"
+)
 ```
 
