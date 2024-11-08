@@ -437,6 +437,66 @@ C:\Users\leixing\_bazel_leixing\oognx6g4\external\com_github_glog_glog\bazel\glo
 
 
 
+编译 task
+
+
+
+```
+
+```
+
+
+
+编译报错:
+
+```
+C:\users\leixing\_bazel_leixing\xaydh3su\execroot\mediapipe\mediapipe\tasks\cc\core\task_api_factory.h
+```
+
+修改源码:
+
+```
+MP_ASSIGN_OR_RETURN(
+        auto runner,
+#if !MEDIAPIPE_DISABLE_GPU
+        core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
+                                 std::move(packets_callback),
+                                 std::move(default_executor),
+                                 std::move(input_side_packets),
+                                 /*resources=*/nullptr, std::move(error_fn)));
+#else
+        core::TaskRunner::Create(
+            std::move(graph_config), std::move(resolver),
+            std::move(packets_callback), std::move(default_executor),
+            std::move(input_side_packets), std::move(error_fn)));
+#endif
+```
+
+修改为:
+
+```
+#if !MEDIAPIPE_DISABLE_GPU
+    MP_ASSIGN_OR_RETURN(
+            auto runner,
+      core::TaskRunner::Create(std::move(graph_config), std::move(resolver),
+                               std::move(packets_callback),
+                               std::move(default_executor),
+                               std::move(input_side_packets),
+                               /*resources=*/nullptr, std::move(error_fn)));
+#else
+    MP_ASSIGN_OR_RETURN(
+            auto runner,
+        core::TaskRunner::Create(
+            std::move(graph_config), std::move(resolver),
+            std::move(packets_callback), std::move(default_executor),
+            std::move(input_side_packets), std::move(error_fn)));
+#endif
+```
+
+
+
+
+
 参考:
 
 https://ai.google.dev/edge/mediapipe/framework/getting_started/install?hl=zh-cn#installing_on_windows
