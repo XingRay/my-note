@@ -38,18 +38,20 @@ add-path 是自定义的 powershell 函数, 见 001_powershell编辑环境变量
 
 https://github.com/bazelbuild/bazel/releases
 
-下载 https://github.com/bazelbuild/bazel/releases/download/7.4.0/bazel-7.4.0-windows-x86_64.zip
+使用的版本要参考 /.bazelversion 文件,当前使用的版本为 6.5.0 
+
+下载 https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-windows-x86_64.exe
 
 解压到指定目录
 
 ```
-D:\develop\bazel\7.4.0
+D:\develop\bazel\6.5.0
 ```
 
 并添加该目录到PATH
 
 ```
-setx BAZEL_HOME "D:\develop\bazel\7.4.0"
+setx BAZEL_HOME "D:\develop\bazel\6.5.0"
 add-path %BAZEL_HOME%
 ```
 
@@ -100,7 +102,7 @@ pacman -S git patch unzip
 安装 tensorflow
 
 ```
-pip install tensorflow tensorflow-gpu
+pip install tensorflow
 ```
 
 
@@ -156,7 +158,7 @@ C:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0
 根据上述路径设置环境变量。例如，如果你安装的是 `Visual Studio 2022 Community`，可以如下设置：
 
 ```
-bash复制代码set BAZEL_VS=C:\Program Files\Microsoft Visual Studio\2022\Community
+set BAZEL_VS=C:\Program Files\Microsoft Visual Studio\2022\Community
 set BAZEL_VC=C:\Program Files\Microsoft Visual Studio\2022\Community\VC
 set BAZEL_VC_FULL_VERSION=14.41.34120
 set BAZEL_WINSDK_FULL_VERSION=10.0.26100.0
@@ -188,6 +190,10 @@ conda install python=3.11
 ```
 
 
+
+```
+HERMETIC_PYTHON_VERSION=3.11
+```
 
 安装yarn
 
@@ -494,6 +500,36 @@ MP_ASSIGN_OR_RETURN(
 ```
 
 
+
+1 windows上软链接问题, 
+解决方案 开启开发者选项
+但是会产生很多链接,希望能关闭
+
+
+
+2 python版本脚本问题
+
+总是报错, 解决方案: 手动修改 BUILD 文件
+
+```
+D:\code\git\github\mediapipe\bazel_out\uwisdqlp\external\local_execution_config_python\BUILD
+```
+
+```
+py_runtime(
+    name = "py2_runtime",
+    interpreter_path = "D:/develop/python/3.12.7/python.exe",
+    python_version = "PY2",
+)
+
+py_runtime(
+    name = "py3_runtime",
+    interpreter_path = "D:/develop/python/3.12.7/python.exe",
+    python_version = "PY3",
+)
+```
+
+希望能找到根本解决的办法
 
 
 
