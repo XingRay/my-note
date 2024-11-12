@@ -322,10 +322,8 @@ bazel clean --expunge
 指定缓存目录
 
 ```
-bazel build --repository_cache="D:\\develop\\bazel\\cache" -c opt --define MEDIAPIPE_DISABLE_GPU=1 --action_env PYTHON_BIN_PATH="D:/softwares/anaconda/python.exe" --repo_env=HERMETIC_PYTHON_VERSION=3.11 --verbose_failures mediapipe/examples/desktop/hello_world
+bazel --output_user_root=bazel_out build --experimental_convenience_symlinks=ignore --repository_cache="D:/develop/bazel/cache" -c opt --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/hello_world
 ```
-
-
 
 
 
@@ -529,7 +527,13 @@ py_runtime(
 )
 ```
 
-希望能找到根本解决的办法
+解决办法:
+
+使用正确的bazel版本, 当前mediapipe使用的bazel版本为 6.5.0, 见 /.bazelversion 文件
+
+```shell
+bazel --output_user_root=bazel_out build --experimental_convenience_symlinks=ignore --repository_cache="D:/develop/bazel/cache" -c opt --cxxopt="/utf-8" --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/tasks/libmptask/vision/face_landmarker:face_landmarker.dll
+```
 
 
 
