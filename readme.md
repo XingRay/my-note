@@ -304,3 +304,116 @@ swift flutter
 
 #### 7. 微信小程序/微信公众号/微信机器人
 
+
+
+
+
+c++
+
+编译
+
+bazel
+
+cmake
+
+
+
+kotlin
+
+coroutine + flow
+
+
+
+
+
+jetpack compose
+
+compose multiplatform
+
+
+
+导航
+
+navigation
+
+
+
+mvvm
+
+ViewModel
+
+
+
+生命周期
+
+LifeCycle
+
+
+
+ORM
+
+Room
+
+
+
+Denpendency Injection
+
+Hilt / Dagger
+
+
+
+3D
+
+OpenGL/ES 
+
+Javafx+OpenGL/ES
+
+compose + OpenGL/ES
+
+
+
+Vulkan
+
+Javafx+Vulkan
+
+compose + Vulkan
+
+
+
+ui技术
+
+java:
+awt / swt / swing
+
+javafx ( https://github.com/openjdk/jfx )
+
+compose
+
+
+
+C++:
+
+qt ( https://www.qt.io/ ) 
+
+imgui ( https://github.com/ocornut/imgui )
+
+mfc ( https://learn.microsoft.com/en-us/cpp/mfc/mfc-desktop-applications?view=msvc-170 )
+
+
+
+C#
+
+wpf / avalonia ( https://avaloniaui.net/ )
+
+
+
+rust
+
+tauri ( rust+webview ) ( https://v2.tauri.app/ )
+
+
+
+web
+
+electron ( https://www.electronjs.org/ )
+
