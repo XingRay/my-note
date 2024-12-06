@@ -2,7 +2,7 @@
 
 
 
-windows
+## windows
 
 ```bash
 C:\Users\<user_name>\.bazelrc
