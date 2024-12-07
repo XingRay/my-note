@@ -535,6 +535,12 @@ py_runtime(
 bazel --output_user_root=bazel_out build --experimental_convenience_symlinks=ignore --repository_cache="D:/develop/bazel/cache" -c opt --cxxopt="/utf-8" --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/tasks/libmptask/vision/face_landmarker:face_landmarker.dll
 ```
 
+使用bazelrc简化:
+
+```
+bazel build -c opt --cxxopt="/utf-8" --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/tasks/libmptask/vision/face_landmarker:face_landmarker.dll
+```
+
 
 
 参考:
