@@ -1,5 +1,11 @@
 # WSL移动或者安装到指定目录
 
+wsl2默认安装路径:
+
+```shell
+C:\Users\<your-name>\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu24.04LTS_xxx\LocalState\ext4.vhdx
+```
+
 
 
 ## 1 移动已安装的WSL
