@@ -225,3 +225,48 @@ vk::defaultDispatchLoaderDynamic = dld;
 
 给 vk::defaultDispatchLoaderDynamic 赋值之后, 就可以正常使用 cpp api 了, 不传入 vk::DispatchLoaderDynamic 对象的情况下会使用全局变量 defaultDispatchLoaderDynamic  作为默认值.
 
+而cpp api 的调用都是通过 DispatchLoaderDynamic  对象调用持有的 c api 来实现的, 如:
+
+```c++
+template <typename PhysicalDeviceAllocator, typename Dispatch>
+  VULKAN_HPP_NODISCARD VULKAN_HPP_INLINE typename ResultValueType<std::vector<VULKAN_HPP_NAMESPACE::PhysicalDevice, PhysicalDeviceAllocator>>::type
+                       Instance::enumeratePhysicalDevices( Dispatch const & d ) const
+  {
+    VULKAN_HPP_ASSERT( d.getVkHeaderVersion() == VK_HEADER_VERSION );
+
+    std::vector<VULKAN_HPP_NAMESPACE::PhysicalDevice, PhysicalDeviceAllocator> physicalDevices;
+    uint32_t                                                                   physicalDeviceCount;
+    VULKAN_HPP_NAMESPACE::Result                                               result;
+    do
+    {
+      result = static_cast<VULKAN_HPP_NAMESPACE::Result>( d.vkEnumeratePhysicalDevices( m_instance, &physicalDeviceCount, nullptr ) );
+      if ( ( result == VULKAN_HPP_NAMESPACE::Result::eSuccess ) && physicalDeviceCount )
+      {
+        physicalDevices.resize( physicalDeviceCount );
+        result = static_cast<VULKAN_HPP_NAMESPACE::Result>(
+          d.vkEnumeratePhysicalDevices( m_instance, &physicalDeviceCount, reinterpret_cast<VkPhysicalDevice *>( physicalDevices.data() ) ) );
+      }
+    } while ( result == VULKAN_HPP_NAMESPACE::Result::eIncomplete );
+    resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Instance::enumeratePhysicalDevices" );
+    VULKAN_HPP_ASSERT( physicalDeviceCount <= physicalDevices.size() );
+    if ( physicalDeviceCount < physicalDevices.size() )
+    {
+      physicalDevices.resize( physicalDeviceCount );
+    }
+    return createResultValueType( result, physicalDevices );
+  }
+```
+
+简单来看就是:
+
+```c++
+R Instance::enumeratePhysicalDevices(vk::DispatchLoaderDynamic const & d = vk::defaultDispatchLoaderDynamic){
+	VULKAN_HPP_ASSERT( d.getVkHeaderVersion() == VK_HEADER_VERSION );
+    do{
+	    d.vkEnumeratePhysicalDevices( m_instance, &physicalDeviceCount, nullptr )        
+    }while(xxx);
+	// ...
+}
+```
+
+其他的api也是类似
