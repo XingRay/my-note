@@ -1,0 +1,147 @@
+# Vulkan从入门到精通32-描述符集布局和管线布局
+
+对于着色器中使用的uniform，在构建管线时需要指定其在着色器上binding位置以及所在阶段。这是通过描述符集布局来完成的。
+
+```cpp
+VkDescriptorSetLayoutBinding VK_ShaderSet::createDescriptorSetLayoutBinding(uint32_t id, VkDescriptorType type, VkShaderStageFlagBits flag)
+{
+    VkDescriptorSetLayoutBinding binding;
+    binding.binding = id;
+    binding.descriptorCount = 1;
+    binding.descriptorType = type;
+    binding.pImmutableSamplers = nullptr;
+    binding.stageFlags = flag;
+    return binding;
+}
+```
+
+在程序中如下调用
+
+```cpp
+    VkDescriptorSetLayoutBinding uniformBinding = VK_ShaderSet::createDescriptorSetLayoutBinding(0,
+            VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT);
+    shaderSet->addDescriptorSetLayoutBinding(uniformBinding);
+```
+
+增加描述符集布局Binding时内容如下
+
+```cpp
+void VK_ShaderSetImpl::addDescriptorSetLayoutBinding(const VkDescriptorSetLayoutBinding &binding)
+{
+    descriptorSetLayoutBindings.push_back(binding);
+    VkDescriptorPoolSize poolSize;
+    poolSize.descriptorCount = 0;
+    poolSize.type = binding.descriptorType;
+    descriptorPoolSizes.push_back(poolSize);
+}
+```
+
+除了添加到设置布局链表外，还创建了一个描述符池Size并增加到对应链表。这样写的原因是descriptorSetLayout和DescriptorPoolSize总是一一对应的。
+
+之后在创建管线前，构建一个vkDescriptorSetLayout，如下
+
+```cpp
+    VkDescriptorSetLayoutCreateInfo layoutInfo{};
+    layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+    layoutInfo.bindingCount = shaderSet->getDescriptorSetLayoutBindingCount();
+    layoutInfo.pBindings = shaderSet->getDescriptorSetLayoutBindingData();
+    layoutInfo.pNext = nullptr;
+
+    if (vkCreateDescriptorSetLayout(context->getDevice(), &layoutInfo, context->getAllocation(),
+                                    &descriptorSetLayout) != VK_SUCCESS) {
+        std::cerr << "failed to create descriptor set layout!" << std::endl;
+    }
+```
+
+对应销毁函数如下
+
+```cpp
+    vkDestroyDescriptorSetLayout(context->getDevice(), descriptorSetLayout, context->getAllocation());
+```
+
+创建完描述符集布局后即可创建管线布局
+
+```cpp
+    VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
+    pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+    pipelineLayoutInfo.pNext = nullptr;
+    pipelineLayoutInfo.setLayoutCount = 1;
+    pipelineLayoutInfo.pSetLayouts = &setLayout;
+    pipelineLayoutInfo.pushConstantRangeCount = pushConstantRange.size();
+    pipelineLayoutInfo.pPushConstantRanges = pushConstantRange.data();
+
+    if (vkCreatePipelineLayout(context->getDevice(), &pipelineLayoutInfo, context->getAllocation(),
+                               &pipelineLayout) != VK_SUCCESS) {
+        std::cerr << "failed to create pipeline layout!" << std::endl;
+    }
+```
+
+对应销毁调用如下
+
+```cpp
+    if (pipelineLayout) {
+        vkDestroyPipelineLayout(context->getDevice(), pipelineLayout, context->getAllocation());
+        pipelineLayout = nullptr;
+    }
+```
+
+管线布局内容是在描述符集布局外增加了一个推送常量设置。
+
+以上二组创建和销毁[函数原型](https://zhida.zhihu.com/search?content_id=190976450&content_type=Article&match_order=1&q=函数原型&zhida_source=entity)如下
+
+```cpp
+VKAPI_ATTR VkResult VKAPI_CALL vkCreateDescriptorSetLayout(
+    VkDevice                                    device,
+    const VkDescriptorSetLayoutCreateInfo*      pCreateInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkDescriptorSetLayout*                      pSetLayout);
+
+VKAPI_ATTR void VKAPI_CALL vkDestroyDescriptorSetLayout(
+    VkDevice                                    device,
+    VkDescriptorSetLayout                       descriptorSetLayout,
+    const VkAllocationCallbacks*                pAllocator);
+```
+
+CreateInfo
+
+```cpp
+typedef struct VkDescriptorSetLayoutBinding {
+    uint32_t              binding;
+    VkDescriptorType      descriptorType;
+    uint32_t              descriptorCount;
+    VkShaderStageFlags    stageFlags;
+    const VkSampler*      pImmutableSamplers;
+} VkDescriptorSetLayoutBinding;
+
+typedef struct VkDescriptorSetLayoutCreateInfo {
+    VkStructureType                        sType;
+    const void*                            pNext;
+    VkDescriptorSetLayoutCreateFlags       flags;
+    uint32_t                               bindingCount;
+    const VkDescriptorSetLayoutBinding*    pBindings;
+} VkDescriptorSetLayoutCreateInfo;
+
+VKAPI_ATTR VkResult VKAPI_CALL vkCreatePipelineLayout(
+    VkDevice                                    device,
+    const VkPipelineLayoutCreateInfo*           pCreateInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkPipelineLayout*                           pPipelineLayout);
+
+VKAPI_ATTR void VKAPI_CALL vkDestroyPipelineLayout(
+    VkDevice                                    device,
+    VkPipelineLayout                            pipelineLayout,
+    const VkAllocationCallbacks*                pAllocator);
+
+typedef struct VkPipelineLayoutCreateInfo {
+    VkStructureType                 sType;
+    const void*                     pNext;
+    VkPipelineLayoutCreateFlags     flags;
+    uint32_t                        setLayoutCount;
+    const VkDescriptorSetLayout*    pSetLayouts;
+    uint32_t                        pushConstantRangeCount;
+    const VkPushConstantRange*      pPushConstantRanges;
+} VkPipelineLayoutCreateInfo;
+```
+
+写vulkan文章，也是一个学习的过程，之前的框架架构看似添加的功能很多，但是管线和相关描述符集布局，管线布局以及描述符池集都作为VK_ContextImpl成员是很不合理的，难以增加后继要实现的功能。因此有必要把vkDescriptorSet、vkDescriptorSetLayout、vkPiplelineLayout等管线关联结构移入管线对象。同时uniform和shader强相关，需要移入VKShaderSet对象；图像视图也是如此。同时VK_Buffer需要移动到管线对象。这样做，有助于增加更为复杂高级的功能。
+
