@@ -65,7 +65,7 @@ streams流是承载一系列数据包的两个**nodes**(节点)之间的连接�
 
 ## **Input and output**
 
-数据流可能源自没有输入流的[源节点](https://zhida.zhihu.com/search?content_id=219956549&content_type=Article&match_order=1&q=源节点&zhida_source=entity)（**source nodes**），例如读取文件，也可能来自于让饮用程序将数据包传入图（**Graph**）中的**graph input streams**
+数据流可能源自没有输入流的[源节点](https://zhida.zhihu.com/search?content_id=219956549&content_type=Article&match_order=1&q=源节点&zhida_source=entity)（**source nodes**），例如读取文件，也可能来自于让应用程序将数据包传入图（**Graph**）中的**graph input streams**
 
 ## **Runtime behavior**
 
