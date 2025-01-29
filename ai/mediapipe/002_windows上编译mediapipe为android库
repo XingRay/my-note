@@ -1,6 +1,18 @@
 # windows上编译mediapipe为android库
 
-编译指令如下:
+1 安装wsl环境, 安装ubuntu 24.04系统
+
+
+
+2 clone 代码库
+
+```
+git clone git@github.com:XingRay/mediapipe.git
+```
+
+
+
+
 
 ```
 

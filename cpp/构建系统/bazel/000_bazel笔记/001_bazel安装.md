@@ -4,36 +4,56 @@
 
 ## 在windows上安装
 
-在bazel页面下载 bazel 可执行文件, 添加到系统 PATH 即可
+在bazel页面
+
+https://github.com/bazelbuild/bazel/releases
+下载 bazel 可执行文件,如:
+https://github.com/bazelbuild/bazel/releases/download/8.0.1/bazel-8.0.1-windows-x86_64.exe
+添加到系统 PATH 即可
 
 
 
 ## 在ubuntu上安装
 
-```shell
-sudo apt install apt-transport-https curl gnupg
-curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
-sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+https://github.com/bazelbuild/bazel/releases
+下载指定版本的可执行文件, 如:
+https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64
+
+保存到指定目录, 并改名为 bazel, 如:
+
+```
+~/develop/bazel/6.5.0/bazel
 ```
 
-安装指定版本bazel
+导出到path:
 
-```shell
-sudo apt install bazel-1.0.0
-sudo ln -s /usr/bin/bazel-1.0.0 /usr/bin/bazel
-bazel --version  # 1.0.0
+修改 bash配置:
+
+```
+nano ~/.bashrc
 ```
 
-安装最新版本bazel
+添加
 
 ```shell
-sudo apt update && sudo apt install bazel
+export PATH=~/develop/bazel/6.5.0:$PATH
 ```
 
-安装后升级
+保存后退出, 使修改生效
 
-```shell
-sudo apt update && sudo apt full-upgrade
+```
+source ~/.bashrc
+```
+
+测试:
+
+```
+bazel --version
+```
+
+输出:
+
+```
+bazel 6.5.0
 ```
 
