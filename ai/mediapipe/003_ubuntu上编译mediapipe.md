@@ -1,3 +1,41 @@
+# Ubuntu上编译Mediapipe
+
+1 安装 bazel
+
+2 下载源码
+
+```
+git clone 
+```
+
+3 编译
+
+32 位
+
+```
+bazel build -c opt --config=android_arm mediapipe/tasks/libmptask/vision/face_landmarker:face_landmarker_android.so
+```
+
+
+
+64位
+
+```
+bazel build -c opt --config=android_arm64 mediapipe/tasks/libmptask/vision/face_landmarker:face_landmarker_android.so
+```
+
+
+
+其他常用指令:
+
+```
+bazel clean --expunge
+```
+
+
+
+
+
 # ubuntu安装android环境
 
 安装jdk
@@ -168,7 +206,57 @@ bazel build //app/src/main:app --fat_apk_cpu=armeabi-v7a,arm64-v8a,x86,x86_64 --
 
 
 
+
+
+
+
 解决 npm 下载依赖的问题:
+
+系统环境变量中配置了无效的 HTTP/HTTPS 代理地址 `172.29.64.1:10810`（缺少协议头 `http://` 或 `https://`），导致 `curl` 和 `npm` 在尝试通过该代理访问时触发 `ERR_INVALID_URL`。
+
+------
+
+### 解决方案
+
+#### 1. **修正代理环境变量格式**
+
+代理地址必须包含协议头（如 `http://` 或 `https://`），修改环境变量：
+
+bash
+
+复制
+
+```
+# 临时修正（仅当前终端生效）
+export http_proxy=http://172.29.64.1:10810
+export https_proxy=http://172.29.64.1:10810
+
+# 永久修正（添加到 ~/.bashrc 或 ~/.zshrc）
+echo 'export http_proxy=http://172.29.64.1:10810' >> ~/.bashrc
+echo 'export https_proxy=http://172.29.64.1:10810' >> ~/.bashrc
+source ~/.bashrc
+```
+
+#### 2. **验证代理服务是否可用**
+
+从 `curl -v` 的输出看，代理服务器 `172.29.64.1:10810` 未响应 HTTPS 隧道请求，需检查：
+
+- **代理服务是否运行**：确认本机或局域网内 `172.29.64.1:10810` 的代理服务（如 Clash、v2ray）已启动。
+
+- **端口是否开放**：
+
+  bash
+
+  复制
+
+  ```
+  telnet 172.29.64.1 10810
+  ```
+
+  - 若提示 `Connected`，说明端口可访问。
+  - 若提示 `Connection refused`，说明代理服务未运行或端口被防火墙拦截。
+
+
 
 思路: 在系统中安装 node yarn, 配置 yarn 代理, 自行通过 yarn install 提前下载缓存, 在通过 bazel build 构建
 
