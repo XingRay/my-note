@@ -49,7 +49,7 @@ mkdir install-windows-x64
 配置和启动编译
 
 ```
-cmake -S %cd%/ncnn -B %cd%/build-windows-x64 -A x64 -G "Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=%cd%/install-windows-x64 -Dprotobuf_DIR=D:\develop\cpp\protobuf\3.11.2\install\cmake -DNCNN_VULKAN=ON
+cmake -S %cd%/ncnn -B %cd%/build-windows-x64 -A x64 -G "Visual Studio 17 2022" -DCMAKE_INSTALL_PREFIX=%cd%/install-windows-x64 -Dprotobuf_DIR=D:\develop\cpp\protobuf\3.11.2\install\cmake -DNCNN_VULKAN=ON -DOpenCV_DIR=D:\develop\opencv\4.10.0\sdk\windows\opencv\build
 
 cmd /c cmake --build %cd%/build-windows-x64 --config Release
 
