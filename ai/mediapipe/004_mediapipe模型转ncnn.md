@@ -2291,8 +2291,8 @@ import math
 from dataclasses import dataclass
 
 import cv2
+import ncnn
 import numpy as np
-import onnxruntime as ort
 
 
 @dataclass
@@ -2492,16 +2492,18 @@ def transform_coords_back(x, y, params):
 
 
 if __name__ == '__main__':
-    model_path = "D:\\tmp\\ncnn_pytorch\\face_detector.onnx"
-    # model_path = "D:\\tmp\\model\\face_detector.onnx"
+    param_path = "D:\\tmp\\ncnn_pytorch\\face_detector.ncnn.param"
+    # param_path = "D:\\tmp\\ncnn\\face_detector.ncnn_edit.param"
+    bin_path = "D:\\tmp\\ncnn_pytorch\\face_detector.ncnn.bin"
 
-    original_img_path = "D:\\tmp\\image\\face_image_1080_1920.png"
-    # original_img_path = "D:\\tmp\\image\\face_image_2.png"
-    # original_img_path = "D:\\download\\4620abc08cbc04e913e17a0c8f7f6cd3.jpeg"
-    # original_img_path = "D:\\download\\3b24ee3b73a37321163d7a218e70cfd9.jpeg"
+    original_img_path = "D:\\tmp\\image\\o\\face_image_1080_1920.png"
+    # original_img_path = "D:\\tmp\\image\\o\\face_image_2.png"
+    # original_img_path = "D:\\tmp\\image\\o\\3b24ee3b73a37321163d7a218e70cfd9.jpeg"
+    # original_img_path = "D:\\tmp\\image\\o\\8b4939d79538604539d5593312bbe024.jpeg"
+    # original_img_path = "D:\\tmp\\image\\o\\4620abc08cbc04e913e17a0c8f7f6cd3.jpeg"
 
-    output_img_path = "D:\\tmp\\image\\face_detector_onnx.png"
-    original_with_detection_output_img_path = "D:\\tmp\\image\\face_detector_onnx_with_original.png"
+    output_img_path = "D:\\tmp\\image\\face_detector_ncnn.png"
+    original_with_detection_output_img_path = "D:\\tmp\\image\\face_detector_ncnn_with_original.png"
 
     anchors = generate_face_detection_anchors(input_size=128)
 
@@ -2525,14 +2527,30 @@ if __name__ == '__main__':
     # 进行letterbox处理并记录参数
     padded, padding_params = letterbox_padding(originalImg, (128, 128))
 
-    # 归一化到 [-1, 1]
+    # 归一化到 [0, 1]
     input_data = padded.astype(np.float32) / 255.0
+    print("input_data", input_data.shape)
     input_data = np.expand_dims(input_data, axis=0)
+    print("input_data", input_data.shape)
+    in_mat = ncnn.Mat(input_data)
+    print("in_mat:", in_mat.d, in_mat.c, in_mat.h, in_mat.w)
 
-    # 加载 ONNX 模型并进行推理
-    ort_session = ort.InferenceSession(model_path)
-    ort_inputs = {ort_session.get_inputs()[0].name: input_data}
-    regressors, scores = ort_session.run(None, ort_inputs)
+    # 初始化网络
+    net = ncnn.Net()
+    # 加载模型
+    print("load_param:", param_path)
+    net.load_param(param_path)
+    print("load_model:", bin_path)
+    net.load_model(bin_path)
+    # 创建提取器（类似 ONNX 的 session）
+    ex = net.create_extractor()
+
+    # 设置输入
+    ex.input("in0", in_mat)
+
+    # 执行推理
+    ret1, regressors = ex.extract("out0")
+    ret2, scores = ex.extract("out1")
 
     # 解析输出数据
     regressors = np.array(regressors)  # 形状: (1, 896, 16)
@@ -2544,9 +2562,9 @@ if __name__ == '__main__':
     scores_1d = 1 / (1 + np.exp(-scores_1d))
     max_index = np.argmax(scores_1d)
     max_score = scores_1d[max_index]
-
+    print(f"max_index:{max_index}, max_score: {max_score}")
     # 解析回归值
-    best_regressor = regressors[0, max_index]
+    best_regressor = regressors[max_index]
     dx, dy, w, h = best_regressor[:4]
     keypoints = best_regressor[4:]
 
@@ -2607,142 +2625,599 @@ if __name__ == '__main__':
     print(f"原始图像检测结果保存至: {original_with_detection_output_img_path}")
 ```
 
-
-
-## Mediapipe模型的预处理和后处理
-
-要分析Mediapipe的代码逻辑, 需要先创建 Mediapipe 代码阅读环境, Mediapipe 使用bazel 编译, 但是目前bazel的插件没有可以完全正常使用的, 所以需要重新引入cmake对Mediapipe进行代码管理,
-
-首先下载Mediapipe源码
+这里遗留了一个问题:
 
 ```
-git clone https://github.com/google-ai-edge/mediapipe
+    # 归一化到 [0, 1]
+    input_data = padded.astype(np.float32) / 255.0
+    print("input_data", input_data.shape)
+    input_data = np.expand_dims(input_data, axis=0)
+    print("input_data", input_data.shape)
+    in_mat = ncnn.Mat(input_data)
+    print("in_mat:", in_mat.d, in_mat.c, in_mat.h, in_mat.w)
 ```
 
-然后根据文档说明在windows平台编译Mediapipe, 如何编译Mediapipe见 [001_windows上编译mediapipe.md](./001_windows上编译mediapipe.md)
-
-编译完成后, bazel 会下载项目依赖的其他第三方开源项目的依赖保存到 bazel-out 目录
-
-
-
-在 Clion 中创建一个c++项目, 目录结构如下:
+输出:
 
 ```
-build
-code
-  src
-    external
-      com_google_absl
-    mediapipe
-      calculators
-      framework
-      tasks
-      util
-CMakeLists.txt
+input_data (128, 128, 3)
+input_data (1, 128, 128, 3)
+in_mat: 128 1 128 3
+```
+
+输入的张量的维度很混乱, 需要调整
+
+
+
+C++测试代码:
+
 main.cpp
-```
-
-其中 external 保存依赖的第三方库, mediapipe 目录保存 Mediapipe 项目源码, 但是为了方便阅读进保留 c++的源代码和头文件, 以及 protobuf 编译产出的 c++源文件和头文件, 通常是如:
 
 ```
-xxx.pb.cc
-xxx.pb.h
-```
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <ctime>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <algorithm>
+#include <cassert>
+
+#include <opencv2/opencv.hpp>
+#include "ncnn/net.h"
+#include "Log.h"
+
+using std::vector;
+using std::string;
+
+// ---------------------- 数据结构定义 ----------------------
+
+struct Anchor {
+    float x_center; // 归一化坐标 [0,1]
+    float y_center; // 归一化坐标 [0,1]
+    float w; // 归一化宽度 [0,1]
+    float h; // 归一化高度 [0,1]
+};
+
+struct PaddingParams {
+    float scale;
+    int pad_top;
+    int pad_bottom;
+    int pad_left;
+    int pad_right;
+    int original_w;
+    int original_h;
+    int padded_w;
+    int padded_h;
+};
+
+// ---------------------- 工具函数 ----------------------
+
+// 计算 scale，与 Python 中的 calculate_scale 函数相同
+float calculate_scale(float min_scale, float max_scale, int stride_index, int num_strides) {
+    if (num_strides == 1)
+        return (min_scale + max_scale) * 0.5f;
+    else
+        return min_scale + (max_scale - min_scale) * stride_index / (num_strides - 1.0f);
+}
+
+vector<Anchor> generate_face_detection_anchors(int input_size/*= 128*/) {
+    int num_layers = 4;
+    float min_scale = 0.1484375f; // 19/128
+    float max_scale = 0.75f;
+    int input_size_height = input_size;
+    int input_size_width = input_size;
+    float anchor_offset_x = 0.5f;
+    float anchor_offset_y = 0.5f;
+    vector<int> strides = {8, 16, 16, 16};
+    vector<float> aspect_ratios = {1.0f};
+    bool fixed_anchor_size = true;
+    float interpolated_scale_aspect_ratio = 1.0f;
+    bool reduce_boxes_in_lowest_layer = false;
+
+    vector<Anchor> anchors;
+    int layer_id = 0;
+    int num_strides = strides.size();
+
+    while (layer_id < num_layers) {
+        LOG_I("layer_id: %d", layer_id);
+        vector<float> anchor_heights;
+        vector<float> anchor_widths;
+        vector<float> aspect_ratios_layer;
+        vector<float> scales_layer;
+
+        int last_same_stride_layer = layer_id;
+        while (last_same_stride_layer < num_strides && strides[last_same_stride_layer] == strides[layer_id]) {
+            int current_stride_index = last_same_stride_layer;
+            float scale = calculate_scale(min_scale, max_scale, current_stride_index, num_strides);
+            if (current_stride_index == 0 && reduce_boxes_in_lowest_layer) {
+                aspect_ratios_layer.push_back(1.0f);
+                aspect_ratios_layer.push_back(2.0f);
+                aspect_ratios_layer.push_back(0.5f);
+                scales_layer.push_back(0.1f);
+                scales_layer.push_back(scale);
+                scales_layer.push_back(scale);
+            } else {
+                for (float ratio: aspect_ratios) {
+                    aspect_ratios_layer.push_back(ratio);
+                    scales_layer.push_back(scale);
+                }
+                if (interpolated_scale_aspect_ratio > 0) {
+                    float scale_next = (current_stride_index == num_strides - 1)
+                                           ? 1.0f
+                                           : calculate_scale(min_scale, max_scale, current_stride_index + 1, num_strides);
+                    scales_layer.push_back(std::sqrt(scale * scale_next));
+                    aspect_ratios_layer.push_back(interpolated_scale_aspect_ratio);
+                }
+            }
+            last_same_stride_layer++;
+        }
+
+        for (size_t i = 0; i < aspect_ratios_layer.size(); i++) {
+            float ratio_sqrt = std::sqrt(aspect_ratios_layer[i]);
+            anchor_heights.push_back(scales_layer[i] / ratio_sqrt);
+            anchor_widths.push_back(scales_layer[i] * ratio_sqrt);
+        }
+
+        int stride = strides[layer_id];
+        int feature_map_height = (int) std::ceil((float) input_size_height / stride);
+        int feature_map_width = (int) std::ceil((float) input_size_width / stride);
+
+        for (int y = 0; y < feature_map_height; y++) {
+            for (int x = 0; x < feature_map_width; x++) {
+                for (size_t anchor_id = 0; anchor_id < anchor_heights.size(); anchor_id++) {
+                    float x_center = (x + anchor_offset_x) / feature_map_width;
+                    float y_center = (y + anchor_offset_y) / feature_map_height;
+                    float w, h;
+                    if (fixed_anchor_size) {
+                        w = 1.0f;
+                        h = 1.0f;
+                    } else {
+                        w = anchor_widths[anchor_id];
+                        h = anchor_heights[anchor_id];
+                    }
+                    anchors.push_back({x_center, y_center, w, h});
+                }
+            }
+        }
+        layer_id = last_same_stride_layer;
+        LOG_I("loop end, layer_id: %d", layer_id);
+    }
+    return anchors;
+}
+
+// 绘制检测结果：在 image 上绘制 bbox 和关键点，返回绘制后的图像
+cv::Mat draw_detection(const cv::Mat &image, const cv::Rect &bbox, const vector<cv::Point> &keypoints) {
+    cv::Mat out_img = image.clone();
+    cv::rectangle(out_img, bbox, cv::Scalar(0, 255, 0), 2);
+    for (const auto &pt: keypoints) {
+        cv::circle(out_img, pt, 2, cv::Scalar(0, 0, 255), -1);
+    }
+    return out_img;
+}
+
+// letterbox_padding: 将图像 resize 保持比例，然后填充黑边，返回填充后的图像和参数
+cv::Mat letterbox_padding(const cv::Mat &image, const cv::Size &target_size, PaddingParams &params) {
+    int h = image.rows, w = image.cols;
+    int target_h = target_size.height, target_w = target_size.width;
+    float scale = std::min((float) target_w / w, (float) target_h / h);
+    int new_w = std::round(w * scale);
+    int new_h = std::round(h * scale);
+    cv::Mat resized;
+    cv::resize(image, resized, cv::Size(new_w, new_h));
+
+    int pad_w = (target_w - new_w) / 2;
+    int pad_h = (target_h - new_h) / 2;
+    int pad_right = target_w - new_w - pad_w;
+    int pad_bottom = target_h - new_h - pad_h;
+
+    params.scale = scale;
+    params.pad_top = pad_h;
+    params.pad_bottom = pad_bottom;
+    params.pad_left = pad_w;
+    params.pad_right = pad_right;
+    params.original_w = w;
+    params.original_h = h;
+    params.padded_w = target_w;
+    params.padded_h = target_h;
+
+    cv::Mat padded;
+    cv::copyMakeBorder(resized, padded, pad_h, pad_bottom, pad_w, pad_right, cv::BORDER_CONSTANT, cv::Scalar(0, 0, 0));
+    return padded;
+}
+
+// 将检测框坐标从 padded 图像转换回原始图像坐标
+void transform_coords_back(float x, float y, const PaddingParams &params, float &x_orig, float &y_orig) {
+    float x_unpad = x - params.pad_left;
+    float y_unpad = y - params.pad_top;
+    x_orig = x_unpad / params.scale;
+    y_orig = y_unpad / params.scale;
+    x_orig = std::min(std::max(x_orig, 0.0f), (float) params.original_w);
+    y_orig = std::min(std::max(y_orig, 0.0f), (float) params.original_h);
+}
+
+// 将一组关键点坐标从 padded 图像转换回原始图像坐标
+vector<cv::Point> transform_keypoints(const vector<cv::Point2f> &keypoints, const PaddingParams &params) {
+    vector<cv::Point> pts;
+    for (const auto &kp: keypoints) {
+        float x, y;
+        transform_coords_back(kp.x, kp.y, params, x, y);
+        pts.push_back(cv::Point(std::round(x), std::round(y)));
+    }
+    return pts;
+}
+
+void print_ncnn_mat(const ncnn::Mat& mat, const char* name) {
+    std::string output = std::string(name) + " = [";
+
+    for (int c = 0; c < mat.c; c++) {
+        const float* ptr = mat.channel(c);
+        for (int y = 0; y < mat.h; y++) {
+            for (int x = 0; x < mat.w; x++) {
+                output += std::to_string(ptr[y * mat.w + x]) + " ";
+            }
+            output +="\n";
+        }
+        output += ";\n";  // 频道分隔符
+    }
+    output += "]\n";
+
+    LOG_D("%s", output.c_str());
+}
 
 
+void print_cv_mat(const cv::Mat& mat, const std::string& name = "mat") {
+    LOG_D("===== %s =====", name.c_str());
+    LOG_D("Size: %d x %d", mat.rows, mat.cols);
+    LOG_D("Channels: %d", mat.channels());
+    LOG_D("Type: %d (Depth: %d)", mat.type(), CV_MAT_DEPTH(mat.type()));
 
-在CMake 配置文件中简单引入所有源码即可:
-
-```
-cmake_minimum_required(VERSION 3.30)
-project(mediapipe_core)
-
-set(CMAKE_CXX_STANDARD 23)
-
-
-# Main executable
-file(GLOB PROJECT_SOURCES
-        "code/src/*.c"
-        "code/src/*.cpp"
-        "code/src/*.cc"
-)
-add_executable(mediapipe_core main.cpp)
-
-target_include_directories(${PROJECT_NAME} PUBLIC
-        "code/include"
-        "code/src"
-        "code/src/external/com_google_absl"
-)
-```
+    // // 仅打印前 5 行、5 列
+    // int rows = std::min(mat.rows, 5);
+    // int cols = std::min(mat.cols, 5);
+    //
+    // for (int i = 0; i < rows; i++) {
+    //     std::string row_output;
+    //     for (int j = 0; j < cols; j++) {
+    //         if (mat.type() == CV_8UC3) {
+    //             cv::Vec3b pixel = mat.at<cv::Vec3b>(i, j);
+    //             row_output += "[" + std::to_string(pixel[0]) + ", " + std::to_string(pixel[1]) + ", " + std::to_string(pixel[2]) + "]\t";
+    //         } else if (mat.type() == CV_32FC3) {
+    //             cv::Vec3f pixel = mat.at<cv::Vec3f>(i, j);
+    //             row_output += "[" + std::to_string(pixel[0]) + ", " + std::to_string(pixel[1]) + ", " + std::to_string(pixel[2]) + "]\t";
+    //         } else {
+    //             row_output += "(Unsupported Type)\t";
+    //         }
+    //     }
+    //     LOG_D("%s", row_output.c_str());
+    // }
+    LOG_D("=======================");
+}
 
 
+// ---------------------- 主函数 ----------------------
 
-这样clion就可以管理大部分源码, 可以正常跳转即可, 
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    LOG_I("开始 face detection test...");
 
-分析源码:
-首先 face_detector 的功能定义的头文件是
+    // 文件路径配置
+    string param_path = R"(D:\tmp\ncnn_pytorch\face_detector.ncnn.param)";
+    string bin_path = R"(D:\tmp\ncnn_pytorch\face_detector.ncnn.bin)";
+    // 选择一张图片（注意替换为你实际的图片路径）
+    // string original_img_path = R"(D:\tmp\image\o\4620abc08cbc04e913e17a0c8f7f6cd3.jpeg)";
+    string original_img_path = R"(D:\tmp\image\o\face_image_1080_1920.png)";
 
-```
-code/src/mediapipe/tasks/cc/vision/face_detector/face_detector.h
-```
+    // 保存 padded 图片到指定目录
+    std::string padded_image_save_path = R"(D:\tmp\image\face_detector_ncnn_padded.png)";  // 你可以修改为所需路径
 
-可以在对应的源文件
+    string output_img_path = R"(D:\tmp\image\face_detector_ncnn.png)";
+    string original_with_detection_output_img_path = R"(D:\tmp\image\face_detector_ncnn_with_original.png)";
 
-```
-code/src/mediapipe/tasks/cc/vision/face_detector/face_detector.cc
-```
+    // 加载图像
+    cv::Mat originalImg = cv::imread(original_img_path, cv::IMREAD_UNCHANGED);
+    if (originalImg.empty()) {
+        LOG_E("图片未找到: %s", original_img_path.c_str());
+        return -1;
+    }
 
-中看到使用的计算图 Graph 的名称:
+    // 转换通道：如果图像有 4 通道，转换为 RGB；否则从 BGR 转换为 RGB
+    if (originalImg.channels() == 4) {
+        LOG_D("COLOR_BGRA2RGB");
+        cv::cvtColor(originalImg, originalImg, cv::COLOR_BGRA2RGB);
+    }else {
+        LOG_D("COLOR_BGR2RGB");
+        cv::cvtColor(originalImg, originalImg, cv::COLOR_BGR2RGB);
+    }
 
-```
-constexpr char kFaceDetectorGraphTypeName[] =
-    "mediapipe.tasks.vision.face_detector.FaceDetectorGraph";
-```
+    // 1. letterbox处理后得到 padded 图像，尺寸为 128x128，格式为 RGB
+    PaddingParams padding_params{};
+    cv::Mat padded = letterbox_padding(originalImg, cv::Size(128, 128), padding_params);
+    print_cv_mat(padded, "padded");
 
-对应的文件是
+    // 由于 OpenCV 的 imwrite 期望 BGR 格式，因此需要转换回 BGR 再保存
+    cv::Mat padded_bgr;
+    cv::cvtColor(padded, padded_bgr, cv::COLOR_RGB2BGR);
 
-```
-code/src/mediapipe/tasks/cc/vision/face_detector/face_detector_graph.cc
-```
+    if (cv::imwrite(padded_image_save_path, padded_bgr)) {
+        LOG_D("padded 图像已保存: %s", padded_image_save_path.c_str());
+    } else {
+        LOG_E("保存 padded 图像失败: %s", padded_image_save_path.c_str());
+    }
 
-构造子图的方法:
+    // 2. 归一化到 [0,1]，转换为 CV_32FC3
+    cv::Mat padded_float;
+    padded.convertTo(padded_float, CV_32FC3, 1.0 / 255.0);
+    print_cv_mat(padded_float, "padded_float");
 
-```
-absl::StatusOr<FaceDetectionOuts> BuildFaceDetectionSubgraph(
-      const FaceDetectorGraphOptions& subgraph_options,
-      const core::ModelResources& model_resources, Source<Image> image_in,
-      Source<NormalizedRect> norm_rect_in, Graph& graph) {
-      ...
+    if (padded_float.empty())
+    {
+        LOG_E("padded_float is empty!");
+        return -1;
+    }
+    if (padded_float.channels() != 3)
+    {
+        LOG_E("padded_float has wrong channels: %d", padded_float.channels());
+        return -1;
+    }
+
+    // 3. 构造 NHWC 4D数据
+    // padded_float 的尺寸为 (128, 128, 3)（HWC），我们需要扩展 batch 维度1
+    int H = padded_float.rows;      // 128
+    int W = padded_float.cols;      // 128
+    int C = padded_float.channels();// 3
+    int total = H * W * C;          // 128*128*3
+
+    // 分配一个新的 float 数组保存 NHWC 数据（batch=1 与 HWC 内存完全一致）
+    float* nhwc_data = new float[1 * total];
+    memcpy(nhwc_data, padded_float.ptr<float>(), total * sizeof(float));
+
+    // todo 修改 pytorch / onnx / ncnn 模型的输入
+    ncnn::Mat in_mat(3, 128, 128, 1, nhwc_data);
+
+    LOG_D("in_mat shape: d=%d, c=%d, h=%d, w=%d", in_mat.d, in_mat.c, in_mat.h, in_mat.w);
+    print_ncnn_mat(in_mat, "in_mat");
+
+    // 初始化 ncnn 网络并加载模型
+    ncnn::Net net;
+    LOG_I("load_param: %s", param_path.c_str());
+    if (net.load_param(param_path.c_str()) != 0) {
+        LOG_E("加载 param 文件失败");
+        return -1;
+    }
+    LOG_I("load_model: %s", bin_path.c_str());
+    if (net.load_model(bin_path.c_str()) != 0) {
+        LOG_E("加载 bin 文件失败");
+        return -1;
+    }
+
+    ncnn::Extractor ex = net.create_extractor();
+    // 设置输入节点名称为 "in0"
+    LOG_D("ex.input");
+    ex.input("in0", in_mat);
+
+    // 执行推理，提取输出 "out0" 和 "out1"
+    LOG_D("ex.extract");
+    ncnn::Mat regressors, scores;
+    ex.extract("out0", regressors);
+    ex.extract("out1", scores);
+
+    LOG_D("regressors shape: w=%d, h=%d, c=%d", regressors.w, regressors.h, regressors.c);
+    print_ncnn_mat(regressors, "regressors");
+
+    LOG_D("scores shape: w=%d, h=%d, c=%d", scores.w, scores.h, scores.c);
+    print_ncnn_mat(scores, "scores");
+
+    // 假设输出尺寸：regressors: 896 x 16, scores: 896 x 1
+    // 将输出转换为 std::vector<float>
+    int num_regressors = regressors.w * regressors.h * regressors.c; // 896*16
+    int num_scores = scores.w * scores.h * scores.c; // 896
+    float* regressors_data = (float*)regressors.data;
+    float* scores_data = (float*)scores.data;
+
+    vector<float> reg_vec(regressors_data, regressors_data + num_regressors);
+    vector<float> score_vec(scores_data, scores_data + num_scores);
+
+    // 对 score_vec 执行 clip(-100,100) 并计算 sigmoid
+    for (auto &s: score_vec) {
+        if (s < -100.0f) s = -100.0f;
+        if (s > 100.0f) s = 100.0f;
+        s = 1.0f / (1.0f + std::exp(-s));
+    }
+    // 找到最大分数索引
+    int max_index = std::distance(score_vec.begin(), std::max_element(score_vec.begin(), score_vec.end()));
+    float max_score = score_vec[max_index];
+    LOG_I("最大分数: %.4f, 索引: %d", max_score, max_index);
+
+    // 从 reg_vec 中取出 best regressor（16 个数）
+    assert(max_index * 16 + 16 <= (int)reg_vec.size());
+    vector<float> best_regressor(reg_vec.begin() + max_index * 16, reg_vec.begin() + max_index * 16 + 16);
+    float dx = best_regressor[0], dy = best_regressor[1], w_box = best_regressor[2], h_box = best_regressor[3];
+    vector<float> keypoints(best_regressor.begin() + 4, best_regressor.end());
+
+    ex.clear();
+    net.clear();
+
+    // 生成锚点
+    vector<Anchor> anchors = generate_face_detection_anchors(128);
+    LOG_I("生成的锚点总数: %zu", anchors.size());
+    for (int i = 0; i < 5 && i < (int) anchors.size(); i++) {
+        const Anchor &a = anchors[i];
+        LOG_I("锚点 %d: (x=%.4f, y=%.4f, w=%.4f, h=%.4f)", i, a.x_center, a.y_center, a.w, a.h);
+    }
+
+    // 对应的 anchor
+    Anchor anchor = anchors[max_index];
+
+    // 计算边界框（以 128 为基准尺寸）
+    float box_center_x = dx + anchor.x_center * 128.0f;
+    float box_center_y = dy + anchor.y_center * 128.0f;
+    float box_w = w_box;
+    float box_h = h_box;
+    float box_x = box_center_x - box_w / 2.0f;
+    float box_y = box_center_y - box_h / 2.0f;
+    cv::Rect bbox(cv::Point(std::round(box_x), std::round(box_y)),
+                  cv::Size(std::round(box_w), std::round(box_h)));
+
+    // 解析关键点
+    vector<cv::Point2f> kps;
+    for (size_t i = 0; i + 1 < keypoints.size(); i += 2) {
+        float kp_dx = keypoints[i];
+        float kp_dy = keypoints[i + 1];
+        float kp_x = kp_dx * anchor.w + anchor.x_center * 128.0f;
+        float kp_y = kp_dy * anchor.h + anchor.y_center * 128.0f;
+        kps.push_back(cv::Point2f(kp_x, kp_y));
+    }
+
+    // 绘制检测结果在 padded 图像上
+    cv::Mat result_img = padded.clone();
+    cv::Mat result_draw = draw_detection(result_img, bbox,
+                                         // 转换关键点为 cv::Point (四舍五入)
+                                         vector<cv::Point>(kps.begin(), kps.end()));
+    // 保存结果图像（转换为 BGR 保存）
+    cv::Mat result_bgr;
+    cv::cvtColor(result_draw, result_bgr, cv::COLOR_RGB2BGR);
+    cv::imwrite(output_img_path, result_bgr);
+    LOG_I("检测结果保存至: %s", output_img_path.c_str());
+
+    // 将检测框和关键点转换回原始图像坐标
+    auto transform_bbox = [&](const cv::Rect &bbox, const PaddingParams &params) -> cv::Rect {
+        float x1_orig, y1_orig, x2_orig, y2_orig;
+        transform_coords_back(bbox.x, bbox.y, params, x1_orig, y1_orig);
+        transform_coords_back(bbox.x + bbox.width, bbox.y + bbox.height, params, x2_orig, y2_orig);
+        int new_x = std::round(x1_orig);
+        int new_y = std::round(y1_orig);
+        int new_w = std::round(x2_orig - x1_orig);
+        int new_h = std::round(y2_orig - y1_orig);
+        return cv::Rect(new_x, new_y, new_w, new_h);
+    };
+
+    auto transform_keypoints_func = [&](const vector<cv::Point2f> &kps, const PaddingParams &params) -> vector<cv::Point> {
+        return transform_keypoints(kps, params);
+    };
+
+    cv::Rect original_bbox = transform_bbox(bbox, padding_params);
+    vector<cv::Point> original_keypoints = transform_keypoints_func(kps, padding_params);
+
+    cv::Mat original_with_det = originalImg.clone();
+    cv::Mat original_draw = draw_detection(original_with_det, original_bbox, original_keypoints);
+    cv::Mat original_bgr;
+    cv::cvtColor(original_draw, original_bgr, cv::COLOR_RGB2BGR);
+    cv::imwrite(original_with_detection_output_img_path, original_bgr);
+    LOG_I("原始图像检测结果保存至: %s", original_with_detection_output_img_path.c_str());
+
+    return 0;
 }
 ```
 
-在这个方法中可以看到预处理使用了子图:
+
+
+Log.h
 
 ```
-std::string GetImagePreprocessingGraphName() {
-    return "mediapipe.tasks.components.processors.ImagePreprocessingGraph";
-  }
+//
+// Created by one on 2024/12/10.
+//
+
+#pragma once
+
+static const char *TAG = "LOG";
+
+#ifdef WIN32
+
+#include <cstdio>
+#include <ctime>
+#include <string>
+
+// 时间戳获取函数
+inline std::string currentDateTime() {
+    char buffer[100];
+    time_t now = time(nullptr);
+    struct tm tstruct;
+    localtime_s(&tstruct, &now); // 安全的时间格式化函数
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %X", &tstruct);
+    return std::string(buffer);
+}
+
+// Windows 日志宏定义
+#define LOG_V(...) (printf("[VERBOSE] [%s] [%s] ", currentDateTime().c_str(), TAG), printf(__VA_ARGS__), printf("\n"))
+#define LOG_D(...) (printf("[DEBUG]   [%s] [%s] ", currentDateTime().c_str(), TAG), printf(__VA_ARGS__), printf("\n"))
+#define LOG_I(...) (printf("[INFO]    [%s] [%s] ", currentDateTime().c_str(), TAG), printf(__VA_ARGS__), printf("\n"))
+#define LOG_W(...) (printf("[WARN]    [%s] [%s] ", currentDateTime().c_str(), TAG), printf(__VA_ARGS__), printf("\n"))
+#define LOG_E(...) (printf("[ERROR]   [%s] [%s] ", currentDateTime().c_str(), TAG), printf(__VA_ARGS__), printf("\n"))
+
+#endif
+
+
+#ifdef __ANDROID__
+#include <android/log.h>
+#define LOG_V(...) ((void)__android_log_print(ANDROID_LOG_VERBOSE, TAG, __VA_ARGS__))
+#define LOG_D(...) ((void)__android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__))
+#define LOG_I(...) ((void)__android_log_print(ANDROID_LOG_INFO, TAG, __VA_ARGS__))
+#define LOG_W(...) ((void)__android_log_print(ANDROID_LOG_WARN, TAG, __VA_ARGS__))
+#define LOG_E(...) ((void)__android_log_print(ANDROID_LOG_ERROR, TAG, __VA_ARGS__))
+#endif
 ```
 
-对应的预处理子图源码
+
+
+CMakeLists.txt
 
 ```
-code/src/mediapipe/tasks/cc/components/processors/image_preprocessing_graph.cc
+cmake_minimum_required(VERSION 3.28)
+project(ncnn_test)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_compile_options("/utf-8")
+
+#set(CMAKE_CXX_FLAGS_DEBUG "/MDd")
+#set(CMAKE_CXX_FLAGS_RELEASE "/MD")
+
+# ncnn
+# https:/github.com/Tencent/ncnn
+set(NCNN_INSTALL_DIR D:/develop/ncnn/ncnn-20240820/ncnn-20240820-windows-vs2022)
+set(NCNN_INCLUDE ${NCNN_INSTALL_DIR}/x64/include)
+set(ncnn_DIR ${NCNN_INSTALL_DIR}/x64/lib/cmake/ncnn)
+find_package(ncnn REQUIRED)
+link_directories("${NCNN_INSTALL_DIR}/x64/lib")
+
+#opencv
+# https://opencv.org/
+# https://github.com/opencv/opencv
+set(OPENCV_INSTALL_DIR D:/develop/opencv/4.11.0/sdk/windows/opencv)
+set(OpenCV_DIR ${OPENCV_INSTALL_DIR}/build)
+find_package(OpenCV REQUIRED)
+
+# 目标可执行文件的输出目录
+set(TARGET_OUTPUT_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+
+include_directories(
+        ${NCNN_INCLUDE}
+        ${OpenCV_INCLUDE_DIRS}
+)
+
+file(GLOB_RECURSE SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/code/src/*.cpp")
+add_executable(${PROJECT_NAME}
+        ${SOURCE_FILES}
+)
+
+target_link_libraries(
+        ${PROJECT_NAME}
+        ncnn
+        ${OpenCV_LIBS}
+)
+
+#if(NOT TARGET_OUTPUT_DIR)
+#    set(TARGET_OUTPUT_DIR ${CMAKE_BINARY_DIR})
+#endif()
+
+# 复制 OpenCV DLL 文件
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${OpenCV_DIR}/x64/vc16/bin/opencv_world4110.dll"
+        "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+)
 ```
-
-以及ssd anchor 算子
-
-```
-auto& ssd_anchor = graph.AddNode("SsdAnchorsCalculator");
-```
-
-对应源码:
-
-```
-code/src/mediapipe/calculators/tflite/ssd_anchors_calculator.cc
-```
-
-可以从这个源码中分析出构造anchors 的流程
-
-
 
