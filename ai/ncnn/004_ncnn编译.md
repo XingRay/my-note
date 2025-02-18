@@ -37,6 +37,8 @@ cmd /c cmake --install D:\develop\cpp\protobuf\3.11.2\build --config Release
 
 ```
 git clone git@github.com:Tencent/ncnn.git
+cd ncnn 
+git submodule update --init
 ```
 
 创建目录
@@ -64,24 +66,50 @@ cmd /c cmake --install %cd%/build-windows-x64 --config Release
 
 ```
 git clone git@github.com:Tencent/ncnn.git
+cd ncnn 
+git submodule update --init
 ```
 
 创建目录
 
 ```
-mkdir build-android-aarch64
-mkdir install-android-aarch64
+mkdir -p build/android/arm64-v8a
+mkdir -p install/android/arm64-v8a
 ```
 
 配置和启动编译
 
 ```
-cmake -S %cd%/ncnn -B %cd%/build-android-aarch64 -G Ninja -DCMAKE_INSTALL_PREFIX=%cd%/install-android-aarch64 -DCMAKE_TOOLCHAIN_FILE="D:/develop/android/android-sdk-windows/ndk/27.2.12479018/build/cmake/android.toolchain.cmake" -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-21 -DNCNN_VULKAN=ON
+cmake -S %cd%/ncnn -B %cd%/build/android/arm64-v8a -G Ninja -DCMAKE_INSTALL_PREFIX=%cd%/install/android/arm64-v8a -DCMAKE_TOOLCHAIN_FILE="D:/develop/android/android-sdk-windows/ndk/27.2.12479018/build/cmake/android.toolchain.cmake" -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-21 -DNCNN_VULKAN=ON
 
-cmd /c cmake --build %cd%/build-android-aarch64 --config Release
+cmd /c cmake --build %cd%/build/android/arm64-v8a --config Release
 
-cmd /c cmake --install %cd%/build-android-aarch64 --config Release
+cmd /c cmake --install %cd%/build/android/arm64-v8a --config Release
 ```
 
+这里启用了 vulkan ,加上了 `-DNCNN_VULKAN=ON` 参数
+
 **注意** 编译为android库要加上 `-G Ninja` 编译参数, 官方文档上没有这个参数,使用cmake编译会报错
+
+
+
+android的build默认关闭了 exception 和 rtti, 可以启用 exception 和 rtti
+
+https://github.com/Tencent/ncnn/issues/5431
+
+添加编译参数:
+
+```
+-DNCNN_DISABLE_RTTI=OFF -DNCNN_DISABLE_EXCEPTION=OFF
+```
+
+完整编译指令:
+
+```
+cmake -S %cd%/ncnn -B %cd%/build/android/arm64-v8a -G Ninja -DCMAKE_INSTALL_PREFIX=%cd%/install/android/arm64-v8a -DCMAKE_TOOLCHAIN_FILE="D:/develop/android/android-sdk-windows/ndk/27.2.12479018/build/cmake/android.toolchain.cmake" -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-21 -DNCNN_VULKAN=ON -DNCNN_DISABLE_RTTI=OFF -DNCNN_DISABLE_EXCEPTION=OFF
+
+cmd /c cmake --build %cd%/build/android/arm64-v8a --config Release
+
+cmd /c cmake --install %cd%/build/android/arm64-v8a --config Release
+```
 
