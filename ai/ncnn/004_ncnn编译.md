@@ -113,3 +113,50 @@ cmd /c cmake --build %cd%/build/android/arm64-v8a --config Release
 cmd /c cmake --install %cd%/build/android/arm64-v8a --config Release
 ```
 
+
+
+补充:
+项目中引入了 [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers) 后会与ncnn冲突:
+https://github.com/Tencent/ncnn/issues/5912
+解决 simplevk 冲突的办法:
+
+```
+cmake -DNCNN_SIMPLEVK=OFF ..
+```
+
+但是只修改这个会导致编译失败:
+
+```
+Could NOT find Vulkan (missing: Vulkan_LIBRARY)
+```
+
+还需要按照这个说明 
+https://github.com/nihui/ncnn-android-yolov5/issues/10
+提高sdk版本不低于24, 修改后的编译脚本:
+
+```
+cmake -S %cd%/ncnn -B %cd%/build/android/arm64-v8a -G Ninja -DCMAKE_INSTALL_PREFIX=%cd%/install/android/arm64-v8a -DCMAKE_TOOLCHAIN_FILE="D:/develop/android/android-sdk-windows/ndk/27.2.12479018/build/cmake/android.toolchain.cmake" -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-24 -DNCNN_VULKAN=ON -DNCNN_DISABLE_RTTI=OFF -DNCNN_DISABLE_EXCEPTION=OFF -DNCNN_SIMPLEVK=OFF
+
+cmd /c cmake --build %cd%/build/android/arm64-v8a --config Release
+
+cmd /c cmake --install %cd%/build/android/arm64-v8a --config Release
+```
+
+编译后修改 ncnn/platfrom.h
+
+```
+#if __ANDROID_API__ >= 26
+#define VK_USE_PLATFORM_ANDROID_KHR
+#endif // __ANDROID_API__ >= 26
+```
+
+添加 #ifndef :
+
+```
+#if __ANDROID_API__ >= 26
+#ifndef VK_USE_PLATFORM_ANDROID_KHR
+#define VK_USE_PLATFORM_ANDROID_KHR
+#endif
+#endif // __ANDROID_API__ >= 26
+```
+
