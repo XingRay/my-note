@@ -165,9 +165,17 @@ https://github.com/pnnx/pnnx
 
 下载到本地, 并加入到系统path, 当前最新版本如下
 
-https://github.com/pnnx/pnnx/releases/download/20241223/pnnx-20241223-windows.zip
+https://github.com/pnnx/pnnx/releases/download/20250530/pnnx-20250530-windows.zip
 
 使用pnnx进行模型转化
+
+解决输出乱码问题:
+
+```
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
+
+执行转化命令:
 
 ```
 pnnx ./face_detector.onnx inputshape=[1,128,128,3]
@@ -204,14 +212,14 @@ inputshape2 =
 customop =
 moduleop =
 ############# pass_level0 onnx
-inline_containers ...                 0.01ms
+inline_containers ...                 0.00ms
 eliminate_noop ...                    0.08ms
 fold_constants ...                    0.07ms
-canonicalize ...                      0.10ms
-shape_inference ...                  33.16ms
-fold_constants_dynamic_shape ...      0.10ms
+canonicalize ...                      0.09ms
+shape_inference ...                  29.78ms
+fold_constants_dynamic_shape ...      0.09ms
 inline_if_graph ...                   0.02ms
-fuse_constant_as_attribute ...        0.12ms
+fuse_constant_as_attribute ...        0.11ms
 eliminate_noop_with_shape ...         0.06ms
 ┌──────────────────┬──────────┬──────────┐
 │                  │ orig     │ opt      │
