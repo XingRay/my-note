@@ -9,6 +9,12 @@ git clone git@github.com:Tencent/ncnn.git
 或者从 Release 页 https://github.com/Tencent/ncnn/releases 中下载指定版本源码, 如:
 https://github.com/Tencent/ncnn/archive/refs/tags/20250503.zip
 
+上面的源码不包含依赖项, 可以下载 full-source 源码 
+
+https://github.com/Tencent/ncnn/releases/download/20250503/ncnn-20250503-full-source.zip
+
+包含了依赖的子项目的源码
+
 
 
 ## 1 编译为android库
