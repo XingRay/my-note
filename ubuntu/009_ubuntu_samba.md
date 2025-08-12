@@ -4,43 +4,43 @@
 
 安装
 
-```
+```shell
 sudo apt install openssh-server
 ```
 
 配置
 
-```
+```shell
 sudo nano /etc/ssh/sshd_config
 ```
 
 修改
 
-```
+```shell
 PermitRootLogin no
 ```
 
 开放端口
 
-```
+```shell
 sudo ufw allow ssh
 ```
 
 重启服务
 
-```
+```shell
 systemctl daemon-reload
 ```
 
 安装网络工具
 
-```
+```shell
 sudo apt install net-tools
 ```
 
 查看ip信息
 
-```
+```shell
 ifconfig -a
 ```
 
@@ -50,13 +50,13 @@ ifconfig -a
 
 ## 2 查看磁盘
 
-```
+```shell
 sudo fdisk -l
 ```
 
 输出如下
 
-```
+```shell
 Disk /dev/sda: 119.24 GiB, 128035676160 bytes, 250069680 sectors
 Disk model: ADATA SP900
 Units: sectors of 1 * 512 = 512 bytes
@@ -145,11 +145,31 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 
+找到要挂载的各个磁盘分区的名字:
+
+```shell
+...
+Device     Start        End    Sectors  Size Type
+/dev/sdd1  32768 7814033407 7814000640  3.6T Microsoft basic data
+
+...
+Device     Start        End    Sectors  Size Type
+/dev/sdc1   2048 7814037134 7814035087  3.6T Linux filesystem
+
+...
+Device     Start         End     Sectors  Size Type
+/dev/sdf1   2048 15628053134 15628051087  7.3T Linux filesystem
+
+...
+Device     Start        End    Sectors  Size Type
+/dev/sde1   2048 3907029134 3907027087  1.8T Linux filesystem
+```
+
 
 
 2 查看分区信息
 
-```
+```shell
 sudo blkid /dev/sdc1
 sudo blkid /dev/sdd1
 sudo blkid /dev/sde1
@@ -158,21 +178,23 @@ sudo blkid /dev/sdf1
 
 分别输出如下：
 
-```
+```shell
 /dev/sdc1: UUID="5f0a68b0-0833-4e98-9ec6-1ee284b74539" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="9d1db31f-4e1e-8b4d-9333-6decb83550b6"
 ```
 
-```
+```shell
 /dev/sdd1: LABEL="media" BLOCK_SIZE="512" UUID="049C8DD89C8DC4A0" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="5e47ce2e-8beb-464e-afc0-2c109f137cc9"
 ```
 
-```
+```shell
 /dev/sde1: UUID="dad1f23f-a06c-4c91-a174-007a2679d52c" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="Linux filesystem" PARTUUID="c43ac682-f5ab-46c3-b4ec-3bdcf7e60c05"
 ```
 
-```
+```shell
 /dev/sdf1: UUID="745d1451-4157-4855-bdb1-aff6fb873081" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="7ebe464e-a3c3-7a40-a12f-302a239555f3"
 ```
+
+可以查询到各个磁盘分区的 id 和文件系统
 
 
 
@@ -180,7 +202,7 @@ sudo blkid /dev/sdf1
 
 创建挂在目录
 
-```
+```shell
 sudo mkdir -p /mnt/HomeDisk01
 sudo mkdir -p /mnt/HomeDisk02
 sudo mkdir -p /mnt/HomeDisk03
@@ -189,13 +211,13 @@ sudo mkdir -p /mnt/HomeDisk04
 
 修改分区表
 
-```
-nano /etc/fstab
+```shell
+sudo nano /etc/fstab
 ```
 
 添加
 
-```
+```shell
 PARTUUID=9d1db31f-4e1e-8b4d-9333-6decb83550b6 /mnt/HomeDisk01 ext4 defaults 0 2
 PARTUUID=5e47ce2e-8beb-464e-afc0-2c109f137cc9 /mnt/HomeDisk02 ntfs defaults 0 2
 PARTUUID=c43ac682-f5ab-46c3-b4ec-3bdcf7e60c05 /mnt/HomeDisk03 ext4 defaults 0 2
@@ -204,35 +226,39 @@ PARTUUID=7ebe464e-a3c3-7a40-a12f-302a239555f3 /mnt/HomeDisk04 ext4 defaults 0 2
 
 重启系统
 
+```shell
+sudo reboot
+```
+
 
 
 ## 4 通过samba分享文件夹
 
 安装
 
-```
+```shell
 sudo apt install samba
 ```
 
 创建samba账号及设置密码
 
-```
-sudo smbpasswd -a smbaccount
+```shell
+sudo smbpasswd -a my_username_xxx
 ```
 
-输入密码及确认密码
+将上面指令中的 `my_username_xxx` 替换成想要的用户名即可
+
+然后再输入密码及确认密码
 
 
 
 共享目录， 修改配置
 
-```
+```shell
 sudo nano /etc/samba/smb.conf
 ```
 
-添加
-
-
+在文件末尾添加:
 
 ```
 [HomeDisk01]
