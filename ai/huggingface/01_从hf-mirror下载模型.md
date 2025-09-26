@@ -12,9 +12,13 @@ hf-mirror镜像站地址
 
 https://hf-mirror.com/
 
+备用镜像站地址：
+
+https://alpha.hf-mirror.com
 
 
-1 安装python
+
+## 1 安装python
 
 https://www.python.org/
 
@@ -26,16 +30,15 @@ https://www.python.org/ftp/python/3.13.7/python-3.13.7-amd64.exe
 
 
 
-2 安装 huggingface下载工具
+## 2 安装 huggingface下载工具
 
 ```shell
 pip install -U huggingface_hub
-pip install huggingface_hub[hf_xet]
 ```
 
 
 
-3 配置huggingface下载工具使用的下载地址
+## 3 配置huggingface下载工具使用的下载地址
 
 windows：
 
@@ -56,9 +59,17 @@ PS E:\develop\huggingface> $env:HF_ENDPOINT
 https://hf-mirror.com
 ```
 
+也可以使用备用镜像站地址：
+
+```shell
+PS E:\develop\huggingface> $env:HF_ENDPOINT = "https://alpha.hf-mirror.com"
+PS E:\develop\huggingface> $env:HF_ENDPOINT
+https://alpha.hf-mirror.com
+```
 
 
-4 下载
+
+## 4 下载模型
 
 在指定目录执行 
 
