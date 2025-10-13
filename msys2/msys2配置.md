@@ -1,5 +1,11 @@
 # msys2配置
 
+下载msys2
+
+安装
+
+将 D:\develop\msys2\usr\bin 目录添加到系统PATH‘
+
 
 
 更新系统
@@ -20,7 +26,13 @@ pacman -S mingw-w64-ucrt-x86_64-gcc
 pacman -S mingw-w64-x86_64-gcc-fortran
 ```
 
-将 D:\develop\msys2\mingw64\bin 添加到 PATH
+将 
+
+D:\develop\msys2\mingw64\bin 
+
+
+
+添加到 PATH
 
 测试
 
