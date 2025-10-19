@@ -9,6 +9,12 @@ conda create -n fluxgym python=3.10
 conda activate fluxgym
 ```
 
+python版本选择3.10.6 
+
+https://github.com/kohya-ss/sd-scripts?tab=readme-ov-file#windows-required-dependencies
+
+
+
 下载源码
 
 ```
@@ -48,11 +54,30 @@ pip install -r requirements.txt
 
 
 
-下载模型
+下载模型， 注意不要加 `--local-dir` 参数
 
+```shell
+hf download multimodalart/Florence-2-large-no-flash-attn
 ```
-hf download multimodalart/Florence-2-large-no-flash-attn --local-dir multimodalart/Florence-2-large-no-flash-attn         
+
+会保存到用户目录 `.cache`目录下
+
+
+
+安装指定版本的 transformers 
+
+```shell
+pip uninstall -y transformers
+pip install transformers==4.49.0
 ```
+
+自动安装的版本太新会导致报错：
+
+```shell
+AttributeError: 'Florence2ForConditionalGeneration' object has no attribute '_supports_sdpa
+```
+
+https://github.com/cocktailpeanut/fluxgym/issues/464
 
 
 
@@ -61,20 +86,3 @@ hf download multimodalart/Florence-2-large-no-flash-attn --local-dir multimodala
 ```
 python app.py
 ```
-
-
-
-报错修复：
-
-```
-AttributeError: 'Florence2ForConditionalGeneration' object has no attribute '_supports_sdpa
-```
-
-```shell
-pip show transformers
-pip uninstall -y transformers
-pip install transformers==4.51.3
-```
-
-
-
