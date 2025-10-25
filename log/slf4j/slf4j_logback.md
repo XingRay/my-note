@@ -8,14 +8,21 @@
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-api</artifactId>
-    <version>2.0.9</version>
+    <version>2.0.17</version>
 </dependency>
 
 <dependency>
     <groupId>ch.qos.logback</groupId>
     <artifactId>logback-classic</artifactId>
-    <version>1.4.11</version>
+    <version>1.5.20</version>
 </dependency>
+```
+
+或者
+
+```kotlin
+implementation("org.slf4j:slf4j-api:2.0.17")
+implementation("ch.qos.logback:logback-classic:1.5.20")
 ```
 
 
