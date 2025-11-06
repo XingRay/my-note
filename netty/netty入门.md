@@ -1,4 +1,4 @@
-# nettyr入门
+# netty入门
 
 ## 1. netty简介
 
