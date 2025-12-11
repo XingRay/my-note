@@ -1,0 +1,245 @@
+# MCP 入门
+
+
+
+## MCP HOST
+
+
+
+Claude Desktop
+
+Cursor
+
+Cline
+
+Cherry Studio
+
+
+
+下面使用 Cline （vscode的插件）作为示例
+
+
+
+## MCP Server
+
+一个 MCP Server 中有多个 Tool ， Tool就相当于函数
+
+例如： 提供天气信息的 MCP Server： Weather MCP Server
+
+包含两个 Tool （函数）：
+1 get_forecast
+
+​	参数：经度，纬度
+
+​	输入： 未来几天的天气
+
+
+
+2 get_alerts
+
+​	参数：美国的州的代码，如 CA，NY
+
+​	输出： 该地区的天气预警
+
+
+
+配置 MCP Server：
+
+```json
+{
+  "mcpServers": {
+    "weather":{
+      "timeout": 60,
+      "command": "uv",
+      "args":[
+        "--directory",
+        "D:/code/study/ai/mcp/weather",
+        "run",
+        "weather.py"
+      ],
+      "transportType": "stdio"
+    }
+  }
+}
+```
+
+weather.py 是写好的符合 MCP 规范，能调用API查询天气的程序， 源码：
+
+https://github.com/MarkTechStation/VideoCode
+
+```
+VideoCode/MCP终极指南-进阶篇/weather/weather.py
+```
+
+
+
+### MCP Server 注册
+
+保存了 MCP Server 配置文件后， MCP HOST 会更具配置的服务进行握手， 记录 MCP Server的基本信息，包括名称，功能， 方法列表， 每个方法的作用，参数和返回值
+
+1 MCP HOST 启动 MCP Server ， 常见是通过命令行启动 python 或者 node 程序
+
+2 MCP HOST 发送消息到 MCP Server 
+
+3 MCP Server 回消息， 携带 MCP Server 的基本信息， 如名称
+
+4 MCP HOST 发送消息， 查询 MCP SERVER 的 TOOL 列表
+
+5 MCP SERVER 回复 TOOL 列表
+
+
+
+## 用户查询
+
+1 用户查询 prompt 提交到 MCP HOST
+
+2 MCP HOST 将 prompt 提交到大模型，并告知持有的 MCP SERVER ，包括每个MCP SERVER 的 TOOL 列表
+
+3 大模型如果不能直接回复用户的问题， 此时如果 MCP SERVER 中有 TOOL 可以解决问题，那么大模型会返回 MCP HOST， 请求调用 MCP SERVER ， 如：
+我需要调用 get_foraast() 和经纬度参数
+
+4 MCP HOST 接收到大模型的返回后， 解析出其中有调用MCP SERVER 的请求， MCP HOST 调用 MCP SERVER 的 TOOL ，并传递参数
+
+5 MCP SERVER 执行请求，返回结果给 MCP HOST
+
+6 MCP HOST 收到 MCP SERVER 的返回后， 将结果转发给大模型
+
+7 大模型收到结果后，如果认为已经可以回答最初用户的问题， 就会总结答案，将结果发回到 MCP HOST
+
+8 MCP HOST 将结果发到用户
+
+
+
+## 使用他人制作的 MCP SERVER
+
+### 市场
+
+https://mcp.so/
+
+https://mcpmarket.com/zh
+
+https://smithery.ai/servers
+
+
+
+部署
+
+大部分 mcp 是使用 python 或者 node 开发， 使用 uvx (an alias for `uv tool run` 或者 npx （node npm 工具）
+
+测试
+
+```shell
+uvx pycowsay 'hello world!'
+```
+
+
+
+### 测试第三方 MCP
+
+#### 使用 uvx 启动的 MCP SERVER
+
+1 安装 python 和 uv
+
+2 打开mcp市场
+
+https://mcp.so/
+
+搜索 fetch， 找到：
+
+https://mcp.so/server/fetch/test
+
+找到作者给出的配置：
+
+```json
+{
+  "mcpServers": {
+    "fetch": {
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "command": "uvx"
+    }
+  }
+}
+```
+
+3 将 fetch 的配置添加到 Cline的 mcp server 配置文件中：
+
+```json
+{
+  "mcpServers": {
+    "weather":{
+      "timeout": 60,
+      "command": "uv",
+      "args":[
+        "--directory",
+        "D:/code/study/ai/mcp/weather",
+        "run",
+        "weather.py"
+      ],
+      "transportType": "stdio"
+    },
+    "fetch": {
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "command": "uvx"
+    }
+  }
+}
+```
+
+保存后等到 Cline 加载 fetch ， 如果加载失败，可以手动在terminal 中先安装好，在terminal 中执行 [ command + args ]：
+
+```shell
+uvx mcp-server-fetch
+```
+
+即可，安装完成后程序不会自动有任何输出， 正常退出即可。
+
+4 在 Cline 中测试：
+
+```
+请抓取线面这个网页的内容，并将其转换为 markdown 后放到项目目录里面的 guides.md 文件中：
+https://docs.astral.sh/uv/getting-started/installation/ 
+```
+
+
+
+#### 使用 npx 启动的 MCP SERVER
+
+1 安装 nodejs
+
+2 打开市场
+
+https://mcpmarket.com/zh
+
+搜索 hotnews
+
+找打：
+https://mcpmarket.com/zh/server/hotnews
+
+找到配置文件：
+
+```json
+{
+  "mcpServers": {
+    "mcp-server-hotnews": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wopal/mcp-server-hotnews"
+      ]
+    }
+  }
+}
+```
+
+添加到Cline的 mcp server 配置文件中
+
+加载完成后测试：
+
+```
+获取今天最火的科技新闻
+```
+
