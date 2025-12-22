@@ -2644,12 +2644,10 @@ logging:
 
 依赖
 
-        <!--mcp服务器核心依赖— 响应式-->
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
-        </dependency>
-智能体编程
+```kotlin
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.ai:spring-ai-starter-mcp-server-webflux")
+```
 如果用：`<artifactId>spring-ai-starter-mcp-server-webflux</artifactId>`
 
 会出现：
@@ -3725,7 +3723,7 @@ ParagraphPdfDocumentReader 按pdf目录分成一个个document
 ```xml
   <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-markdown-document-reader</artifactId>
+            <artifactId>spring-ai-pdf-document-reader</artifactId>
         </dependency>
 ```
 
