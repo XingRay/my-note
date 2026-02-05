@@ -21,7 +21,7 @@ D:=DescriptorArr:={D0,D1,...,Dn}Bind:=ArrSet:={Bind0,Bind1,...,Bindm}
 
 最终利用Command绑定的单位是Set，正如大图中Pipeline Layout所示。
 
-根据 Vulkan Tutorial [Descriptor layout and buffer](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/Uniform_buffers/Descriptor_layout_and_buffer), 我们首先建立DescriptorSetLayoutBindings（图中第0步），这个部分由多个DescriptorSetLayoutBinding组成，描述了一个Set的数据组织。比如图中：
+根据 Vulkan Tutorial [Descriptor layout and buffer](https://vulkan-tutorial.com/Uniform_buffers/Descriptor_layout_and_buffer), 我们首先建立DescriptorSetLayoutBindings（图中第0步），这个部分由多个DescriptorSetLayoutBinding组成，描述了一个Set的数据组织。比如图中：
 
 - DescriptorSetLayoutBinding0 描述Binding=0中有三个Descriptor，他们以Array的形式存在，在glsl shader中会这样描述：
 

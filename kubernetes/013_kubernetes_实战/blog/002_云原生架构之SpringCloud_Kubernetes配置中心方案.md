@@ -347,7 +347,7 @@ spec:
 
 ### 3.5 项目源码
 
-项目位置： [github.com/redhatxl/cl…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fredhatxl%2Fcloudnative-java)
+项目位置： [github.com/redhatxl/cl…](https://link.juejin.cn/?target=https://github.com/redhatxl/cloudnative-java)
 
 ### 3.6 配置参数
 

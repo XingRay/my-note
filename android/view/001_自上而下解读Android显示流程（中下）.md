@@ -108,15 +108,15 @@ CPU与GPU是有较为频繁的交互，*但并不是针对Graphic Buffer，主�
 
 CPU何时使用GraphicBuffer？
 
-> **surface-> lock（）**就是map这块地址了，**这时我们需要这块地址addr**，此时是CPU来访问了。但几乎不会用到。[Android图形缓冲区映射过程源码分析_深入剖析Android系统-CSDN博客](https://link.zhihu.com/?target=https%3A//blog.csdn.net/yangwen123/article/details/12234931) 中还是**比较久远的gralloc 1.0，其中register也使用了map函数，但目前register的实现也不会如此**。
+> **surface-> lock（）**就是map这块地址了，**这时我们需要这块地址addr**，此时是CPU来访问了。但几乎不会用到。[Android图形缓冲区映射过程源码分析_深入剖析Android系统-CSDN博客](https://blog.csdn.net/yangwen123/article/details/12234931) 中还是**比较久远的gralloc 1.0，其中register也使用了map函数，但目前register的实现也不会如此**。
 
 ### **1.2.2 Graphic Buffer常用的共享方式：ion fd**
 
 正常的时候，**GPU与DPU直接进行交互，只需要传递Fd即可**，**DPU压根不关心这个具体地址**。通常Gralloc中的是这样使用的，如下只是fd就够了。（importBuffer是关键函数）
 
-> **[initWithHandle](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Frefs%3DinitWithHandle%26project%3Dframeworks)-->**[mBufferMapper](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3DmBufferMapper%26project%3Dframeworks).[importBuffer](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3DimportBuffer%26project%3Dframeworks)([handle](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3Dhandle%26project%3Dframeworks), [width](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3Dwidth%26project%3Dframeworks), [height](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3Dheight%26project%3Dframeworks), [206](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/xref/frameworks/native/libs/ui/GraphicBuffer.cpp%23206)[layerCount](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3DlayerCount%26project%3Dframeworks), [format](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3Dformat%26project%3Dframeworks), [usage](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3Dusage%26project%3Dframeworks), [stride](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3Dstride%26project%3Dframeworks), &[importedHandle](https://link.zhihu.com/?target=http%3A//androidxref.com/9.0.0_r3/s%3Fdefs%3DimportedHandle%26project%3Dframeworks));
+> **[initWithHandle](http://androidxref.com/9.0.0_r3/s?refs=initWithHandle&project=frameworks)-->**[mBufferMapper](http://androidxref.com/9.0.0_r3/s?defs=mBufferMapper&project=frameworks).[importBuffer](http://androidxref.com/9.0.0_r3/s?defs=importBuffer&project=frameworks)([handle](http://androidxref.com/9.0.0_r3/s?defs=handle&project=frameworks), [width](http://androidxref.com/9.0.0_r3/s?defs=width&project=frameworks), [height](http://androidxref.com/9.0.0_r3/s?defs=height&project=frameworks), [206](http://androidxref.com/9.0.0_r3/xref/frameworks/native/libs/ui/GraphicBuffer.cpp%23206)[layerCount](http://androidxref.com/9.0.0_r3/s?defs=layerCount&project=frameworks), [format](http://androidxref.com/9.0.0_r3/s?defs=format&project=frameworks), [usage](http://androidxref.com/9.0.0_r3/s?defs=usage&project=frameworks), [stride](http://androidxref.com/9.0.0_r3/s?defs=stride&project=frameworks), &[importedHandle](http://androidxref.com/9.0.0_r3/s?defs=importedHandle&project=frameworks));
 
-但是你看arm的gralloc开源实现，你会发现importBuffer里面竟然也有mapper函数，这与上面讲述的怎么有冲突了？[https://developer.arm.com/downloads/-/mali-drivers/android-gralloc-module](https://link.zhihu.com/?target=https%3A//developer.arm.com/downloads/-/mali-drivers/android-gralloc-module)
+但是你看arm的gralloc开源实现，你会发现importBuffer里面竟然也有mapper函数，这与上面讲述的怎么有冲突了？[https://developer.arm.com/downloads/-/mali-drivers/android-gralloc-module](https://developer.arm.com/downloads/-/mali-drivers/android-gralloc-module)
 
 其实原因在于gralloc增加了metadata，用来兼容gralloc buffer的各种信息，而不用去直接访问private_handle，每个厂家都去自己实现的类。（private_handle目前有2个fd，一个fd用于graphic buffer，另外一个fd就是metadata，而metadata是需要CPU访问的信息，这个就要map，而graphic buffer则不需要）
 
@@ -156,7 +156,7 @@ GraphicBufferAllocator ：分配Buffer，由 SurfaceFlinger负责（也可以用
 > *应用绘制的缓冲区和应用窗口Geometry可以进行同步；*
 > *多应用绘制的缓冲区之间可以进行同步。*
 > 作者：大天使之剑
-> 链接：[https://www.jianshu.com/p/50a30fa6952e](https://link.zhihu.com/?target=https%3A//www.jianshu.com/p/50a30fa6952e)
+> 链接：[https://www.jianshu.com/p/50a30fa6952e](https://www.jianshu.com/p/50a30fa6952e)
 > 来源：简书
 
 ![img](D:\my-note\android\view\assets\v2-d4f946646db723e2ada181f12a257db5_1440w.png)
@@ -209,7 +209,7 @@ BufferQueue中对每一个GraphiBuffer都有BufferState标记着它的状态，
 > *acquireBuffer 必须是 QUEUED —> ACQUIRED*
 > *detachBuffer 释放buffer，slot —> mFreeSlots*
 > *releaseBuffer 不释放buffer，slot —> mFreeBuffers*
-> 原文链接：[BufferQueue 学习总结（内附动态图）](https://link.zhihu.com/?target=https%3A//blog.csdn.net/hexiaolong2009/article/details/99225637)
+> 原文链接：[BufferQueue 学习总结（内附动态图）](https://blog.csdn.net/hexiaolong2009/article/details/99225637)
 
 **一个显示流程需要几个BufferQueue呢？**
 
@@ -273,7 +273,7 @@ BufferQueue里面的QUEUED，DEQUEUE等状态一定程度上说明了该GraphicB
 
 **这就需要一种不仅是跨进程的，也是跨硬件的同步机制: Fence 机制**
 
-[Android中的GraphicBuffer同步机制-Fence - brucemengbm - 博客园](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/brucemengbm/p/6881925.html)
+[Android中的GraphicBuffer同步机制-Fence - brucemengbm - 博客园](https://www.cnblogs.com/brucemengbm/p/6881925.html)
 
 > GPU编程和纯CPU编程一个非常大的不同是它是异步的。也就是说当我们调用GL command返回时这条命令并不一定完毕了。仅仅是把这个命令放在本地的command buffer里。详细什么时候这条GL command被真正运行完毕CPU是不知道的，除非CPU使用glFinish()等待这些命令运行完，第二种方法就是基于同步对象的Fence机制。
 
@@ -363,7 +363,7 @@ BufferQueue里面的QUEUED，DEQUEUE等状态一定程度上说明了该GraphicB
 
 ## **4 Fence代码分析（***虽然代码较老，但框架没变***）**
 
-**全部援引参考：**[Android中的GraphicBuffer同步机制-Fence - brucemengbm - 博客园](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/brucemengbm/p/6881925.html)
+**全部援引参考：**[Android中的GraphicBuffer同步机制-Fence - brucemengbm - 博客园](https://www.cnblogs.com/brucemengbm/p/6881925.html)
 
 ### **4.1 acquireFence: （见下图 ：acquireFence流程）**
 
@@ -426,8 +426,8 @@ mSurfaceFlingerConsumer->setReleaseFence(layer->getAndResetReleaseFence());
 
 ## 参考：
 
-[Android中的GraphicBuffer同步机制-Fence - brucemengbm - 博客园](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/brucemengbm/p/6881925.html)
+[Android中的GraphicBuffer同步机制-Fence - brucemengbm - 博客园](https://www.cnblogs.com/brucemengbm/p/6881925.html)
 
-[https://www.jianshu.com/p/cdc60627df90](https://link.zhihu.com/?target=https%3A//www.jianshu.com/p/cdc60627df90)
+[https://www.jianshu.com/p/cdc60627df90](https://www.jianshu.com/p/cdc60627df90)
 
-[BufferQueue 学习总结（内附动态图](https://link.zhihu.com/?target=https%3A//blog.csdn.net/hexiaolong2009/article/details/99225637)
+[BufferQueue 学习总结（内附动态图](https://blog.csdn.net/hexiaolong2009/article/details/99225637)

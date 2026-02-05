@@ -218,6 +218,6 @@ Fences make the same implicit memory guarantee as semaphores, and if we want to 
 
 ## 小结
 
-“子曰：温故而知新，可以为师也”再次拜读[Khronos Blog - The Khronos Group Inc](https://link.zhihu.com/?target=https%3A//www.khronos.org/blog/understanding-vulkan-synchronization) 这篇文章，我更加能熟悉pipeline barrier以及event等基本的的vulkan同步工具。GPU是多并行处理的，这也是提性能卓越的重要原因之一，运行在GPU上的多个task之间如何确定其运行的先后顺序，是性能提升的重要议题。
+“子曰：温故而知新，可以为师也”再次拜读[Khronos Blog - The Khronos Group Inc](https://www.khronos.org/blog/understanding-vulkan-synchronization) 这篇文章，我更加能熟悉pipeline barrier以及event等基本的的vulkan同步工具。GPU是多并行处理的，这也是提性能卓越的重要原因之一，运行在GPU上的多个task之间如何确定其运行的先后顺序，是性能提升的重要议题。
 
 我作为驱动开发者，深入理解这些同步的[设计理念](https://zhida.zhihu.com/search?content_id=233942058&content_type=Article&match_order=1&q=设计理念&zhida_source=entity)和哲学，可以更加提升对实现代码的掌握，从而增强最终的GPU产品性能~

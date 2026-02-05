@@ -518,21 +518,21 @@ VK_KHR_dynamic_rendering显然带来了更好的开发体验和易用性，那�
 
 ## References
 
-[GameDev | Samsung Developersdeveloper.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html#Using-a-VkRenderPass](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html%23Using-a-VkRenderPass)
+[GameDev | Samsung Developersdeveloper.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html#Using-a-VkRenderPass](https://developer.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html%23Using-a-VkRenderPass)
 
-[Vulkan® Renderpassesgpuopen.com/learn/vulkan-renderpasses/![img](./assets/v2-cdd0fb7ab47049c96553031fb1a3f148_180x120.jpg)](https://link.zhihu.com/?target=https%3A//gpuopen.com/learn/vulkan-renderpasses/)
+[Vulkan® Renderpassesgpuopen.com/learn/vulkan-renderpasses/![img](./assets/v2-cdd0fb7ab47049c96553031fb1a3f148_180x120.jpg)](https://gpuopen.com/learn/vulkan-renderpasses/)
 
-[r/vulkan - Cannot understand RenderPass, and how Subpass relate to themwww.reddit.com/r/vulkan/comments/noi5dg/cannot_understand_renderpass_and_how_subpass/](https://link.zhihu.com/?target=https%3A//www.reddit.com/r/vulkan/comments/noi5dg/cannot_understand_renderpass_and_how_subpass/)
+[r/vulkan - Cannot understand RenderPass, and how Subpass relate to themwww.reddit.com/r/vulkan/comments/noi5dg/cannot_understand_renderpass_and_how_subpass/](https://www.reddit.com/r/vulkan/comments/noi5dg/cannot_understand_renderpass_and_how_subpass/)
 
-[https://github.com/ARM-software/vulkan_best_practice_for_mobile_developers/blob/master/samples/performance/layout_transitions/layout_transitions_tutorial.md#layout-transitionsgithub.com/ARM-software/vulkan_best_practice_for_mobile_developers/blob/master/samples/performance/layout_transitions/layout_transitions_tutorial.md#layout-transitions](https://link.zhihu.com/?target=https%3A//github.com/ARM-software/vulkan_best_practice_for_mobile_developers/blob/master/samples/performance/layout_transitions/layout_transitions_tutorial.md%23layout-transitions)
+[https://github.com/ARM-software/vulkan_best_practice_for_mobile_developers/blob/master/samples/performance/layout_transitions/layout_transitions_tutorial.md#layout-transitionsgithub.com/ARM-software/vulkan_best_practice_for_mobile_developers/blob/master/samples/performance/layout_transitions/layout_transitions_tutorial.md#layout-transitions](https://github.com/ARM-software/vulkan_best_practice_for_mobile_developers/blob/master/samples/performance/layout_transitions/layout_transitions_tutorial.md%23layout-transitions)
 
-[Vulkan-Docs/VK_KHR_dynamic_rendering.adoc at main · KhronosGroup/Vulkan-Docsgithub.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_KHR_dynamic_rendering.adoc](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_KHR_dynamic_rendering.adoc)
+[Vulkan-Docs/VK_KHR_dynamic_rendering.adoc at main · KhronosGroup/Vulkan-Docsgithub.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_KHR_dynamic_rendering.adoc](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_KHR_dynamic_rendering.adoc)
 
-[Writing an efficient Vulkan rendererzeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/](https://link.zhihu.com/?target=https%3A//zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
+[Writing an efficient Vulkan rendererzeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/](https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
 
-[GameDev | Samsung Developersdeveloper.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html#Using-a-VkRenderPass![img](./assets/v2-6e1d87fdc1087244d3789251e56ab159_180x120-1735225353817-128.jpg)](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html%23Using-a-VkRenderPass)
+[GameDev | Samsung Developersdeveloper.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html#Using-a-VkRenderPass![img](./assets/v2-6e1d87fdc1087244d3789251e56ab159_180x120-1735225353817-128.jpg)](https://developer.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html%23Using-a-VkRenderPass)
 
-[https://github.com/KhronosGroup/Vulkan-Docs/issues/1147github.com/KhronosGroup/Vulkan-Docs/issues/1147](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Docs/issues/1147)
+[https://github.com/KhronosGroup/Vulkan-Docs/issues/1147github.com/KhronosGroup/Vulkan-Docs/issues/1147](https://github.com/KhronosGroup/Vulkan-Docs/issues/1147)
 
 [丛越：游戏引擎随笔 0x27：现代图形 API 的最新进展（2022年2月）307 赞同 · 27 评论文章![img](./assets/v2-a844887894a3eab7fdc8535fc4dd3e91_180x120.jpg)](https://zhuanlan.zhihu.com/p/466258173)
 

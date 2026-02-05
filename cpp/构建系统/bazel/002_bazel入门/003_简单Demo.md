@@ -2,11 +2,11 @@
 
 下面我们将首先用Bazel的官方android demo来看看到底如何用Bazel进行构建，然后我们会在其中做一些调整，看看如何用Bazel来实现简单的模块化。
 
-首先安装bazel，现在的程序员，缺省开发环境应该以mac为准，我们就不讨论windows的情况了。官方安装文档可以在 [https://docs.bazel.build/](https://link.zhihu.com/?target=https%3A//docs.bazel.build/) 查看，我们这里先只讲怎么安装bazel以及对应的android project demo。
+首先安装bazel，现在的程序员，缺省开发环境应该以mac为准，我们就不讨论windows的情况了。官方安装文档可以在 [https://docs.bazel.build/](https://docs.bazel.build/) 查看，我们这里先只讲怎么安装bazel以及对应的android project demo。
 
 ## **1. 安装Bazel**
 
-先安装homebrew ([Homebrew](https://link.zhihu.com/?target=https%3A//brew.sh/))
+先安装homebrew ([Homebrew](https://brew.sh/))
 
 然后运行
 
@@ -25,7 +25,7 @@ bazel 3.5.0-homebrew
 
 ## 2. 配置android demo project
 
-参考 [https://docs.bazel.build/versions/master/tutorial/android-app.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/tutorial/android-app.html) ，运行
+参考 [https://docs.bazel.build/versions/master/tutorial/android-app.html](https://docs.bazel.build/versions/master/tutorial/android-app.html) ，运行
 
 ```text
 git clone https://github.com/bazelbuild/examples

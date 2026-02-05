@@ -68,7 +68,7 @@
 
 **Podman 公告和新闻站**
 
-[Podmanpodman.io/](https://link.zhihu.com/?target=https%3A//podman.io/)
+[Podmanpodman.io/](https://podman.io/)
 
 ![img](assets/007/v2-7c013ecf7fe417b4b0da2479d3009832_720w.webp)
 
@@ -88,7 +88,7 @@
 
 **podman 默认使用的是红帽的镜像源，当然也可以使用 dockethub，但是最好用国内的加速源。**
 
-[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](https://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s%3F__biz%3DMzkxNTI1OTc4MA%3D%3D%26mid%3D100009641%26idx%3D1%26sn%3Dbd6dce178c3157dd8a97428163156cc2%26chksm%3D41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
+[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](http://mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
 
 **配置国内镜像源进行加速**
 
@@ -96,17 +96,17 @@
 
 **备份文档，新建同名文件添加以下配置**
 
-**unqualified-search-registries = ["[http://docker.io](https://link.zhihu.com/?target=http%3A//docker.io)"]**
+**unqualified-search-registries = ["[http://docker.io](http://docker.io)"]**
 
 **[[registry]]**
 
-**prefix = "[http://docker.io](https://link.zhihu.com/?target=http%3A//docker.io)"**
+**prefix = "[http://docker.io](http://docker.io)"**
 
-**location = "[http://rncxm540.mirror.aliyuncs.com](https://link.zhihu.com/?target=http%3A//rncxm540.mirror.aliyuncs.com)"**
+**location = "[http://rncxm540.mirror.aliyuncs.com](http://rncxm540.mirror.aliyuncs.com)"**
 
-**注：[http://rncxm540.mirror.aliyuncs.com](https://link.zhihu.com/?target=http%3A//rncxm540.mirror.aliyuncs.com) 为阿里云镜像加速地址如何获取阿里云镜像加速地址？**
+**注：[http://rncxm540.mirror.aliyuncs.com](http://rncxm540.mirror.aliyuncs.com) 为阿里云镜像加速地址如何获取阿里云镜像加速地址？**
 
-**你只需要登录阿里云的容器 Hub 服务 [https://cr.console.aliyun.com](https://link.zhihu.com/?target=https%3A//cr.console.aliyun.com) 的控制台，使用你的支付宝 帐号，第一次登录时，需要设置一个独立的密码，左侧的加速器帮助页面就会显示为你独立分配的加速地址。**
+**你只需要登录阿里云的容器 Hub 服务 [https://cr.console.aliyun.com](https://cr.console.aliyun.com) 的控制台，使用你的支付宝 帐号，第一次登录时，需要设置一个独立的密码，左侧的加速器帮助页面就会显示为你独立分配的加速地址。**
 
 ![img](assets/007/v2-acbbf08d6427dd9001271344831c0fe0_720w.webp)
 
@@ -142,7 +142,7 @@
 
 **REPOSITORY TAG IMAGE ID CREATED SIZE**
 
-**[http://docker.io/library/centos](https://link.zhihu.com/?target=http%3A//docker.io/library/centos) 7.6.1810 f1cb7c7d58b7 20 months ago 209 MB**
+**[http://docker.io/library/centos](http://docker.io/library/centos) 7.6.1810 f1cb7c7d58b7 20 months ago 209 MB**
 
 **运行一个简单的容器**
 
@@ -186,9 +186,9 @@
 
 **#给容器取个名字**
 
-**浏览器访问地址：[http://192.168.1.63/](https://link.zhihu.com/?target=http%3A//192.168.1.63/) 可以直接访问到我们容器内的服务。**
+**浏览器访问地址：[http://192.168.1.63/](http://192.168.1.63/) 可以直接访问到我们容器内的服务。**
 
-[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](https://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s%3F__biz%3DMzkxNTI1OTc4MA%3D%3D%26mid%3D100009641%26idx%3D1%26sn%3Dbd6dce178c3157dd8a97428163156cc2%26chksm%3D41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
+[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](http://mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
 
 ![img](assets/007/v2-7f2b8939b879d3ab47c0179dd00a10d6_720w.webp)
 
@@ -248,15 +248,15 @@
 
 **REPOSITORY TAG IMAGE ID CREATED SIZE**
 
-**[http://docker.io/library/httpd](https://link.zhihu.com/?target=http%3A//docker.io/library/httpd) latest 3dd970e6b110 2 weeks ago 141 MB**
+**[http://docker.io/library/httpd](http://docker.io/library/httpd) latest 3dd970e6b110 2 weeks ago 141 MB**
 
-**[http://docker.io/library/centos](https://link.zhihu.com/?target=http%3A//docker.io/library/centos) 7.6.1810 f1cb7c7d58b7 19 months ago 209 MB**
+**[http://docker.io/library/centos](http://docker.io/library/centos) 7.6.1810 f1cb7c7d58b7 19 months ago 209 MB**
 
 **删除镜像方法（这里不要执行删除，后面我们还要使用该镜像）**
 
-**[root@xuegod63 ~]# podman rmi [http://docker.io/library/httpd](https://link.zhihu.com/?target=http%3A//docker.io/library/httpd)**
+**[root@xuegod63 ~]# podman rmi [http://docker.io/library/httpd](http://docker.io/library/httpd)**
 
-**Untagged: [http://docker.io/library/httpd:latest](https://link.zhihu.com/?target=http%3A//docker.io/library/httpd%3Alatest)**
+**Untagged: [http://docker.io/library/httpd:latest](http://docker.io/library/httpd:latest)**
 
 **Deleted: 3dd970e6b110c8cbcec63e05a91e3cefd23c76a780fcb78c33979153f044b2d4**
 
@@ -334,7 +334,7 @@
 
 **中式管理。**
 
-[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](https://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s%3F__biz%3DMzkxNTI1OTc4MA%3D%3D%26mid%3D100009641%26idx%3D1%26sn%3Dbd6dce178c3157dd8a97428163156cc2%26chksm%3D41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
+[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](http://mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
 
 **Cockpit 功能特点：**
 
@@ -364,7 +364,7 @@
 
 **配置开机启动并立即启动 cockpit 服务**
 
-**[root@xuegod63 ~]# systemctl enable --now cockpit.socket访问 web 界面：[https://192.168.1.63:9090/](https://link.zhihu.com/?target=https%3A//192.168.1.63%3A9090/)**
+**[root@xuegod63 ~]# systemctl enable --now cockpit.socket访问 web 界面：[https://192.168.1.63:9090/](https://192.168.1.63:9090/)**
 
 ![img](assets/007/v2-ae27879daacfb86e195af4ea58792863_720w.webp)
 
@@ -380,7 +380,7 @@
 
 ![img](assets/007/v2-96bd53dc4b6cdc45a580b2f14c694b28_720w.webp)
 
-**访问web 服务：[http://192.168.1.63:8080/](https://link.zhihu.com/?target=http%3A//192.168.1.63%3A8080/)**
+**访问web 服务：[http://192.168.1.63:8080/](http://192.168.1.63:8080/)**
 
 ![img](assets/007/v2-2532951a061c467f2665ea92029723bb_720w.webp)
 
@@ -388,7 +388,7 @@
 
 ***更有超多的学习资料免费分享！\***
 
-[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](https://link.zhihu.com/?target=http%3A//mp.weixin.qq.com/s%3F__biz%3DMzkxNTI1OTc4MA%3D%3D%26mid%3D100009641%26idx%3D1%26sn%3Dbd6dce178c3157dd8a97428163156cc2%26chksm%3D41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
+[Linux运维学习视频+资料和笔记mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a#rd![img](assets/007/v2-c99e09c585f4fc6f9f0758dfba09d80c_180x120.jpg)](http://mp.weixin.qq.com/s?__biz=MzkxNTI1OTc4MA==&mid=100009641&idx=1&sn=bd6dce178c3157dd8a97428163156cc2&chksm=41634e427614c754aebb842196f21e03a2282ed97a785195fc92abbd7f9fe394b0ed20022f3a%23rd)
 
 
 

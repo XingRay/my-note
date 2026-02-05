@@ -105,5 +105,5 @@ VkWriteDescriptorSet VK_TextureImpl::createWriteDescriptorSet(uint32_t index, Vk
 
 代码仓库 -
 
-[GitHub - ccsdu2004/vulkan-cpp-demo: 基于cplusplus的vulkan程序开发例子github.com/ccsdu2004/vulkan-cpp-demo![img](./assets/v2-7f353f0db8cce9ab4a13c96cf2357cc6_180x120.jpg)](https://link.zhihu.com/?target=https%3A//github.com/ccsdu2004/vulkan-cpp-demo)
+[GitHub - ccsdu2004/vulkan-cpp-demo: 基于cplusplus的vulkan程序开发例子github.com/ccsdu2004/vulkan-cpp-demo![img](./assets/v2-7f353f0db8cce9ab4a13c96cf2357cc6_180x120.jpg)](https://github.com/ccsdu2004/vulkan-cpp-demo)
 

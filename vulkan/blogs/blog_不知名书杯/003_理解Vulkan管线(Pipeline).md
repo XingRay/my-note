@@ -320,7 +320,7 @@ Vulkan提供了一个VkPipelineCache对象来减少创建Pipeline的时间，它
 
 在上面介绍了Pipeline Cache，但是还是会遇到一些问题，也就是在第一次着色器编译时，停顿仍然会发生，因为Pipeline Cache不会包含所有使用的组合。此外即使Pipeline Cache包含了必要的微代码，vkCreateGraphicsPipelines也不是免费的，因此新的Pipeline的编译仍然会增加帧时间的差异。为了解决这个问题，可以在加载时间内对VkPipeline和VkPipelineCache进行预热(WarmUp)。
 
-比如缓存Pipeline所需的所有状态，在游戏环节结束或者开启到下一个关卡时，渲染器可以将内存中的VkPipelineCache数据并且哪些着色器被用于哪些状态的记录全部保存到数据库中。在游戏过程中，这个数据库可以用不同图形设置下的多次游戏数据进行填充。有效地收集可能在实际游戏过程中使用的状态集(比如不同的关卡，需要不同的状态以及Pipeline)。可以通过使用[https://github.com/ValveSoftware/Fossilize](https://link.zhihu.com/?target=https%3A//github.com/ValveSoftware/Fossilize)来完成对于各种状态对象的序列化并且将其存入本地数据中。
+比如缓存Pipeline所需的所有状态，在游戏环节结束或者开启到下一个关卡时，渲染器可以将内存中的VkPipelineCache数据并且哪些着色器被用于哪些状态的记录全部保存到数据库中。在游戏过程中，这个数据库可以用不同图形设置下的多次游戏数据进行填充。有效地收集可能在实际游戏过程中使用的状态集(比如不同的关卡，需要不同的状态以及Pipeline)。可以通过使用[https://github.com/ValveSoftware/Fossilize](https://github.com/ValveSoftware/Fossilize)来完成对于各种状态对象的序列化并且将其存入本地数据中。
 
 在游戏启动或开启下一关的时间点，缓存可以预先填充所有使用该数据库的数据创建的状态(根据Pipeline状态的数量以及预计这个场景会需要的状态来预热对应的数据)。这应该发生在多个线程上，以减少对加载时间的影响.第一次运行仍然会有较长的加载时间，但由于临时创建Pipeline而导致停顿可以大部分避免。
 
@@ -465,27 +465,27 @@ Pipeline Derivatives在描述上来看是能够提高创建Pipeline速度或者�
 
 ## References
 
-[Tips and Tricks: Vulkan Dos and Don’ts | NVIDIA Technical Blogdeveloper.nvidia.com/blog/vulkan-dos-donts/](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/blog/vulkan-dos-donts/)
+[Tips and Tricks: Vulkan Dos and Don’ts | NVIDIA Technical Blogdeveloper.nvidia.com/blog/vulkan-dos-donts/](https://developer.nvidia.com/blog/vulkan-dos-donts/)
 
-[A tour of Granite’s Vulkan backend – Part 6themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/](https://link.zhihu.com/?target=https%3A//themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/)
+[A tour of Granite’s Vulkan backend – Part 6themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/](https://themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/)
 
-[Robust pipeline cache serializationzeux.io/2019/07/17/serializing-pipeline-cache/](https://link.zhihu.com/?target=https%3A//zeux.io/2019/07/17/serializing-pipeline-cache/)
+[Robust pipeline cache serializationzeux.io/2019/07/17/serializing-pipeline-cache/](https://zeux.io/2019/07/17/serializing-pipeline-cache/)
 
-[GameDev | Samsung Developersdeveloper.samsung.com/galaxy-gamedev/resources/articles/usage.html![img](./assets/v2-6e1d87fdc1087244d3789251e56ab159_180x120.jpg)](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/resources/articles/usage.html)
+[GameDev | Samsung Developersdeveloper.samsung.com/galaxy-gamedev/resources/articles/usage.html![img](./assets/v2-6e1d87fdc1087244d3789251e56ab159_180x120.jpg)](https://developer.samsung.com/galaxy-gamedev/resources/articles/usage.html)
 
-[Writing an efficient Vulkan rendererzeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/](https://link.zhihu.com/?target=https%3A//zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
+[Writing an efficient Vulkan rendererzeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/](https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
 
-[Vulkan: Creating and benefit of pipeline derivativesstackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives)
+[Vulkan: Creating and benefit of pipeline derivativesstackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives](https://stackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives)
 
-[vulkan_best_practice_for_mobile_developersarm-software.github.io/vulkan_best_practice_for_mobile_developers/samples/performance/pipeline_cache/pipeline_cache_tutorial.html](https://link.zhihu.com/?target=https%3A//arm-software.github.io/vulkan_best_practice_for_mobile_developers/samples/performance/pipeline_cache/pipeline_cache_tutorial.html)
+[vulkan_best_practice_for_mobile_developersarm-software.github.io/vulkan_best_practice_for_mobile_developers/samples/performance/pipeline_cache/pipeline_cache_tutorial.html](https://arm-software.github.io/vulkan_best_practice_for_mobile_developers/samples/performance/pipeline_cache/pipeline_cache_tutorial.html)
 
-[Vulkan-Docs/VK_EXT_graphics_pipeline_library.adoc at main · KhronosGroup/Vulkan-Docsgithub.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_EXT_graphics_pipeline_library.adoc](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_EXT_graphics_pipeline_library.adoc)
+[Vulkan-Docs/VK_EXT_graphics_pipeline_library.adoc at main · KhronosGroup/Vulkan-Docsgithub.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_EXT_graphics_pipeline_library.adoc](https://github.com/KhronosGroup/Vulkan-Docs/blob/main/proposals/VK_EXT_graphics_pipeline_library.adoc)
 
-[Reducing Draw Time Hitching with VK_EXT_graphics_pipeline_librarywww.khronos.org/blog/reducing-draw-time-hitching-with-vk-ext-graphics-pipeline-library![img](https://pic3.zhimg.com/v2-f6a1f6420dbe4d56c3d5cc5fe97ad540_ipico.jpg)](https://link.zhihu.com/?target=https%3A//www.khronos.org/blog/reducing-draw-time-hitching-with-vk-ext-graphics-pipeline-library)
+[Reducing Draw Time Hitching with VK_EXT_graphics_pipeline_librarywww.khronos.org/blog/reducing-draw-time-hitching-with-vk-ext-graphics-pipeline-library![img](https://pic3.zhimg.com/v2-f6a1f6420dbe4d56c3d5cc5fe97ad540_ipico.jpg)](https://www.khronos.org/blog/reducing-draw-time-hitching-with-vk-ext-graphics-pipeline-library)
 
-[Vulkan-Samples/samples/extensions/graphics_pipeline_library at main · KhronosGroup/Vulkan-Samplesgithub.com/KhronosGroup/Vulkan-Samples/tree/main/samples/extensions/graphics_pipeline_library](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples/tree/main/samples/extensions/graphics_pipeline_library)
+[Vulkan-Samples/samples/extensions/graphics_pipeline_library at main · KhronosGroup/Vulkan-Samplesgithub.com/KhronosGroup/Vulkan-Samples/tree/main/samples/extensions/graphics_pipeline_library](https://github.com/KhronosGroup/Vulkan-Samples/tree/main/samples/extensions/graphics_pipeline_library)
 
-[A tour of Granite’s Vulkan backend – Part 6themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/](https://link.zhihu.com/?target=https%3A//themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/)
+[A tour of Granite’s Vulkan backend – Part 6themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/](https://themaister.net/blog/2019/05/01/a-tour-of-granites-vulkan-backend-part-6/)
 
-[Vulkan: Creating and benefit of pipeline derivativesstackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives)
+[Vulkan: Creating and benefit of pipeline derivativesstackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives](https://stackoverflow.com/questions/37135130/vulkan-creating-and-benefit-of-pipeline-derivatives)
 

@@ -41,7 +41,7 @@ public Map<String, Object> getUserInfo(@RequestParam String id) {
 
 部分小伙伴儿会遇到跟我相同的问题，异常的提示信息仅能在服务日志中看到，并没有包含在响应体中，那么 `message` 哪里去了？
 
-这是由于 Spring Boot 版本造成的，查阅了 Spring Boot 的 [版本日志](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fspring-projects%2Fspring-boot%2Fwiki%2FSpring-Boot-2.5-Release-Notes) ，`2.5.x` 起，默认的异常响应信息中的 `message` 属性被移除了：
+这是由于 Spring Boot 版本造成的，查阅了 Spring Boot 的 [版本日志](https://link.juejin.cn/?target=https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.5-Release-Notes) ，`2.5.x` 起，默认的异常响应信息中的 `message` 属性被移除了：
 
 ![3.jpg](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/42254070e34f49348c50468e77969c23~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp?)
 

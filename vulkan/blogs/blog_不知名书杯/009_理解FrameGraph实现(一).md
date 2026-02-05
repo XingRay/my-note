@@ -14,7 +14,7 @@
 
 Frame Graph实现是Granite的，该仓库链接如下：
 
-[https://github.com/Themaister/Granitegithub.com/Themaister/Granite](https://link.zhihu.com/?target=https%3A//github.com/Themaister/Granite)
+[https://github.com/Themaister/Granitegithub.com/Themaister/Granite](https://github.com/Themaister/Granite)
 
 关于Frame Graph的代码主要集中在render_graph.hpp以及render_graph.cpp这两个文件内。建议大家还是对照源码来阅读哦。
 
@@ -345,11 +345,11 @@ private:
 
 现在就到了重头戏了也就是RenderGraph[执行流程](https://zhida.zhihu.com/search?content_id=230309940&content_type=Article&match_order=2&q=执行流程&zhida_source=entity)，在这个部分可能不同引擎的实现都不一样。大家也可以多看看其他引擎的实现。应该也能学到不少。在这里先补充几个Frame Graph的库供大伙参考，如下所示：
 
-[GitHub - acdemiralp/fg: Rendering abstraction which describes a frame as a directed acyclic graph of render tasks and resources.github.com/acdemiralp/fg![img](./assets/v2-bec328879fdab1069e7821567d40bebb_180x120.jpg)](https://link.zhihu.com/?target=https%3A//github.com/acdemiralp/fg)
+[GitHub - acdemiralp/fg: Rendering abstraction which describes a frame as a directed acyclic graph of render tasks and resources.github.com/acdemiralp/fg![img](./assets/v2-bec328879fdab1069e7821567d40bebb_180x120.jpg)](https://github.com/acdemiralp/fg)
 
-[https://github.com/azhirnov/FrameGraphgithub.com/azhirnov/FrameGraph](https://link.zhihu.com/?target=https%3A//github.com/azhirnov/FrameGraph)
+[https://github.com/azhirnov/FrameGraphgithub.com/azhirnov/FrameGraph](https://github.com/azhirnov/FrameGraph)
 
-[https://github.com/google/filamentgithub.com/google/filament](https://link.zhihu.com/?target=https%3A//github.com/google/filament)
+[https://github.com/google/filamentgithub.com/google/filament](https://github.com/google/filament)
 
 下图是一张总览介绍了bake函数执行全流程，步骤可能比较多。接下来介绍各自都做了什么。
 
@@ -837,7 +837,7 @@ build_backbuffer完成backbuffer参数检查以防止SwapChain与backbuffer的�
 
 ## References
 
-[Render graphs and Vulkan — a deep dive](https://link.zhihu.com/?target=https%3A//themaister.net/blog/2017/08/15/render-graphs-and-vulkan-a-deep-dive/)
+[Render graphs and Vulkan — a deep dive](https://themaister.net/blog/2017/08/15/render-graphs-and-vulkan-a-deep-dive/)
 
-[FrameGraph: Extensible Rendering Architecture in Frostbite](https://link.zhihu.com/?target=https%3A//www.gdcvault.com/play/1024612/FrameGraph-Extensible-Rendering-Architecture-in)
+[FrameGraph: Extensible Rendering Architecture in Frostbite](https://www.gdcvault.com/play/1024612/FrameGraph-Extensible-Rendering-Architecture-in)
 

@@ -64,7 +64,7 @@ typedef struct VkPipelineColorBlendAttachmentState {
 } VkPipelineColorBlendAttachmentState;
 ```
 
-详细介绍在这里 - [VkPipelineColorBlendAttachmentState(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendAttachmentState.html) 。其实和OpenGL颜色混合方程是一样的，只是结构不同。
+详细介绍在这里 - [VkPipelineColorBlendAttachmentState(3)](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendAttachmentState.html) 。其实和OpenGL颜色混合方程是一样的，只是结构不同。
 
 此结构体被设置在VkGraphicsPipelineCreateInfo中的pColorBlendState字段，之后即可重新创建管线。
 
@@ -165,5 +165,5 @@ int main()
 
 代码仓库在这里
 
-[https://github.com/ccsdu2004/vulkan-cpp-demogithub.com/ccsdu2004/vulkan-cpp-demo](https://link.zhihu.com/?target=https%3A//github.com/ccsdu2004/vulkan-cpp-demo)
+[https://github.com/ccsdu2004/vulkan-cpp-demogithub.com/ccsdu2004/vulkan-cpp-demo](https://github.com/ccsdu2004/vulkan-cpp-demo)
 

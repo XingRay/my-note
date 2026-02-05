@@ -67,5 +67,5 @@ MediaPipe graph 的执行是分散的：没有全局时钟，不同节点可以�
 
 这种calculator-based 的方法使graph作者可以控制丢弃数据包的位置，并允许根据资源限制灵活地调整和自定义graph的行为。
 
-参考：[Synchronization](https://link.zhihu.com/?target=https%3A//google.github.io/mediapipe/framework_concepts/synchronization.html%23flow-control)
+参考：[Synchronization](https://google.github.io/mediapipe/framework_concepts/synchronization.html%23flow-control)
 

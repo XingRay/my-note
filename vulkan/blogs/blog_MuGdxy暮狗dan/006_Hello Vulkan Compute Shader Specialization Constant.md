@@ -93,7 +93,7 @@ shaderStageCreateInfo.pSpecializationInfo = &specInfo;
 
 ## Cite
 
-[GLSLangSpec.4.60 4.11. Specialization-Constant Qualifierwww.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf)
+[GLSLangSpec.4.60 4.11. Specialization-Constant Qualifierwww.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf](https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf)
 
-[https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-specialization-constantswww.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-specialization-constants](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23pipelines-specialization-constants)
+[https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-specialization-constantswww.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-specialization-constants](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23pipelines-specialization-constants)
 

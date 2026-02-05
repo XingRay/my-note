@@ -28,7 +28,7 @@
 
 ### 3.1 下载GitHub深度学习项目
 
-（1）登录 GitHub 官网（[GitHub](https://link.zhihu.com/?target=https%3A//github.com/)），在搜索框中搜索需要下载的项目（示例项目链接：[tyxsspa/AnyText (github.com)](https://link.zhihu.com/?target=https%3A//github.com/tyxsspa/AnyText)），并点击项目进入详情页；
+（1）登录 GitHub 官网（[GitHub](https://github.com/)），在搜索框中搜索需要下载的项目（示例项目链接：[tyxsspa/AnyText (github.com)](https://github.com/tyxsspa/AnyText)），并点击项目进入详情页；
 
 ![img](./assets/v2-c8c3ca62387e33010b913f97b4f8b68c_1440w-1713261099489-281.webp)
 

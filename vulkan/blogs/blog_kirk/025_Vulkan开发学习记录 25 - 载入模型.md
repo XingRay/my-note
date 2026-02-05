@@ -184,7 +184,7 @@ GLM 库的哈希函数目前还是一个试验性的扩展，被定义在了GLM 
 
 ## 工程链接
 
-[https://github.com/Kirkice/JourneyThroughVulkangithub.com/Kirkice/JourneyThroughVulkan](https://link.zhihu.com/?target=https%3A//github.com/Kirkice/JourneyThroughVulkan)
+[https://github.com/Kirkice/JourneyThroughVulkangithub.com/Kirkice/JourneyThroughVulkan](https://github.com/Kirkice/JourneyThroughVulkan)
 
 ## 参考
 

@@ -331,19 +331,19 @@ Secondary Command Buffer可以被单独Record Command和存储，假如说有一
 
 ## References
 
-[Writing an efficient Vulkan rendererzeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/](https://link.zhihu.com/?target=https%3A//zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
+[Writing an efficient Vulkan rendererzeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/](https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
 
-[What are the advantages of secondary command buffers?community.khronos.org/t/what-are-the-advantages-of-secondary-command-buffers/6977![img](./assets/v2-a8dcf8eaa14ca429278636545bd1958a_ipico.jpg)](https://link.zhihu.com/?target=https%3A//community.khronos.org/t/what-are-the-advantages-of-secondary-command-buffers/6977)
+[What are the advantages of secondary command buffers?community.khronos.org/t/what-are-the-advantages-of-secondary-command-buffers/6977![img](./assets/v2-a8dcf8eaa14ca429278636545bd1958a_ipico.jpg)](https://community.khronos.org/t/what-are-the-advantages-of-secondary-command-buffers/6977)
 
-[Tips and Tricks: Vulkan Dos and Don’ts | NVIDIA Technical Blogdeveloper.nvidia.com/blog/vulkan-dos-donts/](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/blog/vulkan-dos-donts/)
+[Tips and Tricks: Vulkan Dos and Don’ts | NVIDIA Technical Blogdeveloper.nvidia.com/blog/vulkan-dos-donts/](https://developer.nvidia.com/blog/vulkan-dos-donts/)
 
-[Multi-Threading in Vulkancommunity.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/multi-threading-in-vulkan](https://link.zhihu.com/?target=https%3A//community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/multi-threading-in-vulkan)
+[Multi-Threading in Vulkancommunity.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/multi-threading-in-vulkan](https://community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/multi-threading-in-vulkan)
 
 [Simon.Miao：Vulkan 多线程渲染119 赞同 · 3 评论文章](https://zhuanlan.zhihu.com/p/165341403)
 
-[Engaging the Voyage to Vulkandeveloper.nvidia.com/engaging-voyage-vulkan](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/engaging-voyage-vulkan)
+[Engaging the Voyage to Vulkandeveloper.nvidia.com/engaging-voyage-vulkan](https://developer.nvidia.com/engaging-voyage-vulkan)
 
-[Vulkan-Samples/README.md at main · KhronosGroup/Vulkan-Samplesgithub.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/command_buffer_usage/README.md](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/command_buffer_usage/README.md)
+[Vulkan-Samples/README.md at main · KhronosGroup/Vulkan-Samplesgithub.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/command_buffer_usage/README.md](https://github.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/command_buffer_usage/README.md)
 
-[Vulkan-Samples/README.md at main · KhronosGroup/Vulkan-Samplesgithub.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/multithreading_render_passes/README.md](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/multithreading_render_passes/README.md)
+[Vulkan-Samples/README.md at main · KhronosGroup/Vulkan-Samplesgithub.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/multithreading_render_passes/README.md](https://github.com/KhronosGroup/Vulkan-Samples/blob/main/samples/performance/multithreading_render_passes/README.md)
 

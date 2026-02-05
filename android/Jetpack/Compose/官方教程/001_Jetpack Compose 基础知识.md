@@ -1,6 +1,6 @@
 # Jetpack Compose 基础知识
 
-https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#0
+https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#0
 
 
 
@@ -10,7 +10,7 @@ https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=
 
 *account_circle*Google 员工编写
 
-## [1. 准备工作](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#0)
+## [1. 准备工作](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#0)
 
 [Jetpack Compose](https://developer.android.com/jetpack/compose?hl=zh-cn) 是一款新型工具包，旨在帮助简化界面开发。该工具包将响应式编程模型与简洁易用的 Kotlin 编程语言相结合，并采用完全声明式的代码编写方式，让您可以通过调用一系列函数来描述界面，这些函数会将数据转换为界面层次结构。当底层数据发生变化时，框架会自动重新执行这些函数，为您更新界面层次结构。
 
@@ -51,7 +51,7 @@ Compose 应用由可组合函数构成。可组合函数即带有 `@Composable` 
 
 
 
-## [2. 启动新的 Compose 项目](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#1)
+## [2. 启动新的 Compose 项目](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#1)
 
 如需启动新的 Compose 项目，请打开 Android Studio。
 
@@ -128,7 +128,7 @@ $ git clone https://github.com/android/codelab-android-compose
 
 
 
-## [3. Compose 使用入门](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#2)
+## [3. Compose 使用入门](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#2)
 
 了解 Android Studio 为您生成的与 Compose 相关的各种类和方法。
 
@@ -196,7 +196,7 @@ fun GreetingPreview() {
 
 
 
-## [4. 微调界面](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#3)
+## [4. 微调界面](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#3)
 
 首先，为 `Greeting` 设置不同的背景颜色。为此，您可以用 `Surface` 包围 `Text` 可组合项。`Surface` 会采用一种颜色，因此请使用 **`MaterialTheme.colorScheme.primary`**。
 
@@ -262,7 +262,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 
-## [5. 重复使用可组合项](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#4)
+## [5. 重复使用可组合项](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#4)
 
 您添加到界面的组件越多，创建的嵌套层级就越多。如果函数变得非常大，可能会影响可读性。通过创建可重用的小型组件，可以轻松构建应用中所用界面元素的库。每个组件对应于屏幕的一个部分，可以单独修改。
 
@@ -349,7 +349,7 @@ fun GreetingPreview() {
 
 
 
-## [6. 创建列和行](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#5)
+## [6. 创建列和行](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#5)
 
 Compose 中的三个基本标准布局元素是 `Column`、`Row` 和 `Box` 可组合项。
 
@@ -521,7 +521,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 
-## [7. Compose 中的状态](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#6)
+## [7. Compose 中的状态](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#6)
 
 在本部分中，您将向屏幕中添加一些互动。到目前为止，您已经创建了一些静态布局，但现在要让它们响应用户更改，以达到下面的效果：
 
@@ -708,7 +708,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 
-## [8. 状态提升](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#7)
+## [8. 状态提升](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#7)
 
 在可组合函数中，被多个函数读取或修改的状态应位于共同祖先实体中，此过程称为**状态提升**。“提升”意为“提高”或“升级”。
 
@@ -1055,7 +1055,7 @@ fun MyAppPreview() {
 
 
 
-## [9. 创建高效延迟列表](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#8)
+## [9. 创建高效延迟列表](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#8)
 
 现在，我们来让名称列表更真实。到目前为止，您已经在 `Column` 中显示了两条问候语。但是，它可以处理成千上万条问候语吗？
 
@@ -1099,7 +1099,7 @@ private fun Greetings(
 
 
 
-## [10. 保留状态](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#9)
+## [10. 保留状态](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#9)
 
 我们的应用存在两个问题：
 
@@ -1136,7 +1136,7 @@ private fun Greetings(
 
 
 
-## [11. 为列表添加动画效果](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#10)
+## [11. 为列表添加动画效果](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#10)
 
 在 Compose 中，有多种方式可以为界面添加动画效果：从用于添加简单动画的高阶 API 到用于实现完全控制和复杂过渡的低阶方法，不一而足。您可以在该[文档](https://developer.android.com/jetpack/compose/animation?hl=zh-cn)中了解相关信息。
 
@@ -1384,7 +1384,7 @@ fun MyAppPreview() {
 
 
 
-## [12. 设置应用的样式和主题](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#11)
+## [12. 设置应用的样式和主题](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#11)
 
 到目前为止，您还没有为任何可组合项设置过样式，但已经获得了一个不错的默认效果，包括支持深色模式！下面我们来了解一下 `BasicsCodelabTheme` 和 `MaterialTheme`。
 
@@ -1595,7 +1595,7 @@ fun BasicsCodelabTheme(
 
 
 
-## [13. 收尾！](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%3Fhl%3Dzh-cn%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-basics#12)
+## [13. 收尾！](https://developer.android.com/codelabs/jetpack-compose-basics?hl=zh-cn&continue=https://developer.android.com/courses/pathways/compose?hl=zh-cn%23codelab-https://developer.android.com/codelabs/jetpack-compose-basics#12)
 
 在此步骤中，您将实际运用已掌握的知识，并通过几条提示来学习几个新的概念。您将创建以下内容：
 

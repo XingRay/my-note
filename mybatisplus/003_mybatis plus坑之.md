@@ -104,7 +104,7 @@ public class Goods extends BaseEntity<Goods > {
 
 此时，用程序插入数据，数据库中存储的格式变成了带括号和引号，如下图：
 
-![在这里插入图片描述](./003_mybatis%20plus%E5%9D%91%E4%B9%8B.assets/3f95d989727233ca0f40f2a77c2ade0d.png)
+![在这里插入图片描述](./003_mybatis plus%E5%9D%91%E4%B9%8B.assets/3f95d989727233ca0f40f2a77c2ade0d.png)
 
 查询数据的时候，该字段返回为 null
 
@@ -240,7 +240,7 @@ mybatis-plus:
 
 数据库存储的格式也比较正常：
 
-![在这里插入图片描述](./003_mybatis%20plus%E5%9D%91%E4%B9%8B.assets/27e9b5e5aa2bf748ab90d3d521b9fd09.png)
+![在这里插入图片描述](./003_mybatis plus%E5%9D%91%E4%B9%8B.assets/27e9b5e5aa2bf748ab90d3d521b9fd09.png)
 
 
 

@@ -78,11 +78,11 @@ int main()
 
 1）GCC 内联汇编文档：
 
-[https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html](https://link.zhihu.com/?target=https%3A//gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html)
+[https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html](https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html)
 
 2）[MSVC](https://zhida.zhihu.com/search?content_id=259020195&content_type=Article&match_order=1&q=MSVC&zhida_source=entity) 内联汇编指南：
 
-[https://docs.microsoft.com/en-us/cpp/assembler/inline/inline-assembler?view=msvc-170](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/en-us/cpp/assembler/inline/inline-assembler%3Fview%3Dmsvc-170)
+[https://docs.microsoft.com/en-us/cpp/assembler/inline/inline-assembler?view=msvc-170](https://docs.microsoft.com/en-us/cpp/assembler/inline/inline-assembler?view=msvc-170)
 
 ### **3.2 使用Intrinsics函数**
 
@@ -111,7 +111,7 @@ _mm，表示这是一个64位/128位的指令，_mm256和_mm512则表示是256�
 
 1）Intel 指令集参考:
 
-[https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html](https://link.zhihu.com/?target=https%3A//www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html)
+[https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html)
 
 ### **3.3 编译器支持，自动的代码优化**
 

@@ -215,7 +215,7 @@ CUDA是一个并行运算的一个计算平台，而CuDNN是在上面的一个�
 
 下载CUDA，这个是cuda-10.0的版本，如果安装别的版本，也可以在这里找。
 
-链接：[https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/cuda-10.0-download-archive%3Ftarget_os%3DWindows%26target_arch%3Dx86_64%26target_version%3D10%26target_type%3Dexelocal)
+链接：[https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal](https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal)
 
 下载完成后，打开下载的驱动， 开始安装。这里选择自定义安装：
 
@@ -405,7 +405,7 @@ show_channel_urls: true
 
 把vpn关掉，然后好使了。
 
-接下来安装torch和torchvision， 进入下面这个网站: [http://download.pytorch.org/whl/torch_stable.html](https://link.zhihu.com/?target=http%3A//download.pytorch.org/whl/torch_stable.html)， 找符合系统版本、cuda版本的torch，采用搜索的方式找
+接下来安装torch和torchvision， 进入下面这个网站: [http://download.pytorch.org/whl/torch_stable.html](http://download.pytorch.org/whl/torch_stable.html)， 找符合系统版本、cuda版本的torch，采用搜索的方式找
 
 
 

@@ -38,14 +38,14 @@ GPA算法的流程 [5]
 
 参考文献
 
-[1][https://en.wikipedia.org/wiki/Procrustes_analysis](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Procrustes_analysis)
+[1][https://en.wikipedia.org/wiki/Procrustes_analysis](https://en.wikipedia.org/wiki/Procrustes_analysis)
 
-[2][https://en.wikipedia.org/wiki/Orthogonal_Procrustes_problem](https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Orthogonal_Procrustes_problem)
+[2][https://en.wikipedia.org/wiki/Orthogonal_Procrustes_problem](https://en.wikipedia.org/wiki/Orthogonal_Procrustes_problem)
 
-[3][Affine transformation · Issue #18 · Fengdalu/LipNet-PyTorch](https://link.zhihu.com/?target=https%3A//github.com/Fengdalu/LipNet-PyTorch/issues/18)
+[3][Affine transformation · Issue #18 · Fengdalu/LipNet-PyTorch](https://github.com/Fengdalu/LipNet-PyTorch/issues/18)
 
-[4][https://github.com/davisking/dlib/blob/883101477d2485ae6e0e8499ec0eefb8382fcb5a/dlib/image_transforms/interpolation.h](https://link.zhihu.com/?target=https%3A//github.com/davisking/dlib/blob/883101477d2485ae6e0e8499ec0eefb8382fcb5a/dlib/image_transforms/interpolation.h)
+[4][https://github.com/davisking/dlib/blob/883101477d2485ae6e0e8499ec0eefb8382fcb5a/dlib/image_transforms/interpolation.h](https://github.com/davisking/dlib/blob/883101477d2485ae6e0e8499ec0eefb8382fcb5a/dlib/image_transforms/interpolation.h)
 
-[5][https://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_shape_spaces_imm403.pdf](https://link.zhihu.com/?target=https%3A//graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_shape_spaces_imm403.pdf)
+[5][https://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_shape_spaces_imm403.pdf](https://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_shape_spaces_imm403.pdf)
 
-[6][Animating and Smoothing 3D Facial Keypoints](https://link.zhihu.com/?target=https%3A//www.kaggle.com/selfishgene/animating-and-smoothing-3d-facial-keypoints/notebook)
+[6][Animating and Smoothing 3D Facial Keypoints](https://www.kaggle.com/selfishgene/animating-and-smoothing-3d-facial-keypoints/notebook)

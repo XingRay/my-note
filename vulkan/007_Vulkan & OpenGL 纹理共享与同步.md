@@ -10,7 +10,7 @@
 
 软件渲染器的结果(pixel buffer)在 CPU 端，通过 `glTexSubImage2D` 上传到 OpenGL 纹理，OpenGL 渲染器则是直接将 Color Attachment 作为纹理，不需要额外操作，而 Vulkan 渲染器则先通过 `vkCmdCopyImage` 将渲染结果 copy 到一个 host visible 的 vkImage，然后 map 到 CPU 端的 [pixel buffer](https://zhida.zhihu.com/search?content_id=226109146&content_type=Article&match_order=2&q=pixel+buffer&zhida_source=entity)，再通过 `glTexSubImage2D` 上传，如图中的红色箭头都是耗时操作，那么既然 Vulkan 纹理数据本身就在 GPU 端，有没有办法不饶回 CPU 端，而是直接提交给 OpenGL 呢？或者 Vulkan 与 OpenGL 双方共享同一份纹理数据，一边读一边写？
 
-答案是肯定的，目前可以通过扩展来实现 Vulkan 与 OpenGL 的纹理共享，这里参考 [gl_vk_simple_interop](https://link.zhihu.com/?target=https%3A//github.com/nvpro-samples/gl_vk_simple_interop) 来实现，主要分为纹理共享和同步两部分:
+答案是肯定的，目前可以通过扩展来实现 Vulkan 与 OpenGL 的纹理共享，这里参考 [gl_vk_simple_interop](https://github.com/nvpro-samples/gl_vk_simple_interop) 来实现，主要分为纹理共享和同步两部分:
 
 
 
@@ -22,8 +22,8 @@
 
 纹理共享主要通过这两个扩展来实现：
 
-- Vulkan [VK_KHR_external_memory](https://link.zhihu.com/?target=https%3A//registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_external_memory.html)
-- OpenGL [GL_EXT_memory_object](https://link.zhihu.com/?target=https%3A//registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt)
+- Vulkan [VK_KHR_external_memory](https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_external_memory.html)
+- OpenGL [GL_EXT_memory_object](https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt)
 
 首先我们定义数据结构：
 
@@ -99,8 +99,8 @@ GL_CHECK(glTextureStorageMem2DEXT(texture, levels, internalFormat, width, height
 
 正好，这了又有另一个扩展来实现：
 
-- Vulkan [VK_KHR_external_semaphore](https://link.zhihu.com/?target=https%3A//registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_external_semaphore.html)
-- OpenGL [GL_EXT_semaphore](https://link.zhihu.com/?target=https%3A//registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt)
+- Vulkan [VK_KHR_external_semaphore](https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_external_semaphore.html)
+- OpenGL [GL_EXT_semaphore](https://registry.khronos.org/OpenGL/extensions/EXT/EXT_external_objects.txt)
 
 整体逻辑和前面的纹理共享类似，首先定义数据结构：
 
@@ -172,6 +172,6 @@ void signalGLComplete() {
 
 完整的代码详见 Github ：
 
-[SoftGLRendergithub.com/keith2018/SoftGLRender](https://link.zhihu.com/?target=https%3A//github.com/keith2018/SoftGLRender)
+[SoftGLRendergithub.com/keith2018/SoftGLRender](https://github.com/keith2018/SoftGLRender)
 
-实现逻辑主要在 [VKGLInterop](https://link.zhihu.com/?target=https%3A//github.com/keith2018/SoftGLRender/blob/master/src/Render/Vulkan/VKGLInterop.h) 这个类，欢迎 star ~
+实现逻辑主要在 [VKGLInterop](https://github.com/keith2018/SoftGLRender/blob/master/src/Render/Vulkan/VKGLInterop.h) 这个类，欢迎 star ~

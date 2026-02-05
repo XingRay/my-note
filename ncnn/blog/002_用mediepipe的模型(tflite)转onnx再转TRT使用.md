@@ -16,7 +16,7 @@ github.com/google/mediapipe
 
 
 
-https://link.zhihu.com/?target=https%3A//github.com/google/mediapipe
+https://github.com/google/mediapipe
 
 ![img](assets/002/v2-bdbb16cff4419cbaddc9c3f0c64509bd_720w.webp)
 
@@ -30,7 +30,7 @@ https://link.zhihu.com/?target=https%3A//github.com/google/mediapipe
 
 
 
-https://link.zhihu.com/?target=https%3A//github.com/google/mediapipe/tree/master/mediapipe/modules/palm_detection
+https://github.com/google/mediapipe/tree/master/mediapipe/modules/palm_detection
 
 
 
@@ -44,7 +44,7 @@ github.com/onnx/tensorflow-onnx.git
 
 
 
-https://link.zhihu.com/?target=https%3A//github.com/onnx/tensorflow-onnx.git
+https://github.com/onnx/tensorflow-onnx.git
 
 
 
@@ -106,7 +106,7 @@ github.com/daquexian/onnx-simplifier.git
 
 
 
-https://link.zhihu.com/?target=https%3A//github.com/daquexian/onnx-simplifier.git)
+https://github.com/daquexian/onnx-simplifier.git)
 
 ![img](assets/002/v2-25cfbd9db6c36c2cd60b9ae6a834f6ac_720w.png)
 

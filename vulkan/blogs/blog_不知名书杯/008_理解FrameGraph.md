@@ -141,7 +141,7 @@ Frame Graph总的来说像是DSL语言一样，开发者这只需要定义好这
 
 [游戏引擎随笔 0x03：可扩展的渲染管线架构](https://zhuanlan.zhihu.com/p/70668533)
 
-[Render graphs and Vulkan — a deep dive](https://link.zhihu.com/?target=https%3A//themaister.net/blog/2017/08/15/render-graphs-and-vulkan-a-deep-dive/)
+[Render graphs and Vulkan — a deep dive](https://themaister.net/blog/2017/08/15/render-graphs-and-vulkan-a-deep-dive/)
 
 [FrameGraph|设计&基于DX12实现](https://zhuanlan.zhihu.com/p/147207161)
 
@@ -149,5 +149,5 @@ Frame Graph总的来说像是DSL语言一样，开发者这只需要定义好这
 
 [Render Graph in DirectX 12](https://zhuanlan.zhihu.com/p/101318415)
 
-[FrameGraph: Extensible Rendering Architecture in Frostbite](https://link.zhihu.com/?target=https%3A//www.gdcvault.com/play/1024612/FrameGraph-Extensible-Rendering-Architecture-in)
+[FrameGraph: Extensible Rendering Architecture in Frostbite](https://www.gdcvault.com/play/1024612/FrameGraph-Extensible-Rendering-Architecture-in)
 

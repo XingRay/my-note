@@ -170,14 +170,14 @@ VR都是使用了2条strip，左右眼各一个。而这就是VR的默认刷新�
 
 ## **参考**
 
-[http://www.wowotech.net/display/crt_intro.html](https://link.zhihu.com/?target=http%3A//www.wowotech.net/display/crt_intro.html)
+[http://www.wowotech.net/display/crt_intro.html](http://www.wowotech.net/display/crt_intro.html)
 
 https://zhuanlan.zhihu.com/p/41848908
 
-[通过使用单buffer strip渲染来减少移动VR中的延迟](https://link.zhihu.com/?target=https%3A//www.sohu.com/a/78851635_335284)
+[通过使用单buffer strip渲染来减少移动VR中的延迟](https://www.sohu.com/a/78851635_335284)
 
-[https://blog.csdn.net/wangxueming/article/details/64457436](https://link.zhihu.com/?target=https%3A//blog.csdn.net/wangxueming/article/details/64457436)
+[https://blog.csdn.net/wangxueming/article/details/64457436](https://blog.csdn.net/wangxueming/article/details/64457436)
 
-[【中字】慢镜头下的电视工作原理科普（CRT/LED/OLED)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://link.zhihu.com/?target=https%3A//www.bilibili.com/video/BV1fW411K7ik%3Ft%3D7)
+[【中字】慢镜头下的电视工作原理科普（CRT/LED/OLED)_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/BV1fW411K7ik?t=7)
 
 编辑于 2022-06-17 18:01

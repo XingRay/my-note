@@ -6,7 +6,7 @@ Vulkan是一个跨平台的2D和3D绘图应用程序接口（API），最早由[
 
 通过浏览
 
-[https://github.com/Overv/VulkanTutorial.gitgithub.com/Overv/VulkanTutorial.git](https://link.zhihu.com/?target=https%3A//github.com/Overv/VulkanTutorial.git)
+[https://github.com/Overv/VulkanTutorial.gitgithub.com/Overv/VulkanTutorial.git](https://github.com/Overv/VulkanTutorial.git)
 
 上面的29讲，结合之前写mesa umd驱动，阅读[mesa](https://zhida.zhihu.com/search?content_id=183772641&content_type=Article&match_order=2&q=mesa&zhida_source=entity)源码，外加OpenGL经验算是对Vulka入了门。
 
@@ -107,4 +107,4 @@ int main()
 
 笔者对Vulkan做了封装处理，全代码请访问
 
-[https://github.com/ccsdu2004/vulkan-cpp-demogithub.com/ccsdu2004/vulkan-cpp-demo](https://link.zhihu.com/?target=https%3A//github.com/ccsdu2004/vulkan-cpp-demo)
+[https://github.com/ccsdu2004/vulkan-cpp-demogithub.com/ccsdu2004/vulkan-cpp-demo](https://github.com/ccsdu2004/vulkan-cpp-demo)

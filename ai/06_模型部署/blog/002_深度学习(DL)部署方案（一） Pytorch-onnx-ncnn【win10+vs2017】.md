@@ -34,7 +34,7 @@ pip install tqdm
 pip install onnx onnxruntime onnx-simplifier
 ```
 
-5. 下载 protobuf-3.4.0 [https://github.com/google/protobuf/archive/v3.4.0.zip](https://link.zhihu.com/?target=https%3A//github.com/google/protobuf/archive/v3.4.0.zip) ，同时下载安装好cmake（官网[Download | CMake](https://link.zhihu.com/?target=https%3A//cmake.org/download/) ），下一步会用到。强调下**5、6、7**三步的安装也可参考官网哈：（[how to build · Tencent/ncnn Wiki (github.com)](https://link.zhihu.com/?target=https%3A//github.com/Tencent/ncnn/wiki/how-to-build%23build-for-windows-x64-using-visual-studio-community-2017)）
+5. 下载 protobuf-3.4.0 [https://github.com/google/protobuf/archive/v3.4.0.zip](https://github.com/google/protobuf/archive/v3.4.0.zip) ，同时下载安装好cmake（官网[Download | CMake](https://cmake.org/download/) ），下一步会用到。强调下**5、6、7**三步的安装也可参考官网哈：（[how to build · Tencent/ncnn Wiki (github.com)](https://github.com/Tencent/ncnn/wiki/how-to-build%23build-for-windows-x64-using-visual-studio-community-2017)）
 
 ![img](./assets/v2-07d4ac30d7d15de5396d7f70d16b9049_1440w.webp)
 
@@ -100,11 +100,11 @@ libprotobuf.lib
 opencv_world346.lib 
 ```
 
-注：我的是opencv3.4.6，所以添加opencv_world346.lib ，根据自己的版本来。对于opencv在vs的配置其实可以看看官网，了解下全局配置和局部配置的区别，也方便以后运用，这里就不多说了，放个链接吧： [OpenCV: How to build applications with OpenCV inside the "Microsoft Visual Studio"](https://link.zhihu.com/?target=https%3A//docs.opencv.org/master/dd/d6e/tutorial_windows_visual_studio_opencv.html)
+注：我的是opencv3.4.6，所以添加opencv_world346.lib ，根据自己的版本来。对于opencv在vs的配置其实可以看看官网，了解下全局配置和局部配置的区别，也方便以后运用，这里就不多说了，放个链接吧： [OpenCV: How to build applications with OpenCV inside the "Microsoft Visual Studio"](https://docs.opencv.org/master/dd/d6e/tutorial_windows_visual_studio_opencv.html)
 
 本部分配置也可参考如下：
 
-[（一）ncnn | Windows10 + VS2019环境配置blog.csdn.net/Skies_/article/details/109318667![img](./assets/v2-28633f736abcbf57b96c899c854a2832_180x120.jpg)](https://link.zhihu.com/?target=https%3A//blog.csdn.net/Skies_/article/details/109318667)
+[（一）ncnn | Windows10 + VS2019环境配置blog.csdn.net/Skies_/article/details/109318667![img](./assets/v2-28633f736abcbf57b96c899c854a2832_180x120.jpg)](https://blog.csdn.net/Skies_/article/details/109318667)
 
 到此安装配置基本完成了。**需要注意的是，在VS2017的运行窗口栏处依次选择Release和x64，与上面的选择对应。**这个后面还会再提。
 
@@ -220,13 +220,13 @@ class mobileNetv2(nn.Module):
 
 完整的基于mobilenetv2实现猫狗分类任务代码可在我的github中下载：
 
-[REN-HT/MobileNetv2github.com/REN-HT/MobileNetv2![img](./assets/v2-8efcbb777466c2239da7f0baa0cb1f74_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/REN-HT/MobileNetv2)
+[REN-HT/MobileNetv2github.com/REN-HT/MobileNetv2![img](./assets/v2-8efcbb777466c2239da7f0baa0cb1f74_ipico.jpg)](https://github.com/REN-HT/MobileNetv2)
 
 **5、mobilenetv2.pth转mobilenetv2.onnx及验证**
 
 当完成模型训练后可以得到mobilenetv2.pth需要利用以下代码来转化为mobilenetv2.onnx，对于这部分内容也可参考pytorch官网的教程：
 
-[torch.onnx — PyTorch 1.8.1 documentationpytorch.org/docs/stable/onnx.html](https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/onnx.html)
+[torch.onnx — PyTorch 1.8.1 documentationpytorch.org/docs/stable/onnx.html](https://pytorch.org/docs/stable/onnx.html)
 
 ```text
 import torch
@@ -282,7 +282,7 @@ print(outputs)
 
 注：上一步是因为当我们在vs 运行代码可能遇到find_blob_index_by_name data failed这个问题，这儿有解释：
 
-[pytorch模型find_blob_index_by_name data failed 怎么解决 · Issue #868 · Tencent/ncnngithub.com/Tencent/ncnn/issues/868![img](./assets/v2-f7e555885da850c975679ac2dcf22089_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/Tencent/ncnn/issues/868)
+[pytorch模型find_blob_index_by_name data failed 怎么解决 · Issue #868 · Tencent/ncnngithub.com/Tencent/ncnn/issues/868![img](./assets/v2-f7e555885da850c975679ac2dcf22089_ipico.jpg)](https://github.com/Tencent/ncnn/issues/868)
 
 **7、ncnn在win10+vs2017环境下实现分类任务**
 
@@ -374,26 +374,26 @@ ex.extract(mobilenetv2_param_id::BLOB_output, out);
 
 这上面整段代码理解可以参考这儿：
 
-[Tencent/ncnngithub.com/Tencent/ncnn/wiki/use-ncnn-with-alexnet.zh![img](./assets/v2-f7e555885da850c975679ac2dcf22089_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/Tencent/ncnn/wiki/use-ncnn-with-alexnet.zh)
+[Tencent/ncnngithub.com/Tencent/ncnn/wiki/use-ncnn-with-alexnet.zh![img](./assets/v2-f7e555885da850c975679ac2dcf22089_ipico.jpg)](https://github.com/Tencent/ncnn/wiki/use-ncnn-with-alexnet.zh)
 
 整体流程到这儿基本就完了，当然如果你熟悉掌握的话，可以做很多改动。很多东西在我这儿也许可以，到你那儿可能不行，需要大家自行查阅。
 
 下面是网上的一段代码，在VS2017下实现yolo-fastest目标检测可直接运行：
 
-[REN-HT/yolo-fastest-ncnngithub.com/REN-HT/yolo-fastest-ncnn![img](./assets/v2-8efcbb777466c2239da7f0baa0cb1f74_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/REN-HT/yolo-fastest-ncnn)
+[REN-HT/yolo-fastest-ncnngithub.com/REN-HT/yolo-fastest-ncnn![img](./assets/v2-8efcbb777466c2239da7f0baa0cb1f74_ipico.jpg)](https://github.com/REN-HT/yolo-fastest-ncnn)
 
 模型文件去这儿下载：
 
-[Yolo-Fastest/sample/ncnn/model at master · dog-qiuqiu/Yolo-Fastest (github.com)github.com/dog-qiuqiu/Yolo-Fastest/tree/master/sample/ncnn/model](https://link.zhihu.com/?target=https%3A//github.com/dog-qiuqiu/Yolo-Fastest/tree/master/sample/ncnn/model)
+[Yolo-Fastest/sample/ncnn/model at master · dog-qiuqiu/Yolo-Fastest (github.com)github.com/dog-qiuqiu/Yolo-Fastest/tree/master/sample/ncnn/model](https://github.com/dog-qiuqiu/Yolo-Fastest/tree/master/sample/ncnn/model)
 
 本文参考：
 
-[Tencent/ncnngithub.com/Tencent/ncnn![img](./assets/v2-f7e555885da850c975679ac2dcf22089_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/Tencent/ncnn)
+[Tencent/ncnngithub.com/Tencent/ncnn![img](./assets/v2-f7e555885da850c975679ac2dcf22089_ipico.jpg)](https://github.com/Tencent/ncnn)
 
-[dog-qiuqiu/Yolo-Fastestgithub.com/dog-qiuqiu/Yolo-Fastest![img](./assets/v2-d503718a0e935042f3877437865ded6b_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/dog-qiuqiu/Yolo-Fastest)
+[dog-qiuqiu/Yolo-Fastestgithub.com/dog-qiuqiu/Yolo-Fastest![img](./assets/v2-d503718a0e935042f3877437865ded6b_ipico.jpg)](https://github.com/dog-qiuqiu/Yolo-Fastest)
 
-[（一）ncnn | Windows10 + VS2019环境配置blog.csdn.net/Skies_/article/details/109318667![img](./assets/v2-28633f736abcbf57b96c899c854a2832_180x120.jpg)](https://link.zhihu.com/?target=https%3A//blog.csdn.net/Skies_/article/details/109318667)
+[（一）ncnn | Windows10 + VS2019环境配置blog.csdn.net/Skies_/article/details/109318667![img](./assets/v2-28633f736abcbf57b96c899c854a2832_180x120.jpg)](https://blog.csdn.net/Skies_/article/details/109318667)
 
-[torch.onnx — PyTorch 1.8.1 documentationpytorch.org/docs/stable/onnx.html](https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/onnx.html)
+[torch.onnx — PyTorch 1.8.1 documentationpytorch.org/docs/stable/onnx.html](https://pytorch.org/docs/stable/onnx.html)
 
 **如果文本对你有用，欢迎点赞+关注噢！**

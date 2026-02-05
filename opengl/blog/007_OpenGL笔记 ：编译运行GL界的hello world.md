@@ -18,7 +18,7 @@ OpenGL是一种程序[编程接口](https://zhida.zhihu.com/search?content_id=21
 
 参考《OpenGL编程指南 9th》以及对应的代码仓库
 
-[openglredbook/examples: Examples for the OpenGL Red Book (github.com)](https://link.zhihu.com/?target=https%3A//github.com/openglredbook/examples)
+[openglredbook/examples: Examples for the OpenGL Red Book (github.com)](https://github.com/openglredbook/examples)
 
 本篇文章主要是解析下述代码，提一些自己的理解和认识。
 

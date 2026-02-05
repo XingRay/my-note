@@ -142,11 +142,11 @@ Vulkan不同的内存类型有不同的使用场景：
 1. Vulkan Programming Guide
 2. Vulkan Cookbook
 3. Learning Vulkan
-4. [Vulkan® 1.1.148 - A Specification](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
-5. [Image Layout Transition](https://link.zhihu.com/?target=https%3A//vulkan.lunarg.com/doc/sdk/1.2.141.2/linux/tutorial/html/10-init_render_pass.html)
-6. [Vulkan Memory Management](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/vulkan-memory-management)
-7. [USING VULKAN DEVICE MEMORY](https://link.zhihu.com/?target=https%3A//gpuopen.com/learn/vulkan-device-memory/)
-8. [What’s your Vulkan Memory Type?](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/what%E2%80%99s-your-vulkan-memory-type)
+4. [Vulkan® 1.1.148 - A Specification](https://www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
+5. [Image Layout Transition](https://vulkan.lunarg.com/doc/sdk/1.2.141.2/linux/tutorial/html/10-init_render_pass.html)
+6. [Vulkan Memory Management](https://developer.nvidia.com/vulkan-memory-management)
+7. [USING VULKAN DEVICE MEMORY](https://gpuopen.com/learn/vulkan-device-memory/)
+8. [What’s your Vulkan Memory Type?](https://developer.nvidia.com/what%E2%80%99s-your-vulkan-memory-type)
 
 
 

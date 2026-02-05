@@ -96,7 +96,7 @@ Android窗口主要分为两种：
 
 应用客户端：**Window**（可包含多个**View**，一个PhoneWindow对应一个DecorView）
 
-Framework客户端： **ViewRootImpl**，（同一应用多个窗口可能共用WindowManager，比如dialog的mWindowManager变量其实就是Activity对象的mWindowManager变量，从而获得mParentWindow,从而与Activity相关联*[http://blog.csdn.net/mr_liabill/article/details/49966479](https://link.zhihu.com/?target=http%3A//blog.csdn.net/mr_liabill/article/details/49966479)* ）
+Framework客户端： **ViewRootImpl**，（同一应用多个窗口可能共用WindowManager，比如dialog的mWindowManager变量其实就是Activity对象的mWindowManager变量，从而获得mParentWindow,从而与Activity相关联*[http://blog.csdn.net/mr_liabill/article/details/49966479](http://blog.csdn.net/mr_liabill/article/details/49966479)* ）
 
 Framework服务端：**WindowState**
 
@@ -141,7 +141,7 @@ Vsync的回调函数最终会调用performTraversals，其分为三步，分别�
 
 ### 2.1 Actvity窗口绘制流程
 
-（以下参考[http://blog.csdn.net/luoshengyang/article/details/45601143](https://link.zhihu.com/?target=http%3A//blog.csdn.net/luoshengyang/article/details/45601143)）
+（以下参考[http://blog.csdn.net/luoshengyang/article/details/45601143](http://blog.csdn.net/luoshengyang/article/details/45601143)）
 
 如上节所述，Activity窗口的UI绘制操作分为三步来走，分别是测量、布局和绘制。
 
@@ -385,7 +385,7 @@ Android在很早就推出了SurfaceView，目前Video播放仍然使用SurfaceVi
 
 ### 3.2.2 OpenGL环境初始化
 
-因此在每当有新的Activity窗口启动时，系统都会为其初始化好Open GL环境。Open GL环境也称为Open GL渲染上下文。一个Open GL渲染上下文只能与一个线程关联。在一个Open GL渲染上下文创建的Open GL对象一般来说只能在关联的Open GL线程中操作。这样就可以避免发生多线程并发访问发生的冲突问题。这与大多数的UI[架构](https://link.zhihu.com/?target=http%3A//lib.csdn.net/base/16)限制UI操作只能发生在UI线程的原理是差不多的。从Android 5.0之后，Android应用程序的Open GL线程就独立出来了，称为Render Thread，如图7所示：
+因此在每当有新的Activity窗口启动时，系统都会为其初始化好Open GL环境。Open GL环境也称为Open GL渲染上下文。一个Open GL渲染上下文只能与一个线程关联。在一个Open GL渲染上下文创建的Open GL对象一般来说只能在关联的Open GL线程中操作。这样就可以避免发生多线程并发访问发生的冲突问题。这与大多数的UI[架构](http://lib.csdn.net/base/16)限制UI操作只能发生在UI线程的原理是差不多的。从Android 5.0之后，Android应用程序的Open GL线程就独立出来了，称为Render Thread，如图7所示：
 
 **1.** Render Thread有一个Task Queue，Main Thread通过一个代理对象Render Proxy向这个Task Queue发送一个**drawFrame**命令，从而驱使Render Thread执行一次渲染操作。因此，Android应用程序UI硬件加速渲染环境的初始化过程任务**之一**就是要**创建一个Render Thread**。
 

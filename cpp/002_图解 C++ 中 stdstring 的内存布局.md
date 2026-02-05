@@ -154,7 +154,7 @@ cout << " 2. " << std::hex << *(pword + 2) << endl;
 
 ### 堆大小
 
-还有个问题，`0x8000000000000020` 这里的最低位字节 `0x20`（32）是什么（前面图中已经剧透）？凭目前的代码及输出结果，还无法推测。我在这个 [Stackoverflow](https://link.zhihu.com/?target=https%3A//stackoverflow.com/a/9132610/4957516) 回答里看到了线索：
+还有个问题，`0x8000000000000020` 这里的最低位字节 `0x20`（32）是什么（前面图中已经剧透）？凭目前的代码及输出结果，还无法推测。我在这个 [Stackoverflow](https://stackoverflow.com/a/9132610/4957516) 回答里看到了线索：
 
 > Two common implementations are storing 3 pointers (begin of the allocated region and data, end of data, end of allocated region) or a pointer (begin of allocated region and data) and two integers (number of characters in the string and number of allocated bytes).
 
@@ -279,6 +279,6 @@ std::string 的内存分布
 
 注意：以上的测试基于我当前使用的编译器，根据 StackOverflow 的一些回答，其他的编译器可能有不同的存储策略，本文暂不涉及。
 
-文中涉及到的完整代码请参考 [GitHub Gist](https://link.zhihu.com/?target=https%3A//gist.github.com/ioslh/c00a490625cdbaff600800938a39c059)。
+文中涉及到的完整代码请参考 [GitHub Gist](https://gist.github.com/ioslh/c00a490625cdbaff600800938a39c059)。
 
-文章原始地址：[C++ 中 std::string 的内存布局](https://link.zhihu.com/?target=https%3A//lianghua.dev/posts/cpp-string/)
+文章原始地址：[C++ 中 std::string 的内存布局](https://lianghua.dev/posts/cpp-string/)

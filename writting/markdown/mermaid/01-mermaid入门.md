@@ -4,7 +4,7 @@
 
 Generation of diagrams and flowcharts from text in a similar manner as markdown.
 
-网址：[https://mermaidjs.github.io/](https://links.jianshu.com/go?to=https%3A%2F%2Fmermaidjs.github.io%2F)
+网址：[https://mermaidjs.github.io/](https://links.jianshu.com/go?to=https://mermaidjs.github.io/)
 
 https://mermaid.js.org/intro/
 

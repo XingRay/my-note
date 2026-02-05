@@ -22,11 +22,11 @@ ONNX有两个官方的ONNX变体（variants），ONNX和ONNX-ML。ONNX-ML扩展�
 
 ## **onnx 可视化**
 
-onnx模型可以通过[netron](https://link.zhihu.com/?target=https%3A//netron.app/)进行可视化。下面仅仅介绍netron在linux上的安装和使用。
+onnx模型可以通过[netron](https://netron.app/)进行可视化。下面仅仅介绍netron在linux上的安装和使用。
 
 
 
-在linux上可以下载[Netron-X.X.X.AppImage](https://link.zhihu.com/?target=https%3A//github.com/lutzroeder/netron/releases/tag/v4.6.3)文件进行安装netron，或者直接命令行snap install netronan安装。
+在linux上可以下载[Netron-X.X.X.AppImage](https://github.com/lutzroeder/netron/releases/tag/v4.6.3)文件进行安装netron，或者直接命令行snap install netronan安装。
 
 netron还支持python服务，pip install netron在python环境下安装，netron [FILE]或者netron.start('[FILE]')进行查看。
 
@@ -34,11 +34,11 @@ netron还支持python服务，pip install netron在python环境下安装，netro
 
 ## **参考**
 
-[onnxgithub.com/onnx/onnx](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx)
+[onnxgithub.com/onnx/onnx](https://github.com/onnx/onnx)
 
-[TensorFlow, PyTorch, Keras and Caffeaotu.ai/zh/blog/2020/09/28/comparison-between-common-deep-learning-frameworks/![img](./assets/v2-cb7806a4a561932fd953ffdf67c5fc8e_180x120.jpg)](https://link.zhihu.com/?target=https%3A//aotu.ai/zh/blog/2020/09/28/comparison-between-common-deep-learning-frameworks/)
+[TensorFlow, PyTorch, Keras and Caffeaotu.ai/zh/blog/2020/09/28/comparison-between-common-deep-learning-frameworks/![img](./assets/v2-cb7806a4a561932fd953ffdf67c5fc8e_180x120.jpg)](https://aotu.ai/zh/blog/2020/09/28/comparison-between-common-deep-learning-frameworks/)
 
-[Netronnetron.app/](https://link.zhihu.com/?target=https%3A//netron.app/)
+[Netronnetron.app/](https://netron.app/)
 
 
 

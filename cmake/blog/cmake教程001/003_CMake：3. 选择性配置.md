@@ -85,7 +85,7 @@ if(EXISTS "/path/to/lib")
 | 小于等于 | LESS_EQUAL    | STRLESS_EQUAL    | VERSION_LESS_EQUAL    |
 | 大于等于 | GREATER_EQUAL | STRGREATER_EQUAL | VERSION_GREATER_EQUAL |
 
-数字比较的谓词没有前缀。文本比较谓词前有 `STR` 的前缀，如 `STREQUAL`、`STRLESS`，使用方式可以参照 C/C++ 中的 [strcmp](https://link.zhihu.com/?target=https%3A//en.cppreference.com/w/c/string/byte/strcmp)。
+数字比较的谓词没有前缀。文本比较谓词前有 `STR` 的前缀，如 `STREQUAL`、`STRLESS`，使用方式可以参照 C/C++ 中的 [strcmp](https://en.cppreference.com/w/c/string/byte/strcmp)。
 
 版本号谓词稍微特殊一点，它的前缀是 `VERSION_`，如 `VERSION_EQUAL`、`VERSION_LESS`，在进行判断时会把输入的文本按照 `MAJOR.MINOR.PATCH.TWEAK` 的格式拆分成四个部分，按从前往后的顺序分别进行比较。如果不是完整的四段版本号，则会将缺失的部分替代为 0。比如 `1.3` 在判断的时候会被认为是 `1.3.0.0` 。
 

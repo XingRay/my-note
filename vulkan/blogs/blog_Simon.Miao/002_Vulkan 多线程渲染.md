@@ -380,15 +380,15 @@ image-20200730153743130.png
 
 **参考文档：**
 
-1. [Vulkan Overview](https://link.zhihu.com/?target=https%3A//www.khronos.org/vulkan/)
+1. [Vulkan Overview](https://www.khronos.org/vulkan/)
 2. Android and Vulkan - GDD China.pdf
 3. Vulkan Programming Guide
 4. Vulkan Cookbook
 5. Learning Vulkan
-6. [Vulkan Multi-Threading](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf)
-7. [Vulkan中的同步机制](https://link.zhihu.com/?target=https%3A//blog.csdn.net/yjr3426619/article/details/101371746)
-8. [Vulkan® 1.1.148 - A Specification](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
-9. [VULKAN BARRIERS EXPLAINED](https://link.zhihu.com/?target=https%3A//gpuopen.com/learn/vulkan-barriers-explained/)
+6. [Vulkan Multi-Threading](https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf)
+7. [Vulkan中的同步机制](https://blog.csdn.net/yjr3426619/article/details/101371746)
+8. [Vulkan® 1.1.148 - A Specification](https://www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
+9. [VULKAN BARRIERS EXPLAINED](https://gpuopen.com/learn/vulkan-barriers-explained/)
 10. [vulkan中的同步和缓存控制之二，barrier和event](https://zhuanlan.zhihu.com/p/80692115)
 11. [Xinzhao：vulkan中的同步和缓存控制之一，fence和semaphore](https://zhuanlan.zhihu.com/p/24817959)
 

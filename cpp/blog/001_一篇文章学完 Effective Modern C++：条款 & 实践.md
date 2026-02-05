@@ -2,7 +2,7 @@
 
 原文链接：
 
-[一篇文章学完 Effective Modern C++：条款 & 实践illurin.com/articles/effective-modern-cpp/](https://link.zhihu.com/?target=https%3A//illurin.com/articles/effective-modern-cpp/)
+[一篇文章学完 Effective Modern C++：条款 & 实践illurin.com/articles/effective-modern-cpp/](https://illurin.com/articles/effective-modern-cpp/)
 
 在阅读完 *Effective C++* 后，笔者继续阅读了原作者针对 C++11/14 而写的 *Effective Modern C++*，并结合自己的理解对原书内容进行总结归纳，写下阅读笔记以便日后参考。
 
@@ -205,7 +205,7 @@ void f2(std::initializer_list<T> param);
 f2({ 11, 23, 9 });   // 正确，ParamType 为 std::initializer_list<int>
 ```
 
-> 需要特别注意的是，2014 年 C++ 标准委员会通过了 [N3922 提案](https://link.zhihu.com/?target=https%3A//www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html)，修改了`auto`对于大括号初始化的类型推断规则。上面所提及的`auto x4{ 27 }`这行代码中，`x4`推导出的的类型已经不再是`std::initializer_list<int>`，而是`int`。
+> 需要特别注意的是，2014 年 C++ 标准委员会通过了 [N3922 提案](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html)，修改了`auto`对于大括号初始化的类型推断规则。上面所提及的`auto x4{ 27 }`这行代码中，`x4`推导出的的类型已经不再是`std::initializer_list<int>`，而是`int`。
 
 在 C++14 中，允许使用`auto`来说明函数返回值需要推导，而且 lambda 表达式也会在形参声明中用到`auto`。然而这些`auto`用法使用的是模板类型推导而非`auto`类型推导，因此也不能使用大括号括起的初始化表达式。
 

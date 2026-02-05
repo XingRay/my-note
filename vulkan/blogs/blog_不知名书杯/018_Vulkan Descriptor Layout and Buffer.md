@@ -1,6 +1,6 @@
 # Vulkan Descriptor Layout and Buffer
 
-> 这里是记录笔者Vulkan的学习记录，参照该教程[vulkan-tutorial.com](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/Drawing_a_triangle/Drawing/Command_buffers)这里是记录笔者Vulkan的学习记录，如果你想识别Vulkan相比于之前的传统图形API有什么区别和优势的话，欢迎看我的另外一篇文章[初探Vulkan](https://zhuanlan.zhihu.com/p/554631289)。相信应该能够帮助你识别Vulkan的优势所在。
+> 这里是记录笔者Vulkan的学习记录，参照该教程[vulkan-tutorial.com](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Command_buffers)这里是记录笔者Vulkan的学习记录，如果你想识别Vulkan相比于之前的传统图形API有什么区别和优势的话，欢迎看我的另外一篇文章[初探Vulkan](https://zhuanlan.zhihu.com/p/554631289)。相信应该能够帮助你识别Vulkan的优势所在。
 
 我们现在能够为每个顶点向顶点着色器传递任意的属性，但如果是[全局变量](https://zhida.zhihu.com/search?content_id=212067269&content_type=Article&match_order=1&q=全局变量&zhida_source=entity)呢？从这一章开始，我们将转向3D图形，这需要一个MVP矩阵。我们可以把它作为顶点数据，但这是对带宽和内存的浪费，而且每当变换发生变化时，我们都需要更新Vertex Buffer。但这些矩阵可能很容易在每一帧都发生变化。
 

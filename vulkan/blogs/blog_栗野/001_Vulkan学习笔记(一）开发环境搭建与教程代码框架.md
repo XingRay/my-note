@@ -1,6 +1,6 @@
 # Vulkan学习笔记(一）开发环境搭建与教程代码框架
 
-本系列文章是个人学习[https://vulkan-tutorial.com](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com) Vulkan教程的学习笔记，主要为了梳理Vulkan API各种复杂概念和状态记录了教程中重点的备忘，文中如有疏漏的部分可以去看译文和原文的内容。在这里也非常感谢fangcun010的翻译与分享。这篇文章也是系列的第一篇，主要记录的是[开发环境](https://zhida.zhihu.com/search?content_id=207755695&content_type=Article&match_order=1&q=开发环境&zhida_source=entity)搭建和教程基本代码框架的描述。在接下来一两个月中会定期发布这个系列，一直总结到教程学习结束。本系列对应的github仓库：[https://github.com/kurinokaitou/LearnVK](https://link.zhihu.com/?target=https%3A//github.com/kurinokaitou/LearnVK)
+本系列文章是个人学习[https://vulkan-tutorial.com](https://vulkan-tutorial.com) Vulkan教程的学习笔记，主要为了梳理Vulkan API各种复杂概念和状态记录了教程中重点的备忘，文中如有疏漏的部分可以去看译文和原文的内容。在这里也非常感谢fangcun010的翻译与分享。这篇文章也是系列的第一篇，主要记录的是[开发环境](https://zhida.zhihu.com/search?content_id=207755695&content_type=Article&match_order=1&q=开发环境&zhida_source=entity)搭建和教程基本代码框架的描述。在接下来一两个月中会定期发布这个系列，一直总结到教程学习结束。本系列对应的github仓库：[https://github.com/kurinokaitou/LearnVK](https://github.com/kurinokaitou/LearnVK)
 
 ### 环境配置
 
@@ -21,7 +21,7 @@
 
 **安装Vulkan SDK**
 
-Vulkan SDK在vcpkg里的版本比较旧，而且本身Vulkan SDK也有一个自己的安装管理器来自定义安装，所以我们还是使用直接到LunarG官网[https://vulkan.lunarg.com/sdk/home](https://link.zhihu.com/?target=https%3A//vulkan.lunarg.com/sdk/home)下载SDK的方式来配置Vulkan。下载安装除了本体还可以选择（VMA）Vulkan Memory Allocator来帮助管理Vulkan程序的内存。
+Vulkan SDK在vcpkg里的版本比较旧，而且本身Vulkan SDK也有一个自己的安装管理器来自定义安装，所以我们还是使用直接到LunarG官网[https://vulkan.lunarg.com/sdk/home](https://vulkan.lunarg.com/sdk/home)下载SDK的方式来配置Vulkan。下载安装除了本体还可以选择（VMA）Vulkan Memory Allocator来帮助管理Vulkan程序的内存。
 
 **通过CMake来构建项目**
 

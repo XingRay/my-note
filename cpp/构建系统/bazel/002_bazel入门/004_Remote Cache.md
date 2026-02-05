@@ -13,7 +13,7 @@ Cache本身会存储两种数据：
 - action cache，或者说实际上是一个acton->action result的map映射表
 - 一个可寻址(addressable)的输出文件存储系统
 
-[https://docs.bazel.build/versions/master/remote-caching.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/remote-caching.html) 中对Bazel Remote Cache的使用和工作有更详细的介绍，就不重复了。这里直接讲到底怎么设置一个Bazel Remote Cache Server. 在上面这个链接中提到了三种方式：
+[https://docs.bazel.build/versions/master/remote-caching.html](https://docs.bazel.build/versions/master/remote-caching.html) 中对Bazel Remote Cache的使用和工作有更详细的介绍，就不重复了。这里直接讲到底怎么设置一个Bazel Remote Cache Server. 在上面这个链接中提到了三种方式：
 
 - NGINX的WebDAV模块
 - 开源的bazel-remote
@@ -21,7 +21,7 @@ Cache本身会存储两种数据：
 
 这里我们直接选择第二种：开源的bazel-remote，以便可能的定制及更好理解内部实现。
 
-[buchgr/bazel-remote](https://link.zhihu.com/?target=https%3A//github.com/buchgr/bazel-remote/)
+[buchgr/bazel-remote](https://github.com/buchgr/bazel-remote/)
 
 这里我们不用去重新编译运行，直接下载对应的docker镜像并运行即可
 

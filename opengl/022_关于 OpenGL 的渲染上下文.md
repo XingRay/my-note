@@ -50,7 +50,7 @@ https://blog.csdn.net/shenyi0_0/article/details/109382509
 
 https://www.cnblogs.com/liuwq/p/5444641.html
 
-[OpenGL ES 共享上下文实现多线程渲染](https://cloud.tencent.com/developer/tools/blog-entry?target=http%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzIwNTIwMzAzNg%3D%3D%26mid%3D2654165674%26idx%3D1%26sn%3D5ad986771f5364b016ac45ccd301e740%26chksm%3D8cf38999bb84008fc390bbfdc6201a99f9c0a785aec6d079a96d92ee6fdc5effb4a784559792%26scene%3D21%23wechat_redirect&source=article&objectId=2357696)
+[OpenGL ES 共享上下文实现多线程渲染](https://cloud.tencent.com/developer/tools/blog-entry?target=http://mp.weixin.qq.com/s?__biz=MzIwNTIwMzAzNg==&mid=2654165674&idx=1&sn=5ad986771f5364b016ac45ccd301e740&chksm=8cf38999bb84008fc390bbfdc6201a99f9c0a785aec6d079a96d92ee6fdc5effb4a784559792&scene=21%23wechat_redirect&source=article&objectId=2357696)
 
 -- END --
 

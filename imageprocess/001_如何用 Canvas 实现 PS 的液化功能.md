@@ -30,7 +30,7 @@
 
 ### **ImageData**
 
-[ImageData](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/API/ImageData)对象中存储着canvas对象真实的像素数据，包含3个只读属性：
+[ImageData](https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData)对象中存储着canvas对象真实的像素数据，包含3个只读属性：
 
 - **width**：ImageData 实际宽度，单位是px；
 - **height**：ImageData 实际高度，单位是px；
@@ -46,11 +46,11 @@ blueComponent = imageData.data[((50 * (imageData.width * 4)) + (200 * 4)) + 2];
 
 ### **ImageData 的 API**
 
-- 创建 ImageData 可以用 [CanvasRenderingContext2D](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D)对象的创建方法 [createImageData()](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createImageData)
-- 获取 Canvas 的指定区域内的像素信息，则可以用 [getImageData()](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getImageData)
-- 将数据从已有的 ImageData 对象绘制到 Canvas 的一部分，可以用 [putImageData()](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData)
+- 创建 ImageData 可以用 [CanvasRenderingContext2D](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D)对象的创建方法 [createImageData()](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/createImageData)
+- 获取 Canvas 的指定区域内的像素信息，则可以用 [getImageData()](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getImageData)
+- 将数据从已有的 ImageData 对象绘制到 Canvas 的一部分，可以用 [putImageData()](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData)
 
-更多详细的 API 使用方式，可以参考 [MDN 的教程](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas)。
+更多详细的 API 使用方式，可以参考 [MDN 的教程](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas)。
 
 ## **图像扭曲 Image Warping**
 
@@ -220,7 +220,7 @@ https://snorpey.github.io/distort-grid/
 
 
 
-假设矩形的四点原始坐标为 o1-o4，新的坐标为 p1-p4，先将矩形进行三角剖分，划分为两个三角形 ∆o1o2o3 和 ∆o2o3o4，变换后的三角形为 ∆p1p2p3 和 ∆p2p3p4。以第一个三角形为例，通过数学计算，得到 ∆o1o2o3 到 ∆p1p2p3 的变换矩阵系数为 xm 和 ym（因为 js 中没有二维向量的概念，所以 xy 方向要分别计算。可参考该 [demo](https://link.zhihu.com/?target=http%3A//s3.amazonaws.com/canvas-warp/2009-11-01/index.html)）。
+假设矩形的四点原始坐标为 o1-o4，新的坐标为 p1-p4，先将矩形进行三角剖分，划分为两个三角形 ∆o1o2o3 和 ∆o2o3o4，变换后的三角形为 ∆p1p2p3 和 ∆p2p3p4。以第一个三角形为例，通过数学计算，得到 ∆o1o2o3 到 ∆p1p2p3 的变换矩阵系数为 xm 和 ym（因为 js 中没有二维向量的概念，所以 xy 方向要分别计算。可参考该 [demo](http://s3.amazonaws.com/canvas-warp/2009-11-01/index.html)）。
 
 
 
@@ -347,7 +347,7 @@ function getLinearSolution(
 
 
 
-我根据 distort-grid 大致复刻了它的实现，可以参考下面的 [demo](https://link.zhihu.com/?target=https%3A//codesandbox.io/s/mesh-grid-demo-g3t8ns)。（但是demo中对边界没有很好处理，比较毛糙）
+我根据 distort-grid 大致复刻了它的实现，可以参考下面的 [demo](https://codesandbox.io/s/mesh-grid-demo-g3t8ns)。（但是demo中对边界没有很好处理，比较毛糙）
 
 ![动图封面](./assets/v2-8e790590d9078d77e5ceecd32e519e29_b.jpg)
 
@@ -361,10 +361,10 @@ function getLinearSolution(
 
 在网上能搜到一些代码片段：
 
-- [https://segmentfault.com/a/1190000002393555](https://link.zhihu.com/?target=https%3A//segmentfault.com/a/1190000002393555)
-- [https://www.ucloud.cn/yun/125087.html](https://link.zhihu.com/?target=https%3A//www.ucloud.cn/yun/125087.html)
+- [https://segmentfault.com/a/1190000002393555](https://segmentfault.com/a/1190000002393555)
+- [https://www.ucloud.cn/yun/125087.html](https://www.ucloud.cn/yun/125087.html)
 
-我实现的[demo ](https://link.zhihu.com/?target=https%3A//codesandbox.io/s/liquify-demo-47mqjc)如下
+我实现的[demo ](https://codesandbox.io/s/liquify-demo-47mqjc)如下
 
 ![动图](./assets/v2-cb3eeeeb623ec8f3fd42402eaaa384c2_b.gif)
 
@@ -430,7 +430,7 @@ const ux = i - ratioX * ratioX * mc.x * (1 - dr);
 const uy = i - ratioX * ratioX * mc.x * (1 - dr);
 ```
 
-在得到 u 的坐标之后，我们利用向后映射来确定该点的像素值，这里需要用到插值计算，双线性插值和线性的插值均在 [demo](https://link.zhihu.com/?target=https%3A//codesandbox.io/s/liquify-demo-47mqjc)中有实现，这里不再赘述。
+在得到 u 的坐标之后，我们利用向后映射来确定该点的像素值，这里需要用到插值计算，双线性插值和线性的插值均在 [demo](https://codesandbox.io/s/liquify-demo-47mqjc)中有实现，这里不再赘述。
 
 
 
@@ -538,24 +538,24 @@ for (let j = startY, yLen = startY + intD; j < yLen; j += 1) {
 
 ## **参考**
 
-[warping-thesis.pdf](https://link.zhihu.com/?target=https%3A//yuque.antfin.com/attachments/lark/0/2023/pdf/291778/1690374758576-ee7b5718-7ecc-4f00-8715-838f6d4dcb4c.pdf)
+[warping-thesis.pdf](https://yuque.antfin.com/attachments/lark/0/2023/pdf/291778/1690374758576-ee7b5718-7ecc-4f00-8715-838f6d4dcb4c.pdf)
 
-[warp.pdf](https://link.zhihu.com/?target=https%3A//yuque.antfin.com/attachments/lark/0/2023/pdf/291778/1690374773357-45d6a606-eb23-437a-b27f-3234734f93dd.pdf)
+[warp.pdf](https://yuque.antfin.com/attachments/lark/0/2023/pdf/291778/1690374773357-45d6a606-eb23-437a-b27f-3234734f93dd.pdf)
 
-[https://www.cnblogs.com/riasky/p/3465133.html](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/riasky/p/3465133.html)
+[https://www.cnblogs.com/riasky/p/3465133.html](https://www.cnblogs.com/riasky/p/3465133.html)
 
 https://zhuanlan.zhihu.com/p/332199137
 
-[https://my.oschina.net/u/4357815/blog/3432257](https://link.zhihu.com/?target=https%3A//my.oschina.net/u/4357815/blog/3432257)
+[https://my.oschina.net/u/4357815/blog/3432257](https://my.oschina.net/u/4357815/blog/3432257)
 
-[https://www.ucloud.cn/yun/125087.html](https://link.zhihu.com/?target=https%3A//www.ucloud.cn/yun/125087.html)
+[https://www.ucloud.cn/yun/125087.html](https://www.ucloud.cn/yun/125087.html)
 
-[https://segmentfault.com/a/1190000002393555](https://link.zhihu.com/?target=https%3A//segmentfault.com/a/1190000002393555)
+[https://segmentfault.com/a/1190000002393555](https://segmentfault.com/a/1190000002393555)
 
 
 
 > 作者：ES2049 / Timeless
-> 文章可随意转载，但请保留此 [原文链接]([https://www.yuque.com/es2049/blog](https://link.zhihu.com/?target=https%3A//www.yuque.com/es2049/blog))。
-> 非常欢迎有激情的你加入 [ES2049 Studio]([https://es2049.studio/](https://link.zhihu.com/?target=https%3A//es2049.studio/))，简历请发送至 [caijun.hcj@alibaba-inc.com](mailto:caijun.hcj@alibaba-inc.com) 。
+> 文章可随意转载，但请保留此 [原文链接]([https://www.yuque.com/es2049/blog](https://www.yuque.com/es2049/blog))。
+> 非常欢迎有激情的你加入 [ES2049 Studio]([https://es2049.studio/](https://es2049.studio/))，简历请发送至 [caijun.hcj@alibaba-inc.com](mailto:caijun.hcj@alibaba-inc.com) 。
 
 发布于 2024-01-12 11:17・IP 属地浙江

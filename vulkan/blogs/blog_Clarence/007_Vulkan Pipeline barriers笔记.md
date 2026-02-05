@@ -117,4 +117,4 @@ Pipeline barriers 可以由memory stage和pipeline stage flag共同配置。
 
 [不知名书杯：理解Vulkan同步(Synchronization)](https://zhuanlan.zhihu.com/p/625089024)
 
-[Khronos Blog - The Khronos Group Inc](https://link.zhihu.com/?target=https%3A//www.khronos.org/blog/understanding-vulkan-synchronization)
+[Khronos Blog - The Khronos Group Inc](https://www.khronos.org/blog/understanding-vulkan-synchronization)

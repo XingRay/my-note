@@ -6,7 +6,7 @@
 
 网络上有一个很好的教程
 
-[Introduction - Vulkan Tutorial](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/)
+[Introduction - Vulkan Tutorial](https://vulkan-tutorial.com/)
 
 我会按照自己的理解意译上文，然后添加自己认知上的备注，以供后来中文母语者学习Vulkan做参考。
 
@@ -41,9 +41,9 @@ Vulkan的灵感来源于微软的Direct3D 12以及Apple的Metal。比起这两�
 
 这个教程并没有假设你有OGL或者D3D的一些概念，但是还是要求你有一些计算机图形学的知识，这里并不会讲深层次的[数学原理](https://zhida.zhihu.com/search?content_id=223802177&content_type=Article&match_order=1&q=数学原理&zhida_source=entity)。如果需要补充知识的，可以推荐几本书
 
-[Ray tracing in one weekend](https://link.zhihu.com/?target=https%3A//github.com/RayTracing/raytracing.github.io)
+[Ray tracing in one weekend](https://github.com/RayTracing/raytracing.github.io)
 
-[Physically Based Rendering book](https://link.zhihu.com/?target=https%3A//www.pbr-book.org/)
+[Physically Based Rendering book](https://www.pbr-book.org/)
 
 你可以使用C，但是教程会使用C++，因为C++有更多丰富的库可以使用。如果你喜欢，你也可以使用rust。为了更好理解和跟随，教程会调用Vulkan 的orginal C API。
 
@@ -57,11 +57,11 @@ Vulkan的灵感来源于微软的Direct3D 12以及Apple的Metal。比起这两�
 2. 使用这个概念对应的API到你的程序中
 3. 把这个概念抽象成一个helper functions
 
-当然这只是一个教程所有涵盖的，如果需要更加深入的了解其中的概念，可以直接看Vulkan的spec，Vulkan是一个全新的APIs，里面也许会有错误，你甚至可以提交改动到Khronos的仓库中[GitHub - KhronosGroup/Vulkan-Docs: The Vulkan API Specification and related tools](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Docs)。
+当然这只是一个教程所有涵盖的，如果需要更加深入的了解其中的概念，可以直接看Vulkan的spec，Vulkan是一个全新的APIs，里面也许会有错误，你甚至可以提交改动到Khronos的仓库中[GitHub - KhronosGroup/Vulkan-Docs: The Vulkan API Specification and related tools](https://github.com/KhronosGroup/Vulkan-Docs)。
 
 就像刚刚说的 Vulkan API是一个非常冗长的API，设计的冗长的原因是希望开发者可以拥有最大化的控制底层硬件的能力。这样就导致了，当你希望创建一个texture的时候，需要更多的时间和步骤。当然这个步骤是可以通过封装成helper function来完成的，这样第二次创建texture的时候就不必要再一次重复上述的步骤了。
 
 每个章节都会有对应的示例代码还有注释，并且这个教程是完全开源的，可以得到社区的贡献。
 
-[GitHub - Overv/VulkanTutorial: Tutorial for the Vulkan graphics and compute API](https://link.zhihu.com/?target=https%3A//github.com/Overv/VulkanTutorial)
+[GitHub - Overv/VulkanTutorial: Tutorial for the Vulkan graphics and compute API](https://github.com/Overv/VulkanTutorial)
 

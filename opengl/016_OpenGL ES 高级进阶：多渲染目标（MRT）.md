@@ -103,6 +103,6 @@ void main() {
 
 可以看到我们在一次渲染中同时把3种不同的效果渲染到了3个纹理上，这在一些场景下还是很有用的，可以有效地减少`draw call`次数。
 
-代码在我`github`的`OpenGLESPro`项目中，本文对应的是`SampleMultiRenderTarget`，项目链接：[github.com/kenneycode/…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fkenneycode%2FOpenGLESPro)
+代码在我`github`的`OpenGLESPro`项目中，本文对应的是`SampleMultiRenderTarget`，项目链接：[github.com/kenneycode/…](https://link.juejin.cn/?target=https://github.com/kenneycode/OpenGLESPro)
 
 感谢阅读！

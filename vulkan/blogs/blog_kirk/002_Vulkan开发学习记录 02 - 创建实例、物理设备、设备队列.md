@@ -233,11 +233,11 @@ bool isDeviceSuitable(VkPhysicalDevice device) {
 
 ## 参考
 
-[1]. [Physical devices and queue families](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/Drawing_a_triangle/Setup/Physical_devices_and_queue_families)
+[1]. [Physical devices and queue families](https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Physical_devices_and_queue_families)
 
-[2]. [https://web.engr.oregonstate.edu/~mjb/vulkan/Handouts/PhysicalDevices.1pp.pdf](https://link.zhihu.com/?target=https%3A//web.engr.oregonstate.edu/~mjb/vulkan/Handouts/PhysicalDevices.1pp.pdf)
+[2]. [https://web.engr.oregonstate.edu/~mjb/vulkan/Handouts/PhysicalDevices.1pp.pdf](https://web.engr.oregonstate.edu/~mjb/vulkan/Handouts/PhysicalDevices.1pp.pdf)
 
-[3]. [Vulkan 物理设备与队列|极客教程](https://link.zhihu.com/?target=https%3A//geek-docs.com/vulkan/vulkan-tutorial/vulkan-physical-devices-and-queue-clusters.html)
+[3]. [Vulkan 物理设备与队列|极客教程](https://geek-docs.com/vulkan/vulkan-tutorial/vulkan-physical-devices-and-queue-clusters.html)
 
-[4].[https://github.com/fangcun010/V](https://link.zhihu.com/?target=https%3A//github.com/fangcun010/VulkanTutorialCN/blob/master/Vulkan%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97.pdf)
+[4].[https://github.com/fangcun010/V](https://github.com/fangcun010/VulkanTutorialCN/blob/master/Vulkan%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97.pdf)
 

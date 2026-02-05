@@ -22,7 +22,7 @@ CmdA若满足CmdSync同步命令的srcStage/srcAccess等条件，那么他就会
 
 注意，上面的说法仅是为了理解简单，并不严谨，更多细节请参见。
 
-[https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#synchronization-implicitwww.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#synchronization-implicit](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html%23synchronization-implicit)
+[https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#synchronization-implicitwww.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#synchronization-implicit](https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html%23synchronization-implicit)
 
 回到Sub Pass问题。处于同一个Render Pass的每一个Sub Pass的Submission Order是其Sub Pass Index决定的，Index小的先发出，Index大的后发出，Sub Pass Dependency正是通过这样的Submission Order来进行同步操作的。实际录制命令的时候：
 
@@ -54,7 +54,7 @@ Sub Pass 1和Sub Pass 2之间有一个Dependency，srcStage为Color Attachment O
 
 Access Read/Write是用于保证Memory的Available与Visible的，细节参见。
 
-[https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#memory-model-availability-visibilitywww.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#memory-model-availability-visibility](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html%23memory-model-availability-visibility)
+[https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#memory-model-availability-visibilitywww.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html#memory-model-availability-visibility](https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html%23memory-model-availability-visibility)
 
 如果不过度追求细节和严谨的话，我们可以简单的认为，这样的设计是为了Local Cache的刷新，防止读到数据是过时数据，防止写入的数据无法被其他执行者看到。
 

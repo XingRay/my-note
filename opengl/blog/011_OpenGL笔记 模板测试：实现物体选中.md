@@ -73,7 +73,7 @@ glStencilMask(0xff);//禁用写入
 
 具体讯息参考
 
-[模板测试 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/04%20Advanced%20OpenGL/02%20Stencil%20testing/)
+[模板测试 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/04 Advanced OpenGL/02 Stencil testing/)
 
 
 

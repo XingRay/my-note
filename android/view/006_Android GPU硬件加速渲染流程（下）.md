@@ -68,7 +68,7 @@
 
 ### 3.3 硬件加速渲染的Display List构建过程分析
 
-在硬件加速渲染环境中，[Android](https://link.zhihu.com/?target=http%3A//lib.csdn.net/base/15)应用程序窗口的UI渲染是分两步进行的。第一步是构建Display List，发生在应用程序进程的Main Thread中；第二步是渲染Display List，发生在应用程序进程的Render Thread中。
+在硬件加速渲染环境中，[Android](http://lib.csdn.net/base/15)应用程序窗口的UI渲染是分两步进行的。第一步是构建Display List，发生在应用程序进程的Main Thread中；第二步是渲染Display List，发生在应用程序进程的Render Thread中。
 
 ### 3.3.1 何为DisplayList
 
@@ -852,7 +852,7 @@ Layer类的成员函数flush的实现如下所示：
 
 ## 4 Android 7.0（Nougat）对于hwui硬件绘制的更新
 
-Android 7.0（Nougat）中又对hwui进行了小规模重构，引入了BakedOpRenderer, FrameBuilder, LayerBuilder, RecordingCanvas等类，用宏HWUI_NEW_OPS管理。下面简单介绍下这些新成员：*[http://blog.csdn.net/jinzhuojun/article/details/54234354](https://link.zhihu.com/?target=http%3A//blog.csdn.net/jinzhuojun/article/details/54234354)*
+Android 7.0（Nougat）中又对hwui进行了小规模重构，引入了BakedOpRenderer, FrameBuilder, LayerBuilder, RecordingCanvas等类，用宏HWUI_NEW_OPS管理。下面简单介绍下这些新成员：*[http://blog.csdn.net/jinzhuojun/article/details/54234354](http://blog.csdn.net/jinzhuojun/article/details/54234354)*
 
 **RecordingCanvas**: 之前Java层的DisplayListCanvas对应native层的DisplayListCanvas。引入RecordingCanvas后，其在native层的对应物就变成了RecordingCanvas。和DisplayListCanvas类似，画在RecordingCanvas上的内容都会被记录在RenderNode的DisplayList中。
 
@@ -930,7 +930,7 @@ UI作为用户体验的核心之一，始终是Android每次升级中的重点�
 > +++ b/libs/hwui/OpenGLRenderer.cpp
 > @@ -1115,7 +1115,8 @@ void OpenGLRenderer::drawTextureLayer(Layer* layer, const Rect& rect) {
 > const float x = (int) floorf(rect.left + currentTransform().getTranslateX() + 0.5f);
-> const float y = (int) floorf([rect.top](https://link.zhihu.com/?target=http%3A//rect.top) + currentTransform().getTranslateY() + 0.5f);
+> const float y = (int) floorf([rect.top](http://rect.top) + currentTransform().getTranslateY() + 0.5f);
 >
 > --- layer->setFilter(GL_NEAREST);
 > +++ //layer->setFilter(GL_NEAREST);
@@ -944,9 +944,9 @@ UI作为用户体验的核心之一，始终是Android每次升级中的重点�
 
 主要框架参照luoshengyang，Android7.0之后代码逻辑新增参考jinzhuojun，很多图片也直接引用了这2个博主，代码则以Android 6.0为准（比较麻烦的地方在于知乎对于代码不太友好，贴上去非常难看，而且无法加粗）。
 
-*[http://blog.csdn.net/jinzhuojun/article/details/54234354](https://link.zhihu.com/?target=http%3A//blog.csdn.net/jinzhuojun/article/details/54234354)*
+*[http://blog.csdn.net/jinzhuojun/article/details/54234354](http://blog.csdn.net/jinzhuojun/article/details/54234354)*
 
-*[https://blog.csdn.net/luoshengyang/article/details/45601143](https://link.zhihu.com/?target=https%3A//blog.csdn.net/luoshengyang/article/details/45601143)*
+*[https://blog.csdn.net/luoshengyang/article/details/45601143](https://blog.csdn.net/luoshengyang/article/details/45601143)*
 
 
 

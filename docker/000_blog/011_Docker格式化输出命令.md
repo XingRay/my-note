@@ -10,7 +10,7 @@
 
 - .ID 容器ID
 - .Image 镜像ID
-- .[Command](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.centos.bz%2Ftag%2Fcommand%2F) Quoted command
+- .[Command](https://links.jianshu.com/go?to=https://www.centos.bz/tag/command/) Quoted command
 - .CreatedAt 创建容器的时间点.
 - .RunningFor 从容器创建到现在过去的时间.
 - .Ports 暴露的端口.
@@ -18,7 +18,7 @@
 - .Size 容器占用硬盘大小.
 - .Names 容器名称.
 - .Labels 容器所有的标签.
-- .Label 指定label的值 例如'{{.Label “com.docker.[swarm](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.centos.bz%2Ftag%2Fswarm%2F).cpu”}}’
+- .Label 指定label的值 例如'{{.Label “com.docker.[swarm](https://links.jianshu.com/go?to=https://www.centos.bz/tag/swarm/).cpu”}}’
 - .Mounts 挂载到这个容器的数据卷名称
 
 ## 示例：

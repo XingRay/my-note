@@ -137,7 +137,7 @@ c++复制代码for (int i = 0; i < uBlurRadius; i++) {
 
 那么为什么要这样做呢，其实这样做主要是为了渲染的效率，因为如果用两个`for循环`，那么总的就得计算`uBlurRadius * uBlurRadius`次，而如果分为两次，则总的循环次数就变为`uBlurRadius + uBlurRadius`，渲染的效率可以得到大大的提升，特别是当模糊半径比较大的时候
 
-具体如何调用，这里代码就不提出来了，可到GitHub中查看[MeanBlurFilter](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FJYangkai%2FMediaDemo%2Fblob%2Fmaster%2Fmedia%2Fsrc%2Fmain%2Fjava%2Fcom%2Fyk%2Fmedia%2Fopengles%2Frender%2Ffilter%2FMeanBlurFilter.java)
+具体如何调用，这里代码就不提出来了，可到GitHub中查看[MeanBlurFilter](https://link.juejin.cn/?target=https://github.com/JYangkai/MediaDemo/blob/master/media/src/main/java/com/yk/media/opengles/render/filter/MeanBlurFilter.java)
 
 **实现效果**
 
@@ -171,7 +171,7 @@ emmm，不慌，先来分析下为什么出现这种结果
 
 ### 二、正态分布
 
-> 正态分布（Normal distribution），也称“常态分布”，又名[高斯分布](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83%2F10145793)（Gaussian distribution），最早由[棣莫弗](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%A3%A3%E8%8E%AB%E5%BC%97)（Abraham de Moivre）在求[二项分布](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83)的渐近公式中得到。C.F.高斯在研究测量误差时从另一个角度导出了它。P.S.拉普拉斯和高斯研究了它的性质。是一个在[数学](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%95%B0%E5%AD%A6%2F107037)、物理及工程等领域都非常重要的[概率](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%A6%82%E7%8E%87)分布，在统计学的许多方面有着重大的影响力。
+> 正态分布（Normal distribution），也称“常态分布”，又名[高斯分布](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83/10145793)（Gaussian distribution），最早由[棣莫弗](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E6%A3%A3%E8%8E%AB%E5%BC%97)（Abraham de Moivre）在求[二项分布](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83)的渐近公式中得到。C.F.高斯在研究测量误差时从另一个角度导出了它。P.S.拉普拉斯和高斯研究了它的性质。是一个在[数学](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E6%95%B0%E5%AD%A6/107037)、物理及工程等领域都非常重要的[概率](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E6%A6%82%E7%8E%87)分布，在统计学的许多方面有着重大的影响力。
 
 概念性的了解即可，重要的是正态分布的一个公式，正态分布密度公式（`μ = 0`，即均值为`0`）
 
@@ -189,7 +189,7 @@ emmm，不慌，先来分析下为什么出现这种结果
 
 细心的人已经发现该公式里面有一个`σ`变量，其实`σ`表示`标准差`
 
-> 标准差（Standard Deviation） ，是离均差平方的算术[平均数](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%B9%B3%E5%9D%87%E6%95%B0%2F11031224)（即：方差）的[算术平方根](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E7%AE%97%E6%9C%AF%E5%B9%B3%E6%96%B9%E6%A0%B9%2F1944252)，用σ表示。标准差也被称为标准偏差，或者实验标准差，在[概率](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%A6%82%E7%8E%87%2F828845)统计中最常使用作为[统计分布](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E7%BB%9F%E8%AE%A1%E5%88%86%E5%B8%83%2F8478867)程度上的测量依据。
+> 标准差（Standard Deviation） ，是离均差平方的算术[平均数](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E5%B9%B3%E5%9D%87%E6%95%B0/11031224)（即：方差）的[算术平方根](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E7%AE%97%E6%9C%AF%E5%B9%B3%E6%96%B9%E6%A0%B9/1944252)，用σ表示。标准差也被称为标准偏差，或者实验标准差，在[概率](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E6%A6%82%E7%8E%87/828845)统计中最常使用作为[统计分布](https://link.juejin.cn/?target=https://baike.baidu.com/item/%E7%BB%9F%E8%AE%A1%E5%88%86%E5%B8%83/8478867)程度上的测量依据。
 >
 > 标准差是方差的算术平方根。标准差能反映一个数据集的离散程度。平均数相同的两组数据，标准差未必相同。
 
@@ -277,7 +277,7 @@ void main(){
 
 有一点需要注意的是，`GLSL`中，不能传入不定长的数组，而当我们需要改变`模糊半径`时，得重新计算`高斯模糊权重`，所以这里笔者分为`两个部分`计算，`Java部分`根据模糊半径计算`总权重值`传入`GLSL`，`片元着色器`中，根据`for循环`，计算对应的`权重值`，这样就可以满足我们的需求
 
-具体的调用代码这里就不贴出来了，可以到`GitHub`中查看[GaussianBlurFilter](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FJYangkai%2FMediaDemo%2Fblob%2Fmaster%2Fmedia%2Fsrc%2Fmain%2Fjava%2Fcom%2Fyk%2Fmedia%2Fopengles%2Frender%2Ffilter%2FGaussianBlurFilter.java)
+具体的调用代码这里就不贴出来了，可以到`GitHub`中查看[GaussianBlurFilter](https://link.juejin.cn/?target=https://github.com/JYangkai/MediaDemo/blob/master/media/src/main/java/com/yk/media/opengles/render/filter/GaussianBlurFilter.java)
 
 **实现效果**
 
@@ -311,4 +311,4 @@ uBlurOffset = 5
 
 ### GitHub
 
-欢迎Star，[MediaDemo](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FJYangkai%2FMediaDemo)
+欢迎Star，[MediaDemo](https://link.juejin.cn/?target=https://github.com/JYangkai/MediaDemo)

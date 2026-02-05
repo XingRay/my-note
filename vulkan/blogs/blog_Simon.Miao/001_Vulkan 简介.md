@@ -162,7 +162,7 @@ image-20200729181525457.png
 
 
 
-视频地址：[PowerVR Rogue GPUs running Gnome Horde demo](https://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Ftime_continue%3D26%26v%3DP_I8an8jXuM%26feature%3Demb_logo)
+视频地址：[PowerVR Rogue GPUs running Gnome Horde demo](https://www.youtube.com/watch?time_continue=26&v=P_I8an8jXuM&feature=emb_logo)
 
 ## 3. Vulkan 适用范围
 
@@ -252,14 +252,14 @@ Vulkan虽然可以支持多平台，但是因为Vulkan extension（扩展）仍�
 
 **参考文档：**
 
-1. [Vulkan Overview](https://link.zhihu.com/?target=https%3A//www.khronos.org/vulkan/)
+1. [Vulkan Overview](https://www.khronos.org/vulkan/)
 2. Android and Vulkan - GDD China.pdf
 3. Vulkan Programming Guide
 4. Vulkan Cookbook
 5. Learning Vulkan
-6. [Transitioning from OpenGL to Vulkan](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/transitioning-opengl-vulkan)
-7. [Vulkan Multi-Threading](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf)
-8. [功成身退：AMD Mantle不再优化了](https://link.zhihu.com/?target=https%3A//news.mydrivers.com/1/438/438035.htm)
+6. [Transitioning from OpenGL to Vulkan](https://developer.nvidia.com/transitioning-opengl-vulkan)
+7. [Vulkan Multi-Threading](https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf)
+8. [功成身退：AMD Mantle不再优化了](https://news.mydrivers.com/1/438/438035.htm)
 
 **本系列文章汇总：**
 

@@ -1,6 +1,6 @@
 # 经典卷积网络（一）-AlexNet、VGG、GoogleNet（inception）
 
-## **一、 AlexNet及一些基本理解（总结自csdn [chaibubble](https://link.zhihu.com/?target=https%3A//blog.csdn.net/chaipp0607)的博客）**
+## **一、 AlexNet及一些基本理解（总结自csdn [chaibubble](https://blog.csdn.net/chaipp0607)的博客）**
 
 **卷积层：5层，全连接层：3层，深度：8层，分类数目：1000类**，参数个数：60M，神经元个数：650k**。**
 
@@ -40,7 +40,7 @@ AlexNet最后的分类数目为1000，也就是最后的输出为1000，输入�
 
 ![img](./assets/v2-8617ead4d1077fcbcc2c256734a95de6_1440w.jpg)
 
-## **二、VGG及一些基本理解（总结自csdn** [leo_whz](https://link.zhihu.com/?target=https%3A//blog.csdn.net/whz1861)和[frank909](https://link.zhihu.com/?target=https%3A//blog.csdn.net/briblue)**的博客）**
+## **二、VGG及一些基本理解（总结自csdn** [leo_whz](https://blog.csdn.net/whz1861)和[frank909](https://blog.csdn.net/briblue)**的博客）**
 
 GG 是 ImageNet 2014 年目标定位竞赛的第一名，图像分类竞赛的第二名，需要注意的是，图像分类竞赛的第一名是大名鼎鼎的 GoogLeNet，那么为什么人们更愿意使用第二名的 VGG 呢？**因为 VGG 够简单。**
 
@@ -74,7 +74,7 @@ Training image size: 令S为图像的最小边，如果最小边S=224S=224，则
 
 上述两种方法分析： Szegedy et al.在2014年得出multi-crops相对于FCN效果要好。 multi-crops相当于对于dense evaluatio的补充，原因在于，两者在边界的处理方式不同：multi-crop相当于padding补充0值，而dense evaluation相当于padding补充了相邻的像素值，并且增大了感受野。 [multi-crop](https://zhida.zhihu.com/search?content_id=102063706&content_type=Article&match_order=5&q=multi-crop&zhida_source=entity)存在重复计算带来的效率的问题。
 
-## **三、GoogLeNet及一些基本理解（总结自csdn** [loveliuzz](https://link.zhihu.com/?target=https%3A//blog.csdn.net/loveliuzz)**的博客）**
+## **三、GoogLeNet及一些基本理解（总结自csdn** [loveliuzz](https://blog.csdn.net/loveliuzz)**的博客）**
 
 获得高质量模型最保险的做法就是增加模型的深度（层数）或者是其宽度（层核或者神经元数），但会出现如下的缺陷：1.参数太多，若训练数据集有限，容易过拟合；2.网络越大计算复杂度越大，难以应用；3.网络越深，梯度越往后穿越容易消失，难以优化模型。
 
@@ -142,9 +142,9 @@ naive版的Inception缺陷：计算成本。使用5x5的卷积核计算量仍然
 
 ![img](./assets/v2-f1a4f09bbdc8e57912ad9043b2048522_1440w.jpg)
 
-**整体架构代码实现**：[csdn](https://link.zhihu.com/?target=https%3A//blog.csdn.net/loveliuzz/article/details/79135583)此篇文章的后半部分。
+**整体架构代码实现**：[csdn](https://blog.csdn.net/loveliuzz/article/details/79135583)此篇文章的后半部分。
 
-**四、NIN及一些基本理解（总结自csdn** [张雨石](https://link.zhihu.com/?target=https%3A//blog.csdn.net/stdcoutzyx/article/details/51052847)**的博客）**
+**四、NIN及一些基本理解（总结自csdn** [张雨石](https://blog.csdn.net/stdcoutzyx/article/details/51052847)**的博客）**
 
 GoogLeNet提出之时，说到其实idea是来自NIN，NIN就是Network in Network了。
 

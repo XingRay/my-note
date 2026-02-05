@@ -588,11 +588,11 @@ Performance Query 在PC段的覆盖率很低，在移动端完全不支持。
 
 [游戏引擎随笔 0x18：现代图形 API 的 GPU Query](https://zhuanlan.zhihu.com/p/349808392)
 
-[How to use Vulkan Timestamp Queries. | Here should be the blog Title](https://link.zhihu.com/?target=https%3A//nikitablack.github.io/post/how_to_use_vulkan_timestamp_queries/)
+[How to use Vulkan Timestamp Queries. | Here should be the blog Title](https://nikitablack.github.io/post/how_to_use_vulkan_timestamp_queries/)
 
-[Vulkan-Samples/samples/api/timestamp_queries at main · KhronosGroup/Vulkan-Samples](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples/tree/main/samples/api/timestamp_queries)
+[Vulkan-Samples/samples/api/timestamp_queries at main · KhronosGroup/Vulkan-Samples](https://github.com/KhronosGroup/Vulkan-Samples/tree/main/samples/api/timestamp_queries)
 
-[A Year in a Fortnite | Samsung Developers](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/gamedev-blog/fortnite.html)
+[A Year in a Fortnite | Samsung Developers](https://developer.samsung.com/galaxy-gamedev/gamedev-blog/fortnite.html)
 
 编辑于 2023-05-14 20:43・IP 属地广东
 

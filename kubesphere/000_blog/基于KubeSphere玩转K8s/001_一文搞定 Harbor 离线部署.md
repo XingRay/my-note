@@ -144,7 +144,7 @@ ansible-playbook ../../playbooks/deploy-docker.yaml -l harbor
 
 ### **5.1. 准备域名 https 证书**
 
-本文使用了已购域名加免费 SSL 证书的方式，如果是自定义域名或是 IP 的自签名证书请参考官方文档**[Configure HTTPS Access to Harbor](https://link.zhihu.com/?target=https%3A//goharbor.io/docs/2.5.0/install-config/configure-https/)**。
+本文使用了已购域名加免费 SSL 证书的方式，如果是自定义域名或是 IP 的自签名证书请参考官方文档**[Configure HTTPS Access to Harbor](https://goharbor.io/docs/2.5.0/install-config/configure-https/)**。
 
 建议购买一个域名，不要自定义域名也不要用 IP。
 
@@ -154,7 +154,7 @@ ansible-playbook ../../playbooks/deploy-docker.yaml -l harbor
 - 腾讯云 (一年)
 - Let's Encrypt(90 天)
 
-我的域名 ([http://registry.zdevops.com.cn](https://link.zhihu.com/?target=http%3A//registry.zdevops.com.cn)) 是在阿里云买的，所有就选择阿里云的 SSL 免费证书，申请过程略。
+我的域名 ([http://registry.zdevops.com.cn](http://registry.zdevops.com.cn)) 是在阿里云买的，所有就选择阿里云的 SSL 免费证书，申请过程略。
 
 申请后，下载 **Nginx** 或是**其他**类型的证书。
 
@@ -191,7 +191,7 @@ mv harbor harbor-v2.5.1
 
 ### **5.3. 配置 Harbor YML 文件**
 
-本文只说明需要修改的重点参数，更完整的参数说明，请参考官方文档**[Configure the Harbor YML File](https://link.zhihu.com/?target=https%3A//goharbor.io/docs/2.5.0/install-config/configure-yml-file/)**。
+本文只说明需要修改的重点参数，更完整的参数说明，请参考官方文档**[Configure the Harbor YML File](https://goharbor.io/docs/2.5.0/install-config/configure-yml-file/)**。
 
 本文的 Harbor 使用默认的 HTTPS 443 端口，提供给内网客户端直接访问，不通过防火墙转发到外部，如果需要通过转发的方式暴露给外网，需要使用 **external_url** 的配置项。
 
@@ -298,7 +298,7 @@ trivy:
 
 ### **5.6. 客户端配置**
 
-**由于是内网服务器配置的域名 [http://registry.zdevops.com.cn](https://link.zhihu.com/?target=http%3A//registry.zdevops.com.cn)，所有访问 Harbor 的服务器需要手动配置 /etc/hosts 文件解析。**
+**由于是内网服务器配置的域名 [http://registry.zdevops.com.cn](http://registry.zdevops.com.cn)，所有访问 Harbor 的服务器需要手动配置 /etc/hosts 文件解析。**
 
 ```text
 # 利用 ansible 配置服务器的/etc/hosts
@@ -311,7 +311,7 @@ ansible all -m shell -a 'echo "192.168.9.89   registry.zdevops.com.cn" >> /etc/h
 
 初次登陆系统，必须修改 admin 用户的默认密码。
 
-- 通过浏览器登录 Harbor 控制台，[https://registry.zdevops.com.cn](https://link.zhihu.com/?target=https%3A//registry.zdevops.com.cn)。默认用户 admin，默认密码 Harbor12345。
+- 通过浏览器登录 Harbor 控制台，[https://registry.zdevops.com.cn](https://registry.zdevops.com.cn)。默认用户 admin，默认密码 Harbor12345。
 
 ![img](assets/v2-2bca5c173d3520e0143ba675516484d5_720w.webp)
 
@@ -800,17 +800,17 @@ kube-harbor-30
 >
 > **Get 文档**
 
-- Github [https://github.com/devops/z-notes](https://link.zhihu.com/?target=https%3A//github.com/devops/z-notes)
-- Gitee [https://gitee.com/zdevops/z-notes](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/z-notes)
+- Github [https://github.com/devops/z-notes](https://github.com/devops/z-notes)
+- Gitee [https://gitee.com/zdevops/z-notes](https://gitee.com/zdevops/z-notes)
 
 > **Get 代码**
 
-- Github [https://github.com/devops/ansible-zdevops](https://link.zhihu.com/?target=https%3A//github.com/devops/ansible-zdevops)
-- Gitee [https://gitee.com/zdevops/ansible-zdevops](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/ansible-zdevops)
+- Github [https://github.com/devops/ansible-zdevops](https://github.com/devops/ansible-zdevops)
+- Gitee [https://gitee.com/zdevops/ansible-zdevops](https://gitee.com/zdevops/ansible-zdevops)
 
 > **B 站**
 
-- **[老 Z 手记](https://link.zhihu.com/?target=https%3A//space.bilibili.com/1039301316)**[https://space.bilibili.com/1039301316](https://link.zhihu.com/?target=https%3A//space.bilibili.com/1039301316)
+- **[老 Z 手记](https://space.bilibili.com/1039301316)**[https://space.bilibili.com/1039301316](https://space.bilibili.com/1039301316)
 
 > **版权声明**
 

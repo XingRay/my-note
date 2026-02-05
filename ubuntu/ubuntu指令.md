@@ -849,7 +849,7 @@ set wildmenu
 
 " 在状态行上显示光标所在位置的行号和列号
 set ruler
-set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
+set rulerformat= (%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
 set cmdheight=2

@@ -116,7 +116,7 @@ pip debug --verbose
 
 ①“Archived”是 Python 语言社区中的一个平台（国内源），它提供了非官方的、用于 Windows 操作系统的 Python 扩展包（Extension Packages）的二进制文件，文件后缀为“.whl”。这个平台的主要目的是为了方便 Windows 用户在使用 Python 时获取一些常见扩展库的预编译二进制文件，避免用户自行编译的复杂性，官网如下：
 
-[Archived: Python Extension Packages for Windowswww.lfd.uci.edu/~gohlke/pythonlibs/](https://link.zhihu.com/?target=https%3A//www.lfd.uci.edu/~gohlke/pythonlibs/)
+[Archived: Python Extension Packages for Windowswww.lfd.uci.edu/~gohlke/pythonlibs/](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
 ②进入官网后，“Ctrl”＋“F”查找所需的 Python 库，比如查找名为“imread”的 Python 库：
 

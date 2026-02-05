@@ -95,5 +95,5 @@ ENTRYPOINT ["java","-cp","app:app/lib/*","DemoApplication.Application"]
 
 总而言之，如果您更关心安全性，那么当然建议使用 Distroless 镜像。如果您担心镜像尺寸大小，那么 Alpine 可能是更好的选择。 你可以在这里找到这个实验的完整代码——
 
-**「[https://github.com/deshpandetanmay/distroless](https://link.zhihu.com/?target=https%3A//github.com/deshpandetanmay/distroless)」**
+**「[https://github.com/deshpandetanmay/distroless](https://github.com/deshpandetanmay/distroless)」**
 

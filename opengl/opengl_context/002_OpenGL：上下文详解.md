@@ -341,12 +341,12 @@ void onPaint()   //相当于glfw中while循环里的东西
 }
 ```
 
-[https://www.codenong.com/cs105518391/](https://link.zhihu.com/?target=https%3A//www.codenong.com/cs105518391/)
+[https://www.codenong.com/cs105518391/](https://www.codenong.com/cs105518391/)
 
-[VS 2022配置openGL环境（GLFW+GLEW）](https://link.zhihu.com/?target=https%3A//blog.csdn.net/FallenChild/article/details/128044052)
+[VS 2022配置openGL环境（GLFW+GLEW）](https://blog.csdn.net/FallenChild/article/details/128044052)
 
-[21.1 GLFW多线程渲染 | 21. 多线程渲染 | 游戏引擎 浅入浅出 | 游戏人生](https://link.zhihu.com/?target=https%3A//www.thisisgame.com.cn/tutorial%3Fbook%3Dcpp-game-engine-book%26lang%3Dzh%26md%3D21.%20multithreaded_rendering/21.1%20glfw_multithreaded_rendering.md)
+[21.1 GLFW多线程渲染 | 21. 多线程渲染 | 游戏引擎 浅入浅出 | 游戏人生](https://www.thisisgame.com.cn/tutorial?book=cpp-game-engine-book&lang=zh&md=21. multithreaded_rendering/21.1 glfw_multithreaded_rendering.md)
 
-[openGL之多线程渲染 - yang131 - 博客园](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/yang131/p/16753516.html)
+[openGL之多线程渲染 - yang131 - 博客园](https://www.cnblogs.com/yang131/p/16753516.html)
 
 编辑于 2023-12-27 19:04・IP 属地美国

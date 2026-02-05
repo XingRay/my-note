@@ -1,6 +1,6 @@
 # Vulkan Load Model
 
-> 这里是记录笔者Vulkan的学习记录，参照该教程[vulkan-tutorial.com](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/Drawing_a_triangle/Drawing/Command_buffers)这里是记录笔者Vulkan的学习记录，如果你想识别Vulkan相比于之前的传统图形API有什么区别和优势的话，欢迎看我的另外一篇文章[初探Vulkan](https://zhuanlan.zhihu.com/p/554631289)。相信应该能够帮助你识别Vulkan的优势所在。
+> 这里是记录笔者Vulkan的学习记录，参照该教程[vulkan-tutorial.com](https://vulkan-tutorial.com/Drawing_a_triangle/Drawing/Command_buffers)这里是记录笔者Vulkan的学习记录，如果你想识别Vulkan相比于之前的传统图形API有什么区别和优势的话，欢迎看我的另外一篇文章[初探Vulkan](https://zhuanlan.zhihu.com/p/554631289)。相信应该能够帮助你识别Vulkan的优势所在。
 
 从之前的内容现在已经准备好渲染可以使用纹理的三维网格了，但是当前顶点和索引数组中的几何图形还不是很有趣。在这里中，我们将对程序进行扩展，从一个实际的模型文件中加载顶点和索引，以使显卡真正做一些工作。
 
@@ -142,7 +142,7 @@ bool operator==(const Vertex& other) const {
 }
 ```
 
-Vertex的哈希函数是通过指定std::hash的[模板特化](https://zhida.zhihu.com/search?content_id=212319780&content_type=Article&match_order=1&q=模板特化&zhida_source=entity)来实现的。哈希函数是一个复杂的话题，但[http://cppreference.com](https://link.zhihu.com/?target=http%3A//cppreference.com)推荐以下方法，结合结构的字段来创建一个质量不错的哈希函数。
+Vertex的哈希函数是通过指定std::hash的[模板特化](https://zhida.zhihu.com/search?content_id=212319780&content_type=Article&match_order=1&q=模板特化&zhida_source=entity)来实现的。哈希函数是一个复杂的话题，但[http://cppreference.com](http://cppreference.com)推荐以下方法，结合结构的字段来创建一个质量不错的哈希函数。
 
 ```cpp
 namespace std {

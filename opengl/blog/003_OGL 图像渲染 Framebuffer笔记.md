@@ -1,6 +1,6 @@
 # OGL 图像渲染 Framebuffer笔记
 
-[OpenGL 4.6 (Core Profile) - May 5, 2022 (khronos.org)](https://link.zhihu.com/?target=https%3A//registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf) Chapter 9
+[OpenGL 4.6 (Core Profile) - May 5, 2022 (khronos.org)](https://registry.khronos.org/OpenGL/specs/gl/glspec46.core.pdf) Chapter 9
 
 ## 前言
 

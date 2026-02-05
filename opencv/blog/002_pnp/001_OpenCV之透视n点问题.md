@@ -104,23 +104,23 @@ SVD 分解
 
 OpenCV 中解 PnP 的方法有 9 种，目前实现了 7 种，还有 2 种未实现，对应论文如下：
 
-\- *SOLVEPNP_P3P* [Complete Solution Classification for the Perspective-Three-Point Problem](https://link.zhihu.com/?target=http%3A//www.mmrc.iss.ac.cn/tmp/papers/gao-ieee-pami.pdf)
+\- *SOLVEPNP_P3P* [Complete Solution Classification for the Perspective-Three-Point Problem](http://www.mmrc.iss.ac.cn/tmp/papers/gao-ieee-pami.pdf)
 
-\- *SOLVEPNP_AP3P* [An Efficient Algebraic Solution to the Perspective-Three-Point Problem](https://link.zhihu.com/?target=https%3A//openaccess.thecvf.com/content_cvpr_2017/papers/Ke_An_Efficient_Algebraic_CVPR_2017_paper.pdf)
+\- *SOLVEPNP_AP3P* [An Efficient Algebraic Solution to the Perspective-Three-Point Problem](https://openaccess.thecvf.com/content_cvpr_2017/papers/Ke_An_Efficient_Algebraic_CVPR_2017_paper.pdf)
 
 \- *SOLVEPNP_ITERATIVE* 基于 L-M 最优化方法，求解重投影误差最小的位姿
 
-\- *SOLVEPNP_EPNP* [EPnP: An Accurate O(n) Solution to the PnP Problem](https://link.zhihu.com/?target=https%3A//www.tugraz.at/fileadmin/user_upload/Institute/ICG/Images/team_lepetit/publications/lepetit_ijcv08.pdf)
+\- *SOLVEPNP_EPNP* [EPnP: An Accurate O(n) Solution to the PnP Problem](https://www.tugraz.at/fileadmin/user_upload/Institute/ICG/Images/team_lepetit/publications/lepetit_ijcv08.pdf)
 
-\- *SOLVEPNP_SQPNP* [A Consistently Fast and Globally Optimal Solution to the Perspective-n-Point Problem](https://link.zhihu.com/?target=http%3A//www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123460460.pdf)
+\- *SOLVEPNP_SQPNP* [A Consistently Fast and Globally Optimal Solution to the Perspective-n-Point Problem](http://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123460460.pdf)
 
-\- *SOLVEPNP_IPPE* [Infinitesimal Plane-based Pose Estimation](https://link.zhihu.com/?target=http%3A//igt.ip.uca.fr/encov/publications/pubfiles/2014_Collins_etal_IJCV_plane.pdf) 输入的 3D 点需要共面且 n ≥ 4
+\- *SOLVEPNP_IPPE* [Infinitesimal Plane-based Pose Estimation](http://igt.ip.uca.fr/encov/publications/pubfiles/2014_Collins_etal_IJCV_plane.pdf) 输入的 3D 点需要共面且 n ≥ 4
 
 \- *SOLVEPNP_IPPE_SQUARE* SOLVEPNP_IPPE 的一种特殊情况，要求输入 4 个共面点的坐标，并且按照特定的顺序排列
 
-\- *SOLVEPNP_DLS* (未实现) [A Direct Least-Squares (DLS) Method for PnP](https://link.zhihu.com/?target=https%3A//www-users.cse.umn.edu/~stergios/papers/ICCV-11-DLS-PnP.pdf) 实际调用 SOLVEPNP_EPNP
+\- *SOLVEPNP_DLS* (未实现) [A Direct Least-Squares (DLS) Method for PnP](https://www-users.cse.umn.edu/~stergios/papers/ICCV-11-DLS-PnP.pdf) 实际调用 SOLVEPNP_EPNP
 
-\- *SOLVEPNP_UPLP* (未实现) [Exhaustive Linearization for Robust Camera Pose and Focal Length Estimation](https://link.zhihu.com/?target=https%3A//upcommons.upc.edu/bitstream/handle/2117/22931/1404-Exhaustive-linearization-for-robust-camera-pose-and-focal-length-estimation.pdf%3Bsequence%3D1) 实际调用 SOLVEPNP_EPNP
+\- *SOLVEPNP_UPLP* (未实现) [Exhaustive Linearization for Robust Camera Pose and Focal Length Estimation](https://upcommons.upc.edu/bitstream/handle/2117/22931/1404-Exhaustive-linearization-for-robust-camera-pose-and-focal-length-estimation.pdf%3Bsequence=1) 实际调用 SOLVEPNP_EPNP
 
 ## 3.1 solveP3P()
 
@@ -435,10 +435,10 @@ draw3DCoordinateAxes(frame_vis, pose2d); // draw axes
 
 ### 参考资料
 
-OpenCV-Python Tutorials / Camera Calibration and 3D Reconstruction / [Pose Estimation](https://link.zhihu.com/?target=https%3A//docs.opencv.org/master/d7/d53/tutorial_py_pose.html)
+OpenCV-Python Tutorials / Camera Calibration and 3D Reconstruction / [Pose Estimation](https://docs.opencv.org/master/d7/d53/tutorial_py_pose.html)
 
-OpenCV Tutorials / Camera calibration and 3D reconstruction (calib3d module) / [Real time pose estimation of a textured object](https://link.zhihu.com/?target=https%3A//docs.opencv.org/master/dc/d2c/tutorial_real_time_pose.html)
+OpenCV Tutorials / Camera calibration and 3D reconstruction (calib3d module) / [Real time pose estimation of a textured object](https://docs.opencv.org/master/dc/d2c/tutorial_real_time_pose.html)
 
-[一种改进的 PnP 问题求解算法研究[J\]](https://link.zhihu.com/?target=http%3A//html.rhhz.net/yykj/html/201612019.htm)
+[一种改进的 PnP 问题求解算法研究[J\]](http://html.rhhz.net/yykj/html/201612019.htm)
 
-[Perspective-n-Point, Hyun Soo Park](https://link.zhihu.com/?target=https%3A//www-users.cse.umn.edu/~hspark/csci5563_S2021/Lec15_PnP.pdf)
+[Perspective-n-Point, Hyun Soo Park](https://www-users.cse.umn.edu/~hspark/csci5563_S2021/Lec15_PnP.pdf)

@@ -33,7 +33,7 @@
 
 实际的部署过程中，我们都有可能会碰到一个最简单的算子缺失问题： 算子在 ATen 中已经实现了，ONNX 中也有相关算子的定义，但是相关算子映射成 ONNX 的规则没有写。在这种情况下，我们只需要**为 ATen 算子补充描述映射规则的符号函数**就行了。
 
-> [ATen](https://link.zhihu.com/?target=https%3A//pytorch.org/cppdocs/%23aten) 是 PyTorch 内置的 C++ 张量计算库，PyTorch 算子在底层绝大多数计算都是用 ATen 实现的。
+> [ATen](https://pytorch.org/cppdocs/%23aten) 是 PyTorch 内置的 C++ 张量计算库，PyTorch 算子在底层绝大多数计算都是用 ATen 实现的。
 
 上期习题中，我们曾经提到了 ONNX 的 `Asinh` 算子。这个算子在 ATen 中有实现，却缺少了映射到 ONNX 算子的符号函数。在这里，我们来尝试为它补充符号函数，并导出一个包含这个算子的 ONNX 模型。
 
@@ -69,7 +69,7 @@ def op(name: str, input_0: torch._C.Value, input_1: torch._C.Value, ...)
 
 在最简单的情况下，我们只要把 PyTorch 算子的输入用`g.op()`一一对应到 ONNX 算子上即可，并把`g.op()`的返回值作为符号函数的返回值。在情况更复杂时，我们转换一个 PyTorch 算子可能要新建若干个 ONNX 算子。
 
-补充完了背景知识，让我们回到 `asinh` 算子上，来为它编写符号函数。我们先去翻阅一下 ONNX 算子文档，学习一下我们在符号函数里的映射关系 `g.op()` 里应该怎么写。`Asinh` 的[文档](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/blob/main/docs/Operators.md%23asinh)写道：该算子有一个输入 `input`，一个输出 `output`，二者的类型都为张量。
+补充完了背景知识，让我们回到 `asinh` 算子上，来为它编写符号函数。我们先去翻阅一下 ONNX 算子文档，学习一下我们在符号函数里的映射关系 `g.op()` 里应该怎么写。`Asinh` 的[文档](https://github.com/onnx/onnx/blob/main/docs/Operators.md%23asinh)写道：该算子有一个输入 `input`，一个输出 `output`，二者的类型都为张量。
 
 到这里，我们已经完成了信息收集环节。我们在上一小节得知了 `asinh` 的推理接口定义，在这一小节里收集了 ONNX 算子 `Asinh` 的定义。现在，我们可以用代码来补充这二者的映射关系了。在刚刚导出 `asinh` 算子的代码中，我们添加以下内容：
 
@@ -161,7 +161,7 @@ assert np.allclose(torch_output, ort_output)
 
 ## **支持 TorchScript 算子**
 
-对于一些比较复杂的运算，仅使用 PyTorch 原生算子是无法实现的。这个时候，就要考虑自定义一个 PyTorch 算子，再把它转换到 ONNX 中了。新增 PyTorch 算子的方法有很多，PyTorch 官方比较推荐的一种做法是添加 [TorchScript 算子](https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/advanced/torch_script_custom_ops.html) 。
+对于一些比较复杂的运算，仅使用 PyTorch 原生算子是无法实现的。这个时候，就要考虑自定义一个 PyTorch 算子，再把它转换到 ONNX 中了。新增 PyTorch 算子的方法有很多，PyTorch 官方比较推荐的一种做法是添加 [TorchScript 算子](https://pytorch.org/tutorials/advanced/torch_script_custom_ops.html) 。
 
 由于添加算子的方法较繁琐，我们今天跳过新增 TorchScript 算子的内容，以可变形卷积（Deformable Convolution）算子为例，介绍为现有 TorchScript 算子添加 ONNX 支持的方法。
 
@@ -222,7 +222,7 @@ g.op("custom::deform_conv2d, ...)
 
 PyTorch 在运行 `g.op()` 时会对官方的算子做检查，如果算子名有误，或者算子的输入类型不正确， `g.op()` 就会报错。为了让我们随心所欲地定义新 ONNX 算子，我们必须设定一个命名空间，给算子取个名，再定义自己的算子。
 
-我们[在第一篇教程](https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzI4MDcxNTY2MQ%3D%3D%26mid%3D2247488952%26idx%3D1%26sn%3D880d3ad47a8fb3eab56514135f0e643b%26chksm%3Debb51d5adcc2944c276af19e8cff5e73c934f8811706be0a94c5f47f9e767c902939903e6b95%26scene%3D21%23wechat_redirect)讲过：ONNX 是一套标准，本身不包括实现。在这里，我们就简略地定义一个 ONNX 可变形卷积算子，而不去写它在某个推理引擎上的实现。在后续的文章中，我们再介绍在各个推理引擎中添加新 ONNX 算子支持的方法。此处，我们只关心如何导出一个包含新 ONNX 算子节点的 onnx 文件。因此，我们可以为新算子编写如下简单的符号函数：
+我们[在第一篇教程](https://mp.weixin.qq.com/s?__biz=MzI4MDcxNTY2MQ==&mid=2247488952&idx=1&sn=880d3ad47a8fb3eab56514135f0e643b&chksm=ebb51d5adcc2944c276af19e8cff5e73c934f8811706be0a94c5f47f9e767c902939903e6b95&scene=21%23wechat_redirect)讲过：ONNX 是一套标准，本身不包括实现。在这里，我们就简略地定义一个 ONNX 可变形卷积算子，而不去写它在某个推理引擎上的实现。在后续的文章中，我们再介绍在各个推理引擎中添加新 ONNX 算子支持的方法。此处，我们只关心如何导出一个包含新 ONNX 算子节点的 onnx 文件。因此，我们可以为新算子编写如下简单的符号函数：
 
 ```python
 @parse_args("v", "v", "v", "v", "v", "i", "i", "i", "i", "i", "i", "i", "i", "none") 
@@ -244,7 +244,7 @@ def symbolic(g,
 
 在这个符号函数中，我们以刚刚搜索到的算子输入参数作为符号函数的输入参数，并只用 `input` 和 `offset` 来构造一个简单的 ONNX 算子。
 
-这段代码中，最令人疑惑的就是装饰器 `@parse_args` 了。简单来说，TorchScript 算子的符号函数要求标注出每一个输入参数的类型。比如"v"表示 Torch 库里的 `value` 类型，一般用于标注张量，而"i"表示 int 类型，"f"表示 float 类型，"none"表示该参数为空。具体的类型含义可以在 `torch.onnx.symbolic_helper.py` ([https://github.com/pytorch/pytorch/blob/master/torch/onnx/symbolic_helper.py](https://link.zhihu.com/?target=https%3A//github.com/pytorch/pytorch/blob/master/torch/onnx/symbolic_helper.py))中查看。这里输入参数中的 `input, weight, offset, mask, bias` 都是张量，所以用"v"表示。后面的其他参数同理。我们不必纠结于 `@parse_args` 的原理，根据实际情况对符号函数的参数标注类型即可。
+这段代码中，最令人疑惑的就是装饰器 `@parse_args` 了。简单来说，TorchScript 算子的符号函数要求标注出每一个输入参数的类型。比如"v"表示 Torch 库里的 `value` 类型，一般用于标注张量，而"i"表示 int 类型，"f"表示 float 类型，"none"表示该参数为空。具体的类型含义可以在 `torch.onnx.symbolic_helper.py` ([https://github.com/pytorch/pytorch/blob/master/torch/onnx/symbolic_helper.py](https://github.com/pytorch/pytorch/blob/master/torch/onnx/symbolic_helper.py))中查看。这里输入参数中的 `input, weight, offset, mask, bias` 都是张量，所以用"v"表示。后面的其他参数同理。我们不必纠结于 `@parse_args` 的原理，根据实际情况对符号函数的参数标注类型即可。
 
 有了符号函数后，我们通过如下的方式注册符号函数：
 
@@ -488,7 +488,7 @@ assert np.allclose(torch_output, ort_output)
 
 **码字不易，如果觉得对你有帮助，欢迎给我们点个赞呀~也欢迎大家来 MMDelpoy 体验**
 
-[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://link.zhihu.com/?target=https%3A//github.com/open-mmlab/mmdeploy)
+[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://github.com/open-mmlab/mmdeploy)
 
 ## 系列传送门
 

@@ -146,7 +146,7 @@ GPU读/写都是最快的；
 
 适用场景为CPU写一次，GPU经常读/写的场景。
 
-由于Device-Local Memory无法被CPU访问，因此CPU写时需要先写到一个Host可见的Memory，然后再通过指令拷贝到对应的Device Memory。我们一般把这个持有Host可见的Memory的buffer称为Staging Buffer。关于staging buffer的介绍和使用可以参考：[Staging Buffer](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/Vertex_buffers/Staging_buffer)
+由于Device-Local Memory无法被CPU访问，因此CPU写时需要先写到一个Host可见的Memory，然后再通过指令拷贝到对应的Device Memory。我们一般把这个持有Host可见的Memory的buffer称为Staging Buffer。关于staging buffer的介绍和使用可以参考：[Staging Buffer](https://vulkan-tutorial.com/Vertex_buffers/Staging_buffer)
 
 - **VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT**：表示以此flag分配的内存，可以通过调用vkMapMemory函数map给CPU访问。
 

@@ -16,7 +16,7 @@
 
 **Graphics API - OpenGL/OpenGL ES**
 
-对OpenGL 一些基础概念的了解强烈推荐**：**[LearnOpenGL CN](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/)
+对OpenGL 一些基础概念的了解强烈推荐**：**[LearnOpenGL CN](https://learnopengl-cn.github.io/)
 
 ![img](D:\my-note\opengl\graphic_engine\assets\v2-f8772fa7c37b91d52f775780272251d2_1440w.webp)
 
@@ -225,54 +225,54 @@ vulkan的同步机制
 
 关于OpenGL/OpenGL ES的参考：
 
-[LearnOpenGL CN](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/)
+[LearnOpenGL CN](https://learnopengl-cn.github.io/)
 
 [柯灵杰：20分钟让你了解OpenGL——OpenGL全流程详细解读](https://zhuanlan.zhihu.com/p/56693625)
 
 [杨殿铭：OpenGLES 与 EGL 基础概念](https://zhuanlan.zhihu.com/p/74006499)
 
-[EGLSurface 和 OpenGL ES | Android 开源项目 | Android Open Source Project](https://link.zhihu.com/?target=https%3A//source.android.google.cn/devices/graphics/arch-egl-opengl%3Fhl%3Dzh-cn)
+[EGLSurface 和 OpenGL ES | Android 开源项目 | Android Open Source Project](https://source.android.google.cn/devices/graphics/arch-egl-opengl?hl=zh-cn)
 
-[The Book of Shaders](https://link.zhihu.com/?target=https%3A//thebookofshaders.com/)
+[The Book of Shaders](https://thebookofshaders.com/)
 
 [chenjd：聊聊那些不常见的Shader](https://zhuanlan.zhihu.com/p/31529550)
 
-[How to apply textures to a game character using OpenGL ES — Harold Serrano - Game Engine Developer](https://link.zhihu.com/?target=https%3A//www.haroldserrano.com/blog/how-to-apply-textures-to-a-character-in-ios)
+[How to apply textures to a game character using OpenGL ES — Harold Serrano - Game Engine Developer](https://www.haroldserrano.com/blog/how-to-apply-textures-to-a-character-in-ios)
 
-[Articles - Harold Serrano | Game Engine Developer](https://link.zhihu.com/?target=https%3A//www.haroldserrano.com/articles/%23gameenginesection)
+[Articles - Harold Serrano | Game Engine Developer](https://www.haroldserrano.com/articles/%23gameenginesection)
 
 
 
 关于Metal的参考：
 
-[Metal Programming Guide(中文版)](https://link.zhihu.com/?target=https%3A//colin19941.gitbooks.io/metal-programming-guide-zh/content/)
+[Metal Programming Guide(中文版)](https://colin19941.gitbooks.io/metal-programming-guide-zh/content/)
 
-[Metal多线程渲染](https://link.zhihu.com/?target=https%3A//www.jianshu.com/p/080b83aa057b)
+[Metal多线程渲染](https://www.jianshu.com/p/080b83aa057b)
 
 [丛越：游戏引擎随笔 0x08：现代图形 API 实战回顾-Metal 篇](https://zhuanlan.zhihu.com/p/114072278)
 
-[Apple Developer Documentation](https://link.zhihu.com/?target=https%3A//developer.apple.com/documentation/metal/resource_synchronization)
+[Apple Developer Documentation](https://developer.apple.com/documentation/metal/resource_synchronization)
 
 
 
 关于Vulkan的参考：
 
-[Learning Vulkan](https://link.zhihu.com/?target=https%3A//www.oreilly.com/library/view/learning-vulkan/9781786469809/ch03s05.html)
+[Learning Vulkan](https://www.oreilly.com/library/view/learning-vulkan/9781786469809/ch03s05.html)
 
-[Vulkan多线程渲染](https://link.zhihu.com/?target=https%3A//www.jianshu.com/p/5acee1167f32)
+[Vulkan多线程渲染](https://www.jianshu.com/p/5acee1167f32)
 
-[https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf)
+[https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf](https://developer.nvidia.com/sites/default/files/akamai/gameworks/blog/munich/mschott_vulkan_multi_threading.pdf)
 
-[队列 Queue · Vulkan 学习笔记](https://link.zhihu.com/?target=https%3A//gavinkg.github.io/ILearnVulkanFromScratch-CN/mdroot/%E6%A6%82%E5%BF%B5%E6%B1%87%E6%80%BB/%E9%98%9F%E5%88%97.html)
+[队列 Queue · Vulkan 学习笔记](https://gavinkg.github.io/ILearnVulkanFromScratch-CN/mdroot/%E6%A6%82%E5%BF%B5%E6%B1%87%E6%80%BB/%E9%98%9F%E5%88%97.html)
 
-[Introduction - Vulkan Tutorial](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/)
+[Introduction - Vulkan Tutorial](https://vulkan-tutorial.com/)
 
-[What is actually a Queue family in Vulkan?](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/55272626/what-is-actually-a-queue-family-in-vulkan)
+[What is actually a Queue family in Vulkan?](https://stackoverflow.com/questions/55272626/what-is-actually-a-queue-family-in-vulkan)
 
-[https://ourmachinery.com/post/vulkan-command-buffer-management/](https://link.zhihu.com/?target=https%3A//ourmachinery.com/post/vulkan-command-buffer-management/)
+[https://ourmachinery.com/post/vulkan-command-buffer-management/](https://ourmachinery.com/post/vulkan-command-buffer-management/)
 
-[https://ourmachinery.com/post/vulkan-descriptor-sets-management/](https://link.zhihu.com/?target=https%3A//ourmachinery.com/post/vulkan-descriptor-sets-management/)
+[https://ourmachinery.com/post/vulkan-descriptor-sets-management/](https://ourmachinery.com/post/vulkan-descriptor-sets-management/)
 
 [lyf：android graphic(15)—fence](https://zhuanlan.zhihu.com/p/68782630)
 
-[【Vulkan学习记录-基础篇-4】Vulkan中的同步机制_syddf_shadow的博客-CSDN博客_vulkan的同步机制](https://link.zhihu.com/?target=https%3A//blog.csdn.net/yjr3426619/article/details/101371746)
+[【Vulkan学习记录-基础篇-4】Vulkan中的同步机制_syddf_shadow的博客-CSDN博客_vulkan的同步机制](https://blog.csdn.net/yjr3426619/article/details/101371746)

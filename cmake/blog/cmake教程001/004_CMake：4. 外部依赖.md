@@ -66,7 +66,7 @@ macOS 的**动态库**（dynamic library）和 Linux 的共享对象基本是一
 
 ### Windows 动态库
 
-Windows 下的**动态链接库**（**D**ynamic-**L**ink **L**ibrary）比较特殊。他其实不是一个库，而是一个可执行的二进制文件。DLL 有自己的入口点叫做 [DLLMain](https://link.zhihu.com/?target=https%3A//learn.microsoft.com/en-us/windows/win32/dlls/dllmain)，在加载、卸载动态库之类事件发生时会先执行入口点里的代码，大家平时可能不会意识到这一点，因为在你没有显式实现的时候，编译器会自动套一个默认的。
+Windows 下的**动态链接库**（**D**ynamic-**L**ink **L**ibrary）比较特殊。他其实不是一个库，而是一个可执行的二进制文件。DLL 有自己的入口点叫做 [DLLMain](https://learn.microsoft.com/en-us/windows/win32/dlls/dllmain)，在加载、卸载动态库之类事件发生时会先执行入口点里的代码，大家平时可能不会意识到这一点，因为在你没有显式实现的时候，编译器会自动套一个默认的。
 
 但也因为它是一个二进制文件，DLL 不能直接参与链接。于是 M$VC 会再生成一个没有任何可执行内容，只有函数符号的**导入库**（import library），帮助编译器检查有没有链接到不存在的符号。这个奇葩设计让 Windows 动态库包的结构和其他人有点不一样：
 
@@ -168,9 +168,9 @@ find_package(Vulkan REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan)
 ```
 
-上面的命令会调用 `FindVulkan.cmake` 进行查找。这个脚本是内置在 CMake 中的，在 CMake 3.7 以后的版本中都可以使用。这些 CMake 内置脚本的文档在官网都可以找到：[https://cmake.org/cmake/help/latest/module/FindVulkan.html](https://link.zhihu.com/?target=https%3A//cmake.org/cmake/help/latest/module/FindVulkan.html)
+上面的命令会调用 `FindVulkan.cmake` 进行查找。这个脚本是内置在 CMake 中的，在 CMake 3.7 以后的版本中都可以使用。这些 CMake 内置脚本的文档在官网都可以找到：[https://cmake.org/cmake/help/latest/module/FindVulkan.html](https://cmake.org/cmake/help/latest/module/FindVulkan.html)
 
-当然了，`find_package` 并不是只能执行 CMake 官方集成的 Find 脚本。如果它没有在 CMake 内置的脚本中找到对应的 Find 脚本，他会继续在 `CMAKE_MODULE_PATH` 定义的目录中查找。以 Taichi C-API 为例，你可以下载一份 [FindTaichi.cmake](https://link.zhihu.com/?target=https%3A//github.com/taichi-dev/taichi/blob/master/c_api/cmake/FindTaichi.cmake) 到你项目的 `cmake` 目录，然后在你的脚本中添加如下内容：
+当然了，`find_package` 并不是只能执行 CMake 官方集成的 Find 脚本。如果它没有在 CMake 内置的脚本中找到对应的 Find 脚本，他会继续在 `CMAKE_MODULE_PATH` 定义的目录中查找。以 Taichi C-API 为例，你可以下载一份 [FindTaichi.cmake](https://github.com/taichi-dev/taichi/blob/master/c_api/cmake/FindTaichi.cmake) 到你项目的 `cmake` 目录，然后在你的脚本中添加如下内容：
 
 ```cmake
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
@@ -214,7 +214,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${Vulkan_INCLUDE_DIRS})
 
 比较时髦的朋友可能最近已经在项目里用上 vcpkg了。vcpkg 是微软设计的一个帮助 CMake 项目管理 C++ 依赖的工具。
 
-[Get started with vcpkgvcpkg.io/en/getting-started](https://link.zhihu.com/?target=https%3A//vcpkg.io/en/getting-started)
+[Get started with vcpkgvcpkg.io/en/getting-started](https://vcpkg.io/en/getting-started)
 
 其实简单来说，vcpkg 做的事情和我们上面讨论过的差不多：
 
@@ -240,7 +240,7 @@ git clone https://github.com/Microsoft/vcpkg.git
 
 安装完成后，我们就可以用 vcpkg 装包了。我们可以在官网浏览 vcpkg 收录的 C++ 项目：
 
-[Browse public vcpkg packagesvcpkg.io/en/packages](https://link.zhihu.com/?target=https%3A//vcpkg.io/en/packages)
+[Browse public vcpkg packagesvcpkg.io/en/packages](https://vcpkg.io/en/packages)
 
 这里我们以矩阵代数库 glm 为例：
 

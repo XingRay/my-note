@@ -96,7 +96,7 @@ PowerVR做了一个视频做了Vulkan和OpenGL的性能对比：
 
 
 
-视频地址：PowerVR Rogue GPUs running Gnome Horde demo [https://www.youtube.com/watch?time_continue=26&v=P_I8an8jXuM&feature=emb_l](https://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Ftime_continue%3D26%26v%3DP_I8an8jXuM%26feature%3Demb_logo)ogo
+视频地址：PowerVR Rogue GPUs running Gnome Horde demo [https://www.youtube.com/watch?time_continue=26&v=P_I8an8jXuM&feature=emb_l](https://www.youtube.com/watch?time_continue=26&v=P_I8an8jXuM&feature=emb_logo)ogo
 
 ------
 
@@ -579,7 +579,7 @@ vulkan除了提供OpenGL中uniform量外，还提供了一种性能更高的手�
 
 1. https://zhuanlan.zhihu.com/p/165141740
 2. https://zhuanlan.zhihu.com/p/430397192
-3. [https://github.com/Overv/VulkanTutorial](https://link.zhihu.com/?target=https%3A//github.com/Overv/VulkanTutorial)
-4. [https://github.com/LunarG/VulkanSamples](https://link.zhihu.com/?target=https%3A//github.com/LunarG/VulkanSamples)
-5. [https://github.com/SaschaWillems/Vulkan](https://link.zhihu.com/?target=https%3A//github.com/SaschaWillems/Vulkan)
-6. [https://github.com/ccsdu2004/vulkan-cpp-demo](https://link.zhihu.com/?target=https%3A//github.com/ccsdu2004/vulkan-cpp-demo)
+3. [https://github.com/Overv/VulkanTutorial](https://github.com/Overv/VulkanTutorial)
+4. [https://github.com/LunarG/VulkanSamples](https://github.com/LunarG/VulkanSamples)
+5. [https://github.com/SaschaWillems/Vulkan](https://github.com/SaschaWillems/Vulkan)
+6. [https://github.com/ccsdu2004/vulkan-cpp-demo](https://github.com/ccsdu2004/vulkan-cpp-demo)

@@ -34,7 +34,7 @@
   [repo-info repo's `repos/rabbitmq/` directory](https://github.com/docker-library/repo-info/blob/master/repos/rabbitmq) ([history](https://github.com/docker-library/repo-info/commits/master/repos/rabbitmq))
   (image metadata, transfer size, etc)
 - **Image updates**:
-  [official-images repo's `library/rabbitmq` label](https://github.com/docker-library/official-images/issues?q=label%3Alibrary%2Frabbitmq)
+  [official-images repo's `library/rabbitmq` label](https://github.com/docker-library/official-images/issues?q=label:library/rabbitmq)
   [official-images repo's `library/rabbitmq` file](https://github.com/docker-library/official-images/blob/master/library/rabbitmq) ([history](https://github.com/docker-library/official-images/commits/master/library/rabbitmq))
 - **Source of this description**:
   [docs repo's `rabbitmq/` directory](https://github.com/docker-library/docs/tree/master/rabbitmq) ([history](https://github.com/docker-library/docs/commits/master/rabbitmq))

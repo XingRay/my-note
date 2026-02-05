@@ -4,7 +4,7 @@
 
 这篇文章是笔者在研究
 
-[帧缓冲 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/)
+[帧缓冲 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/04 Advanced OpenGL/05 Framebuffers/)
 
 材料后的思考总结
 

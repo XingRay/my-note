@@ -251,7 +251,7 @@ Java_com_skateboard_blurimageview_BlurImageViewRender_draw(JNIEnv *env, jobject 
 
 # 3.最后
 
-最后附上源码地址 [github](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fskateboard1991%2FBlurImageView)
+最后附上源码地址 [github](https://link.juejin.cn/?target=https://github.com/skateboard1991/BlurImageView)
 
 
 

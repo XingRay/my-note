@@ -27,7 +27,7 @@ GPU 版本的索引是 PyTorch 自家的
 
 
 
-使用方法就是将安装命令中的 [https://download.pytorch.org/whl/](https://link.zhihu.com/?target=https%3A//download.pytorch.org/whl/) 替换为 [https://mirrors.nju.edu.cn/pytorch/whl/](https://link.zhihu.com/?target=https%3A//mirrors.nju.edu.cn/pytorch/whl/)。
+使用方法就是将安装命令中的 [https://download.pytorch.org/whl/](https://download.pytorch.org/whl/) 替换为 [https://mirrors.nju.edu.cn/pytorch/whl/](https://mirrors.nju.edu.cn/pytorch/whl/)。
 
 比如，你要安装 [CUDA 12.6](https://zhida.zhihu.com/search?content_id=258075695&content_type=Article&match_order=1&q=CUDA+12.6&zhida_source=entity) 的 PyTorch，官方的安装命令是：
 

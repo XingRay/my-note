@@ -53,7 +53,7 @@ $ docker inspect tmp:tmp
 
 ...`docker inspect` 命令的任何其他部分也不包含相关信息（在我的示例中为 `cmake` 语句）。
 
-[This article](https://www.likecs.com/default/index/tourl?u=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNTU3NTYzNzIvd2hlbi11c2luZy1idWlsZGtpdC13aXRoLWRvY2tlci1ob3ctZG8taS1zZWUtdGhlLW91dHB1dC1vZi1ydW4tY29tbWFuZHM%3D) 建议对`docker build` 使用`--progress plain` 选项。这会展开*命令的输出*，但它仍然会截断*命令本身*，例如：
+[This article](https://www.likecs.com/default/index/tourl?u=aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNTU3NTYzNzIvd2hlbi11c2luZy1idWlsZGtpdC13aXRoLWRvY2tlci1ob3ctZG8taS1zZWUtdGhlLW91dHB1dC1vZi1ydW4tY29tbWFuZHM=) 建议对`docker build` 使用`--progress plain` 选项。这会展开*命令的输出*，但它仍然会截断*命令本身*，例如：
 
 ```
 $ docker build --progress plain --no-cache -t tmp:tmp .

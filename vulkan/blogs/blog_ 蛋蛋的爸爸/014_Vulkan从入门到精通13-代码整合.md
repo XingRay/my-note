@@ -270,4 +270,4 @@ auto samplerBinding = VK_ShaderSet::createDescriptorSetLayoutBinding(1, VK_DESCR
 
 代码仓库 -
 
-[https://github.com/ccsdu2004/vulkan-cpp-demo](https://link.zhihu.com/?target=https%3A//github.com/ccsdu2004/vulkan-cpp-demo)
+[https://github.com/ccsdu2004/vulkan-cpp-demo](https://github.com/ccsdu2004/vulkan-cpp-demo)

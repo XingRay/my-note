@@ -12,7 +12,7 @@ Spring AI 是一个面向人工智能工程的应用框架。解决了 AI 集成
 
 ##### 对话拦截advisors
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c8b0c98ae4ddc768afd03c6e27e2ac0b.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c8b0c98ae4ddc768afd03c6e27e2ac0b.png)
 
 
 面向切面的思想对对模型对话和响应进行增强。
@@ -30,7 +30,7 @@ ChatMemoryRepository chatMemoryRepository;
 
 tools
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1940de70650ccc0ff05e7de8cfc4e8c6.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1940de70650ccc0ff05e7de8cfc4e8c6.png)
 
 
 让大模型可以跟企业业务API进行互联 ，这一块实现起来也是非常的优雅
@@ -47,7 +47,7 @@ class DateTimeTools {
 
 ### RAG技术下的 ETL
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d0a24b3ef1f3d5ab010ca26ba15096fa.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d0a24b3ef1f3d5ab010ca26ba15096fa.png)
 
 
 让大模型可以跟企业业务数据进行互联（包括读取文件、分隔文件、向量化） 向量数据库支持 目前支持20+种向量数据库的集成 这块我到时候也会详细去讲
@@ -72,7 +72,7 @@ springai 提供了5种agent模式的示例
 
 1 [Evaluator Optimizer](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns/evaluator-optimizer) – The model analyzes its own responses and refines them through a structured process of self-evaluation.
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ff52057652e81e30dd3a363c731152dd.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ff52057652e81e30dd3a363c731152dd.png)
 
 2 [Routing](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns/routing-workflow) – This pattern enables intelligent routing of inputs to specialized handlers based on classification of the user request and context.
 3 [Orchestrator Workers](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns/orchestrator-workers) – This pattern is a flexible approach for handling complex tasks that require dynamic task decomposition and specialized processing
@@ -84,7 +84,7 @@ springai 提供了5种agent模式的示例
 
 ### langchain4j vs springAI
 
-|        | ![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b4039a13b06f0dcf8585b14549380a43.png) | ![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/3a3cc77bcc55144a12397f56394af994-1765862204261-14.png) |
+|        | ![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b4039a13b06f0dcf8585b14549380a43.png) | ![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/3a3cc77bcc55144a12397f56394af994-1765862204261-14.png) |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 生态   | 不依赖Spring，需要单独集成Spring                             | Spring官方，和Spring无缝集成                                 |
 | 诞生   | 更早，中国团队，受 LangChain 启发                            | 稍晚，但是明显后来居上                                       |
@@ -127,15 +127,15 @@ springai 提供了5种agent模式的示例
 
 #### 5 不差钱 deepseek-r1-0528 满血版本
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ce02bcd10033c1b8cfb409a85879b46a.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ce02bcd10033c1b8cfb409a85879b46a.png)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c452cc02f86c322b9e2c6261928bf1b4.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c452cc02f86c322b9e2c6261928bf1b4.png)
 
 快速使用
 
 1 创建项目
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/0e8f37d60021ddd6ec183139ab1387ae.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/0e8f37d60021ddd6ec183139ab1387ae.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -209,9 +209,9 @@ springai 提供了5种agent模式的示例
 1 获取deepseek api-key
 API Key：需从 DeepSeek 创建并获取 API 密钥：https://platform.deepseek.com/api_keys
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7720b233f795e43772becd97edb2c786.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7720b233f795e43772becd97edb2c786.png)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/98e3b6a5fd98d3037eb8db04a070e7c8.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/98e3b6a5fd98d3037eb8db04a070e7c8.png)
 
 
 
@@ -251,7 +251,7 @@ public class DeepseelTest {
 }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/115c38b3ebf03c167d93a7a92a2ec139.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/115c38b3ebf03c167d93a7a92a2ec139.png)
 
 
 
@@ -297,11 +297,11 @@ spring.ai.deepseek.chat.options.temperature=0.8
 智能体编程
 temperature:0.2 规规矩矩，像是被应试教育出来的老实学生没有创造力
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/fad8ab0f40696cdca864c113ff1324bc.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/fad8ab0f40696cdca864c113ff1324bc.png)
 
 temperature:1.9 可以看出来表现欲更强， 像是一个在领导面前想要表现的你.
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/92d21e67bc1778126381689e0740b75c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/92d21e67bc1778126381689e0740b75c.png)
 
 也可以通过提示词降低他的主观臆想：
 
@@ -359,11 +359,11 @@ spring:
 模型推理
 设置深度思考， 思考的内容有个专业名词叫：Chain of Thought (CoT)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1e99fc09e4ff1c42de2baa07ffd4476b.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1e99fc09e4ff1c42de2baa07ffd4476b.png)
 
 在deepseek中， deepseek-reasoner模型是深度思考模型：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e1937cd756f32929b99d04f228ec212c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e1937cd756f32929b99d04f228ec212c.png)
 
 ```java
 	@Test
@@ -420,7 +420,7 @@ spring.ai.deepseek.chat.options.model= deepseek-reasoner
 
 原理：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/9e68a2adf605739578f8411694bfe487.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/9e68a2adf605739578f8411694bfe487.png)
 
 1 当调用chatModel.call
 
@@ -434,7 +434,7 @@ default String call(String message) {
 
 首先会将提示词解析到Prompt对象中 （用于远程请求的messages）
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b39cf408af365d0ee14eb7e70fafc4c8.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b39cf408af365d0ee14eb7e70fafc4c8.png)
 
 调用deepseekModel#call---> internalCall方法
 
@@ -482,7 +482,7 @@ deepseekthis.deepSeekApi.chatCompletionEntity(request)
 
 ### 接入阿里百炼
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d20df27e23b6d2d8b6b9dd97971d7291.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d20df27e23b6d2d8b6b9dd97971d7291.png)
 
 
 阿里自己的团队维护spring-ai-alibaba. 但是也必须依赖spring-ai 。 好处是扩展度更高，坏处是必须是springai先出来， spring-ai-alibaba.延迟几天出来。
@@ -571,7 +571,7 @@ spring:
 文生语音text2audio
 
 ```java
- // https://bailian.console.aliyun.com/?spm=5176.29619931.J__Z58Z6CX7MY__Ll8p1ZOR.1.74cd59fcXOTaDL&tab=doc#/doc/?type=model&url=https%3A%2F%2Fhelp.aliyun.com%2Fdocument_detail%2F2842586.html&renderType=iframe
+ // https://bailian.console.aliyun.com/?spm=5176.29619931.J__Z58Z6CX7MY__Ll8p1ZOR.1.74cd59fcXOTaDL&tab=doc#/doc/?type=model&url=https://help.aliyun.com/document_detail/2842586.html&renderType=iframe
     @Test
     public void testText2Audio(@Autowired DashScopeSpeechSynthesisModel speechSynthesisModel) throws IOException {
         DashScopeSpeechSynthesisOptions options = DashScopeSpeechSynthesisOptions.builder()
@@ -688,14 +688,14 @@ ollama是大语言模型的运行环境 ， 支持将开源的大语言模型以
 
 2 点击下载， 一直下一步即可非常简单
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d30bc3adc7d4c00dda9309d4c417671e.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d30bc3adc7d4c00dda9309d4c417671e.png)
 
 3 安装完后运行cmd --> ollama list 查看已安装的大模型（开始肯定什么都没有）
 4 拉取模型 ollama run qwen3:4b
 这里的4b=40亿参数 对应gpu显存差不多是4G ，当然8B也可以只是比较卡
 5 测试
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/110437235417b19d3e558b53934221d9.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/110437235417b19d3e558b53934221d9.png)
 
 
 
@@ -735,11 +735,11 @@ public class OllamaTest {
 }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/02737566a1eb54921ae7dbfed23d4252.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/02737566a1eb54921ae7dbfed23d4252.png)
 
 #### 1.3. 关闭thingking
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/da24737b7922eb0655b364bb5ff8c045.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/da24737b7922eb0655b364bb5ff8c045.png)
 
 
 可以通过 在提示词结尾加入“/no_think” 指令
@@ -751,7 +751,7 @@ String text = ollamaChatModel.call("你是谁/no_think");
 
 但是依然有<think>标签， 暂时可以前端单独处理下
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5b1478cd3a293f98873660ef826de600.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5b1478cd3a293f98873660ef826de600.png)
 
 ollama 0.9.0 支持了关闭think。但是在spring1.0版本还不兼容
 
@@ -761,7 +761,7 @@ https://ollama.com/blog/thinking
 
 ### 1.4. 流式输出
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ec99098c7f0523908fc72b6579f37704.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ec99098c7f0523908fc72b6579f37704.png)
 
 ```java
 	@Test
@@ -785,7 +785,7 @@ https://ollama.com/blog/streaming-tool 0.8.0+支持stream+tools . 但是和sprin
 
 ### 1.5. 多模态
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b73ba82aee99f12fba1f6c67cbf60596.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b73ba82aee99f12fba1f6c67cbf60596.png)
 
 
 目前ollama支持的多模态模型：
@@ -824,7 +824,7 @@ and more [vision models](https://ollama.com/search?c=vision).
     }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/cf44062ed3c0de4149355792e1921761.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/cf44062ed3c0de4149355792e1921761.png)
 
 
 
@@ -858,7 +858,7 @@ public class ChatClientTest {
 
 这种方式会在底层自动注入1个ChatModel ， 如果你配置了多个模型依赖， 会无法注入。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f356525e046b57868f73407a75a53d0c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f356525e046b57868f73407a75a53d0c.png)
 
 可以通过这种方式动态选择ChatModel：
 
@@ -1228,11 +1228,11 @@ public void testPrompt(@Autowired DeepSeekChatModel chatModel,
 Advisor对话拦截
 Spring AI 利用面向切面的思想提供 Advisors API ， 它提供了灵活而强大的方法来拦截、修改和增强 Spring 应用程序中的 AI 驱动交互。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d17a2acdbe17c4e523ce247aeb4952cc.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d17a2acdbe17c4e523ce247aeb4952cc.png)
 
 Advisor 接口提供了CallAdvisor和组成CallAdvisorChain（适用于非流式场景），以及StreamAdvisor和 （StreamAdvisorChain适用于流式场景）。它还包括ChatClientRequest，用于表示未密封的 Prompt 请求，以及 ，ChatClientResponse用于表示聊天完成响应。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/cd4b0d24089d49f423c2fc4d1553e0fd.jpeg)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/cd4b0d24089d49f423c2fc4d1553e0fd.jpeg)
 
 #### 日志拦截：
 
@@ -1366,12 +1366,12 @@ public class AdvisorTest {
 
 原理
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d10e93116319d249bd764273de7c7b77.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d10e93116319d249bd764273de7c7b77.png)
 
 
 记住！
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/933a7718168224bca5bdbf793a75d8fd.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/933a7718168224bca5bdbf793a75d8fd.png)
 
 dvisor只有结合ChatClient才能用！ 是SpringAi上层提供的。 模型底层并没有这个东西
 
@@ -1401,11 +1401,11 @@ dvisor只有结合ChatClient才能用！ 是SpringAi上层提供的。 模型底
     }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ab43323a18ce8a077a2d149d1b11770e.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ab43323a18ce8a077a2d149d1b11770e.png)
 
 那我们平常跟一些大模型聊天是怎么记住我们对话的呢？实际上，每次对话都需要将之前的对话消息内置发送给大模型，这种方式称为多轮对话。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/de93ff70abc819644ecd8ed7cf431547.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/de93ff70abc819644ecd8ed7cf431547.png)
 
 SpringAi提供了一个ChatMemory的组件用于存储聊天记录，允许您使用 LLM 跨多个交互存储和检索信息。并且可以为不同用户的多个交互之间维护上下文或状态。
 
@@ -1420,9 +1420,9 @@ SpringAi提供了一个ChatMemory的组件用于存储聊天记录，允许您�
 
 但是这样做未免太麻烦！ 能不能简化？ 思考一下！
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b8a46aa5f7df094c73f6d602fd68db2b.jpeg)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b8a46aa5f7df094c73f6d602fd68db2b.jpeg)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/4305331c28fafe096d2b9967c3bcecc6.gif)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/4305331c28fafe096d2b9967c3bcecc6.gif)
 
 用我们之前的Advisor对话拦截是不是就可以不用每次手动去维护了。 并且SpringAi早已体贴的为我提供了ChatMemoryAutoConfiguration自动配置类
 
@@ -1503,7 +1503,7 @@ public class ChatMemoryTest {
 
 大模型的token是有上限了， 如果你发送过多聊天记录，可能就会导致token过长。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d77f23dedacdb9566b18201e64d388c4.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d77f23dedacdb9566b18201e64d388c4.png)
 
 并且更多的token也意味更多的费用， 更久的解析时间. 所以不建议太长
 
@@ -1557,7 +1557,7 @@ public class ChatMemoryTest {
 
 会发现， 不同的CONVERSATION_ID，会有不同的记忆
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/dd4ed7c23b72a72f003c3c72cd7e6156.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/dd4ed7c23b72a72f003c3c72cd7e6156.png)
 
 ### 原理源码$
 
@@ -1569,7 +1569,7 @@ MessageWindowChatMemory
 
 ChatMemoryRepository
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/13e5496d104c85862a33a15b4ae41e6b.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/13e5496d104c85862a33a15b4ae41e6b.png)
 
 
 
@@ -1699,7 +1699,7 @@ public class ChatMemoryTest {
 
 可以看到由于我设置.maxMessages(1)数据库只存一条
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/73c0a2eec9f9c89d3c73550bf874584f.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/73c0a2eec9f9c89d3c73550bf874584f.png)
 
 
 
@@ -1839,7 +1839,7 @@ public void testBoolOut() {
 
 用购物APP应该见过复制一个地址， 自动为你填入每个输入框。 用大模型轻松完成！
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5801cb3c6e90f09c74d702ed874ee819.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5801cb3c6e90f09c74d702ed874ee819.png)
 
 
 
@@ -1870,7 +1870,7 @@ public record Address(
 
 原理
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/3c085c48fd5436996c6ef2c1af8913e4.jpeg)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/3c085c48fd5436996c6ef2c1af8913e4.jpeg)
 
 
 ChatModel或者直接使用低级API：
@@ -1909,23 +1909,23 @@ ChatModel或者直接使用低级API：
 
 票务助手
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/4a865ea2a990ad082871d77ffeeb5eb5.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/4a865ea2a990ad082871d77ffeeb5eb5.png)
 
 
 效果
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c7ba3f0f64ecf38e8a4c3b0ed6adfddf.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c7ba3f0f64ecf38e8a4c3b0ed6adfddf.png)
 
 
 输入姓名和预定号：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/094620145b25a67b147dc234b5d7f002.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/094620145b25a67b147dc234b5d7f002.png)
 
 
 
 普通对话：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5b5db1a40d26d1c6d2d46185eb6eb7bc.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5b5db1a40d26d1c6d2d46185eb6eb7bc.png)
 
 代码：
 
@@ -2056,7 +2056,7 @@ public class MultiModelsController {
 
 ### tools/function-call
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png.png)
 
 
 想做企业级智能应用开发， 你肯定会有需求要让大模型和你的企业API能够互连，
@@ -2076,16 +2076,16 @@ tool calling也可以直接叫tool（也称为function-call）, 主要用于提�
 1 **信息检索**：可用于从外部源（如数据库、Web 服务、文件系统或 Web 搜索引擎）检索信息。目标是增强模型的知识，使其能够回答无法回答的问题。例如，工具可用于检索给定位置的当前天气、检索最新的新闻文章或查询数据库以获取特定记录。 这也是一种检索增强方式。
 2 **采取行动**：例如发送电子邮件、在数据库中创建新记录、提交表单或触发工作流。目标是自动执行原本需要人工干预或显式编程的任务。例如，可以使用工具为与聊天机器人交互的客户预订航班，在网页上填写表单等。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/65d5fed2e30855f19e8a0f22af214bbb-1765864971918-101.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/65d5fed2e30855f19e8a0f22af214bbb-1765864971918-101.png)
 
 
 需要使用tools必须要先保证大模型支持。 比如ollama列出了支持tool的模型
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/0ddca1860281a56079a9b17bb0632286.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/0ddca1860281a56079a9b17bb0632286.png)
 
 #### 使用
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1082049b3212c15d95ea96ffcb79cfe6.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1082049b3212c15d95ea96ffcb79cfe6.png)
 
 1 声明tools的类:
 
@@ -2133,11 +2133,11 @@ public class ToolTest {
 }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6da5f0defebfba9847f4cc0ca65fd13d.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6da5f0defebfba9847f4cc0ca65fd13d.png)
 
 ### 原理
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7fb2d07613ff5c8addcfefc9409bb817.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7fb2d07613ff5c8addcfefc9409bb817.png)
 
 1 当我们设置了defaultTools 相当于就告诉了大模型我提供了什么工具， 你需要用我的工具必须给我什么参数， 底层实际就是将这些信息封装了json提供给大模型
 2 当大模型识别到我们的对话需要用到工具， 就会响应需要调用tool
@@ -2146,13 +2146,13 @@ public class ToolTest {
 
 ### 源码
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b6739bec4c6ce982c16a54d3551e2368.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b6739bec4c6ce982c16a54d3551e2368.png)
 
 ### tools注意事项：
 
 #### 参数或者返回值不支持：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6187c36f2aba81e23c202d8f975f2b27.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6187c36f2aba81e23c202d8f975f2b27.png)
 
 **推荐**： pojo record java基础类型 list map
 
@@ -2299,15 +2299,15 @@ tools的描述作用 保存 向量数据库。
 
 #### 角色预设：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/707229d02a9cb2b23047c89f4a2973ea.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/707229d02a9cb2b23047c89f4a2973ea.png)
 
 #### 记忆对话
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7d09289a453e08e72b9bdecca140a438.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7d09289a453e08e72b9bdecca140a438.png)
 
 #### tools
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/db515fb987f72348837d51164661c61f.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/db515fb987f72348837d51164661c61f.png)
 
 #### MCP
 
@@ -2321,7 +2321,7 @@ tools的描述作用 保存 向量数据库。
 
 那问题又来了， 以什么方式通讯呢？ http? rpc? stdio? mcp提供了sse和stdio这2种方式。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e454d6a2cab1881394953b7a8ca6f99b.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e454d6a2cab1881394953b7a8ca6f99b.png)
 
 **使用**
 Streamable http目前springai1.0版本不支持， 我们先掌握SSE和STDIO
@@ -2331,7 +2331,7 @@ Streamable http目前springai1.0版本不支持， 我们先掌握SSE和STDIO
 -- STDIO更适合客户端桌面应用和辅助工具
 -- SSE更适合web应用 、业务有关的公共tools
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f441e46851c6e01105870b26b56f9969.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f441e46851c6e01105870b26b56f9969.png)
 
 #### STDIO
 
@@ -2341,7 +2341,7 @@ Streamable http目前springai1.0版本不支持， 我们先掌握SSE和STDIO
 
 现在有很多MCP 服务 给大家提供一个网站：[MCP Server（MCP 服务器）](https://mcp.so/zh)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c60e1098ecdfa6ebb379fcb9f3dea455.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c60e1098ecdfa6ebb379fcb9f3dea455.png)
 
 那MCP有了， 怎么调用呢？ 这里介绍2种使用方式：
 
@@ -2448,22 +2448,22 @@ spring:
 
 CherryStudio、Cursor 、Claude Desktop、[Cline](https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev)  等等很多， 这里不一一演示， 不会的话自己找个文章， 工具使用都很简单!
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/60c5e59ae07afb14e9f85de4400e0d3b.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/60c5e59ae07afb14e9f85de4400e0d3b.png)
 
 以Cline为例： 他是Vscode的插件
 
 1 安装VSCode
 2 安装插件：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/61d9879acd25da7a5bd08b1e824b2042.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/61d9879acd25da7a5bd08b1e824b2042.png)
 
 配置cline的模型：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e106cf2f27c1701031a4a28ffaf9a538.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e106cf2f27c1701031a4a28ffaf9a538.png)
 
 配置cline的mcpserver
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/30c01e3cb70fca661617b4d2bd7e1ccf.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/30c01e3cb70fca661617b4d2bd7e1ccf.png)
 
 ```
 {
@@ -2505,13 +2505,13 @@ CherryStudio、Cursor 、Claude Desktop、[Cline](https://marketplace.visualstud
 
 开启cline权限
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/8bea05068b8357cf621e952b8654e93e.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/8bea05068b8357cf621e952b8654e93e.png)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/08902082c286e30fe6e1d88edccf8eeb.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/08902082c286e30fe6e1d88edccf8eeb.png)
 
 6.测试：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/bfe8b9a78ee7b8fd9efc412a6b09e328.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/bfe8b9a78ee7b8fd9efc412a6b09e328.png)
 
 通过Spring AI
 依赖
@@ -2773,18 +2773,18 @@ public class OpenAiController {
 5 原理
 1 STDIO 是基于标准输入\输出流的方式， 需要在MCP 客户端安装一个包（可以是jar包、python包、npm包等..）. 它是“客户端”的MCP Server。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7cbaafe1370523fe272200cc8e9f2ada.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/7cbaafe1370523fe272200cc8e9f2ada.png)
 
 SSE 是基于Http的方式进行通讯， 需要将MCP Server部署为一个web服务. 它是服务端的MCP Server
 
 #### STDIO原理
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/896a18343efba78f2d51d4bcc6dc598c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/896a18343efba78f2d51d4bcc6dc598c.png)
 
 
 很多人不理解stdio到底什么意思， 为什么一定要把stdio server的banner关掉， 还要清空控制台？
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/60461f255ab28a005c50a3f87aa0f4dc.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/60461f255ab28a005c50a3f87aa0f4dc.png)
 
 1 首先SpringAi底层会读取到mcp-servers-config.json的信息
 2 然后执行命令（其实聪明的小伙伴早就发现了，mcp-servers-config.json文件中就是一堆shell命令）
@@ -2806,7 +2806,7 @@ String[] commands={"java",
 
 其实你也完全可以自己通过mcd去执行命令
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/13079212eaa9cccf25db8d1802855578.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/13079212eaa9cccf25db8d1802855578.png)
 
 1 运行jar -jar mcp-stdio-server.jar
 2 输入{"jsonrpc":"2.0","method":"tools/list","id":"3b3f3431-1","params":{}}
@@ -2883,7 +2883,7 @@ String[] commands={"java",
 
 ### STDIO源码
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/a60d481fc91f4edd015228f2f3fb7f1e.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/a60d481fc91f4edd015228f2f3fb7f1e.png)
 
 ### MCP鉴权
 
@@ -2897,7 +2897,7 @@ String[] commands={"java",
 
 这种方式在本地运行,它 **将MCP Server作为子进程启动**。 我们称为标准输入输出， 其实就是利用运行命令的方式写入和读取控制台的信息，以达到传输。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ab44e9713c685f5c84bb6b15098214ce.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ab44e9713c685f5c84bb6b15098214ce.png)
 
 通常我们会配置一段json，比如这里的百度地图MCP Server ：
 
@@ -2950,7 +2950,7 @@ public String getScore() {
 
 不过，如果你想把 MCP 服务器开放给外部使用，就需要暴露一些标准的 HTTP 接口。对于私有场景，MCP 服务器可能并不需要严格的身份认证，但在企业级部署下，对这些接口的安全和权限把控就非常重要了。为了解决这个问题，[2025 年 3 月发布的最新 MCP 规范](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization)引入了安全基础，借助了广泛使用的 [OAuth2 框架](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization)。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765867923918-154.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765867923918-154.png)
 
 本文不会详细介绍 OAuth2 的所有内容，不过简单回顾一下还是很有帮助。
 
@@ -2966,7 +2966,7 @@ curl https://mcp.example.com/sse -H "Authorization: Bearer <有效的 access tok
 
 用 Spring Security 和 Spring Authorization Server，可以方便地为现有的 Spring MCP 服务器加上这两大安全能力。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765868000564-157.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765868000564-157.png)
 
 ### 给 Spring MCP 服务器加上 OAuth2 支持
 
@@ -3190,7 +3190,7 @@ public class SseWebFluxTransportAutoConfiguration {
 
 使用：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/64f40b434f534205a3341b83c03dff9c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/64f40b434f534205a3341b83c03dff9c.png)
 
 #### 设置WebClientCustomizer
 
@@ -3247,7 +3247,7 @@ curl -XPOST http://localhost:8080/oauth2/token --data grant_type=client_credenti
 4 将查询到的数据和对话信息再请求大模型
 5 此时会响应退订需要多少费用
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/97021a40c49bc90b2cbbc0ab80e3583c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/97021a40c49bc90b2cbbc0ab80e3583c.png)
 
 
 
@@ -3257,15 +3257,15 @@ curl -XPOST http://localhost:8080/oauth2/token --data grant_type=client_credenti
 
 向量通常用来做相似性搜索，比如语义的一维向量，可以表示词语或短语的语义相似性。例如，“你好”、“hello”和“见到你很高兴”可以通过一维向量来表示它们的语义接近程度。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c160e36e8acdfe333b2e102d3ffebbd9.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c160e36e8acdfe333b2e102d3ffebbd9.png)
 
 然而，对于更复杂的对象，比如小狗，无法仅通过一个维度来进行相似性搜索。这时，我们需要提取多个特征，如颜色、大小、品种等，将每个特征表示为向量的一个维度，从而形成一个多维向量。例如，一只棕色的小型泰迪犬可以表示为一个多维向量 [棕色, 小型, 泰迪犬]。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f84eae1477a5429c6caa25803180dc5a.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f84eae1477a5429c6caa25803180dc5a.png)
 
 如果需要检索见过更加精准， 我们肯定还需要更多维度的向量， 组成更多维度的空间，在多维向量空间中，相似性检索变得更加复杂。我们需要使用一些算法，如余弦相似度或欧几里得距离，来计算向量之间的相似性。**向量数据库**会帮我实现。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6d231f6540e8d92a43afe77da3bf1091.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6d231f6540e8d92a43afe77da3bf1091.png)
 
 #### 文本向量化
 
@@ -3277,7 +3277,7 @@ curl -XPOST http://localhost:8080/oauth2/token --data grant_type=client_credenti
 2 阿里百炼有大量向量模型
     默认模型DashScopeEmbeddingProperties#DEFAULT_EMBEDDING_MODEL="text-embedding-v1"
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/9b6c6623e52f8c415701af0d5ac98837.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/9b6c6623e52f8c415701af0d5ac98837.png)
 
 ```properties
 spring.ai.dashscope.embedding.options.model= text-embedding-v4
@@ -3285,7 +3285,7 @@ spring.ai.dashscope.embedding.options.model= text-embedding-v4
 
 3 ollama有大量向量模型, 自己拉取
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/457d27b37959d6b016c9d2a958ef2a18.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/457d27b37959d6b016c9d2a958ef2a18.png)
 
 
 以ollama为例：
@@ -3309,7 +3309,7 @@ public class EmbaddingTest {
 }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e2c364f7be72bdc5ca920d6d295c0085.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e2c364f7be72bdc5ca920d6d295c0085.png)
 
 从结果可以知道"我叫徐庶"这句话经过OllamaEmbeddingModel向量化之后得到的一个长度为768的float数组。注意，768是向量模型nomic-embed-text-v1.5固定的，不会随着句子长度而变化，不同的向量模型提供了不同的维度。
 
@@ -3317,7 +3317,7 @@ public class EmbaddingTest {
 
 查询跟秋田犬类似的狗， 在向量数据库中根据每个狗的特点进行多维向量， 你会发现秋田犬的向量数值和柴犬的向量数值最接近， 就可以查到类似的狗。 （当然我这里只是举例，让你对向量数据库有一个印象）
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/8c8865db1a37fa4a648d0866b849680c.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/8c8865db1a37fa4a648d0866b849680c.png)
 
 -- 向量模型的本质目标，就是把语义相似的内容用“相近”的向量表示，把“不相关”内容尽量拉远。
 -- 所以好的向量模型能够更好的识别语义， 进行向量化.
@@ -3361,7 +3361,7 @@ https://docs.spring.io/spring-ai/reference/api/vectordbs.html
 SimpleVectorStore 教学版向量数据库
 [Milvus Vector Store Milvus](https://docs.spring.io/spring-ai/reference/api/vectordbs/milvus.html)（国产团队）、文档友好、社区国内活跃、性能最佳、市场占用率大。 实战中使用的向量数据库.
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c2356008ac80c8c6b24c0db08ca01218.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/c2356008ac80c8c6b24c0db08ca01218.png)
 
 
 
@@ -3371,7 +3371,7 @@ SimpleVectorStore 教学版向量数据库
 
 然后通过"退票要多少钱" 进行查询
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/99464495da633314df1a4fcd39733c36.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/99464495da633314df1a4fcd39733c36.png)
 
 代码执行结果为：
 
@@ -3636,11 +3636,11 @@ public class SimpleVectorStoreTest {
 
 提取（读取）、转换（分隔）和加载（写入）
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/891f306dd70952bd2af2cc00952431af.jpeg)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/891f306dd70952bd2af2cc00952431af.jpeg)
 
 1.1. [Document Loaders](https://docs.langchain4j.dev/category/document-loaders) 文档读取器
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/53143818d9702c9e52204fc74eddd8fe.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/53143818d9702c9e52204fc74eddd8fe.png)
 
 #### springai提供了以下文档阅读器
 
@@ -3670,7 +3670,7 @@ document-parser-tika：一个多功能文档解析器，支持多种文档格式
 
 https://github.com/alibaba/spring-ai-alibaba/tree/main/community/document-readers
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/a2f354a63eef99506e7e79a66bcd59fe.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/a2f354a63eef99506e7e79a66bcd59fe.png)
 
 
 
@@ -3789,7 +3789,7 @@ ParagraphPdfDocumentReader 按pdf目录分成一个个document
 
 ### 1.2. [DocumentSplitter‌](https://docs.langchain4j.dev/tutorials/rag#document-splitter) 文档拆分器（转换器）
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/395505f8d21a8351e37efaac6810c393.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/395505f8d21a8351e37efaac6810c393.png)
 
 
 由于文本读取过来后， 还需要分成一段一段的片段(分块chunk)， 分块是为了更好地拆分语义单元，这样在后面可以更精确地进行语义相似性检索，也可以避免LLM的Token限制。
@@ -3849,7 +3849,7 @@ minChunkLengthToEmbed (默认值: 5) 5
 
 整个流程如下：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/71bb7c80540935fc71bd14f2a8d2eede.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/71bb7c80540935fc71bd14f2a8d2eede.png)
 
 #### 1.2.2. 自定分割器：
 
@@ -4073,13 +4073,13 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 以下是 RAG 的五种分块策略：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/9f4561bdd66419af050fe67eaf502948.gif)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/9f4561bdd66419af050fe67eaf502948.gif)
 
 ##### 1.2.4.1. 1）固定大小分块
 
 生成块的最直观和直接的方法是根据预定义的字符、单词或标记数量将文本分成统一的段。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/4be34ec07ecc3551adf1c5074ece3e3b.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/4be34ec07ecc3551adf1c5074ece3e3b.png)
 
 由于直接分割会破坏语义流，因此建议在两个连续的块之间保持一些重叠（上图蓝色部分）。
 
@@ -4093,7 +4093,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 这个想法很简单。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/50876c44c950b2aef80a038e2921548b.gif)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/50876c44c950b2aef80a038e2921548b.gif)
 
 -- 根据句子、段落或主题部分等有意义的单位对文档进行细分。
 -- 接下来，为每个片段创建嵌入。
@@ -4103,7 +4103,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
         一旦发生这种情况，我们就开始新的部分并重复。
 输出可能如下所示：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/373ccc4bb3e0aa22932c2e355ec51ebe.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/373ccc4bb3e0aa22932c2e355ec51ebe.png)
 
 与固定大小的块不同，这保持了语言的自然流畅并保留了完整的想法。
 
@@ -4117,7 +4117,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 这也很简单。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b5a027ca65c71dad96699db915d70108.gif)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/b5a027ca65c71dad96699db915d70108.gif)
 
 首先，根据固有分隔符（如段落或章节）进行分块。
 
@@ -4125,7 +4125,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 输出可能如下所示：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/04da388fc4fc20ff5657801b0b27e3f2.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/04da388fc4fc20ff5657801b0b27e3f2.png)
 
 如上图：
 
@@ -4141,7 +4141,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 这是另一种直观的方法。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/01b4d80bcbe5d0f0e5d72359a9d17f8d.gif)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/01b4d80bcbe5d0f0e5d72359a9d17f8d.gif)
 
 它利用文档的固有结构（如标题、章节或段落）来定义块边界。
 
@@ -4149,7 +4149,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 输出可能如下所示：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/31c75b6723f8fcd71c767e32e36736a3.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/31c75b6723f8fcd71c767e32e36736a3.png)
 
 也就是说，这种方法假设文档具有清晰的结构，但事实可能并非如此。
 
@@ -4159,7 +4159,7 @@ public class ChineseTokenTextSplitter extends TextSplitter {
 
 #### 1.2.4.5. 5）基于LLM的分块
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e885f1c59ab08b7b88a7b68df8284c1e.gif)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/e885f1c59ab08b7b88a7b68df8284c1e.gif)
 
 
 既然每种方法都有优点和缺点，为什么不使用 LLM 来创建块呢？
@@ -4250,7 +4250,7 @@ new KeywordMetadataEnricher(chatModel, 5);
     }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5c75ae396d3d132a5de05004f53d062f.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5c75ae396d3d132a5de05004f53d062f.png)
 
 #### 作用：
 
@@ -4370,7 +4370,7 @@ Summary: The section outlines the policies for modifying and canceling reservati
 
 ### 1.3. 文本向量化
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/46e1d0dce9e0cae3958954a5db16c7e7.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/46e1d0dce9e0cae3958954a5db16c7e7.png)
 
 
 向量化存储之前在“文本向量化”介绍了， 就是通过向量模型库进行向量化
@@ -4416,7 +4416,7 @@ for (Document document : apply) {
 vectorStore.write(apply);
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5ea21e0fc3b35f1aae106fa2c6148bea.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/5ea21e0fc3b35f1aae106fa2c6148bea.png)
 
 ```java
 @Test
@@ -4494,7 +4494,7 @@ vectorStore.write(apply);
 
 如果结合ChatClient 可以直接将检索和Advisor整合在一起
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f72c66d32c30de51f8523a0354aaebbc.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/f72c66d32c30de51f8523a0354aaebbc.png)
 
 ```java
 @Test
@@ -4536,13 +4536,13 @@ vectorStore.write(apply);
 
 SpringAI整个过程原理：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/377d99dcaa6a5d957b05091a5a760a39.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/377d99dcaa6a5d957b05091a5a760a39.png)
 
 #### 提升检索精度—rerank(重排序）
 
 ##### 为什么需要 rerank
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/159a4c158a84d0f49e49b8346ef9f7aa.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/159a4c158a84d0f49e49b8346ef9f7aa.png)
 
 
 传统的向量检索存在几个关键问题：
@@ -4558,7 +4558,7 @@ SpringAI整个过程原理：
 **重排序**：
 主要在检索阶段进行改进：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/0be8a532e921b4fcfd7046c3a38502b1.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/0be8a532e921b4fcfd7046c3a38502b1.png)
 
 **二阶段优化架构**：rerank 采用"粗排+精排"的两阶段架构。第一阶段快速检索大量候选文档，第二阶段使用专门的重排序模型进行精确评分。
 
@@ -4643,13 +4643,13 @@ public class RerankTest {
 
 排第一的doucment跟退费并没有关系：
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/826684f4752b0d231c65b2f8d6e607af.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/826684f4752b0d231c65b2f8d6e607af.png)
 
 重排后：
 
 排第一的document:
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/2ce21c1aa6ce06858eff23478cc60db6.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/2ce21c1aa6ce06858eff23478cc60db6.png)
 
 
 
@@ -4691,7 +4691,7 @@ public class RerankTest {
 
 写入向量数据库
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/13f4ec9faac29b1e0390930c1fa30aae.jpeg)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/13f4ec9faac29b1e0390930c1fa30aae.jpeg)
 
 ```
 @Bean
@@ -4828,9 +4828,9 @@ LLM使用的通义千问
 
 https://www.yuque.com/geren-t8lyq/ncgl94/ndw2tv9u6bu3zo2h?singleDoc# 《基于RAG技术的个人知识库AI问答系统》实战
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/2afc55a5115dcc373ee473209460afe3.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/2afc55a5115dcc373ee473209460afe3.png)
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ac66819e6a2b730244369de22c287240.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ac66819e6a2b730244369de22c287240.png)
 
 
 
@@ -4977,11 +4977,11 @@ public class RagEvalTest {
 }
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1702c828f4be8b15d114a4a086d451dd.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/1702c828f4be8b15d114a4a086d451dd.png)
 
 query = "我叫什么名字";
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6c9ff3d5a38600f11255b0c0b7a0f7d6.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/6c9ff3d5a38600f11255b0c0b7a0f7d6.png)
 
 
 
@@ -5284,7 +5284,7 @@ curl -X POST http://localhost:8080/api/v1/translate
 
 根据任务-->生成信息--->通过评估器不断完善--->最终输出结果
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d658ecb742274247a8611b23a35d78f6.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/d658ecb742274247a8611b23a35d78f6.png)
 
 这个模式实现了双 LLM 过程，其中一个模型生成响应，另一个模型在迭代循环中提供评估和反馈
 
@@ -5426,7 +5426,7 @@ public class SimpleEvaluatorOptimizer {
 
 模式能够根据用户请求和上下文的分类将输入智能路由到专门的处理程序。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765871879156-248.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765871879156-248.png)
 
 这个工作流特别适用于复杂任务，其中：
 
@@ -5440,7 +5440,7 @@ public class SimpleEvaluatorOptimizer {
 
 这种模式是一种灵活的方法，用于处理需要动态任务分解和专门处理的复杂任务 manus就是这个模式
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765871901829-251.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765871901829-251.png)
 
 该模式包含三个主要组件：
 
@@ -5572,7 +5572,7 @@ public class Application {
 
 该模式将复杂的任务分解为一系列步骤，其中每个 LLM 调用都会处理前一个调用的输出。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ad58e723b6e8e16f124383cbec489289.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/ad58e723b6e8e16f124383cbec489289.png)
 
 这种模式特别适用于：
 
@@ -5747,7 +5747,7 @@ public class DocumentGenerationChainWorkflow {
 
 deepseek MoE 多专家 多路并行
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765872020604-256.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/format,png-1765872020604-256.png)
 
 并行化工作流模式通过并发处理多个 LLM 操作来提高效率，主要有两种变体：
 
@@ -5900,19 +5900,19 @@ public class Application {
 
 1 **打开百度浏览器，在搜索框输入：阿里巴巴最最近一周股价，根据搜索到的信息绘制最近一周的股价趋势图并保存到本地目录。**
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/82ade2d3ab55b3f70632448e73ca15a5.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/82ade2d3ab55b3f70632448e73ca15a5.png)
 
 ```
 我计划在接下来的五一劳动节假期到韩国旅行，行程是从杭州出发到韩国首尔，总预算为10000元。我想体验韩国的风土人情、文化、普通老百姓的生活，总行程计划为5天。请提供详细的行程并制作成一个简单的HTML旅行手册，其中包含地图、景点描述、基本的韩语短语和旅行提示，以供我在整个旅程中参考。
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/01672515d66d83aef981dd59ff199ce1.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/01672515d66d83aef981dd59ff199ce1.png)
 
 ```
 在本机的/tmp/docs目录下有一些中文文档 ，请依次将这些文档翻译为中文并保存到一个独立文件，将新生成的文件都存放到/tmp/endocs目录下
 ```
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/aac7447557cc501a983a4ef753a4cd68.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/aac7447557cc501a983a4ef753a4cd68.png)
 
 
 
@@ -5922,7 +5922,7 @@ public class Application {
 
 Spring AI Alibaba Openmanus 与 Python 版本 OpenManus 设计理念相似，其总体架构如下图所示。
 
-![img](./SpringAi%20GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/af21b652140c4ea005fd9f8b2da7beff.png)
+![img](./SpringAi GA1.0.0%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%AE%8C%E6%95%B4%E7%B3%BB%E5%88%97%E8%AF%BE.assets/af21b652140c4ea005fd9f8b2da7beff.png)
 
 分析上图架构，我们可以把它看作是一款多 Agent 智能自动协作实现，其中：
 

@@ -4,7 +4,7 @@
 
 本文目的是结合Vulkan的spec以及官方Vulkan教程，深入探究vulkan创建pipeline object的过程，以及理解vulkan是如何通过pipeline object去抽象硬件GPU流水线的各项功能的。
 
-参考： [Introduction - Vulkan Tutorial](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/)
+参考： [Introduction - Vulkan Tutorial](https://vulkan-tutorial.com/)
 
 ## 正文
 

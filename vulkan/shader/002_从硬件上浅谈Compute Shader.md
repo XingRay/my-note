@@ -133,10 +133,10 @@ VGPR &amp; SGPR
 
 ## References
 
-1. [https://anteru.net/blog/2018/intro-to-compute-shaders/](https://link.zhihu.com/?target=https%3A//anteru.net/blog/2018/intro-to-compute-shaders/)
-2. [https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/sv-dispatchthreadid](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/en-us/windows/win32/direct3dhlsl/sv-dispatchthreadid)
-3. [https://itigic.com/compute-units-or-sm-on-a-gpu-architecture-and-usage/](https://link.zhihu.com/?target=https%3A//itigic.com/compute-units-or-sm-on-a-gpu-architecture-and-usage/)
-4. [https://www.khronos.org/opengl/wiki/Compute_Shader](https://link.zhihu.com/?target=https%3A//www.khronos.org/opengl/wiki/Compute_Shader)
+1. [https://anteru.net/blog/2018/intro-to-compute-shaders/](https://anteru.net/blog/2018/intro-to-compute-shaders/)
+2. [https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/sv-dispatchthreadid](https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/sv-dispatchthreadid)
+3. [https://itigic.com/compute-units-or-sm-on-a-gpu-architecture-and-usage/](https://itigic.com/compute-units-or-sm-on-a-gpu-architecture-and-usage/)
+4. [https://www.khronos.org/opengl/wiki/Compute_Shader](https://www.khronos.org/opengl/wiki/Compute_Shader)
 5. https://zhuanlan.zhihu.com/p/68886986
-6. [https://developer.arm.com/-/media/developer/Graphics%20and%20Multimedia/Developer%20Guides%20-%20PDFs/arm_mali_gpu_opengl_es_3-x_developer_guide_en.pdf?revision=31f40c1e-e404-4c4d-96e3-a59bec129e05](https://link.zhihu.com/?target=https%3A//developer.arm.com/-/media/developer/Graphics%20and%20Multimedia/Developer%20Guides%20-%20PDFs/arm_mali_gpu_opengl_es_3-x_developer_guide_en.pdf%3Frevision%3D31f40c1e-e404-4c4d-96e3-a59bec129e05)
+6. [https://developer.arm.com/-/media/developer/Graphics and Multimedia/Developer Guides - PDFs/arm_mali_gpu_opengl_es_3-x_developer_guide_en.pdf?revision=31f40c1e-e404-4c4d-96e3-a59bec129e05](https://developer.arm.com/-/media/developer/Graphics and Multimedia/Developer Guides - PDFs/arm_mali_gpu_opengl_es_3-x_developer_guide_en.pdf?revision=31f40c1e-e404-4c4d-96e3-a59bec129e05)
 

@@ -2,7 +2,7 @@
 
 原文链接：
 
-[从零开始的 Vulkan（八）：计算管线illurin.com/articles/vulkan08/![img](./assets/v2-05b58cc36d952c0af56b14fb910f604a_180x120.jpg)](https://link.zhihu.com/?target=http%3A//illurin.com/articles/vulkan08/)
+[从零开始的 Vulkan（八）：计算管线illurin.com/articles/vulkan08/![img](./assets/v2-05b58cc36d952c0af56b14fb910f604a_180x120.jpg)](http://illurin.com/articles/vulkan08/)
 
 假如离开了[图形渲染](https://zhida.zhihu.com/search?content_id=226934172&content_type=Article&match_order=1&q=图形渲染&zhida_source=entity)，GPU 还能干什么？GPU [通用计算](https://zhida.zhihu.com/search?content_id=226934172&content_type=Article&match_order=1&q=通用计算&zhida_source=entity)（General-purpose computing on GPU，GPGPU）向我们展现了一个美好的图景，使用 GPU 强大的并行处理能力，能够将 CPU 从的大量的重复运算中解放出来，实现远超传统 CPU 处理的运算速度。
 

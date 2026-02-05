@@ -4,7 +4,7 @@
 
 按照
 
-[混合 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/04%20Advanced%20OpenGL/03%20Blending/)
+[混合 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/04 Advanced OpenGL/03 Blending/)
 
 过了一遍所有的代码和流程，记录下自己的理解和思考
 

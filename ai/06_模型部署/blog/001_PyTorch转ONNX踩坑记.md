@@ -2,7 +2,7 @@
 
 ## 背景：
 
-使用PyTorch训练了一个文字检测器准备上线使用，我的网络中包含[Deformable Multi-Scale Attention](https://link.zhihu.com/?target=https%3A//github.com/fundamentalvision/Deformable-DETR)，是一个非官方Op。下面开始踩坑之旅。
+使用PyTorch训练了一个文字检测器准备上线使用，我的网络中包含[Deformable Multi-Scale Attention](https://github.com/fundamentalvision/Deformable-DETR)，是一个非官方Op。下面开始踩坑之旅。
 
 ### BTW：
 
@@ -12,11 +12,11 @@
 
 ## 第一步：
 
-按照 PyTorch [官方示例代码](https://link.zhihu.com/?target=https%3A//pytorch.org/tutorials/advanced/super_resolution_with_onnxruntime.html)进行转换，报错：
+按照 PyTorch [官方示例代码](https://pytorch.org/tutorials/advanced/super_resolution_with_onnxruntime.html)进行转换，报错：
 
 _any() takes 2 positional arguments but 4 were given.
 
-参考这个[链接](https://link.zhihu.com/?target=https%3A//www.codeleading.com/article/90936323209/)，解决方案如下：
+参考这个[链接](https://www.codeleading.com/article/90936323209/)，解决方案如下：
 
 找到 torch/onnx/symbolic_opset9.py 中的如下代码
 
@@ -69,7 +69,7 @@ This often indicates that the tracer has encountered untraceable code.
 1. 为 DeformMSAttention 支持 PyTorch 的 trace。并且，还需要实现它的 ONNX Op。非常麻烦。
 2. 将原先的 C++/CUDA 代码用纯 PyTorch 代码代替掉，这样就可以 trace 了
 
-代码来自[这里](https://link.zhihu.com/?target=https%3A//github.com/mlpc-ucsd/TESTR/blob/main/adet/layers/ms_deform_attn.py%23L39)，粘贴如下：
+代码来自[这里](https://github.com/mlpc-ucsd/TESTR/blob/main/adet/layers/ms_deform_attn.py%23L39)，粘贴如下：
 
 ```python3
 def ms_deform_attn_core_pytorch(value, value_spatial_shapes, sampling_locations, attention_weights):
@@ -103,9 +103,9 @@ RuntimeError: Exporting the operator grid_sampler to ONNX opset version 11 is no
 
 这个报错的原因很简单。步骤二中添加的代码虽然是纯 PyTorch 实现，可以被 trace，但是 grid_sample 这个 Op 太新了，在我使用的 PyTorch 1.10.0 版本还没有添加到 ONNX opset。
 
-本来这个问题已经不是问题了，因为 grid_sample 这个函数在最近发布的 PyTorch 1.12.0 中已经实现了支持，见[发布报告](https://link.zhihu.com/?target=https%3A//github.com/pytorch/pytorch/releases/tag/v1.12.0)。
+本来这个问题已经不是问题了，因为 grid_sample 这个函数在最近发布的 PyTorch 1.12.0 中已经实现了支持，见[发布报告](https://github.com/pytorch/pytorch/releases/tag/v1.12.0)。
 
-但是坑爹的是，我的检测模型是基于 Detectron2 来实现的，Detectron2 已经一年多没有更新了。如[项目主页](https://link.zhihu.com/?target=https%3A//detectron2.readthedocs.io/en/latest/tutorials/install.html)所示，目前的 v0.6 版本最多只支持到 CUDA11.3 + PyTorch 1.10.0。
+但是坑爹的是，我的检测模型是基于 Detectron2 来实现的，Detectron2 已经一年多没有更新了。如[项目主页](https://detectron2.readthedocs.io/en/latest/tutorials/install.html)所示，目前的 v0.6 版本最多只支持到 CUDA11.3 + PyTorch 1.10.0。
 
 那么如何解决这个问题呢？这里还是有两条路子可以走
 
@@ -116,7 +116,7 @@ RuntimeError: Exporting the operator grid_sampler to ONNX opset version 11 is no
 
 ## 第四步
 
-参考这个[链接](https://link.zhihu.com/?target=https%3A//blog.csdn.net/JoeyChen1219/article/details/121141318)，将 grid_sample 替换为 mmcv 里的 bilinear_grid_sample。附代码如下：
+参考这个[链接](https://blog.csdn.net/JoeyChen1219/article/details/121141318)，将 grid_sample 替换为 mmcv 里的 bilinear_grid_sample。附代码如下：
 
 ```text
 def bilinear_grid_sample(im, grid, align_corners=False):

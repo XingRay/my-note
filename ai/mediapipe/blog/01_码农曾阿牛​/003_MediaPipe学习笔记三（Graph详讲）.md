@@ -275,4 +275,4 @@ node {
 
 
 
-参考：[Graphs](https://link.zhihu.com/?target=https%3A//google.github.io/mediapipe/framework_concepts/graphs.html)
+参考：[Graphs](https://google.github.io/mediapipe/framework_concepts/graphs.html)

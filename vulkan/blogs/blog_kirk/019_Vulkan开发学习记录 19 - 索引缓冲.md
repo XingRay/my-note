@@ -103,13 +103,13 @@ vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VK_INDEX_TYPE_UINT16);
 
 索引缓冲通过调用`vkCmdBindIndexBuffer`函数来进行绑定。`vkCmdBindIndexBuffer`函数以索引缓冲对象，索引数据在索引缓冲中的偏移，以及索引数据的类型作为参数。
 
-仅仅绑定索引缓冲是不会起任何作用的，我们需要使用[vkCmdDrawIndexed](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDrawIndexed.html)指令替换之前使用[vkCmdDraw](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDraw.html)指令进行绘制操作：
+仅仅绑定索引缓冲是不会起任何作用的，我们需要使用[vkCmdDrawIndexed](https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDrawIndexed.html)指令替换之前使用[vkCmdDraw](https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDraw.html)指令进行绘制操作：
 
 ```cpp
 vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
 ```
 
-[vkCmdDrawIndexed](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDrawIndexed.html)函数的使用和[vkCmdDraw](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDraw.html)函数类似。除了指令缓冲对象之外的前两个参数用于指定索引的个数和实例的个数。在这里，我们没有使用实例渲染，所以将实例个数设置为1。[偏移值](https://zhida.zhihu.com/search?content_id=220908832&content_type=Article&match_order=1&q=偏移值&zhida_source=entity)用于指定显卡开始读取索引的位置，偏移值为1对应索引数据中的第二个索引。倒数第二个参数是检索顶点数据前加到顶点索引上的数值。最后一个参数用于第一个被渲染的实例的ID，在这里，我们没有使用它。
+[vkCmdDrawIndexed](https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDrawIndexed.html)函数的使用和[vkCmdDraw](https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdDraw.html)函数类似。除了指令缓冲对象之外的前两个参数用于指定索引的个数和实例的个数。在这里，我们没有使用实例渲染，所以将实例个数设置为1。[偏移值](https://zhida.zhihu.com/search?content_id=220908832&content_type=Article&match_order=1&q=偏移值&zhida_source=entity)用于指定显卡开始读取索引的位置，偏移值为1对应索引数据中的第二个索引。倒数第二个参数是检索顶点数据前加到顶点索引上的数值。最后一个参数用于第一个被渲染的实例的ID，在这里，我们没有使用它。
 
 现在编译运行程序可以看到下面的画面：
 

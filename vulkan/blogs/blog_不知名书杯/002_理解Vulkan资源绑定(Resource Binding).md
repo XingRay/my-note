@@ -368,26 +368,26 @@ DescriptorPool完完全全是Vulkan的一个新概念，其他的API根据找不
 
 ## References
 
-[So many descriptors in Vulkan - One line to rule them all](https://link.zhihu.com/?target=https%3A//zhangdoa.com/posts/so-many-descriptors-in-vulkan)
+[So many descriptors in Vulkan - One line to rule them all](https://zhangdoa.com/posts/so-many-descriptors-in-vulkan)
 
-[Vulkan Mobile Best Practice - Descriptor and Buffer Management](https://link.zhihu.com/?target=https%3A//community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/vulkan-descriptor-and-buffer-management)
+[Vulkan Mobile Best Practice - Descriptor and Buffer Management](https://community.arm.com/arm-community-blogs/b/graphics-gaming-and-vr-blog/posts/vulkan-descriptor-and-buffer-management)
 
-[Vulkan: Long way to access data](https://link.zhihu.com/?target=https%3A//www.asawicki.info/news_1707_vulkan_long_way_to_access_data)
+[Vulkan: Long way to access data](https://www.asawicki.info/news_1707_vulkan_long_way_to_access_data)
 
-[VK_EXT_descriptor_buffer](https://link.zhihu.com/?target=https%3A//www.khronos.org/blog/vk-ext-descriptor-buffer)
+[VK_EXT_descriptor_buffer](https://www.khronos.org/blog/vk-ext-descriptor-buffer)
 
-[Writing an efficient Vulkan renderer](https://link.zhihu.com/?target=https%3A//zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
+[Writing an efficient Vulkan renderer](https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/)
 
-[Vulkan Shader Resource Binding](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/vulkan-shader-resource-binding)
+[Vulkan Shader Resource Binding](https://developer.nvidia.com/vulkan-shader-resource-binding)
 
-[Why are Resource Descriptors needed?](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/73042074/why-are-resource-descriptors-needed)
+[Why are Resource Descriptors needed?](https://stackoverflow.com/questions/73042074/why-are-resource-descriptors-needed)
 
-[https://docs.google.com/presentation/d/12YSEcLjyYStNDK9EwhPgRq05oIxpTIqC1GdKgJd_Jt4/edit#slide=id.g17c6be9a5e_1_183](https://link.zhihu.com/?target=https%3A//docs.google.com/presentation/d/12YSEcLjyYStNDK9EwhPgRq05oIxpTIqC1GdKgJd_Jt4/edit%23slide%3Did.g17c6be9a5e_1_183)
+[https://docs.google.com/presentation/d/12YSEcLjyYStNDK9EwhPgRq05oIxpTIqC1GdKgJd_Jt4/edit#slide=id.g17c6be9a5e_1_183](https://docs.google.com/presentation/d/12YSEcLjyYStNDK9EwhPgRq05oIxpTIqC1GdKgJd_Jt4/edit%23slide=id.g17c6be9a5e_1_183)
 
 [Vulkan 资源绑定和状态管理](https://zhuanlan.zhihu.com/p/172479225)
 
-[Vulkan: Uniform Buffers versus Push Constants for static data](https://link.zhihu.com/?target=https%3A//computergraphics.stackexchange.com/questions/5536/vulkan-uniform-buffers-versus-push-constants-for-static-data)
+[Vulkan: Uniform Buffers versus Push Constants for static data](https://computergraphics.stackexchange.com/questions/5536/vulkan-uniform-buffers-versus-push-constants-for-static-data)
 
-[A tour of Granite’s Vulkan backend – Part 3](https://link.zhihu.com/?target=http%3A//themaister.net/blog/2019/04/20/a-tour-of-granites-vulkan-backend-part-3/)
+[A tour of Granite’s Vulkan backend – Part 3](http://themaister.net/blog/2019/04/20/a-tour-of-granites-vulkan-backend-part-3/)
 
-[GameDev | Samsung Developers](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/gamedev-blog/traha.html)
+[GameDev | Samsung Developers](https://developer.samsung.com/galaxy-gamedev/gamedev-blog/traha.html)

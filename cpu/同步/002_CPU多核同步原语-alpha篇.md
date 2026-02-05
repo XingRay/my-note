@@ -4,7 +4,7 @@
 
 本部分的内容主要参考
 
-[![img](https://pic3.zhimg.com/v2-2d47e939feed796bcf7483d306661c88_ipico.jpg)https://stackoverflow.com/questions/35115634/dependent-loads-reordering-in-cpustackoverflow.com/questions/35115634/dependent-loads-reordering-in-cpu](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/35115634/dependent-loads-reordering-in-cpu)
+[![img](https://pic3.zhimg.com/v2-2d47e939feed796bcf7483d306661c88_ipico.jpg)https://stackoverflow.com/questions/35115634/dependent-loads-reordering-in-cpustackoverflow.com/questions/35115634/dependent-loads-reordering-in-cpu](https://stackoverflow.com/questions/35115634/dependent-loads-reordering-in-cpu)
 
 有兴趣的同学请直接参考这个回答。
 
@@ -84,7 +84,7 @@ int k = *p;
 
 我们现在来看一段来自于
 
-[http://www.puppetmastertrading.com/images/hwViewForSwHackers.pdfwww.puppetmastertrading.com/images/hwViewForSwHackers.pdf](https://link.zhihu.com/?target=http%3A//www.puppetmastertrading.com/images/hwViewForSwHackers.pdf)
+[http://www.puppetmastertrading.com/images/hwViewForSwHackers.pdfwww.puppetmastertrading.com/images/hwViewForSwHackers.pdf](http://www.puppetmastertrading.com/images/hwViewForSwHackers.pdf)
 
 的代码：
 

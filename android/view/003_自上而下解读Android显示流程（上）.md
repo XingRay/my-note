@@ -236,7 +236,7 @@ framework/native:
 > 在apk的AndroidManifest中，如果指定了minSDKVersion&targetSDKVersion=7，会使得应用无法使用硬件加速进行绘图。如果targetSDKVersion<14或者不设置都是默认软件绘图。
 > **2. 针对整个系统**
 > 关闭硬件加速：
-> [BoardConfigVendor.mk](https://link.zhihu.com/?target=http%3A//boardconfigvendor.mk/) file ：Set the USE_OPENGL_RENDERER attribute to False.
+> [BoardConfigVendor.mk](http://boardconfigvendor.mk/) file ：Set the USE_OPENGL_RENDERER attribute to False.
 > 使能硬件加速：
 > Settings→Developer options→Force GPU rendering： This forces the apps to use the GPU for 2D drawing.
 
@@ -341,4 +341,4 @@ eglSwapBuffers()
 
 ## 参考：
 
-[https://blog.csdn.net/luoshengyang/article/details/45601143](https://link.zhihu.com/?target=https%3A//blog.csdn.net/luoshengyang/article/details/45601143)
+[https://blog.csdn.net/luoshengyang/article/details/45601143](https://blog.csdn.net/luoshengyang/article/details/45601143)

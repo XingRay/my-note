@@ -6,7 +6,7 @@
 
 KubeSphere 为日志收集、查询和管理提供了一个强大的、全面的、易于使用的日志系统。它涵盖了不同层级的日志，包括租户、基础设施资源和应用。用户可以从项目、工作负载、容器组和关键字等不同维度对日志进行搜索。与 Kibana 相比，KubeSphere 基于租户的日志系统中，每个租户只能查看自己的日志，从而可以在租户之间提供更好的隔离性和安全性。
 
-KubeSphere 使用可插拔组件，实现在 KubeSphere 管理的 Kubernetes 集群上自动安装配置 Elasticsearch，具体可以参考官方文档**[KubeSphere 日志系统](https://link.zhihu.com/?target=https%3A//kubesphere.com.cn/docs/v3.3/pluggable-components/logging/)**。
+KubeSphere 使用可插拔组件，实现在 KubeSphere 管理的 Kubernetes 集群上自动安装配置 Elasticsearch，具体可以参考官方文档**[KubeSphere 日志系统](https://kubesphere.com.cn/docs/v3.3/pluggable-components/logging/)**。
 
 但是在生产环境，内置的 Elasticsearch 可能存在性能和扩展性的问题，建议使用外部的 Elasticsearch，KubeSphere 也支持对接外部部署的 Elasticsearch，本文将带你详细了解 KubeSphere 对接外部启用 HTTP 认证的 Elasticsearch 的流程和方法。同时，还会涉及自动化安装配置 Elasticsearch。
 
@@ -423,18 +423,18 @@ spec:
 
 > **Get 文档**
 
-- Github [https://github.com/devops/z-notes](https://link.zhihu.com/?target=https%3A//github.com/devops/z-notes)
-- Gitee [https://gitee.com/zdevops/z-notes](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/z-notes)
+- Github [https://github.com/devops/z-notes](https://github.com/devops/z-notes)
+- Gitee [https://gitee.com/zdevops/z-notes](https://gitee.com/zdevops/z-notes)
 - 知乎 https://www.zhihu.com/people/zdevops/
 
 > **Get 代码**
 
-- Github [https://github.com/devops/ansible-zdevops](https://link.zhihu.com/?target=https%3A//github.com/devops/ansible-zdevops)
-- Gitee [https://gitee.com/zdevops/ansible-zdevops](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/ansible-zdevops)
+- Github [https://github.com/devops/ansible-zdevops](https://github.com/devops/ansible-zdevops)
+- Gitee [https://gitee.com/zdevops/ansible-zdevops](https://gitee.com/zdevops/ansible-zdevops)
 
 > **Get 视频 B 站**
 
-- **[老 Z 手记](https://link.zhihu.com/?target=https%3A//space.bilibili.com/1039301316)**[https://space.bilibili.com/1039301316](https://link.zhihu.com/?target=https%3A//space.bilibili.com/1039301316)
+- **[老 Z 手记](https://space.bilibili.com/1039301316)**[https://space.bilibili.com/1039301316](https://space.bilibili.com/1039301316)
 
 > **版权声明**
 

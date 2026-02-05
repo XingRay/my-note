@@ -4,7 +4,7 @@
 
 本文章向大家介绍openssl为IP签发证书（支持多IP/内外网），主要内容包括背景、依赖、签发证书、利用nodejs项目验证证书是否可行、将证书导入本地（windows）、基本概念、基础应用、原理机制和需要注意的事项等，并结合实例形式分析了其使用技巧，希望通过本文能帮助到大家理解应用这部分内容。
 
-> **参考文档**： [1. OpenSSL自签发配置有多域名或ip地址的证书](https://links.jianshu.com/go?to=https%3A%2F%2Fblog.csdn.net%2Fu013066244%2Farticle%2Fdetails%2F78725842) [2. 如何创建一个自签名的SSL证书(X509)](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.cnblogs.com%2Fdinglin1%2Fp%2F9279831.html) [3. 如何创建自签名证书？](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.racent.com%2Fblog%2Farticle-how-to-create-a-self-signed-certificate)
+> **参考文档**： [1. OpenSSL自签发配置有多域名或ip地址的证书](https://links.jianshu.com/go?to=https://blog.csdn.net/u013066244/article/details/78725842) [2. 如何创建一个自签名的SSL证书(X509)](https://links.jianshu.com/go?to=https://www.cnblogs.com/dinglin1/p/9279831.html) [3. 如何创建自签名证书？](https://links.jianshu.com/go?to=https://www.racent.com/blog/article-how-to-create-a-self-signed-certificate)
 
 ## 背景
 
@@ -192,7 +192,7 @@ windows 7系统、chrome浏览器
 
 image.png
 
-你可能会问，为什么是这样的流程？详见下一篇文章 [https诞生背景及原理解析](https://links.jianshu.com/go?to=%5Bhttps%3A%2F%2Fwww.jianshu.com%2Fp%2F58ede2c83240%5D(https%3A%2F%2Fwww.jianshu.com%2Fp%2F58ede2c83240))
+你可能会问，为什么是这样的流程？详见下一篇文章 [https诞生背景及原理解析](https://links.jianshu.com/go?to=%5Bhttps://www.jianshu.com/p/58ede2c83240%5D(https://www.jianshu.com/p/58ede2c83240))
 
 #### step3. 导入证书
 

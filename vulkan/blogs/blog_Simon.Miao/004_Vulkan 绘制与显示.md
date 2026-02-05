@@ -126,10 +126,10 @@ Framebuffers
 1. Vulkan Programming Guide
 2. Vulkan Cookbook
 3. Learning Vulkan
-4. [Vulkan® 1.1.148 - A Specification](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
-5. [Create the Framebuffers](https://link.zhihu.com/?target=https%3A//vulkan.lunarg.com/doc/sdk/1.2.141.2/linux/tutorial/html/12-init_frame_buffers.html)
-6. [Create a Swapchain](https://link.zhihu.com/?target=https%3A//vulkan.lunarg.com/doc/sdk/1.2.141.2/linux/tutorial/html/05-init_swapchain.html)
-7. [API without Secrets: Introduction to Vulkan* Part 2: Swap Chain](https://link.zhihu.com/?target=https%3A//software.intel.com/content/www/us/en/develop/articles/api-without-secrets-introduction-to-vulkan-part-2.html)
+4. [Vulkan® 1.1.148 - A Specification](https://www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
+5. [Create the Framebuffers](https://vulkan.lunarg.com/doc/sdk/1.2.141.2/linux/tutorial/html/12-init_frame_buffers.html)
+6. [Create a Swapchain](https://vulkan.lunarg.com/doc/sdk/1.2.141.2/linux/tutorial/html/05-init_swapchain.html)
+7. [API without Secrets: Introduction to Vulkan* Part 2: Swap Chain](https://software.intel.com/content/www/us/en/develop/articles/api-without-secrets-introduction-to-vulkan-part-2.html)
 
 
 

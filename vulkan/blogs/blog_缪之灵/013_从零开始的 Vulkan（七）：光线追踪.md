@@ -2,7 +2,7 @@
 
 原文链接：
 
-[从零开始的 Vulkan（七）：光线追踪illurin.com/articles/vulkan07/![img](./assets/v2-0f26cadb085ee8392b436ec356daf997_180x120.jpg)](https://link.zhihu.com/?target=http%3A//illurin.com/articles/vulkan07/)
+[从零开始的 Vulkan（七）：光线追踪illurin.com/articles/vulkan07/![img](./assets/v2-0f26cadb085ee8392b436ec356daf997_180x120.jpg)](http://illurin.com/articles/vulkan07/)
 
 ## 光线追踪支持
 
@@ -70,7 +70,7 @@ auto dispatcher = vk::DispatchLoaderDynamic(instance, pGetInstanceProcAddr);
 
 加速结构（acceleration structure）是在光线追踪时十分必要的数据结构，用于减少求交次数，提高光线遍历的效率，如果你不了解它大概是什么，可以去看看我的这篇文章：
 
-[软光线追踪渲染器学习笔记（一）：Whitted-Style光线追踪illurin.com/articles/renderer04/](https://link.zhihu.com/?target=https%3A//illurin.com/articles/renderer04/)
+[软光线追踪渲染器学习笔记（一）：Whitted-Style光线追踪illurin.com/articles/renderer04/](https://illurin.com/articles/renderer04/)
 
 在 Vulkan 中，用户创建的加速结构分为两个部分：**底层加速结构（bottom level acceleration structure，BLAS）** 和**顶层加速结构（top level acceleration structure，TLAS）**。
 
@@ -188,7 +188,7 @@ typedef struct VkAccelerationStructureGeometryInstancesDataKHR {
 
 此处的`arrayOfPointers`决定了`data`所指向的内容——若`arrayOfPointers`为真值，则`data`是一个指向一系列指针的地址，其中每一个指针都指向一个单独的`VkAccelerationStructureInstanceKHR`结构体或 packed motion instance；否则`data`是一个指向`VkAccelerationStructureInstanceKHR`结构体数组的地址。
 
-> 关于 packed motion instance 的详细内容，参考 [motion instances](https://link.zhihu.com/?target=https%3A//registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html%23acceleration-structure-motion-instances)。
+> 关于 packed motion instance 的详细内容，参考 [motion instances](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html%23acceleration-structure-motion-instances)。
 
 `VkAccelerationStructureInstanceKHR`存储了一个实例的具体信息：
 
@@ -832,7 +832,7 @@ dxcCompiler->Release();
 dxcIncludeHandler->Release();
 ```
 
-有关 HLSL 映射到 SPIR-V 的详细内容，请参考 [http://khr.io/hlsl2spirv](https://link.zhihu.com/?target=http%3A//khr.io/hlsl2spirv)。
+有关 HLSL 映射到 SPIR-V 的详细内容，请参考 [http://khr.io/hlsl2spirv](http://khr.io/hlsl2spirv)。
 
 ## 光线追踪管线
 

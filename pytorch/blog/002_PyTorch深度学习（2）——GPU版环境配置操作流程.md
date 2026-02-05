@@ -30,7 +30,7 @@
 
 **（1）下载最新版 Anaconda 安装包**
 
-进入 Anaconda 最新版本下载页面：[Free Download | Anaconda](https://link.zhihu.com/?target=https%3A//www.anaconda.com/download%23downloads)，可以看到不同操作系统的 Anaconda 最新版本安装包。其中的“Python 3.11”是指如果下载了这个最新版本的 Anaconda，在不同的虚拟环境中所能支持配置到的 Python 解释器的最高版本是 “3.11”。
+进入 Anaconda 最新版本下载页面：[Free Download | Anaconda](https://www.anaconda.com/download%23downloads)，可以看到不同操作系统的 Anaconda 最新版本安装包。其中的“Python 3.11”是指如果下载了这个最新版本的 Anaconda，在不同的虚拟环境中所能支持配置到的 Python 解释器的最高版本是 “3.11”。
 
 点击 Windows 版 Anaconda 安装包“64-Bit Graphical Installer”进行下载。
 
@@ -40,7 +40,7 @@
 
 **（2）下载旧版 Anaconda 安装包**
 
-如果不想下载最新版 Anaconda，可以下载历史版本的 Ananconda。进入 Ananconda 历史版本下载页面：[Anaconda Installers and Packages](https://link.zhihu.com/?target=https%3A//repo.anaconda.com/)，点击“Anaconda Installers”下的“View All Installers”查看 Ananconda 的所有历史版本；可以下载距今1~2年的历史版本。
+如果不想下载最新版 Anaconda，可以下载历史版本的 Ananconda。进入 Ananconda 历史版本下载页面：[Anaconda Installers and Packages](https://repo.anaconda.com/)，点击“Anaconda Installers”下的“View All Installers”查看 Ananconda 的所有历史版本；可以下载距今1~2年的历史版本。
 
 本文选择“Anaconda3-5.2.0-Windows-x86_64.exe”并下载。
 
@@ -110,7 +110,7 @@
 
 （2）安装不成功的情况以及相应的解决办法
 
-①如果因为重装 Anaconda 出现了下图的报错，可参考文章（[anaconda安装问题（反复重装都不行，重装完缺少activate.bat,开始菜单少spyder等快捷方式，小弟我当初也是这样，现在都解决了）_anaconda找不到。bat-CSDN博客](https://link.zhihu.com/?target=https%3A//blog.csdn.net/AI_JOKER/article/details/102844462)）进行解决，**如果还是不能解决问题，可以换装“Minconda”**。
+①如果因为重装 Anaconda 出现了下图的报错，可参考文章（[anaconda安装问题（反复重装都不行，重装完缺少activate.bat,开始菜单少spyder等快捷方式，小弟我当初也是这样，现在都解决了）_anaconda找不到。bat-CSDN博客](https://blog.csdn.net/AI_JOKER/article/details/102844462)）进行解决，**如果还是不能解决问题，可以换装“Minconda”**。
 
 ![img](./assets/v2-c6cf4f7c80242c2cb466481d164ee6a2_1440w.png)
 
@@ -382,7 +382,7 @@ http://mirrors.aliyun.com/anaconda/pkgs/main/
 
 ②根据第一步中确定的 GPU 型号查找对应的算力，不同显卡对应的算力可以查看下方链接或表格；比如示例电脑的 GPU 算力为“7.5”。
 
-[不同显卡对应的算力zh.wikipedia.org/w/index.php?title=CUDA&oldid=78946759](https://link.zhihu.com/?target=https%3A//zh.wikipedia.org/w/index.php%3Ftitle%3DCUDA%26oldid%3D78946759)
+[不同显卡对应的算力zh.wikipedia.org/w/index.php?title=CUDA&oldid=78946759](https://zh.wikipedia.org/w/index.php?title=CUDA&oldid=78946759)
 
 ![img](./assets/v2-5ff611c7f3423559b2b7f3b826416435_1440w.webp)
 
@@ -465,7 +465,7 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvi
 
 如果官网的最新版 PyTorch 安装选项中可以提供 5.3 中确定的需要下载的 CUDA 版本（这里是 11.6），那么就可以通过以下流程使用官网命令安装最新版本的 PyTorch。
 
-（1）进入 PyTorch 官网（[PyTorch](https://link.zhihu.com/?target=https%3A//pytorch.org/)），点击“Get Started”后下滑进入“START LOCALLY”界面；
+（1）进入 PyTorch 官网（[PyTorch](https://pytorch.org/)），点击“Get Started”后下滑进入“START LOCALLY”界面；
 
 ![img](./assets/v2-9bc28e3051e62b3967146eb22bd9ae8a_1440w.webp)
 
@@ -529,7 +529,7 @@ conda activate pytorch
 
 比如，根据步骤 5 确定的需要下载的 CUDA 版本为“11.6”，然而在“START LOCALLY”界面对想要下载的 PyTorch 版本进行配置时发现只有“11.8”和“12.1”的版本，这时就需要下载历史版本。
 
-（1）进入 PyTorch 官网（[PyTorch](https://link.zhihu.com/?target=https%3A//pytorch.org/)），点击“Get Started”，然后在出现的界面中选择“Previous PyTorch Versions”；
+（1）进入 PyTorch 官网（[PyTorch](https://pytorch.org/)），点击“Get Started”，然后在出现的界面中选择“Previous PyTorch Versions”；
 
 ![img](./assets/v2-57312d307e9f329808509a75a7b513bd_1440w.webp)
 
@@ -621,7 +621,7 @@ http://mirrors.aliyun.com/anaconda/cloud/pytorch/win-64/
 
 如果使用官网命令和通过镜像都不能成功安装 Pytorch，还可以尝试本地安装。
 
-（1）进入 PyTorch 官网（[PyTorch](https://link.zhihu.com/?target=https%3A//pytorch.org/)），点击“Get Started”后下滑进入“START LOCALLY”界面，在配置 PyTorch 版本时，选择用 Pip 包管理器，复制配置好的代码；
+（1）进入 PyTorch 官网（[PyTorch](https://pytorch.org/)），点击“Get Started”后下滑进入“START LOCALLY”界面，在配置 PyTorch 版本时，选择用 Pip 包管理器，复制配置好的代码；
 
 ![img](./assets/v2-726edefa026f6deb45548a9d1a446ad8_1440w.webp)
 
@@ -723,7 +723,7 @@ torch.cuda.is_available()
 
 ### 8.1 安装 PyCharm
 
-（1）PyCharm 分为“专业版”和“社区版”，“专业版”比“社区版”功能更齐全，需要付费（免费试用30天），而“社区版”是免费的，但功能可以满足大部分需求，所以这里选择下载“社区版”。进入 PyCharm 官网“[https://www.jetbrains.com/pycharm/](https://link.zhihu.com/?target=https%3A//www.jetbrains.com/pycharm/)”，选择“DOWNLOAD”，继续选择“Community”版本进行下载；
+（1）PyCharm 分为“专业版”和“社区版”，“专业版”比“社区版”功能更齐全，需要付费（免费试用30天），而“社区版”是免费的，但功能可以满足大部分需求，所以这里选择下载“社区版”。进入 PyCharm 官网“[https://www.jetbrains.com/pycharm/](https://www.jetbrains.com/pycharm/)”，选择“DOWNLOAD”，继续选择“Community”版本进行下载；
 
 ![img](./assets/v2-4c65778673d96f4ef0eeff817828d235_1440w.webp)
 
@@ -897,7 +897,7 @@ Jupyter 跳转中页面
 
 Jupyter 页面
 
-（7）点击 Jupyter 页面右侧的“New”，选择“Notebook”，接着选择“Python 3 (ipykernel)”编程语言，即可完成新 Notebook 的创建，该 Notebook 中的代码可以使用 conda 环境中的 PyTorch；创建过程中如果发生“500 : Internal Server Error”的报错，可参考文章（[jupyter notebook报错：500：Internal Server Error的解决方法_sup小鱼的博客-CSDN博客](https://link.zhihu.com/?target=https%3A//blog.csdn.net/weixin_45275599/article/details/131505756)）进行解决；
+（7）点击 Jupyter 页面右侧的“New”，选择“Notebook”，接着选择“Python 3 (ipykernel)”编程语言，即可完成新 Notebook 的创建，该 Notebook 中的代码可以使用 conda 环境中的 PyTorch；创建过程中如果发生“500 : Internal Server Error”的报错，可参考文章（[jupyter notebook报错：500：Internal Server Error的解决方法_sup小鱼的博客-CSDN博客](https://blog.csdn.net/weixin_45275599/article/details/131505756)）进行解决；
 
 ![img](./assets/v2-96f54d6cb16e5279ee06bfcd281e7c0f_1440w.webp)
 
@@ -923,7 +923,7 @@ torch.cuda.is_available()
 
 ### 10.1 通过 GitHub 下载 PyTorch 项目
 
-（1）登录 GitHub 官网（[GitHub](https://link.zhihu.com/?target=https%3A//github.com/)），在搜索框中搜索需要下载的项目，并点击项目进入详情页；
+（1）登录 GitHub 官网（[GitHub](https://github.com/)），在搜索框中搜索需要下载的项目，并点击项目进入详情页；
 
 ![img](./assets/v2-c8c3ca62387e33010b913f97b4f8b68c_1440w.webp)
 
@@ -1023,7 +1023,7 @@ conda list anaconda
 
 （1）进入 Anaconda 的“All package lists”网站，里面记录了 Anaconda 发布的所有版本：
 
-[All package listsdocs.anaconda.com/free/anaconda/allpkglists/](https://link.zhihu.com/?target=https%3A//docs.anaconda.com/free/anaconda/allpkglists/)
+[All package listsdocs.anaconda.com/free/anaconda/allpkglists/](https://docs.anaconda.com/free/anaconda/allpkglists/)
 
 （2）点击当前的 Anaconda 版本号以查看当前 Anaconda 版本所能支持的“Packages”的最高版本，这里选择“2023.09-0”；
 

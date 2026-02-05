@@ -10,7 +10,7 @@
 
 先看下这个库的安装，它是跨平台的，主流的操作系统都支持，以操作系统 OS X 、开发工具 IntelliJ IDEA 为例，看下这个库的安装和配置过程。
 
-OpenCV 最新的版本是3.2.0，所以看这个版本的[安装说明](https://link.juejin.cn/?target=http%3A%2F%2Fdocs.opencv.org%2F3.2.0%2Fdf%2Fd65%2Ftutorial_table_of_content_introduction.html)，页面上有Linux、Windows、Android、iOS等不同平台的安装介绍，由于我用的是Java，所以直接看[ Introduction to Java Development ](https://link.juejin.cn/?target=http%3A%2F%2Fdocs.opencv.org%2F3.2.0%2Fd9%2Fd52%2Ftutorial_java_dev_intro.html)安装过程共分下面几步：
+OpenCV 最新的版本是3.2.0，所以看这个版本的[安装说明](https://link.juejin.cn/?target=http://docs.opencv.org/3.2.0/df/d65/tutorial_table_of_content_introduction.html)，页面上有Linux、Windows、Android、iOS等不同平台的安装介绍，由于我用的是Java，所以直接看[ Introduction to Java Development ](https://link.juejin.cn/?target=http://docs.opencv.org/3.2.0/d9/d52/tutorial_java_dev_intro.html)安装过程共分下面几步：
 
 1. git 下载源码 选择一个目录，用 git 下载 OpenCV 的源代码
 

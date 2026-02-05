@@ -229,7 +229,7 @@ perf 是 Linux kernel 自带的系统性能优化工具。优势在于与 Linux 
 - perf-tools：一款基于 perf_events (perf) 和 ftrace 的Linux性能分析调优工具集。Perf-Tools 依赖库少，使用简单。支持Linux 3.2 及以上内核版本。
 - bcc(BPF Compiler Collection):：一款使用 eBP F的 perf 性能分析工具。一个用于创建高效的内核跟踪和操作程序的工具包，包括几个有用的工具和示例。利用扩展的BPF（伯克利数据包过滤器），正式称为eBPF，一个新的功能，首先被添加到Linux 3.15。多用途需要Linux 4.1以上BCC。
 - ktap：一种新型的linux脚本动态性能跟踪工具。允许用户跟踪Linux内核动态。ktap是设计给具有互操作性，允许用户调整操作的见解，排除故障和延长内核和应用程序。它类似于Linux和Solaris DTrace SystemTap。
-- Flame Graphs：是一款使用 perf，system tap，ktap 可视化的图形软件，允许最频繁的代码路径快速准确地识别，可以是使用 [http://github.com/brendangregg/flamegraph](https://link.zhihu.com/?target=http%3A//github.com/brendangregg/flamegraph) 中的开发源代码的程序生成。
+- Flame Graphs：是一款使用 perf，system tap，ktap 可视化的图形软件，允许最频繁的代码路径快速准确地识别，可以是使用 [http://github.com/brendangregg/flamegraph](http://github.com/brendangregg/flamegraph) 中的开发源代码的程序生成。
 
 ### Linux observability tools |Linux 性能观测工具
 

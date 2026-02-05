@@ -6,7 +6,7 @@
 
 Vulkan Sample 仓库地址如下所示：
 
-[https://github.com/KhronosGroup/Vulkan-Samples](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples)
+[https://github.com/KhronosGroup/Vulkan-Samples](https://github.com/KhronosGroup/Vulkan-Samples)
 
 如果大家对于Vulkan的基础概念不是很理解，可以参考笔者其他的Vulkan文章。
 

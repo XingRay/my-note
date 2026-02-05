@@ -1,6 +1,6 @@
 # 卷积的三种模式full, same, valid以及padding的same, valid
 
-总结自[csdn](https://link.zhihu.com/?target=https%3A//blog.csdn.net/leviopku/article/details/80327478)和[简书](https://link.zhihu.com/?target=https%3A//www.jianshu.com/p/05c4f1621c7e)。
+总结自[csdn](https://blog.csdn.net/leviopku/article/details/80327478)和[简书](https://www.jianshu.com/p/05c4f1621c7e)。
 
 ## **一、以下展示卷积三种模式的不同之处**
 

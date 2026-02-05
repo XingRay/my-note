@@ -6,7 +6,7 @@
 
 Vulkan将这个多通道渲染(multiple passes)技术，收入囊中，作为一个核心标准。将多个通道渲染的规则汇总到一个Object中 ---- Graphics Pipelines，这也是为什么在创建Graphics piepline object的时候需要传入renderpass对象的原因之一。pipeline需要知道这次绘制过程，会有几个render pass会被启用。
 
-在本章中，不同于以往的一些例子，包括Vulkan 官方的教程 [Introduction - Vulkan Tutorial (vulkan-tutorial.com)](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/)，他们为了出于简单的目的，常常只会使用单个通道进行渲染，这样可以简化对[renderpass](https://zhida.zhihu.com/search?content_id=235611790&content_type=Article&match_order=2&q=renderpass&zhida_source=entity)的配置，本文会进一步使用多通道的渲染技术，并且解释多通道渲染算法是如何实现在少数renderpass object中的。
+在本章中，不同于以往的一些例子，包括Vulkan 官方的教程 [Introduction - Vulkan Tutorial (vulkan-tutorial.com)](https://vulkan-tutorial.com/)，他们为了出于简单的目的，常常只会使用单个通道进行渲染，这样可以简化对[renderpass](https://zhida.zhihu.com/search?content_id=235611790&content_type=Article&match_order=2&q=renderpass&zhida_source=entity)的配置，本文会进一步使用多通道的渲染技术，并且解释多通道渲染算法是如何实现在少数renderpass object中的。
 
 一个renderpass可以包含多个subpasses，每个subpass都会为了最终的绘制，渲染相应的场景。在多个[subpass](https://zhida.zhihu.com/search?content_id=235611790&content_type=Article&match_order=3&q=subpass&zhida_source=entity)运行的时候，他们之间可以产生依赖关系，实现控制多个subpass的执行先后顺序，因为有可能会出现subpassA去使用subpassB渲染结果的情况。
 
@@ -44,7 +44,7 @@ Vulkan将这个多通道渲染(multiple passes)技术，收入囊中，作为一
 
 第二个pass，我们将会渲染所有几何体，渲染并获得这些几何体每个可见点的normal,diffuse color ,specular power以及其他信息。
 
-在第二个pass的阶段，我们只会看[深度测试](https://zhida.zhihu.com/search?content_id=235611790&content_type=Article&match_order=1&q=深度测试&zhida_source=entity)通过的点的normal,diffuse color等信息，这样的话就不会去记录其他深度测试失败的点的信息，增加效率，这也是延迟着色的主要优势。[延迟着色法 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/05%20Advanced%20Lighting/08%20Deferred%20Shading/)
+在第二个pass的阶段，我们只会看[深度测试](https://zhida.zhihu.com/search?content_id=235611790&content_type=Article&match_order=1&q=深度测试&zhida_source=entity)通过的点的normal,diffuse color等信息，这样的话就不会去记录其他深度测试失败的点的信息，增加效率，这也是延迟着色的主要优势。[延迟着色法 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/05 Advanced Lighting/08 Deferred Shading/)
 
 在第三个pass中，我们执行了所有着色计算，我们读取了[depth buffer](https://zhida.zhihu.com/search?content_id=235611790&content_type=Article&match_order=1&q=depth+buffer&zhida_source=entity)为了去还原模型中每个点在摄像机空间的 位置（pass1的结果），我们读取normal等G-buffer信息，用来计算阴影算法(pass2)，我们pass3不需要做任何模型的渲染，只需要渲染一个三角形，剪裁出其中的一部分覆盖整个Viewport就行了。
 

@@ -8,7 +8,7 @@
 
 在VkSpec中，其实对于这个问题有一个明确的划分：
 
-[https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-execmodelwww.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-execmodel](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23fundamentals-execmodel)
+[https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-execmodelwww.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-execmodel](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23fundamentals-execmodel)
 
 以下摘录了核心内容，后文会对此段进行解释和分析。
 
@@ -41,11 +41,11 @@ State的设置是累计的（cumulative），这也就自然而然的要求Set S
 
 Perform Action类型的Command可能会基于当前的各种State来执行，例如`VkCmdDraw`/`VkCmdDispatch`。
 
-尽管原则上允许Perform Action发生Overlap和Reorder，`VkCmdDraw`的Framebuffer写入顺序还会受到[Primitive Order](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23drawing-primitive-order)的约束，实际上，Pipeline中各阶段可能会Overlap和Reorder，而最终写入Framebuffer时，会遵循各个VkCmdDraw的Submission Order来写入数据。
+尽管原则上允许Perform Action发生Overlap和Reorder，`VkCmdDraw`的Framebuffer写入顺序还会受到[Primitive Order](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23drawing-primitive-order)的约束，实际上，Pipeline中各阶段可能会Overlap和Reorder，而最终写入Framebuffer时，会遵循各个VkCmdDraw的Submission Order来写入数据。
 
 Perform Synchronization类型的Command，也就是我们常说的同步命令，是基于Command的Submission Order来工作的，Submission Order简单来说等价于“Command在代码中排列的顺序”（这是由Implicit Ordering Guarantees来保证的，意思是说，Vulkan向程序员保证，所有Command在代码中排列的顺序就是Command在GPU上发出的顺序）。Submission Order是Synchronization Command确定First Synchronization Scope与Second Synchronization Scope的唯一凭证。可以说，Synchronization Command是一个利用Implicit Ordering Guarantees来实现Explicit Ordering Guarantees的手段。但具体的同步操作由于篇幅和文章重点的原因这里就不再深入，有兴趣可以阅读VkSpec以下部分。
 
-[https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronizationwww.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23synchronization)
+[https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronizationwww.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html%23synchronization)
 
 现在再来看这三种Command之间的关系:
 

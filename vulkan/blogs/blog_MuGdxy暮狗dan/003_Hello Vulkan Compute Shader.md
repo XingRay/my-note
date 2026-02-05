@@ -1,6 +1,6 @@
 # Hello Vulkan Compute Shader
 
-本文是一篇Step by Step，Hand by Hand Tutorial，希望与[Vulkan Tutorial](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/) 保持风格统一。
+本文是一篇Step by Step，Hand by Hand Tutorial，希望与[Vulkan Tutorial](https://vulkan-tutorial.com/) 保持风格统一。
 
 我们将用大约1小时的时间来完成一个最简单的Compute Shader，其功能为将Buffer中的float类型数据乘以2，并写回到Buffer中。
 
@@ -20,7 +20,7 @@
 
 从github clone（记得star一下哦）
 
-[https://github.com/MuGdxy/hello_compute_shadergithub.com/MuGdxy/hello_compute_shader](https://link.zhihu.com/?target=https%3A//github.com/MuGdxy/hello_compute_shader)
+[https://github.com/MuGdxy/hello_compute_shadergithub.com/MuGdxy/hello_compute_shader](https://github.com/MuGdxy/hello_compute_shader)
 
 ```text
 git clone https://github.com/MuGdxy/hello_compute_shader.git
@@ -758,9 +758,9 @@ CleanUp,
 
 ## **Cite**
 
-- [vkspec](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html)
-- [glslspec4.60](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf)
-- [Learn OpenGL](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/)
-- [Vulkan 学习笔记](https://link.zhihu.com/?target=https%3A//gavinkg.github.io/ILearnVulkanFromScratch-CN/mdroot/Vulkan%20%E5%9F%BA%E7%A1%80/%E8%B5%84%E6%BA%90%E6%8F%8F%E8%BF%B0%E4%B8%8E%20Uniform%20%E7%BC%93%E5%86%B2/UBO.html)
-- [SaschaWillems' vulkan examples](https://link.zhihu.com/?target=https%3A//github.com/SaschaWillems/Vulkan)
+- [vkspec](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html)
+- [glslspec4.60](https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.60.pdf)
+- [Learn OpenGL](https://learnopengl-cn.github.io/)
+- [Vulkan 学习笔记](https://gavinkg.github.io/ILearnVulkanFromScratch-CN/mdroot/Vulkan %E5%9F%BA%E7%A1%80/%E8%B5%84%E6%BA%90%E6%8F%8F%E8%BF%B0%E4%B8%8E Uniform %E7%BC%93%E5%86%B2/UBO.html)
+- [SaschaWillems' vulkan examples](https://github.com/SaschaWillems/Vulkan)
 

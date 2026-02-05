@@ -154,7 +154,7 @@ spec:
 
 #### 3.1.5 项目源码
 
-项目位置：[github.com/redhatxl/cl…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fredhatxl%2Fcloudnative-java)
+项目位置：[github.com/redhatxl/cl…](https://link.juejin.cn/?target=https://github.com/redhatxl/cloudnative-java)
 
 ### 3.2 服务消费端
 
@@ -225,7 +225,7 @@ shell复制代码├── Dockerfile
 
 #### 3.2.5 项目源码
 
-项目位置：[github.com/redhatxl/cl…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fredhatxl%2Fcloudnative-java)
+项目位置：[github.com/redhatxl/cl…](https://link.juejin.cn/?target=https://github.com/redhatxl/cloudnative-java)
 
 ## 四 测试
 
@@ -267,7 +267,7 @@ shell
 
 ## 参考链接
 
-- [spring.io/projects/sp…](https://link.juejin.cn/?target=https%3A%2F%2Fspring.io%2Fprojects%2Fspring-cloud-kubernetes)
-- [github.com/spring-clou…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fspring-cloud%2Fspring-cloud-kubernetes)
-- [blog.csdn.net/boling_cava…](https://link.juejin.cn/?target=https%3A%2F%2Fblog.csdn.net%2Fboling_cavalry%2Farticle%2Fdetails%2F91346780)
-- [zhuanlan.zhihu.com/p/358817098](https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F358817098)
+- [spring.io/projects/sp…](https://link.juejin.cn/?target=https://spring.io/projects/spring-cloud-kubernetes)
+- [github.com/spring-clou…](https://link.juejin.cn/?target=https://github.com/spring-cloud/spring-cloud-kubernetes)
+- [blog.csdn.net/boling_cava…](https://link.juejin.cn/?target=https://blog.csdn.net/boling_cavalry/article/details/91346780)
+- [zhuanlan.zhihu.com/p/358817098](https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/358817098)

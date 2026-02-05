@@ -353,5 +353,5 @@ node {
 
 
 
-参考[Calculators](https://link.zhihu.com/?target=https%3A//google.github.io/mediapipe/framework_concepts/calculators.html)
+参考[Calculators](https://google.github.io/mediapipe/framework_concepts/calculators.html)
 

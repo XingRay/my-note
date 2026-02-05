@@ -24,7 +24,7 @@ https://zhuanlan.zhihu.com/p/641970591
 ● b1，b2定义了平移向量；
 ● c1，c2定义了投影向量。
 
-对于仿射变换，投影向量等于0。因此，可以[仿射变换](https://link.zhihu.com/?target=https%3A//theailearner.com/2020/11/04/affine-transformation/)被认为是透视变换的特例。
+对于仿射变换，投影向量等于0。因此，可以[仿射变换](https://theailearner.com/2020/11/04/affine-transformation/)被认为是透视变换的特例。
 
 > 【补充】：透视变换和仿射变换
 > 透视变换和仿射变换都是图像处理中常用的几何变换方法，但它们之间存在一些区别。
@@ -146,7 +146,7 @@ out = cv2.warpPerspective(img,M,(maxWidth, maxHeight),flags=cv2.INTER_LINEAR)
 
 ## **透视变换的形象说明**
 
-**注：以下内容来自博客《[OpenCv Perspective Transformation](https://link.zhihu.com/?target=https%3A//medium.com/analytics-vidhya/opencv-perspective-transformation-9edffefb2143)》。**
+**注：以下内容来自博客《[OpenCv Perspective Transformation](https://medium.com/analytics-vidhya/opencv-perspective-transformation-9edffefb2143)》。**
 
 ![img](./assets/v2-d1287c34d71f5b13b44775ddb661a8e4_1440w.jpg)
 

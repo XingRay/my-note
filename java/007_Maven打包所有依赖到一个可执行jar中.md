@@ -1,6 +1,6 @@
 # Maven打包所有依赖到一个可执行jar中
 
-6月前作者：拾年一剑分类： [博客文章](https://www.yii666.com/blog.html)阅读(35)原文[违法举报](https://www.yii666.com/jubao.html?jubaourl=https%3A%2F%2Fwww.yii666.com%2Fblog%2F373757.html)
+6月前作者：拾年一剑分类： [博客文章](https://www.yii666.com/blog.html)阅读(35)原文[违法举报](https://www.yii666.com/jubao.html?jubaourl=https://www.yii666.com/blog/373757.html)
 
 文章来源地址https://www.yii666.com/blog/373757.html*文章地址https://www.yii666.com/blog/373757.html*
 

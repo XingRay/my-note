@@ -10,7 +10,7 @@
 
 原文地址：
 
-[码农在新加坡的个人博客leftpocket.cn/post/mysql/update_optimization/](https://link.zhihu.com/?target=https%3A//leftpocket.cn/post/mysql/update_optimization/)
+[码农在新加坡的个人博客leftpocket.cn/post/mysql/update_optimization/](https://leftpocket.cn/post/mysql/update_optimization/)
 
 ## 背景
 
@@ -79,7 +79,7 @@
 - `canal sever`解析`binary log`对象（原始为 byte 流），可由`canal client`拉取进行消费，同时`canal server`也默认支持将变更记录投递到 MQ 系统中，主动推送给其他系统进行消费。
 - 在 ack 机制的加持下，不管是推送还是拉取，都可以有效的保证数据按照预期被消费。
 
-由于我们使用的是go语言，使用了go语言版本的MySQL binlog订阅，[github go-mysql](https://link.zhihu.com/?target=https%3A//github.com/go-mysql-org/go-mysql)，后续我会做一篇源码分析来分析`MySQL binlog`相关的方方面面。
+由于我们使用的是go语言，使用了go语言版本的MySQL binlog订阅，[github go-mysql](https://github.com/go-mysql-org/go-mysql)，后续我会做一篇源码分析来分析`MySQL binlog`相关的方方面面。
 
 ## 二、垂直拆分
 
@@ -239,13 +239,13 @@ WHEN userid IN (11000, 12000, 13000);
 
 只要我们保持良好的代码风格，就可以进行很方便的优化。但是不要过度优化。
 
-[MySQL更新优化的几个阶段mp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483856&idx=1&sn=a6d45d7c3bf26a04064cd3c1371458b0&chksm=c0da7047f7adf95131eea9c359f1e8ec827cf2f15e95c071a7a63a580368855a0e4cb5557682&scene=178&cur_album_id=2198239648164970497#rd![img](https://pic1.zhimg.com/v2-7e2b36e4c9603149aa5ba1a19b7c103c_180x120.jpg)](https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzkwNzMwNzI1Ng%3D%3D%26mid%3D2247483856%26idx%3D1%26sn%3Da6d45d7c3bf26a04064cd3c1371458b0%26chksm%3Dc0da7047f7adf95131eea9c359f1e8ec827cf2f15e95c071a7a63a580368855a0e4cb5557682%26scene%3D178%26cur_album_id%3D2198239648164970497%23rd)
+[MySQL更新优化的几个阶段mp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483856&idx=1&sn=a6d45d7c3bf26a04064cd3c1371458b0&chksm=c0da7047f7adf95131eea9c359f1e8ec827cf2f15e95c071a7a63a580368855a0e4cb5557682&scene=178&cur_album_id=2198239648164970497#rd![img](https://pic1.zhimg.com/v2-7e2b36e4c9603149aa5ba1a19b7c103c_180x120.jpg)](https://mp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483856&idx=1&sn=a6d45d7c3bf26a04064cd3c1371458b0&chksm=c0da7047f7adf95131eea9c359f1e8ec827cf2f15e95c071a7a63a580368855a0e4cb5557682&scene=178&cur_album_id=2198239648164970497%23rd)
 
 <全文完>
 
 欢迎关注我的微信公众号：**码农在新加坡**，有更多好的技术分享。
 
-[【码农在新加坡】的微信公众号mp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rd![img](https://pic1.zhimg.com/v2-6920cd6d3a2cff6720c6140833ff6724_180x120.jpg)](https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s%3F__biz%3DMzkwNzMwNzI1Ng%3D%3D%26mid%3D2247483810%26idx%3D1%26sn%3De252816ee1d5fc1358bf77b8146f3dba%26chksm%3Dc0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772%26token%3D2107487666%26lang%3Dzh_CN%23rd)
+[【码农在新加坡】的微信公众号mp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rdmp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN#rd![img](https://pic1.zhimg.com/v2-6920cd6d3a2cff6720c6140833ff6724_180x120.jpg)](https://mp.weixin.qq.com/s?__biz=MzkwNzMwNzI1Ng==&mid=2247483810&idx=1&sn=e252816ee1d5fc1358bf77b8146f3dba&chksm=c0da7035f7adf923ce0beef38a729f305e0d1cc8cc3c18cc491b1c37bffc0786962eaac41772&token=2107487666&lang=zh_CN%23rd)
 
 
 

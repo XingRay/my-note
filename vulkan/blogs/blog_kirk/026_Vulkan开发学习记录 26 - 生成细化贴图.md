@@ -175,7 +175,7 @@ vkCmdBlitImage(commandBuffer,
 
 现在，我们可以开始记录传输指令到[指令缓冲](https://zhida.zhihu.com/search?content_id=225268930&content_type=Article&match_order=2&q=指令缓冲&zhida_source=entity)。可以注意到我们将textureImage变量同时作为`vkCmdBlitImage`指令的源图像和目的图像。这是因为我们的传输操作是在同一[纹理对象](https://zhida.zhihu.com/search?content_id=225268930&content_type=Article&match_order=1&q=纹理对象&zhida_source=entity)的不同细化级别间进行的。传输指令开始执行时源细化级别图像布局刚刚被变换为VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL， 目的细化级别图像布局仍处于创建纹理时设置的VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL布局。
 
-[vkCmdBlitImage](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdBlitImage.html) 指令的最后一个参数用于指定传输操作使用的`VkFilter` 对象。这里我们使用和`VkSampler`一样的 VK_FILTER_LINEAR 过滤设置，进行[线性插值](https://zhida.zhihu.com/search?content_id=225268930&content_type=Article&match_order=1&q=线性插值&zhida_source=entity)过滤。
+[vkCmdBlitImage](https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCmdBlitImage.html) 指令的最后一个参数用于指定传输操作使用的`VkFilter` 对象。这里我们使用和`VkSampler`一样的 VK_FILTER_LINEAR 过滤设置，进行[线性插值](https://zhida.zhihu.com/search?content_id=225268930&content_type=Article&match_order=1&q=线性插值&zhida_source=entity)过滤。
 
 ```cpp
 barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
@@ -271,7 +271,7 @@ if (!(formatProperties.optimalTilingFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_F
 }
 ```
 
-此外，我们还可以编写一个函数[遍历](https://zhida.zhihu.com/search?content_id=225268930&content_type=Article&match_order=3&q=遍历&zhida_source=entity)常见的纹理图像格式，查找其中支持线性块传输的格式。或者使用可以生成纹理细化级别的库，比如[stb_image_resize](https://link.zhihu.com/?target=https%3A//github.com/nothings/stb/blob/master/stb_image_resize.h)来生成纹理的所有细化级别，然后使用加载源图像数据一样的方法加载它们。
+此外，我们还可以编写一个函数[遍历](https://zhida.zhihu.com/search?content_id=225268930&content_type=Article&match_order=3&q=遍历&zhida_source=entity)常见的纹理图像格式，查找其中支持线性块传输的格式。或者使用可以生成纹理细化级别的库，比如[stb_image_resize](https://github.com/nothings/stb/blob/master/stb_image_resize.h)来生成纹理的所有细化级别，然后使用加载源图像数据一样的方法加载它们。
 
 通常实践中很少在运行时动态生成纹理的细化级别，而是预先生成然 后存储在文件中由程序直接加载所有细化级别的纹理图像。
 
@@ -347,7 +347,7 @@ samplerInfo.minLod = static_cast<float>(mipLevels / 2);
 
 
 
-[https://github.com/Kirkice/JourneyThroughVulkangithub.com/Kirkice/JourneyThroughVulkan](https://link.zhihu.com/?target=https%3A//github.com/Kirkice/JourneyThroughVulkan)
+[https://github.com/Kirkice/JourneyThroughVulkangithub.com/Kirkice/JourneyThroughVulkan](https://github.com/Kirkice/JourneyThroughVulkan)
 
 
 

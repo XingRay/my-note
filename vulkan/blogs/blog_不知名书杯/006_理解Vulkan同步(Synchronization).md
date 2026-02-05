@@ -878,33 +878,33 @@ vkGetSemaphoreCounterValue(dev, timelineSemaphore, &value)
 
 ## References
 
-[Vulkan synchronisation and graphics-compute-graphics hazards: Part 2 - Imagination](https://link.zhihu.com/?target=https%3A//blog.imaginationtech.com/vulkan-synchronisation-and-graphics-compute-graphics-hazards-part-2/)
+[Vulkan synchronisation and graphics-compute-graphics hazards: Part 2 - Imagination](https://blog.imaginationtech.com/vulkan-synchronisation-and-graphics-compute-graphics-hazards-part-2/)
 
-[Vulkan synchronisation and graphics-compute-graphics hazards: Part I - Imagination Developers](https://link.zhihu.com/?target=https%3A//blog.imaginationtech.com/vulkan-synchronisation-and-graphics-compute-graphics-hazards-part-i)
+[Vulkan synchronisation and graphics-compute-graphics hazards: Part I - Imagination Developers](https://blog.imaginationtech.com/vulkan-synchronisation-and-graphics-compute-graphics-hazards-part-i)
 
-[Vulkan synchronisation and graphics-compute-graphics hazards: Part 2 - Imagination](https://link.zhihu.com/?target=https%3A//blog.imaginationtech.com/vulkan-synchronisation-and-graphics-compute-graphics-hazards-part-2/)
+[Vulkan synchronisation and graphics-compute-graphics hazards: Part 2 - Imagination](https://blog.imaginationtech.com/vulkan-synchronisation-and-graphics-compute-graphics-hazards-part-2/)
 
-[Vulkan® Barriers Explained](https://link.zhihu.com/?target=https%3A//gpuopen.com/learn/vulkan-barriers-explained/)
+[Vulkan® Barriers Explained](https://gpuopen.com/learn/vulkan-barriers-explained/)
 
 [游戏引擎随笔 0x07：现代图形 API 的同步](https://zhuanlan.zhihu.com/p/100162469)
 
-[Yet another blog explaining Vulkan synchronization](https://link.zhihu.com/?target=http%3A//themaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/)
+[Yet another blog explaining Vulkan synchronization](http://themaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/)
 
-[Understanding Vulkan Synchronization](https://link.zhihu.com/?target=https%3A//www.khronos.org/blog/understanding-vulkan-synchronization)
+[Understanding Vulkan Synchronization](https://www.khronos.org/blog/understanding-vulkan-synchronization)
 
-[剖析虚幻渲染体系（13）- RHI补充篇：现代图形API之奥义与指南 - 0向往0 - 博客园](https://link.zhihu.com/?target=https%3A//www.cnblogs.com/timlly/p/15680064.html%231343-synchronization)
+[剖析虚幻渲染体系（13）- RHI补充篇：现代图形API之奥义与指南 - 0向往0 - 博客园](https://www.cnblogs.com/timlly/p/15680064.html%231343-synchronization)
 
-[https://github.com/David-DiGioia/vulkan-diagrams](https://link.zhihu.com/?target=https%3A//github.com/David-DiGioia/vulkan-diagrams)
+[https://github.com/David-DiGioia/vulkan-diagrams](https://github.com/David-DiGioia/vulkan-diagrams)
 
 [Vulkan: Command Type & Ordering](https://zhuanlan.zhihu.com/p/470261316)
 
-[https://github.com/KhronosGroup/Vulkan-Docs/issues/1815](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Docs/issues/1815)
+[https://github.com/KhronosGroup/Vulkan-Docs/issues/1815](https://github.com/KhronosGroup/Vulkan-Docs/issues/1815)
 
 [关于 Vulkan Tutorial 中同步问题的解释](https://zhuanlan.zhihu.com/p/350483554)
 
-[Writing an efficient Vulkan renderer](https://link.zhihu.com/?target=https%3A//zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/%23fn%3A6)
+[Writing an efficient Vulkan renderer](https://zeux.io/2020/02/27/writing-an-efficient-vulkan-renderer/%23fn:6)
 
 [游戏引擎随笔 0x11：现代图形 API 特性的统一：Attachment Fetch](https://zhuanlan.zhihu.com/p/131392827)
 
-[Vulkan-Samples/samples/performance/pipeline_barriers at main · KhronosGroup/Vulkan-Samples](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples/tree/main/samples/performance/pipeline_barriers)
+[Vulkan-Samples/samples/performance/pipeline_barriers at main · KhronosGroup/Vulkan-Samples](https://github.com/KhronosGroup/Vulkan-Samples/tree/main/samples/performance/pipeline_barriers)
 

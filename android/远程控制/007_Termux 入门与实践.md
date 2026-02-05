@@ -225,8 +225,8 @@ Ubuntu 19.04 \n \1
 
 ##### 参考文档：
 
-[1] 阮一峰的网络日志 - Termux 入门教程：架设手机 Server 下载文件 [http://www.ruanyifeng.com/blog/2019/07/termux-tutorial.html](https://links.jianshu.com/go?to=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2019%2F07%2Ftermux-tutorial.html)
-[2] Termux官网 [https://termux.com/](https://links.jianshu.com/go?to=https%3A%2F%2Ftermux.com%2F)
-[3] Ubuntu - Termux Wiki [https://wiki.termux.com/wiki/Ubuntu](https://links.jianshu.com/go?to=https%3A%2F%2Fwiki.termux.com%2Fwiki%2FUbuntu)
-[4] 国光 - Termux 高级终端安装使用配置教程 [https://www.sqlsec.com/2018/05/termux.html](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.sqlsec.com%2F2018%2F05%2Ftermux.html)
+[1] 阮一峰的网络日志 - Termux 入门教程：架设手机 Server 下载文件 [http://www.ruanyifeng.com/blog/2019/07/termux-tutorial.html](https://links.jianshu.com/go?to=http://www.ruanyifeng.com/blog/2019/07/termux-tutorial.html)
+[2] Termux官网 [https://termux.com/](https://links.jianshu.com/go?to=https://termux.com/)
+[3] Ubuntu - Termux Wiki [https://wiki.termux.com/wiki/Ubuntu](https://links.jianshu.com/go?to=https://wiki.termux.com/wiki/Ubuntu)
+[4] 国光 - Termux 高级终端安装使用配置教程 [https://www.sqlsec.com/2018/05/termux.html](https://links.jianshu.com/go?to=https://www.sqlsec.com/2018/05/termux.html)
 

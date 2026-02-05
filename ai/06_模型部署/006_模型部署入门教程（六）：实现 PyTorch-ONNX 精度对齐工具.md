@@ -437,7 +437,7 @@ x_3 MSE: 1.7635199492054931e-16
 
 **码字不易，如果觉得对你有帮助，欢迎给我们点个赞呀~也欢迎大家来 MMDelpoy 体验**
 
-[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://link.zhihu.com/?target=https%3A//github.com/open-mmlab/mmdeploy)
+[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://github.com/open-mmlab/mmdeploy)
 
 ## 系列传送门
 

@@ -66,7 +66,7 @@ vkQueueSubmit(graphicsQueue, 1, &submitInfo, inFlightFences[currentFrame])
 - **initialLayout**：指image作为attachment之前的layout，即输入之前的layout。其中**VK_IMAGE_LAYOUT_UNDEFINED**意味着不关系image中的原始数据，后续也不会使用image各种的数据，以便驱动进行优化**。**
 - **finalLayout：**指当前renderpass完成以后需要将image转换为 final layout输出
 - Subpass 在使用 attachment 时，指定的 layout 可以不同于 initialLayout 或 finalLayout。`VkSubpassDescription` 中需要指定 render pass 中 attachment 的引用。
-- [VkSubpassDependency](https://link.csdn.net/?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%3A%2F%2Fwww.khronos.org%2Fregistry%2Fvulkan%2Fspecs%2F1.2-khr-extensions%2Fhtml%2Fvkspec.html%23VkSubpassDependency%26login%3Dfrom_csdn)控制了两个subpass之间layout转换的时机。
+- [VkSubpassDependency](https://link.csdn.net/?target=https://link.zhihu.com/?target=https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html%23VkSubpassDependency&login=from_csdn)控制了两个subpass之间layout转换的时机。
 - 当没有指定dependency时，可能存在**implicit subpass dependency**，隐式转换存在三种情况：
 
 - External 至 subpass
@@ -81,7 +81,7 @@ vkQueueSubmit(graphicsQueue, 1, &submitInfo, inFlightFences[currentFrame])
 
 ## 三. VkImageMemoryBarrier 和Subpass Dependencies
 
-1.对于非attachment资源，VkImageMemoryBarrier几乎等同于 [VkSubpassDependency](https://link.csdn.net/?target=https%3A%2F%2Flink.zhihu.com%2F%3Ftarget%3Dhttps%3A%2F%2Fwww.khronos.org%2Fregistry%2Fvulkan%2Fspecs%2F1.2-khr-extensions%2Fhtml%2Fvkspec.html%23VkSubpassDependency%26login%3Dfrom_csdn)，区别在于二者的影响范围不一样：
+1.对于非attachment资源，VkImageMemoryBarrier几乎等同于 [VkSubpassDependency](https://link.csdn.net/?target=https://link.zhihu.com/?target=https://www.khronos.org/registry/vulkan/specs/1.2-khr-extensions/html/vkspec.html%23VkSubpassDependency&login=from_csdn)，区别在于二者的影响范围不一样：
 
 - 当vkCmdPipelineBarrier出现在renderpass以外，则会同步barrier前后的所有commands。
 - 当vkCmdPipelineBarrier出现在renderpass以内，则会同步barrier之前和之后属于当前subpass的commands。

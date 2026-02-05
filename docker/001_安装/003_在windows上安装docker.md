@@ -2,7 +2,7 @@
 
 https://docs.docker.com/desktop/install/windows-install/
 
-https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe
+https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe
 
 
 

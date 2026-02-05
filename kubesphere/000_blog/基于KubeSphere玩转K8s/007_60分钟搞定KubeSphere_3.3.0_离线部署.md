@@ -28,8 +28,8 @@ manifest 是一个描述当前 Kubernetes 集群信息和定义 artifact 制品�
 
 KubeKey 生成 manifest 文件有两种方式。
 
-- 利用现有运行中的集群作为源生成 manifest 文件，也是官方推荐的一种方式，具体参考 KubeSphere **[官网的离线部署文档](https://link.zhihu.com/?target=https%3A//kubesphere.com.cn/docs/v3.3/installing-on-linux/introduction/air-gapped-installation/)**。
-- 根据 **[模板文件](https://link.zhihu.com/?target=https%3A//github.com/kubesphere/kubekey/blob/master/docs/manifest-example.md)** 手动编写 manifest 文件。
+- 利用现有运行中的集群作为源生成 manifest 文件，也是官方推荐的一种方式，具体参考 KubeSphere **[官网的离线部署文档](https://kubesphere.com.cn/docs/v3.3/installing-on-linux/introduction/air-gapped-installation/)**。
+- 根据 **[模板文件](https://github.com/kubesphere/kubekey/blob/master/docs/manifest-example.md)** 手动编写 manifest 文件。
 
 第一种方式的好处是可以构建 1:1 的运行环境，但是需要提前部署一个集群，不够灵活度，并不是所有人都具备这种条件的。
 
@@ -92,7 +92,7 @@ KubeKey 生成 manifest 文件有两种方式。
 
 ### **2.2. 获取 manifest 模板**
 
-参考 **[https://github.com/kubesphere/kubekey/blob/master/docs/manifest-example.md](https://link.zhihu.com/?target=https%3A//github.com/kubesphere/kubekey/blob/master/docs/manifest-example.md)**
+参考 **[https://github.com/kubesphere/kubekey/blob/master/docs/manifest-example.md](https://github.com/kubesphere/kubekey/blob/master/docs/manifest-example.md)**
 
 有两个参考用例，一个简单版，一个完整版。参考简单版就可以。
 
@@ -102,7 +102,7 @@ KubeKey 生成 manifest 文件有两种方式。
 wget https://github.com/kubesphere/ks-installer/releases/download/v3.3.0/images-list.txt
 ```
 
-文中的 image 列表选用的 dockerhub 仓库其他组件存放的公共仓库，国内建议统一更改前缀为 **[http://registry.cn-beijing.aliyuncs.com/kubesphereio](https://link.zhihu.com/?target=http%3A//registry.cn-beijing.aliyuncs.com/kubesphereio)**
+文中的 image 列表选用的 dockerhub 仓库其他组件存放的公共仓库，国内建议统一更改前缀为 **[http://registry.cn-beijing.aliyuncs.com/kubesphereio](http://registry.cn-beijing.aliyuncs.com/kubesphereio)**
 
 修改后的完整的镜像列表在下面的 manifest 文件中展示。
 
@@ -309,9 +309,9 @@ spec:
 > **manifest 修改说明**
 
 - 开启 **harbor** 和 **docker-compose** 配置项，为后面通过 KubeKey 自建 harbor 仓库推送镜像使用。
-- 默认创建的 manifest 里面的镜像列表从 **[http://docker.io](https://link.zhihu.com/?target=http%3A//docker.io)** 获取，替换前缀为 **[http://registry.cn-beijing.aliyuncs.com/kubesphereio](https://link.zhihu.com/?target=http%3A//registry.cn-beijing.aliyuncs.com/kubesphereio)**。
+- 默认创建的 manifest 里面的镜像列表从 **[http://docker.io](http://docker.io)** 获取，替换前缀为 **[http://registry.cn-beijing.aliyuncs.com/kubesphereio](http://registry.cn-beijing.aliyuncs.com/kubesphereio)**。
 - 若需要导出的 artifact 文件中包含操作系统依赖文件（如：conntarck、chrony 等），可在 **operationSystem** 元素中的 **.repostiory.iso.url** 中配置相应的 ISO 依赖文件下载地址为 **localPath** ，填写提前下载好的 ISO 包在本地的存放路径，并将 **url** 配置项置空。
-- 您可以访问 [https://github.com/kubesphere/kubekey/releases/tag/v2.2.1](https://link.zhihu.com/?target=https%3A//github.com/kubesphere/kubekey/releases/tag/v2.2.1) 下载 ISO 文件。
+- 您可以访问 [https://github.com/kubesphere/kubekey/releases/tag/v2.2.1](https://github.com/kubesphere/kubekey/releases/tag/v2.2.1) 下载 ISO 文件。
 
 ### **2.6. 导出制品 artifact**
 
@@ -505,9 +505,9 @@ spec:
 
 ### **4.3. 在 Harbor 中创建项目**
 
-本文采用提前部署好的 Harbor 来存放镜像，部署过程参考我之前写的**[ 基于 KubeSphere 玩转 k8s-Harbor 安装手记](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/z-notes/blob/main/k8s-on-kubesphere/10-%E5%9F%BA%E4%BA%8EKubeSphere%E7%8E%A9%E8%BD%ACk8s-Harbor%E5%AE%89%E8%A3%85%E6%89%8B%E8%AE%B0.md)**。
+本文采用提前部署好的 Harbor 来存放镜像，部署过程参考我之前写的**[ 基于 KubeSphere 玩转 k8s-Harbor 安装手记](https://gitee.com/zdevops/z-notes/blob/main/k8s-on-kubesphere/10-%E5%9F%BA%E4%BA%8EKubeSphere%E7%8E%A9%E8%BD%ACk8s-Harbor%E5%AE%89%E8%A3%85%E6%89%8B%E8%AE%B0.md)**。
 
-你可以使用 kk 工具自动部署 Harbor，具体参考**[官方离线部署文档](https://link.zhihu.com/?target=https%3A//kubesphere.com.cn/docs/v3.3/installing-on-linux/introduction/air-gapped-installation/)**。
+你可以使用 kk 工具自动部署 Harbor，具体参考**[官方离线部署文档](https://kubesphere.com.cn/docs/v3.3/installing-on-linux/introduction/air-gapped-installation/)**。
 
 - 下载创建项目脚本模板
 
@@ -625,17 +625,17 @@ https://kubesphere.io             2022-06-30 14:30:19
 
 > **Get 文档**
 
-- Github [https://github.com/devops/z-notes](https://link.zhihu.com/?target=https%3A//github.com/devops/z-notes)
-- Gitee [https://gitee.com/zdevops/z-notes](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/z-notes)
+- Github [https://github.com/devops/z-notes](https://github.com/devops/z-notes)
+- Gitee [https://gitee.com/zdevops/z-notes](https://gitee.com/zdevops/z-notes)
 
 > **Get 代码**
 
-- Github [https://github.com/devops/ansible-zdevops](https://link.zhihu.com/?target=https%3A//github.com/devops/ansible-zdevops)
-- Gitee [https://gitee.com/zdevops/ansible-zdevops](https://link.zhihu.com/?target=https%3A//gitee.com/zdevops/ansible-zdevops)
+- Github [https://github.com/devops/ansible-zdevops](https://github.com/devops/ansible-zdevops)
+- Gitee [https://gitee.com/zdevops/ansible-zdevops](https://gitee.com/zdevops/ansible-zdevops)
 
 > **B 站**
 
-- **[老 Z 手记](https://link.zhihu.com/?target=https%3A//space.bilibili.com/1039301316)**[https://space.bilibili.com/1039301316](https://link.zhihu.com/?target=https%3A//space.bilibili.com/1039301316)
+- **[老 Z 手记](https://space.bilibili.com/1039301316)**[https://space.bilibili.com/1039301316](https://space.bilibili.com/1039301316)
 
 > **版权声明**
 

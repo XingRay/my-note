@@ -5,7 +5,7 @@
 > Harbor介绍
 > Harbor是一个用于存储和分发Docker镜像的企业级Registry服务器，通过添加一些企业必需的功能特性，例如安全、标识和管理等，扩展了开源Docker Distribution。作为一个企业级私有Registry服务器，Harbor提供了更好的性能和安全。提升用户使用Registry构建和运行环境传输镜像的效率。Harbor支持安装在多个Registry节点的镜像资源复制，镜像全部保存在私有Registry中， 确保数据和知识产权在公司内部网络中管控。另外，Harbor也提供了高级的安全特性，诸如用户管理，访问控制和活动审计等。
 >
-> 官网地址：[https://goharbor.io/](https://links.jianshu.com/go?to=https%3A%2F%2Fgoharbor.io%2F)
+> 官网地址：[https://goharbor.io/](https://links.jianshu.com/go?to=https://goharbor.io/)
 >
 > Harbor特性
 > 1、基于角色的访问控制 ：用户与Docker镜像仓库通过“项目”进行组织管理，一个用户可以对多个镜像仓库在同一命名空间（project）里有不同的权限。
@@ -330,6 +330,6 @@ Image is up to date for sha256:670dcc86b69df89a9d5a9e1a7ae5b8f67619c1c74e19de8a3
 [root@CentOS8 harbor]# rm -rf /usr/local/harbor
 ```
 
-> 参考链接：[https://blog.csdn.net/m0_57776598/article/details/123698967](https://links.jianshu.com/go?to=https%3A%2F%2Fblog.csdn.net%2Fm0_57776598%2Farticle%2Fdetails%2F123698967)
+> 参考链接：[https://blog.csdn.net/m0_57776598/article/details/123698967](https://links.jianshu.com/go?to=https://blog.csdn.net/m0_57776598/article/details/123698967)
 
 最后编辑于 ：2022.08.23 10:56:23

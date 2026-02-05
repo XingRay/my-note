@@ -173,7 +173,7 @@ cuDNN下载
 
 cuDNN地址如下，不过要注意的是，我们需要注册一个账号，才可以进入到下载界面。大家可以放心注册的。
 
-[https://developer.nvidia.com/rdp/cudnn-download](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/rdp/cudnn-download)
+[https://developer.nvidia.com/rdp/cudnn-download](https://developer.nvidia.com/rdp/cudnn-download)
 
 点击注册
 
@@ -261,6 +261,6 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0\libnvvp
 
 版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
 
-原文链接：[https://blog.csdn.net/m0_45447650/article/details/123704930](https://link.zhihu.com/?target=https%3A//blog.csdn.net/m0_45447650/article/details/123704930)
+原文链接：[https://blog.csdn.net/m0_45447650/article/details/123704930](https://blog.csdn.net/m0_45447650/article/details/123704930)
 
-本文转载自 CSDN网 博主 [Billie使劲学](https://link.zhihu.com/?target=https%3A//blog.csdn.net/m0_45447650) 原创文章。感谢该博主无私奉献该篇技术文，为我们入手CUDA的安装提供了学习的教程和入门。再次感谢CSDN及原创博主。
+本文转载自 CSDN网 博主 [Billie使劲学](https://blog.csdn.net/m0_45447650) 原创文章。感谢该博主无私奉献该篇技术文，为我们入手CUDA的安装提供了学习的教程和入门。再次感谢CSDN及原创博主。

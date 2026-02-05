@@ -2,7 +2,7 @@
 
 Python渐渐成为最流行的编程语言之一，在数据分析、机器学习和深度学习等方向Python语言更是主流。Python的版本比较多，并且它的库也非常广泛，同时库和库之间存在很多依赖关系，所以在库的安装和版本的管理上很麻烦。Conda是一个管理版本和Python环境的工具，它使用起来非常容易。
 
-首先你需要安装[Anconda](https://link.zhihu.com/?target=https%3A//www.anaconda.com/)软件，点击链接[download](https://link.zhihu.com/?target=https%3A//www.anaconda.com/download/)。选择对应的系统和版本类型。
+首先你需要安装[Anconda](https://www.anaconda.com/)软件，点击链接[download](https://www.anaconda.com/download/)。选择对应的系统和版本类型。
 
 ## **Conda的环境管理**
 
@@ -145,13 +145,13 @@ conda update python
 
 ## **设置国内镜像**
 
-因为[http://Anaconda.org](https://link.zhihu.com/?target=http%3A//Anaconda.org)的服务器在国外，所有有些库下载缓慢，可以使用清华Anaconda镜像源。 网站地址: [清华大学开源软件镜像站](https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
+因为[http://Anaconda.org](http://Anaconda.org)的服务器在国外，所有有些库下载缓慢，可以使用清华Anaconda镜像源。 网站地址: [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
 
 
 
 ## Anaconda　
 
-镜像 Anaconda 安装包可以到 [https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/](https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/anaconda/archive/) 下载。 TUNA还提供了Anaconda仓库的镜像，运行以下命令：
+镜像 Anaconda 安装包可以到 [https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/) 下载。 TUNA还提供了Anaconda仓库的镜像，运行以下命令：
 
 
 
@@ -171,7 +171,7 @@ conda config --set show_channel_urls yes
 
 Miniconda 是一个 Anaconda 的轻量级替代，默认只包含了 python 和 conda，但是可以通过 pip 和 conda 来安装所需要的包。
 
-Miniconda 安装包可以到 [https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/](https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/) 下载。
+Miniconda 安装包可以到 [https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/) 下载。
 
 
 

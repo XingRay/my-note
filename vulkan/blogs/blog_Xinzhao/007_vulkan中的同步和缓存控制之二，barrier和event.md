@@ -10,7 +10,7 @@
 
 Barrier是**同一个queue**中的command，或者**同一个[subpass](https://zhida.zhihu.com/search?content_id=106061125&content_type=Article&match_order=1&q=subpass&zhida_source=entity)**中的command所明确指定的依赖关系。barrier的中文释义一般叫栅栏或者屏障，我们可以想象一下有一大串的command乱序执行（实际上可能是顺序开始，乱序结束），barrier就是在中间树立一道栅栏，要求栅栏前后保持一定的顺序。
 
-[vkCmdPipelineBarrier(3) ](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdPipelineBarrier.html)API可以用于创建一个Pipeline中的Barrier。注意这个API与fence/semaphore的不同，这个API的前缀是`vkCmd`，这意味着这是一个向command buffer中记录命令的API：
+[vkCmdPipelineBarrier(3) ](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdPipelineBarrier.html)API可以用于创建一个Pipeline中的Barrier。注意这个API与fence/semaphore的不同，这个API的前缀是`vkCmd`，这意味着这是一个向command buffer中记录命令的API：
 
 ```c
 void vkCmdPipelineBarrier(
@@ -92,7 +92,7 @@ Barrier，类比于CPU同步多核原语中的barrier（好像术语都一样）
 
 ### 创建一个Event
 
-一个event，基本上和[semaphore](https://zhida.zhihu.com/search?content_id=106061125&content_type=Article&match_order=8&q=semaphore&zhida_source=entity)或者fence一样，由host创建，API为[vkCreateEvent(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCreateEvent.html)：
+一个event，基本上和[semaphore](https://zhida.zhihu.com/search?content_id=106061125&content_type=Article&match_order=8&q=semaphore&zhida_source=entity)或者fence一样，由host创建，API为[vkCreateEvent(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCreateEvent.html)：
 
 ```c
 VkResult vkCreateEvent(
@@ -106,9 +106,9 @@ VkResult vkCreateEvent(
 
 ### Event支持的操作
 
-device上可以使用[vkCmdSetEvent(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdSetEvent.html)触发(set)一个event，可以使用[vkCmdResetEvent(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdResetEvent.html)重置一个event，还可以使用[vkCmdWaitEvents(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdWaitEvents.html)等待一个event被触发。其中，WaitEvents有着和barrier极为类似的设计，可以支持缓存控制。
+device上可以使用[vkCmdSetEvent(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdSetEvent.html)触发(set)一个event，可以使用[vkCmdResetEvent(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdResetEvent.html)重置一个event，还可以使用[vkCmdWaitEvents(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkCmdWaitEvents.html)等待一个event被触发。其中，WaitEvents有着和barrier极为类似的设计，可以支持缓存控制。
 
-host上可以使用[vkSetEvent(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkSetEvent.html)触发event，也可以使用[vkResetEvent(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkResetEvent.html)重置一个Event。如果host上需要等待event，需要使用[vkGetEventStatus(3)](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkGetEventStatus.html)来查询状态
+host上可以使用[vkSetEvent(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkSetEvent.html)触发event，也可以使用[vkResetEvent(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkResetEvent.html)重置一个Event。如果host上需要等待event，需要使用[vkGetEventStatus(3)](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/man/html/vkGetEventStatus.html)来查询状态
 
 ## 一些感想
 
@@ -122,15 +122,15 @@ Vulkan实在是太繁琐了。仅仅是[同步原语](https://zhida.zhihu.com/se
 
 首先，自然是Khronos的官方规范了：
 
-[Vulkan® 1.1.121 - A Specificationwww.khronos.org/registry/vulkan/specs/1.1/html/chap6.html#synchronization](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1/html/chap6.html%23synchronization)
+[Vulkan® 1.1.121 - A Specificationwww.khronos.org/registry/vulkan/specs/1.1/html/chap6.html#synchronization](https://www.khronos.org/registry/vulkan/specs/1.1/html/chap6.html%23synchronization)
 
 这是一篇非常新的关于vulkan中同步机制的总结：
 
-[Yet another blog explaining Vulkan synchronizationthemaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/](https://link.zhihu.com/?target=http%3A//themaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/)
+[Yet another blog explaining Vulkan synchronizationthemaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/](http://themaister.net/blog/2019/08/14/yet-another-blog-explaining-vulkan-synchronization/)
 
 Khronos也在官方Github上提供了一些同步机制的使用例子：
 
-[KhronosGroup/Vulkan-Docsgithub.com/KhronosGroup/Vulkan-Docs/wiki/Synchronization-Examples![img](./assets/v2-143fec8f0f9e23987e6b40f3ba3e9720_ipico.jpg)](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Docs/wiki/Synchronization-Examples)
+[KhronosGroup/Vulkan-Docsgithub.com/KhronosGroup/Vulkan-Docs/wiki/Synchronization-Examples![img](./assets/v2-143fec8f0f9e23987e6b40f3ba3e9720_ipico.jpg)](https://github.com/KhronosGroup/Vulkan-Docs/wiki/Synchronization-Examples)
 
 
 

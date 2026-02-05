@@ -10,17 +10,17 @@ Web可视化
 
 > 官方规范
 >
-> [WebGL 规范](https://link.juejin.cn/?target=https%3A%2F%2Fregistry.khronos.org%2Fwebgl%2Fspecs%2Flatest%2F2.0%2F)
+> [WebGL 规范](https://link.juejin.cn/?target=https://registry.khronos.org/webgl/specs/latest/2.0/)
 >
-> [OpenGL ES 规范](https://link.juejin.cn/?target=https%3A%2F%2Fwww.khronos.org%2Ffiles%2Fopengles_shading_language.pdf)
+> [OpenGL ES 规范](https://link.juejin.cn/?target=https://www.khronos.org/files/opengles_shading_language.pdf)
 >
 > 其它参考资料
 >
-> [learnopengl-cn](https://link.juejin.cn/?target=https%3A%2F%2Flearnopengl-cn.readthedocs.io%2Fzh%2Flatest%2F)
+> [learnopengl-cn](https://link.juejin.cn/?target=https://learnopengl-cn.readthedocs.io/zh/latest/)
 >
-> [OpenGLES-基础篇](https://link.juejin.cn/?target=https%3A%2F%2Fcolin1994.github.io%2F2017%2F11%2F11%2FOpenGLES-Lesson04%2F)
+> [OpenGLES-基础篇](https://link.juejin.cn/?target=https://colin1994.github.io/2017/11/11/OpenGLES-Lesson04/)
 >
-> [OpenGLES-高级篇](https://link.juejin.cn/?target=https%3A%2F%2Fcolin1994.github.io%2F2017%2F11%2F12%2FOpenGLES-Lesson05%2F)
+> [OpenGLES-高级篇](https://link.juejin.cn/?target=https://colin1994.github.io/2017/11/12/OpenGLES-Lesson05/)
 
 GLSL - OpenGL Shading Language 也称作 GLslang，是一个类C语言的。当我们想要调用 GPU 的能力的时候就需要使用 GLSL，因为 GPU 是识别不了 JS 的。
 

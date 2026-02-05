@@ -265,7 +265,7 @@ samplerInfo.maxAnisotropy = 1.0f;
 
 ## [工程链接](https://zhida.zhihu.com/search?content_id=224443532&content_type=Article&match_order=1&q=工程链接&zhida_source=entity)
 
-[https://github.com/Kirkice/JourneyThroughVulkangithub.com/Kirkice/JourneyThroughVulkan](https://link.zhihu.com/?target=https%3A//github.com/Kirkice/JourneyThroughVulkan)
+[https://github.com/Kirkice/JourneyThroughVulkangithub.com/Kirkice/JourneyThroughVulkan](https://github.com/Kirkice/JourneyThroughVulkan)
 
 ## 参考
 

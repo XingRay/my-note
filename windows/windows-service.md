@@ -17,16 +17,16 @@ Windows Service Wrapper 工具可以将任意的可执行程序<small>（ .exe �
 
 因为 Windows Service Wrapper 依赖于 .NET Framework ，因此确保你的电脑已经安装过 .NET Framework 。<small>这里，我们预期你的 Windows 上安装了 .NET Framework 4.6.1+ 。</small>
 
-由于好多常用、常见软件都依赖于它，因此你的 Windows 可能已经安装了 .NET Framework 4.6.1+。如果没有安装，请到 [官方网址](https://links.jianshu.com/go?to=https%3A%2F%2Fdotnet.microsoft.com%2Fzh-cn%2Fdownload%2Fdotnet-framework) 下载。
+由于好多常用、常见软件都依赖于它，因此你的 Windows 可能已经安装了 .NET Framework 4.6.1+。如果没有安装，请到 [官方网址](https://links.jianshu.com/go?to=https://dotnet.microsoft.com/zh-cn/download/dotnet-framework) 下载。
 
-[直接点击下载 .NET Framework 4.6.1 离线版](https://links.jianshu.com/go?to=https%3A%2F%2Fdownload.microsoft.com%2Fdownload%2FE%2F4%2F1%2FE4173890-A24A-4936-9FC9-AF930FE3FA40%2FNDP461-KB3102436-x86-x64-AllOS-ENU.exe)
+[直接点击下载 .NET Framework 4.6.1 离线版](https://links.jianshu.com/go?to=https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe)
 
 - 如果你看到安装进度条，那么就意味着你之前没有安装过，或者是安装的 .NET Framework 版本低于 4.6.1；
 - 如果你看见「这台计算机中已经安装了 .NET Framework 4.6.1 或版本更高的更新」那就意味着你之前转过，且不低于 4.6.1 版本。
 
 ### 第 2 步：下载 Windows Service Wrapper
 
-下载 Windows Service Wrapper 工具：[官方 github for .NET 4.6.1 版](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fwinsw%2Fwinsw%2Freleases%2Fdownload%2Fv2.11.0%2FWinSW.NET461.exe)
+下载 Windows Service Wrapper 工具：[官方 github for .NET 4.6.1 版](https://links.jianshu.com/go?to=https://github.com/winsw/winsw/releases/download/v2.11.0/WinSW.NET461.exe)
 
 ### 第 3 步：配置
 

@@ -50,7 +50,7 @@
 cmake . -B build -G "Visual Studio 17 2022" -A x64
 ```
 
-我个人比较喜欢用 [ninja-build](https://link.zhihu.com/?target=https%3A//github.com/ninja-build/ninja)，因为它的构建速度很快。
+我个人比较喜欢用 [ninja-build](https://github.com/ninja-build/ninja)，因为它的构建速度很快。
 
 ```bash
 cmake . -B build -GNinja # 这里没有打错，单横线开头的 flag 是可以省略空格的。

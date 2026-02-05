@@ -34,7 +34,7 @@ vkEndCommandBuffer(cmd)
 
 因为GPUs有一些优化的[硬件算法](https://zhida.zhihu.com/search?content_id=225325205&content_type=Article&match_order=1&q=硬件算法&zhida_source=entity)，当用户想要对attachement进行写操作的时候，需要使用特定的attachement接口，因此，在一些传统API渲染的过程中，很难在fragment shader中去访问正在被渲染的attachment。
 
-有一些常规的算法，比如 deferred shading([延迟着色法 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/05%20Advanced%20Lighting/08%20Deferred%20Shading/))，这种算法就会出现当前渲染需要依赖上一次渲染的情况。OGL中会创建两次FBO，来实现这个算法，但是Vulkan可以使用Subpasses来更好的处理此类问题。
+有一些常规的算法，比如 deferred shading([延迟着色法 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/05 Advanced Lighting/08 Deferred Shading/))，这种算法就会出现当前渲染需要依赖上一次渲染的情况。OGL中会创建两次FBO，来实现这个算法，但是Vulkan可以使用Subpasses来更好的处理此类问题。
 
 对于tile-based render 渲染算法，如果后续的渲染操作和前一次的渲染操作有着相同的分辨率，并且这一块的数据需要被显示，那么前一次的渲染结果会选择高效的保存在on-chip memory上，这样的算法也需要访问上一次的渲染结果，作为下一次渲染的输入判断依据。tile-based render 用在移动端的GPU渲染比较多,桌面GPU用的较少。因此在桌面GPU环境下，经常只使用一条subpasses。
 
@@ -90,4 +90,4 @@ VkAttachmentReference 实际上就是VkRenderPassCreateInfo结构体中对应pAt
 
 ### 参考文档
 
-[Introduction to Vulkan Render Passes | Samsung Developers](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html)
+[Introduction to Vulkan Render Passes | Samsung Developers](https://developer.samsung.com/galaxy-gamedev/resources/articles/renderpasses.html)

@@ -39,10 +39,10 @@ wsl --set-default-version 2
 
 win10（11） 2022.3 之后，直接跳过这一步。
 
-下载 Linux 内核更新包 （这一步是将wsl1 更新到 wsl2 [比较 WSL 2 和 WSL 1](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/zh-cn/windows/wsl/compare-versions)）
+下载 Linux 内核更新包 （这一步是将wsl1 更新到 wsl2 [比较 WSL 2 和 WSL 1](https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions)）
 
 1. 下载最新包：
-2. [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://link.zhihu.com/?target=https%3A//wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+2. [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
 3. 运行上一步中下载的更新包。 （双击以运行 - 系统将提示你提供提升的权限，选择“是”以批准此安装。）
 
 ```powershell
@@ -135,7 +135,7 @@ wget https://gitee.com/lin-xi-269/tools/raw/master/os/QHubuntu20.04 && bash QHub
 
  
 
-[官方参考文章](https://link.zhihu.com/?target=https%3A//code.visualstudio.com/docs/remote/wsl)
+[官方参考文章](https://code.visualstudio.com/docs/remote/wsl)
 
 ### 内存控制
 
@@ -162,10 +162,10 @@ wget https://gitee.com/lin-xi-269/tools/raw/master/os/QHubuntu20.04 && bash QHub
 
 ### 参考文章：
 
-[安装WSL](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/zh-cn/windows/wsl/install)
+[安装WSL](https://docs.microsoft.com/zh-cn/windows/wsl/install)
 
-[旧版 WSL 的手动安装步骤](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/zh-cn/windows/wsl/install-manual)
+[旧版 WSL 的手动安装步骤](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual)
 
-[WSL2安装ubuntu 20.04和更改默认安装位置](https://link.zhihu.com/?target=https%3A//blogs.oopswow.com/2021/01/06/WSL2-install-ubuntu20-and-change-the-default-installation-driver/)
+[WSL2安装ubuntu 20.04和更改默认安装位置](https://blogs.oopswow.com/2021/01/06/WSL2-install-ubuntu20-and-change-the-default-installation-driver/)
 
 分类: [工具/插件 开发与使用](https://www.cnblogs.com/lidabo/category/431643.html)

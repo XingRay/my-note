@@ -132,12 +132,12 @@ forwardPipeLine.viewport.height = -(float)swapchainExtent.height;
 
 ## References
 
-[https://github.com/gpuweb/gpuweb/issues/416](https://link.zhihu.com/?target=https%3A//github.com/gpuweb/gpuweb/issues/416)
+[https://github.com/gpuweb/gpuweb/issues/416](https://github.com/gpuweb/gpuweb/issues/416)
 
-[VulkanDemos/NDC.md at master · BobLChen/VulkanDemos](https://link.zhihu.com/?target=https%3A//github.com/BobLChen/VulkanDemos/blob/master/examples/2_Triangle/NDC.md)
+[VulkanDemos/NDC.md at master · BobLChen/VulkanDemos](https://github.com/BobLChen/VulkanDemos/blob/master/examples/2_Triangle/NDC.md)
 
 [Vulkan集成：图形API坐标系对比及解决方案](https://zhuanlan.zhihu.com/p/339295068)
 
-[https://www.saschawillems.de/blog/2019/03/29/flipping-the-vulkan-viewport/](https://link.zhihu.com/?target=https%3A//www.saschawillems.de/blog/2019/03/29/flipping-the-vulkan-viewport/)
+[https://www.saschawillems.de/blog/2019/03/29/flipping-the-vulkan-viewport/](https://www.saschawillems.de/blog/2019/03/29/flipping-the-vulkan-viewport/)
 
-[Keeping the Blue Side Up: Coordinate Conventions for OpenGL, Metal and Vulkan](https://link.zhihu.com/?target=http%3A//hacksoflife.blogspot.com/2019/04/keeping-blue-side-up-coordinate.html)
+[Keeping the Blue Side Up: Coordinate Conventions for OpenGL, Metal and Vulkan](http://hacksoflife.blogspot.com/2019/04/keeping-blue-side-up-coordinate.html)

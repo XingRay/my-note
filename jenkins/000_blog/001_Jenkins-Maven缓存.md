@@ -108,7 +108,7 @@ pipeline {
 
 > 打包慢的原因主要是因为每次构建时都需要下载jar包，只需要把用到的jar包缓存起来就可以决绝这个问题。就想在本机安装Maven的时候我们会配置setting.xml路径一样
 
-## [方式一：容器的缓存数据](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.jenkins.io%2Fzh%2Fdoc%2Fbook%2Fpipeline%2Fdocker%2F%23%E5%AE%B9%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE)
+## [方式一：容器的缓存数据](https://links.jianshu.com/go?to=https://www.jenkins.io/zh/doc/book/pipeline/docker/%23%E5%AE%B9%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE)
 
 - 在指定Docker镜像的时候，把需要缓存目录挂载到宿主机中
 

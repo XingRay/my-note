@@ -86,7 +86,7 @@ Targets **的可见性管理**
 
 Rule specifies the relationship between inputs and outputs
 
-如代码 1 所示：就是通过**输入**( [http://my_app.cc](https://link.zhihu.com/?target=http%3A//my_app.cc) 和 依赖) 通过**动作**(编译链接) 产生**输出 (**my_app.exe）
+如代码 1 所示：就是通过**输入**( [http://my_app.cc](http://my_app.cc) 和 依赖) 通过**动作**(编译链接) 产生**输出 (**my_app.exe）
 
 所以一个规则由： 输入、输出(必要)、动作组成
 
@@ -192,7 +192,7 @@ bazel 的设计理念是：所有的依赖关系尽量让 bazel 系统知道（�
 
 
 1. **Loads** the BUILD files relevant to the target.
-2. **Analyzes** the inputs and their [dependencies](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/4.2.1/build-ref.html%23dependencies), applies the specified build rules, and produces an [action](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/4.2.1/skylark/concepts.html%23evaluation-model) graph.
+2. **Analyzes** the inputs and their [dependencies](https://docs.bazel.build/versions/4.2.1/build-ref.html%23dependencies), applies the specified build rules, and produces an [action](https://docs.bazel.build/versions/4.2.1/skylark/concepts.html%23evaluation-model) graph.
 3. **Executes** the build actions on the inputs until the final build outputs are produced.
 
 
@@ -451,15 +451,15 @@ fi\n\
 
 ### 3.1.1 部分基础数据类型
 
-bazel 使用 [Starlark](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/language.html) ，和 python 几乎完全相同的语法规则。
+bazel 使用 [Starlark](https://docs.bazel.build/versions/main/skylark/language.html) ，和 python 几乎完全相同的语法规则。
 
-bazel 提供的接口：[https://docs.bazel.build/versions/main/skylark/lib/skylark-overview.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/skylark-overview.html)
+bazel 提供的接口：[https://docs.bazel.build/versions/main/skylark/lib/skylark-overview.html](https://docs.bazel.build/versions/main/skylark/lib/skylark-overview.html)
 
 基础的数据类型 ：
 
 这里介绍三种常用**数据对象**，string, list, tuple。 和 python 几乎相同
 
-string : [https://docs.bazel.build/versions/main/skylark/lib/string.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/string.html)
+string : [https://docs.bazel.build/versions/main/skylark/lib/string.html](https://docs.bazel.build/versions/main/skylark/lib/string.html)
 
 ```text
 string： 
@@ -477,7 +477,7 @@ tuple 使用 {} 表示， f = {
 
 代码 12、 类型展示
 
-函数接口 ：[https://docs.bazel.build/versions/main/skylark/lib/globals.html#exec_group](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/globals.html%23exec_group)
+函数接口 ：[https://docs.bazel.build/versions/main/skylark/lib/globals.html#exec_group](https://docs.bazel.build/versions/main/skylark/lib/globals.html%23exec_group)
 
 本文涉及到的函数: rule、register_toolchains、print、depset、aspect、select
 
@@ -485,7 +485,7 @@ tuple 使用 {} 表示， f = {
 
 本章涉及了：ctx 和 attr 的关系； 如何写一个 rule；
 
-[https://docs.bazel.build/versions/main/skylark/lib/globals.html#rule](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/globals.html%23rule)
+[https://docs.bazel.build/versions/main/skylark/lib/globals.html#rule](https://docs.bazel.build/versions/main/skylark/lib/globals.html%23rule)
 
 **先验知识 ：**
 
@@ -615,32 +615,32 @@ config_setting(
 
 ctx 涉及的东西较多：provides、files、target、actions、outputs、executable 等对象， 这里不做详细展开
 
-\1. file ： [https://docs.bazel.build/versions/main/skylark/lib/File.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/File.html)
+\1. file ： [https://docs.bazel.build/versions/main/skylark/lib/File.html](https://docs.bazel.build/versions/main/skylark/lib/File.html)
 
 
 
 \2. provides : 类似c++ 函数返回值，bazel 规定宏返回值类型，也是 rule 交互的唯一接口, 最常用的 DefaultInfo 、OutputGroupInfo， 返回值如何使用见, 4 如何调试 一个 rule
 
-provide : [https://docs.bazel.build/versions/main/skylark/lib/globals.html#provider](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/globals.html%23provider)
+provide : [https://docs.bazel.build/versions/main/skylark/lib/globals.html#provider](https://docs.bazel.build/versions/main/skylark/lib/globals.html%23provider)
 
-常用的 provide: [https://docs.bazel.build/versions/3.5.0/skylark/lib/skylark-overview.html#providers](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/3.5.0/skylark/lib/skylark-overview.html%23providers)
+常用的 provide: [https://docs.bazel.build/versions/3.5.0/skylark/lib/skylark-overview.html#providers](https://docs.bazel.build/versions/3.5.0/skylark/lib/skylark-overview.html%23providers)
 
 DefaultInfo （如代码 13 _impl 没有 return, 可以通过 DefaultInfo 获取其部分信息）
 
-[https://docs.bazel.build/versions/main/skylark/lib/DefaultInfo.html#modules.DefaultInfo](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/DefaultInfo.html%23modules.DefaultInfo)
+[https://docs.bazel.build/versions/main/skylark/lib/DefaultInfo.html#modules.DefaultInfo](https://docs.bazel.build/versions/main/skylark/lib/DefaultInfo.html%23modules.DefaultInfo)
 
 OutputGroupInfo:
 
-[https://docs.bazel.build/versions/3.5.0/skylark/lib/OutputGroupInfo.html#modules.OutputGroupInfo](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/3.5.0/skylark/lib/OutputGroupInfo.html%23modules.OutputGroupInfo)
+[https://docs.bazel.build/versions/3.5.0/skylark/lib/OutputGroupInfo.html#modules.OutputGroupInfo](https://docs.bazel.build/versions/3.5.0/skylark/lib/OutputGroupInfo.html%23modules.OutputGroupInfo)
 
 
 
 \3. action
 
-- [ctx.actions.run](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23run), to run an executable. 用来执行 shell 或者 binary
-- [ctx.actions.run_shell](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23run_shell), to run a shell command. 执行单条命令
-- [ctx.actions.write](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23write), to write a string to a file. 写一个文件
-- [ctx.actions.expand_template](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23expand_template), to generate a file from a template . 生成一个模板
+- [ctx.actions.run](https://docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23run), to run an executable. 用来执行 shell 或者 binary
+- [ctx.actions.run_shell](https://docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23run_shell), to run a shell command. 执行单条命令
+- [ctx.actions.write](https://docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23write), to write a string to a file. 写一个文件
+- [ctx.actions.expand_template](https://docs.bazel.build/versions/4.2.1/skylark/lib/actions.html%23expand_template), to generate a file from a template . 生成一个模板
 
 **action 做了啥，大话解析？**
 
@@ -713,7 +713,7 @@ rule 内部使用  ctx.executable.merge_tool
 
 ### 3.2.1 bazel 常用的 rule
 
-简析：bazel 自带：filegroup 、http_archive , [bazel_skylib](https://link.zhihu.com/?target=https%3A//github.com/bazelbuild/bazel-skylib) : write_file 、copy_file、native_file, run_binary
+简析：bazel 自带：filegroup 、http_archive , [bazel_skylib](https://github.com/bazelbuild/bazel-skylib) : write_file 、copy_file、native_file, run_binary
 
 filegroup 常用来导出文件:
 
@@ -911,7 +911,7 @@ xgettext_linux = rule(
 
 ### 3.2.4.1 depset
 
-[Depsets](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/depset.html) are a specialized data structure for efficiently collecting data across a target’s transitive dependencies. Since this use case concerns the [analysis phase](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/concepts.html%23evaluation-model), depsets are useful for authors of rules and aspects, but probably not macros.
+[Depsets](https://docs.bazel.build/versions/main/skylark/lib/depset.html) are a specialized data structure for efficiently collecting data across a target’s transitive dependencies. Since this use case concerns the [analysis phase](https://docs.bazel.build/versions/main/skylark/concepts.html%23evaluation-model), depsets are useful for authors of rules and aspects, but probably not macros.
 
 ```text
 s = depset(["a", "b", "c"])
@@ -925,7 +925,7 @@ print(t)    # depset(["d", "e", "a", "b", "c"])
 
 ### 3.2.4.2 aspect
 
-aspect 详情： [https://docs.bazel.build/versions/main/skylark/aspects.html#aspects](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/aspects.html%23aspects)
+aspect 详情： [https://docs.bazel.build/versions/main/skylark/aspects.html#aspects](https://docs.bazel.build/versions/main/skylark/aspects.html%23aspects)
 
 aspect 主要作用是对其他规则进行拓展， 如下图所示一个规则
 
@@ -1155,7 +1155,7 @@ register_toolchains(
 rule_attributes ctx.rule
 ```
 
-rule_attributes [https://docs.bazel.build/versions/main/skylark/lib/rule_attributes.html#modules.rule_attributes](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/main/skylark/lib/rule_attributes.html%23modules.rule_attributes)
+rule_attributes [https://docs.bazel.build/versions/main/skylark/lib/rule_attributes.html#modules.rule_attributes](https://docs.bazel.build/versions/main/skylark/lib/rule_attributes.html%23modules.rule_attributes)
 
 可以通过 ctx.rule.files 获取源文件 里面的文件
 

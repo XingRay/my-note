@@ -314,12 +314,12 @@ ImGui_ImplVulkan_LoadFunctions([](const char *function_name, void *vulkan_instan
 
 ## **References**
 
-[Vulkan-Guide/loader.adoc at main · KhronosGroup/Vulkan-Guide](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/loader.adoc)
+[Vulkan-Guide/loader.adoc at main · KhronosGroup/Vulkan-Guide](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/loader.adoc)
 
-[Vulkan-Loader/LoaderInterfaceArchitecture.md at main · KhronosGroup/Vulkan-Loader](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderInterfaceArchitecture.md%23the-loader)
+[Vulkan-Loader/LoaderInterfaceArchitecture.md at main · KhronosGroup/Vulkan-Loader](https://github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderInterfaceArchitecture.md%23the-loader)
 
-[https://github.com/zeux/volk](https://link.zhihu.com/?target=https%3A//github.com/zeux/volk)
+[https://github.com/zeux/volk](https://github.com/zeux/volk)
 
-[https://github.com/ocornut/imgui/issues/4854](https://link.zhihu.com/?target=https%3A//github.com/ocornut/imgui/issues/4854)
+[https://github.com/ocornut/imgui/issues/4854](https://github.com/ocornut/imgui/issues/4854)
 
-[Vulkan Memory Allocator: Quick start](https://link.zhihu.com/?target=https%3A//gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/quick_start.html%23quick_start_initialization)
+[Vulkan Memory Allocator: Quick start](https://gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/quick_start.html%23quick_start_initialization)

@@ -20,7 +20,7 @@ message Person {
 ```
 
 这段定义表示在 `Person` 这种数据类型中，必须包含 `name`、`id` 这两个字段，选择性包含 `email`字段。根据这份定义文件，用户就可以选择一种编程语言，定义一个含有成员变量 `name`、`id`、`email` 的 `Person` 类，把这个类的某个实例用 Protobuf 存储成二进制文件；反之，用户也可以用二进制文件和对应的数据定义文件，读取出一个 `Person` 类的实例。
-而对于 ONNX ，Protobuf 的数据定义文件在其[开源库](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/tree/main/onnx)，这些文件定义了神经网络中模型、节点、张量的数据类型规范；而二进制文件就是我们熟悉的“.onnx"文件，每一个 onnx 文件按照数据定义规范，存储了一个神经网络的所有相关数据。直接用 Protobuf 生成 ONNX 模型还是比较麻烦的。幸运的是，ONNX 提供了很多实用 API，我们可以在完全不了解 Protobuf 的前提下，构造和读取 ONNX 模型。
+而对于 ONNX ，Protobuf 的数据定义文件在其[开源库](https://github.com/onnx/onnx/tree/main/onnx)，这些文件定义了神经网络中模型、节点、张量的数据类型规范；而二进制文件就是我们熟悉的“.onnx"文件，每一个 onnx 文件按照数据定义规范，存储了一个神经网络的所有相关数据。直接用 Protobuf 生成 ONNX 模型还是比较麻烦的。幸运的是，ONNX 提供了很多实用 API，我们可以在完全不了解 Protobuf 的前提下，构造和读取 ONNX 模型。
 
 ###  ONNX 的结构定义
 
@@ -439,7 +439,7 @@ onnx.utils.extract_model('whole_model.onnx', 'debug_model_4.onnx', ['25', '27'],
 
 **在 MMDeploy 中，我们为 PyTorch 模型添加了模型分块功能。使用这个功能，我们可以通过只修改 PyTorch 模型的实现代码来把原模型导出成多个互不相交的子 ONNX 模型。我们会在后续教程中对其介绍。**
 
-[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://link.zhihu.com/?target=https%3A//github.com/open-mmlab/mmdeploy)
+[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://github.com/open-mmlab/mmdeploy)
 
 ## 总结
 
@@ -454,12 +454,12 @@ onnx.utils.extract_model('whole_model.onnx', 'debug_model_4.onnx', ['25', '27'],
 
 至此，我们对 ONNX 相关知识的学习就告一段落了。回顾一下，我们先学习了 PyTorch 转 ONNX 有关 API 的用法；接着，我们学习了如何用自定义算子解决 PyTorch 和 ONNX 表达能力不足的问题；最后我们单独学习了 ONNX 模型的调试方法。通过对 ONNX 由浅入深的学习，我们基本可以应对模型部署中和 ONNX 有关的绝大多数问题了。
 
-如果大家想了解更多有关 ONNX API 的知识，可以去阅读 ONNX 的官方 Python [API 文档](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/blob/main/docs/PythonAPIOverview.md)哦。
+如果大家想了解更多有关 ONNX API 的知识，可以去阅读 ONNX 的官方 Python [API 文档](https://github.com/onnx/onnx/blob/main/docs/PythonAPIOverview.md)哦。
 不过，只是过了一遍知识的话，我们可能还不能熟练地应用这些 PyTorch 和 ONNX 的 API。在下一期教程中，我们将使用 PyTorch 和 ONNX，编写一些和 ONNX 模型相关的实用工具，作为过去几篇教程的总结，敬请期待哦！
 
 **感兴趣的小伙伴，欢迎来 MMDeploy 体验噢～**
 
-[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://link.zhihu.com/?target=https%3A//github.com/open-mmlab/mmdeploy)
+[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://github.com/open-mmlab/mmdeploy)
 
 ![动图封面](./assets/v2-71ac19d4e146c75fc41034a4b0ef6717_b.jpg)
 

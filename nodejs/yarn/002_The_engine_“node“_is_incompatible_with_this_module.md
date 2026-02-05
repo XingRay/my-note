@@ -1,6 +1,6 @@
 # The engine “node“ is incompatible with this module. Expected version问题解决
 
-好不容易配好[yarn](https://links.jianshu.com/go?to=https%3A%2F%2Fso.csdn.net%2Fso%2Fsearch%3Fq%3Dyarn%26spm%3D1001.2101.3001.7020)后，运行yarn install后报错：
+好不容易配好[yarn](https://links.jianshu.com/go?to=https://so.csdn.net/so/search?q=yarn&spm=1001.2101.3001.7020)后，运行yarn install后报错：
 
 
 
@@ -8,7 +8,7 @@
 
  解决方案（2个）
 
-[方案1：卸载](https://www.jianshu.com/p/4a738fbbb86a)[node](https://links.jianshu.com/go?to=https%3A%2F%2Fso.csdn.net%2Fso%2Fsearch%3Fq%3Dnode%26spm%3D1001.2101.3001.7020)重装指定版本范围的
+[方案1：卸载](https://www.jianshu.com/p/4a738fbbb86a)[node](https://links.jianshu.com/go?to=https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020)重装指定版本范围的
 
 自行百度nodejs官网安装相应版本
 

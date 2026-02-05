@@ -183,6 +183,6 @@ var farPlane = 100f
 
 这节的内容比较复杂，如果有疑问，欢迎给我留言讨论哈。
 
-代码在我`github`的`OpenGLESPro`项目中，本文对应的是`SampleMatrixTransform`，项目链接：[github.com/kenneycode/…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fkenneycode%2FOpenGLESPro)
+代码在我`github`的`OpenGLESPro`项目中，本文对应的是`SampleMatrixTransform`，项目链接：[github.com/kenneycode/…](https://link.juejin.cn/?target=https://github.com/kenneycode/OpenGLESPro)
 
 感谢阅读！

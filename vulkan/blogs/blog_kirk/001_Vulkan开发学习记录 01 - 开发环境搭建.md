@@ -32,7 +32,7 @@ Hello Vulkan
 
 开发Vulkan应用程序所需的最重要的组件就是SDK。它包括核心[头文件](https://zhida.zhihu.com/search?content_id=215583317&content_type=Article&match_order=1&q=头文件&zhida_source=entity)、标准的Validation layers及调试工具集、和驱动Loader，加载程序在运行时查找驱动程序中的函数，类似于 GLEW for OpenGL。
 
-SDK 可以使用页面底部的按钮从[LunarG 网站下载。](https://link.zhihu.com/?target=https%3A//vulkan.lunarg.com/)您不必创建帐户，但它可以让您访问一些可能对您有用的附加文档。
+SDK 可以使用页面底部的按钮从[LunarG 网站下载。](https://vulkan.lunarg.com/)您不必创建帐户，但它可以让您访问一些可能对您有用的附加文档。
 
 
 
@@ -58,7 +58,7 @@ vkCube
 
 您可以在官方网站上找到 GLFW 的最新版本。在本教程中，我们将使用 64 位二进制文件，但您当然也可以选择以 32 位模式构建。在这种情况下，请确保链接到Lib32目录中的 Vulkan SDK [二进制文件](https://zhida.zhihu.com/search?content_id=215583317&content_type=Article&match_order=1&q=二进制文件&zhida_source=entity)，而不是Lib. 下载后，将存档解压缩到方便的位置。
 
-[![img](./assets/v2-f7945bb1600d53ec9c3c45f7099812df_180x120.jpg)GitHub - glfw/glfw: A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and inputgithub.com/glfw/glfw](https://link.zhihu.com/?target=https%3A//github.com/glfw/glfw)
+[![img](./assets/v2-f7945bb1600d53ec9c3c45f7099812df_180x120.jpg)GitHub - glfw/glfw: A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and inputgithub.com/glfw/glfw](https://github.com/glfw/glfw)
 
 
 
@@ -68,7 +68,7 @@ vkCube
 
 GLM 是一个仅包含标头的库，因此只需下载最新版本 并将其存储在方便的位置即可。
 
-[https://github.com/g-truc/glmgithub.com/g-truc/glm](https://link.zhihu.com/?target=https%3A//github.com/g-truc/glm)
+[https://github.com/g-truc/glmgithub.com/g-truc/glm](https://github.com/g-truc/glm)
 
 ## 设置 Visual Studio
 

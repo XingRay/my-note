@@ -6,7 +6,7 @@
 
 这次挑选的是广受好评的Ray Tracing[三部曲](https://zhida.zhihu.com/search?content_id=191041421&content_type=Article&match_order=1&q=三部曲&zhida_source=entity)中的
 
-[Ray Tracing in One Weekendraytracing.github.io/](https://link.zhihu.com/?target=https%3A//raytracing.github.io/)
+[Ray Tracing in One Weekendraytracing.github.io/](https://raytracing.github.io/)
 
 作为参考。
 
@@ -20,9 +20,9 @@
 本篇中不涉及：
 
 - Hand by Hand Tutorial
-- GPU [TDR (Timeout Detection and Recovery)](https://link.zhihu.com/?target=https%3A//docs.microsoft.com/en-us/windows-hardware/drivers/display/timeout-detection-and-recovery)
+- GPU [TDR (Timeout Detection and Recovery)](https://docs.microsoft.com/en-us/windows-hardware/drivers/display/timeout-detection-and-recovery)
 
-[It’s time we talk about TDRwww.yosoygames.com.ar/wp/2020/04/its-time-we-talk-about-tdr/![img](https://picx.zhimg.com/v2-a100789c07086c57518c55854672b385_ipico.jpg)](https://link.zhihu.com/?target=https%3A//www.yosoygames.com.ar/wp/2020/04/its-time-we-talk-about-tdr/)
+[It’s time we talk about TDRwww.yosoygames.com.ar/wp/2020/04/its-time-we-talk-about-tdr/![img](https://picx.zhimg.com/v2-a100789c07086c57518c55854672b385_ipico.jpg)](https://www.yosoygames.com.ar/wp/2020/04/its-time-we-talk-about-tdr/)
 
 实际上，因为TDR的问题，我的GPU做这个时候经常Crash（当求解时间较长时）。解决方案倒是比较简单，拆分一下[shader](https://zhida.zhihu.com/search?content_id=191041421&content_type=Article&match_order=1&q=shader&zhida_source=entity)的任务即可。最粗暴的手段就是直接WaitQueueIdle然后再Submit，将结果累加。
 
@@ -68,7 +68,7 @@ Head和Dumps在GLSL伪面向对象中会详细讲。
 
 由于我们在实现Compute Shader Ray Tracing时，会涉及大量的结构化的代码，放在一个Shader文件中，管理不方便，利用glslangValidator的分离编译选项，可以让我们像C/C++一样进行分离式编译。但是，到目前为止虽然spvlink已经支持多个spv link together，但glslangValidator依然还没有支持输出“无entry point的spv”
 
-[GitHub - KhronosGroup/SPIRV-Toolsgithub.com/KhronosGroup/SPIRV-Tools#linker![img](./assets/v2-4cb3f464ca1eda4f34773ab69953c79f_180x120.jpg)](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/SPIRV-Tools%23linker)
+[GitHub - KhronosGroup/SPIRV-Toolsgithub.com/KhronosGroup/SPIRV-Tools#linker![img](./assets/v2-4cb3f464ca1eda4f34773ab69953c79f_180x120.jpg)](https://github.com/KhronosGroup/SPIRV-Tools%23linker)
 
 但是依然可以这样做：
 
@@ -404,19 +404,19 @@ GPU Process Time:24.3545s
 
 用Open/Close List消除递归：
 
-[Using Open/Close List to Remove Recursionstackoverflow.com/questions/45577114/a-star-algorithm-open-and-closed-lists#:~:text=The%20open%20list%20is%20a%20collection%20of%20all,dequeue%20the%20next%20best%20%28i.e.%2C%20highest%20priority%29%20node![img](./assets/v2-2d47e939feed796bcf7483d306661c88_ipico.jpg)](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/45577114/a-star-algorithm-open-and-closed-lists%23%3A~%3Atext%3DThe%20open%20list%20is%20a%20collection%20of%20all%2Cdequeue%20the%20next%20best%20%28i.e.%2C%20highest%20priority%29%20node)
+[Using Open/Close List to Remove Recursionstackoverflow.com/questions/45577114/a-star-algorithm-open-and-closed-lists#:~:text=The open list is a collection of all,dequeue the next best %28i.e.%2C highest priority%29 node![img](./assets/v2-2d47e939feed796bcf7483d306661c88_ipico.jpg)](https://stackoverflow.com/questions/45577114/a-star-algorithm-open-and-closed-lists%23:~:text=The open list is a collection of all%2Cdequeue the next best %28i.e.%2C highest priority%29 node)
 
 用Buffer Device Address 方式更加方便的读取Buffer：
 
-[New Game Changing Vulkan Extensions for Mobile: Buffer Device Addressdeveloper.samsung.com/galaxy-gamedev/blog/en-us/2021/07/06/new-game-changing-vulkan-extensions-for-mobile-buffer-device-address![img](./assets/v2-1ec11a04a349b4002d113991624e6133_180x120.jpg)](https://link.zhihu.com/?target=https%3A//developer.samsung.com/galaxy-gamedev/blog/en-us/2021/07/06/new-game-changing-vulkan-extensions-for-mobile-buffer-device-address)
+[New Game Changing Vulkan Extensions for Mobile: Buffer Device Addressdeveloper.samsung.com/galaxy-gamedev/blog/en-us/2021/07/06/new-game-changing-vulkan-extensions-for-mobile-buffer-device-address![img](./assets/v2-1ec11a04a349b4002d113991624e6133_180x120.jpg)](https://developer.samsung.com/galaxy-gamedev/blog/en-us/2021/07/06/new-game-changing-vulkan-extensions-for-mobile-buffer-device-address)
 
-[vkGetBufferDeviceAddress(3)www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetBufferDeviceAddress.html](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetBufferDeviceAddress.html)
+[vkGetBufferDeviceAddress(3)www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetBufferDeviceAddress.html](https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetBufferDeviceAddress.html)
 
 std430布局：
 
-[https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.htmlwww.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html](https://link.zhihu.com/?target=https%3A//www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html)
+[https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.htmlwww.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html](https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html)
 
-[OpenGL Programming Guide: The Official Guide to Learning OpenGL, Version 4.3, Eighth Edition](https://link.zhihu.com/?target=https%3A//www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html)
+[OpenGL Programming Guide: The Official Guide to Learning OpenGL, Version 4.3, Eighth Edition](https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html)
 
-[https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.htmlwww.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html](https://link.zhihu.com/?target=https%3A//www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html)
+[https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.htmlwww.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html](https://www.oreilly.com/library/view/opengl-programming-guide/9780132748445/app09lev1sec3.html)
 

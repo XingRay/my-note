@@ -231,18 +231,18 @@ image-20200807180522042.png
 1. Vulkan Programming Guide
 2. Vulkan Cookbook
 3. Learning Vulkan
-4. [Vulkan® 1.1.148 - A Specification](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
-5. [Vulkan Rendering Interface](https://link.zhihu.com/?target=https%3A//www.carvergames.com/vulkan)
-6. [Managing Descriptor Heaps](https://link.zhihu.com/?target=http%3A//diligentgraphics.com/diligent-engine/architecture/d3d12/managing-descriptor-heaps/)
-7. [21-LowLevelAPIs](https://link.zhihu.com/?target=https%3A//web.eecs.umich.edu/~sugih/courses/eecs487/lectures/21-LowLevelAPIs.pdf)
-8. [Vulkan Tutorial](https://link.zhihu.com/?target=https%3A//vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Introduction)
-9. [Qualcomm Vulkan Tutorial](https://link.zhihu.com/?target=https%3A//www.youtube.com/channel/UCo22aFqG5YErI4pbexQv9gQ)
-10. [Choosing a binding model](https://link.zhihu.com/?target=https%3A//github.com/gpuweb/gpuweb/issues/19)
-11. [Elements of design of explicit graphics APIs](https://link.zhihu.com/?target=https%3A//docs.google.com/presentation/d/12YSEcLjyYStNDK9EwhPgRq05oIxpTIqC1GdKgJd_Jt4/edit%23slide%3Did.g1856010b44_0_1168)
-12. [Binding models investigation](https://link.zhihu.com/?target=https%3A//docs.google.com/document/d/1_xeTnk6DlN7YmePQQAlnHndA043rgwBzUYtatk5y7kQ)
-13. [SIGGRAPH 2015](https://link.zhihu.com/?target=http%3A//s2015.siggraph.org/)
-14. [Getting started with computer graphics and the vulkan API](https://link.zhihu.com/?target=https%3A//www.semanticscholar.org/paper/Getting-started-with-computer-graphics-and-the-API-Kenwright/a3ba076d0ceb0d6d252e48d182809658121265c0%23references)
-15. [Descriptor binding: DX12 and Vulkan](https://link.zhihu.com/?target=https%3A//www.gamedev.net/forums/topic/678860-descriptor-binding-dx12-and-vulkan/)
+4. [Vulkan® 1.1.148 - A Specification](https://www.khronos.org/registry/vulkan/specs/1.1/html/chap2.html%23introduction)
+5. [Vulkan Rendering Interface](https://www.carvergames.com/vulkan)
+6. [Managing Descriptor Heaps](http://diligentgraphics.com/diligent-engine/architecture/d3d12/managing-descriptor-heaps/)
+7. [21-LowLevelAPIs](https://web.eecs.umich.edu/~sugih/courses/eecs487/lectures/21-LowLevelAPIs.pdf)
+8. [Vulkan Tutorial](https://vulkan-tutorial.com/Drawing_a_triangle/Graphics_pipeline_basics/Introduction)
+9. [Qualcomm Vulkan Tutorial](https://www.youtube.com/channel/UCo22aFqG5YErI4pbexQv9gQ)
+10. [Choosing a binding model](https://github.com/gpuweb/gpuweb/issues/19)
+11. [Elements of design of explicit graphics APIs](https://docs.google.com/presentation/d/12YSEcLjyYStNDK9EwhPgRq05oIxpTIqC1GdKgJd_Jt4/edit%23slide=id.g1856010b44_0_1168)
+12. [Binding models investigation](https://docs.google.com/document/d/1_xeTnk6DlN7YmePQQAlnHndA043rgwBzUYtatk5y7kQ)
+13. [SIGGRAPH 2015](http://s2015.siggraph.org/)
+14. [Getting started with computer graphics and the vulkan API](https://www.semanticscholar.org/paper/Getting-started-with-computer-graphics-and-the-API-Kenwright/a3ba076d0ceb0d6d252e48d182809658121265c0%23references)
+15. [Descriptor binding: DX12 and Vulkan](https://www.gamedev.net/forums/topic/678860-descriptor-binding-dx12-and-vulkan/)
 
 
 

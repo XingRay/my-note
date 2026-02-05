@@ -128,7 +128,7 @@ VkDescriptorSetLayout descriptorSetLayout;
 VkPipelineLayout pipelineLayout;
 ```
 
-调用`vkCreateDescriptorSetLayout`函数创建VkDescriptorSetLayout 对象。 [vkCreateDescriptorSetLayout](https://link.zhihu.com/?target=https%3A//www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCreateDescriptorSetLayout.html)函数以`VkDescriptorSetLayoutCreateInfo`结构体作为参数：
+调用`vkCreateDescriptorSetLayout`函数创建VkDescriptorSetLayout 对象。 [vkCreateDescriptorSetLayout](https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCreateDescriptorSetLayout.html)函数以`VkDescriptorSetLayoutCreateInfo`结构体作为参数：
 
 ```cpp
 VkDescriptorSetLayoutCreateInfo layoutInfo{};

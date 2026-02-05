@@ -13,15 +13,15 @@ TensorRT: 7.2.1.6;
 
 ### 相关库说明：
 
-### **核心库1:** [https://github.com/NVIDIA/TensorRT](https://link.zhihu.com/?target=https%3A//github.com/NVIDIA/TensorRT)
+### **核心库1:** [https://github.com/NVIDIA/TensorRT](https://github.com/NVIDIA/TensorRT)
 
 说明：这是github上tensorrt的一个项目库。其介绍为：这个存储库包含了NVIDIA TensorRT的开源软件(OSS)组件。包括TensorRT插件和解析器(Caffe和ONNX)的源代码，以及演示TensorRT平台的用法和功能的样例应用程序。这些开放源码软件组件是TensorRT通用可用性(GA)发行版的一个子集，带有一些扩展和错误修复。简单来说，该仓库就是tensorrt GA的子集+拓展+例子，不能脱离 tensorrt GA
 
-**核心库2**. [https://developer.nvidia.com/nvidia-tensorrt-7x-download](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/nvidia-tensorrt-7x-download)
+**核心库2**. [https://developer.nvidia.com/nvidia-tensorrt-7x-download](https://developer.nvidia.com/nvidia-tensorrt-7x-download)
 
 说明：TensorRT的核心库文件，所以上面github上的库，需要他才能编译
 
-**核心库3**. [onnx/onnx-tensorrt](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx-tensorrt)
+**核心库3**. [onnx/onnx-tensorrt](https://github.com/onnx/onnx-tensorrt)
 
 说明：将onnx模型转换成tensorrt的模型的一个库，需要上面的 tensorrt GA 才能编译，不需要上文的第一个。
 
@@ -41,7 +41,7 @@ TensorRT: 7.2.1.6;
 
 这个需要根据对应的系统平台和CUDA版本下载对应的库即可，我下载的是如下图所示：
 
-网址：[https://developer.nvidia.com/nvidia-tensorrt-7x-download](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/nvidia-tensorrt-7x-download)
+网址：[https://developer.nvidia.com/nvidia-tensorrt-7x-download](https://developer.nvidia.com/nvidia-tensorrt-7x-download)
 
 ![img](./assets/v2-fe6b893ddad9a47da1cab3dfdab92749_1440w.webp)
 
@@ -83,7 +83,7 @@ make -j$(nproc)
 
 解决办法：
 第一步：首先，手动将所需要的这个包给下载下来，放到指定文件夹中：
-对应的下载地址为：[https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-cpp-3.0.0.tar.gz](https://link.zhihu.com/?target=https%3A//github.com/google/protobuf/releases/download/v3.0.0/protobuf-cpp-3.0.0.tar.gz)
+对应的下载地址为：[https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-cpp-3.0.0.tar.gz](https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-cpp-3.0.0.tar.gz)
 第二步：将下载好的压缩包放到如下文件路径下：
 /home/cxj/Documents/TensorRT/build/third_party.protobuf/src/
 
@@ -153,7 +153,7 @@ target_link_libraries(TensorRT_test ${LIBS} ${CUDA_LIBRARIES})
 
 ### 知识链接：
 
-1. Cmake编程实践：[ChenCVer/CMakePractice](https://link.zhihu.com/?target=https%3A//github.com/ChenCVer/CMakePractice)
+1. Cmake编程实践：[ChenCVer/CMakePractice](https://github.com/ChenCVer/CMakePractice)
 
 
 

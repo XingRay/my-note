@@ -80,5 +80,5 @@ extern __THREAD_INITIAL_EXEC struct _glapi_table *_glapi_tls_Dispatch;
 
 参考资料
 
-[GL Dispatch — The Mesa 3D Graphics Library latest documentation](https://link.zhihu.com/?target=https%3A//docs.mesa3d.org/dispatch.html)
+[GL Dispatch — The Mesa 3D Graphics Library latest documentation](https://docs.mesa3d.org/dispatch.html)
 

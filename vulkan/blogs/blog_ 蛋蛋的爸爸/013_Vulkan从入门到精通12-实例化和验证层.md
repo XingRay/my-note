@@ -44,7 +44,7 @@ vulkan应用与Vulkan 库相关联，使用*loader*。实例的创建会初始�
 
 比如VkDescriptorSetLayoutBinding和VkDescriptorPoolSize数目不匹配时错误信息看上去是这个样子
 
-> validation layer: Validation Error: [ VUID-VkDescriptorSetAllocateInfo-descriptorPool-00307 ] Object 0: handle = 0xba7514000000002a, type = VK_OBJECT_TYPE_UNKNOWN; | MessageID = 0x21859338 | vkAllocateDescriptorSets(): Unable to allocate 3 [descriptors](https://zhida.zhihu.com/search?content_id=186124165&content_type=Article&match_order=1&q=descriptors&zhida_source=entity) of type VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER from VkNonDispatchableHandle 0xba7514000000002a[]. This pool only has 0 descriptors of this type remaining. The Vulkan spec states: descriptorPool must have enough free descriptor capacity remaining to allocate the descriptor sets of the specified [layouts](https://zhida.zhihu.com/search?content_id=186124165&content_type=Article&match_order=1&q=layouts&zhida_source=entity) ([https://vulkan.lunarg.com/doc/view/1.2.189.2/windows/1.2-extensions/vkspec.html#VUID-VkDescriptorSetAllocateInfo-descriptorPool-00307](https://link.zhihu.com/?target=https%3A//vulkan.lunarg.com/doc/view/1.2.189.2/windows/1.2-extensions/vkspec.html%23VUID-VkDescriptorSetAllocateInfo-descriptorPool-00307))
+> validation layer: Validation Error: [ VUID-VkDescriptorSetAllocateInfo-descriptorPool-00307 ] Object 0: handle = 0xba7514000000002a, type = VK_OBJECT_TYPE_UNKNOWN; | MessageID = 0x21859338 | vkAllocateDescriptorSets(): Unable to allocate 3 [descriptors](https://zhida.zhihu.com/search?content_id=186124165&content_type=Article&match_order=1&q=descriptors&zhida_source=entity) of type VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER from VkNonDispatchableHandle 0xba7514000000002a[]. This pool only has 0 descriptors of this type remaining. The Vulkan spec states: descriptorPool must have enough free descriptor capacity remaining to allocate the descriptor sets of the specified [layouts](https://zhida.zhihu.com/search?content_id=186124165&content_type=Article&match_order=1&q=layouts&zhida_source=entity) ([https://vulkan.lunarg.com/doc/view/1.2.189.2/windows/1.2-extensions/vkspec.html#VUID-VkDescriptorSetAllocateInfo-descriptorPool-00307](https://vulkan.lunarg.com/doc/view/1.2.189.2/windows/1.2-extensions/vkspec.html%23VUID-VkDescriptorSetAllocateInfo-descriptorPool-00307))
 
 对程序开发相当有帮助。
 
@@ -216,7 +216,7 @@ bool VK_ContextImpl::setupDebugMessenger()
 
 代码仓库 -
 
-[https://github.com/ccsdu2004/vulkan-cpp-demogithub.com/ccsdu2004/vulkan-cpp-demo](https://link.zhihu.com/?target=https%3A//github.com/ccsdu2004/vulkan-cpp-demo)
+[https://github.com/ccsdu2004/vulkan-cpp-demogithub.com/ccsdu2004/vulkan-cpp-demo](https://github.com/ccsdu2004/vulkan-cpp-demo)
 
 api 列表
 

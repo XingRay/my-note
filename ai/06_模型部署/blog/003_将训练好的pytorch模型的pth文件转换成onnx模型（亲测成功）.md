@@ -3,8 +3,8 @@
 ## 将训练好的pytorch模型的pth文件转换成onnx模型（亲测成功）
 
 > 声明：本文原创，csdn同步更新
-> [https://blog.csdn.net/hutao1030813002/article/details/114984988](https://link.zhihu.com/?target=https%3A//blog.csdn.net/hutao1030813002/article/details/114984988)
-> 相关资源[window10下openvino安装和踩坑。_hutao1030813002的博客-CSDN博客](https://link.zhihu.com/?target=https%3A//blog.csdn.net/hutao1030813002/article/details/114386640)
+> [https://blog.csdn.net/hutao1030813002/article/details/114984988](https://blog.csdn.net/hutao1030813002/article/details/114984988)
+> 相关资源[window10下openvino安装和踩坑。_hutao1030813002的博客-CSDN博客](https://blog.csdn.net/hutao1030813002/article/details/114386640)
 
 ## **模型转换**
 
@@ -62,8 +62,8 @@ graph(%input_1 : Float(1, 3, 224, 224),
   %17 : Float(1, 89888) = onnx::Flatten[axis=1](%16), scope: LeNet
   %18 : Float(1, 120) = onnx::Gemm[alpha=1, beta=1, transB=1](%17, %fc1.weight, %fc1.bias), scope: LeNet/Linear[fc1]
   %19 : Float(1, 120) = onnx::Relu(%18), scope: LeNet
-  %20 : Float(1, 84) = onnx::Gemm[alpha=1, beta=1, transB=1](%19, %fc2.weight, %fc2.bias), scope: LeNet/Linear[fc2]
-  %21 : Float(1, 84) = onnx::Relu(%20), scope: LeNet
+    : Float(1, 84) = onnx::Gemm[alpha=1, beta=1, transB=1](%19, %fc2.weight, %fc2.bias), scope: LeNet/Linear[fc2]
+  %21 : Float(1, 84) = onnx::Relu( ), scope: LeNet
   %output_1 : Float(1, 2) = onnx::Gemm[alpha=1, beta=1, transB=1](%21, %fc3.weight, %fc3.bias), scope: LeNet/Linear[fc3]
   return (%output_1)
 

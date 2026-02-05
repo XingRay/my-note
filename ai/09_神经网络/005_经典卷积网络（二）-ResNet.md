@@ -1,6 +1,6 @@
 # 经典卷积网络（二）-ResNet
 
-## 一、[ResNet](https://zhida.zhihu.com/search?content_id=102083893&content_type=Article&match_order=1&q=ResNet&zhida_source=entity)（总结自[csdn](https://link.zhihu.com/?target=https%3A//blog.csdn.net/lanran2/article/details/79057994)文章）
+## 一、[ResNet](https://zhida.zhihu.com/search?content_id=102083893&content_type=Article&match_order=1&q=ResNet&zhida_source=entity)（总结自[csdn](https://blog.csdn.net/lanran2/article/details/79057994)文章）
 
 随着网络的加深，出现了训练集准确率下降的现象，确定这不是由于Overfit过拟合造成的。作者针对这个问题提出了一种全新的网络，叫[深度残差网络](https://zhida.zhihu.com/search?content_id=102083893&content_type=Article&match_order=1&q=深度残差网络&zhida_source=entity)，它允许网络尽可能的加深，其中引入了全新的结构如图1：
 
@@ -70,7 +70,7 @@ momentum：0.9
 
 
 
-### 二、[ResNet V2](https://zhida.zhihu.com/search?content_id=102083893&content_type=Article&match_order=1&q=ResNet+V2&zhida_source=entity)（总结自[csdn](https://link.zhihu.com/?target=https%3A//blog.csdn.net/lanran2/article/details/80247515)文章）
+### 二、[ResNet V2](https://zhida.zhihu.com/search?content_id=102083893&content_type=Article&match_order=1&q=ResNet+V2&zhida_source=entity)（总结自[csdn](https://blog.csdn.net/lanran2/article/details/80247515)文章）
 
 下面（1）-（5）的结构哪个是我们常用的ResNet结构？
 

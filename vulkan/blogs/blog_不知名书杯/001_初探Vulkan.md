@@ -173,12 +173,12 @@ Vulkan 是一个底层 API，它赋予开发者高度的控制权和责任感，
 
 https://zhuanlan.zhihu.com/p/20712354
 
-[http://behindthepixels.io/assets/files/High-performance, Low-Overhead Rendering with OpenGL and Vulkan - Edward Liu.pdf](https://link.zhihu.com/?target=http%3A//behindthepixels.io/assets/files/High-performance%2C%20Low-Overhead%20Rendering%20with%20OpenGL%20and%20Vulkan%20-%20Edward%20Liu.pdf)
+[http://behindthepixels.io/assets/files/High-performance, Low-Overhead Rendering with OpenGL and Vulkan - Edward Liu.pdf](http://behindthepixels.io/assets/files/High-performance%2C Low-Overhead Rendering with OpenGL and Vulkan - Edward Liu.pdf)
 
-[https://developer.download.nvidia.com/gameworks/events/GDC2016/mschott_lbishop_gl_vulkan.pdf](https://link.zhihu.com/?target=https%3A//developer.download.nvidia.com/gameworks/events/GDC2016/mschott_lbishop_gl_vulkan.pdf)
+[https://developer.download.nvidia.com/gameworks/events/GDC2016/mschott_lbishop_gl_vulkan.pdf](https://developer.download.nvidia.com/gameworks/events/GDC2016/mschott_lbishop_gl_vulkan.pdf)
 
-[https://developer.download.nvidia.com/gameworks/events/GDC2016/Vulkan_Essentials_GDC16_tlorach.pdf](https://link.zhihu.com/?target=https%3A//developer.download.nvidia.com/gameworks/events/GDC2016/Vulkan_Essentials_GDC16_tlorach.pdf)
+[https://developer.download.nvidia.com/gameworks/events/GDC2016/Vulkan_Essentials_GDC16_tlorach.pdf](https://developer.download.nvidia.com/gameworks/events/GDC2016/Vulkan_Essentials_GDC16_tlorach.pdf)
 
-[https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/what_is_vulkan.adoc](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/what_is_vulkan.adoc)
+[https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/what_is_vulkan.adoc](https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/what_is_vulkan.adoc)
 
-[https://github.com/KhronosGroup](https://link.zhihu.com/?target=https%3A//github.com/KhronosGroup/Vulkan-Samples/blob/master/samples/vulkan_basics.md%23what-to-expect)
+[https://github.com/KhronosGroup](https://github.com/KhronosGroup/Vulkan-Samples/blob/master/samples/vulkan_basics.md%23what-to-expect)

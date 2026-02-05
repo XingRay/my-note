@@ -18,7 +18,7 @@
 
 ###  计算图导出方法
 
-[TorchScript](https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/jit.html) 是一种序列化和优化 PyTorch 模型的格式，在优化过程中，一个`torch.nn.Module`模型会被转换成 TorchScript 的 `torch.jit.ScriptModule`模型。现在， TorchScript 也被常当成一种中间表示使用。我们在其他文章中对 TorchScript 有详细的介绍（https://zhuanlan.zhihu.com/p/486914187），这里介绍 TorchScript 仅用于说明 PyTorch 模型转 ONNX的原理。
+[TorchScript](https://pytorch.org/docs/stable/jit.html) 是一种序列化和优化 PyTorch 模型的格式，在优化过程中，一个`torch.nn.Module`模型会被转换成 TorchScript 的 `torch.jit.ScriptModule`模型。现在， TorchScript 也被常当成一种中间表示使用。我们在其他文章中对 TorchScript 有详细的介绍（https://zhuanlan.zhihu.com/p/486914187），这里介绍 TorchScript 仅用于说明 PyTorch 模型转 ONNX的原理。
 `torch.onnx.export`中需要的模型实际上是一个`torch.jit.ScriptModule`。而要把普通 PyTorch 模型转一个这样的 TorchScript 模型，有跟踪（trace）和记录（script）两种导出计算图的方法。如果给`torch.onnx.export`传入了一个普通 PyTorch 模型（`torch.nn.Module`)，那么这个模型会默认使用跟踪的方法导出。这一过程如下图所示：
 
 ![img](./assets/v2-ebee8fc8a37570c8a2e7b05596104b06_1440w.webp)
@@ -73,7 +73,7 @@ for model, model_name in zip(models, model_names):
 
 ### 参数讲解
 
-了解完转换函数的原理后，我们来详细介绍一下该函数的主要参数的作用。我们主要会从应用的角度来介绍每个参数在不同的模型部署场景中应该如何设置，而不会去列出每个参数的所有设置方法。该函数详细的 API 文档可参考： [torch.onnx ‒ PyTorch 1.11.0 documentation](https://link.zhihu.com/?target=https%3A//pytorch.org/docs/stable/onnx.html%23functions)
+了解完转换函数的原理后，我们来详细介绍一下该函数的主要参数的作用。我们主要会从应用的角度来介绍每个参数在不同的模型部署场景中应该如何设置，而不会去列出每个参数的所有设置方法。该函数详细的 API 文档可参考： [torch.onnx ‒ PyTorch 1.11.0 documentation](https://pytorch.org/docs/stable/onnx.html%23functions)
 `torch.onnx.export` 在 `torch.onnx.__init__.py`文件中的定义如下：
 
 ```python
@@ -280,7 +280,7 @@ torch.onnx.export(model, dummy_input, 'a.onnx')
 
 ###  **ONNX 算子文档**
 
-ONNX 算子的定义情况，都可以在官方的[算子文档](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/blob/main/docs/Operators.md)中查看。这份文档十分重要，我们碰到任何和 ONNX 算子有关的问题都得来”请教“这份文档。
+ONNX 算子的定义情况，都可以在官方的[算子文档](https://github.com/onnx/onnx/blob/main/docs/Operators.md)中查看。这份文档十分重要，我们碰到任何和 ONNX 算子有关的问题都得来”请教“这份文档。
 
 ![img](./assets/v2-6327cac1195884351f75f14079251c10_1440w.webp)
 
@@ -292,7 +292,7 @@ ONNX 算子的定义情况，都可以在官方的[算子文档](https://link.zh
 
 ### **PyTorch 对 ONNX 算子的映射**
 
-在 PyTorch 中，和 ONNX 有关的定义全部放在 `torch.onnx`[目录](https://link.zhihu.com/?target=https%3A//github.com/pytorch/pytorch/tree/master/torch/onnx)中，如下图所示：
+在 PyTorch 中，和 ONNX 有关的定义全部放在 `torch.onnx`[目录](https://github.com/pytorch/pytorch/tree/master/torch/onnx)中，如下图所示：
 
 ![img](./assets/v2-ba5f022098280ad2cf6077a5f8703a8e_1440w.webp)
 
@@ -334,7 +334,7 @@ return g.op("Resize",
                 nearest_mode_s="floor")  # only valid when mode="nearest" 
 ```
 
-通过在前面提到的[ONNX 算子文档](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/blob/main/docs/Operators.md%23resize)中查找 Resize 算子的定义，我们就可以知道这每一个参数的含义了。用类似的方法，我们可以去查询其他 ONNX 算子的参数含义，进而知道 PyTorch 中的参数是怎样一步一步传入到每个 ONNX 算子中的。
+通过在前面提到的[ONNX 算子文档](https://github.com/onnx/onnx/blob/main/docs/Operators.md%23resize)中查找 Resize 算子的定义，我们就可以知道这每一个参数的含义了。用类似的方法，我们可以去查询其他 ONNX 算子的参数含义，进而知道 PyTorch 中的参数是怎样一步一步传入到每个 ONNX 算子中的。
 掌握了如何查询 PyTorch 映射到 ONNX 的关系后，我们在实际应用时就可以在 `torch.onnx.export()`的`opset_version`中先预设一个版本号，碰到了问题就去对应的 PyTorch 符号表文件里去查。如果某算子确实不存在，或者算子的映射关系不满足我们的要求，我们就可能得用其他的算子绕过去，或者自定义算子了。
 
 ## 总结
@@ -344,7 +344,7 @@ return g.op("Resize",
 - 跟踪法和记录法在导出带控制语句的计算图时有什么区别。
 - `torch.onnx.export()`中该如何设置 `input_names, output_names, dynamic_axes`。
 - 使用 `torch.onnx.is_in_onnx_export()`来使模型在转换到 ONNX 时有不同的行为。
-- 如何查询 ONNX 算子文档（[https://github.com/onnx/onnx/blob/main/docs/Operators.md](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/blob/main/docs/Operators.md)）。
+- 如何查询 ONNX 算子文档（[https://github.com/onnx/onnx/blob/main/docs/Operators.md](https://github.com/onnx/onnx/blob/main/docs/Operators.md)）。
 - 如何查询 PyTorch 对某个 ONNX 版本的新特性支持情况。
 - 如何判断 PyTorch 对某个 ONNX 算子是否支持，支持的方法是怎样的。
 
@@ -354,13 +354,13 @@ return g.op("Resize",
 
 1. Asinh 算子出现于第 9 个 ONNX 算子集。PyTorch 在 9 号版本的符号表文件中是怎样支持这个算子的？
 2. BitShift 算子出现于第11个 ONNX 算子集。PyTorch 在 11 号版本的符号表文件中是怎样支持这个算子的？
-3. 在[第一篇教程](https://link.zhihu.com/?target=https%3A//github.com/onnx/onnx/blob/main/docs/Operators.md%23resize)中，我们讲过 PyTorch （截至第 11 号算子集）不支持在插值中设置动态的放缩系数。这个系数对应 `torch.onnx.symbolic_helper._interpolate_helper`的`symbolic_fn`的 Resize 算子映射关系中的哪个参数？我们是如何修改这一参数的？
+3. 在[第一篇教程](https://github.com/onnx/onnx/blob/main/docs/Operators.md%23resize)中，我们讲过 PyTorch （截至第 11 号算子集）不支持在插值中设置动态的放缩系数。这个系数对应 `torch.onnx.symbolic_helper._interpolate_helper`的`symbolic_fn`的 Resize 算子映射关系中的哪个参数？我们是如何修改这一参数的？
 
 练习的答案会在下期教程中揭晓~快一起动手试试吧~
 
 欢迎大家在 MMDeploy 体验~
 
-[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://link.zhihu.com/?target=https%3A//github.com/open-mmlab/mmdeploy)
+[https://github.com/open-mmlab/mmdeploygithub.com/open-mmlab/mmdeploy](https://github.com/open-mmlab/mmdeploy)
 
 如果我们的分享给你带来一定的帮助，欢迎点赞收藏关注，比心~
 

@@ -14,7 +14,7 @@
 
 # 介绍YUV格式
 
-YUV是编译true-color颜色空间（color space）的种类，Y'UV, YUV, [YCbCr](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FYCbCr)，[YPbPr](https://link.juejin.cn/?target=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FYPbPr)等专有名词都可以称为YUV，彼此有重叠。“Y”表示明亮度（Luminance或Luma），也就是灰阶值，“U”和“V”表示的则是色度（Chrominance或Chroma），作用是描述影像色彩及饱和度，用于指定像素的颜色。
+YUV是编译true-color颜色空间（color space）的种类，Y'UV, YUV, [YCbCr](https://link.juejin.cn/?target=https://baike.baidu.com/item/YCbCr)，[YPbPr](https://link.juejin.cn/?target=https://baike.baidu.com/item/YPbPr)等专有名词都可以称为YUV，彼此有重叠。“Y”表示明亮度（Luminance或Luma），也就是灰阶值，“U”和“V”表示的则是色度（Chrominance或Chroma），作用是描述影像色彩及饱和度，用于指定像素的颜色。
 
 > 下面我只说用到的一些格式具体的更全的请移步 -> [YUV 格式详解-史上最全](https://juejin.cn/post/6920848468797816846)
 

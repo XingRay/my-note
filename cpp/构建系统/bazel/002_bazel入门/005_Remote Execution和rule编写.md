@@ -6,9 +6,9 @@
 
 要达到真正大规模的构建，我们需要Bazel集群服务，而这个集群服务不光是缓存，更重要是能够把构建工作放到集群来执行，而不是本地完成。
 
-官方文档 [https://docs.bazel.build/versions/master/remote-execution.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/remote-execution.html) 中，对Baze的远程执行Remote Execution有很轻描淡写的介绍，其中提到了三种方式：
+官方文档 [https://docs.bazel.build/versions/master/remote-execution.html](https://docs.bazel.build/versions/master/remote-execution.html) 中，对Baze的远程执行Remote Execution有很轻描淡写的介绍，其中提到了三种方式：
 
-- 自行开发remote execution服务，bazel本身提供了对应的gRPC API可以使用([https://github.com/bazelbuild/remote-apis](https://link.zhihu.com/?target=https%3A//github.com/bazelbuild/remote-apis))
+- 自行开发remote execution服务，bazel本身提供了对应的gRPC API可以使用([https://github.com/bazelbuild/remote-apis](https://github.com/bazelbuild/remote-apis))
 - 使用实现了bazel remote execution的开源工具，如Buildbarn, Buildfarm, BuildGrid, Scoot，都在github上开源
 - 使用商业服务
 
@@ -94,9 +94,9 @@ INFO: 8 processes: 1 remote cache hit, 7 remote
 
 我们上面的操作都是在本地mac系统下完成，虽然演示了用Bazel Buildfarm的操作，但是要作为生产环境的平台，显然要考虑如何在集群上远程执行。
 
-很遗憾，这是个很困难的事情。直到2017年底，Bazel都不支持在不同架构/环境的机器上执行分布式跨机器构建( [https://stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines) )，从Uber核心架构团队朋友讲到来说，到2017年位置，Uber使用Bazel也是保持和开发人员一样，用Mac机器搭的集群。
+很遗憾，这是个很困难的事情。直到2017年底，Bazel都不支持在不同架构/环境的机器上执行分布式跨机器构建( [https://stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines](https://stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines) )，从Uber核心架构团队朋友讲到来说，到2017年位置，Uber使用Bazel也是保持和开发人员一样，用Mac机器搭的集群。
 
-最新的官方文档上，把跨不同机器/环境的构建放在了对不同platform的支持里( [https://docs.bazel.build/versions/master/platforms.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/platforms.html) )，并定义了Bazel所支持的三种场景。首先Bazel定义了构建过程中，平台所承担的三种角色：
+最新的官方文档上，把跨不同机器/环境的构建放在了对不同platform的支持里( [https://docs.bazel.build/versions/master/platforms.html](https://docs.bazel.build/versions/master/platforms.html) )，并定义了Bazel所支持的三种场景。首先Bazel定义了构建过程中，平台所承担的三种角色：
 
 - Host-Bazel自身运行的平台
 - Execution-构建工具运行的平台，用于生成中间和最终结果
@@ -187,17 +187,17 @@ $build --remote_executor=grpc://localhost:8980 //src/main:app
 
 ![img](assets/v2-08d2577d62aeda599f004459a8f3ed8a_1440w.png)
 
-根据上面stackoverflow ([https://stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines](https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines) )中的解释，这就是因为
+根据上面stackoverflow ([https://stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines](https://stackoverflow.com/questions/44354378/running-bazel-remote-executor-test-on-separate-machines) )中的解释，这就是因为
 
 > Running the remote worker on a different architecture / OS combination than Bazel itself isn't working yet. We still have a couple of places in Bazel where we inspect the local machine - they were added as temporary measures, but haven't been fixed yet
 
-当然，在最新的bazel文档中([https://docs.bazel.build/versions/master/platforms.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/platforms.html) )，介绍可以在BUILD文件中定义平台属属性，但语焉不详。而在另外一些文章中，则不建议自己定义platform，如
+当然，在最新的bazel文档中([https://docs.bazel.build/versions/master/platforms.html](https://docs.bazel.build/versions/master/platforms.html) )，介绍可以在BUILD文件中定义平台属属性，但语焉不详。而在另外一些文章中，则不建议自己定义platform，如
 
-[https://docs.google.com/document/d/1UZaVcL08wePB41ATZHcxQV4Pu1YfA1RvvWm8FbZHuW8/edit#](https://link.zhihu.com/?target=https%3A//docs.google.com/document/d/1UZaVcL08wePB41ATZHcxQV4Pu1YfA1RvvWm8FbZHuW8/edit%23) (这来自官方文档)
+[https://docs.google.com/document/d/1UZaVcL08wePB41ATZHcxQV4Pu1YfA1RvvWm8FbZHuW8/edit#](https://docs.google.com/document/d/1UZaVcL08wePB41ATZHcxQV4Pu1YfA1RvvWm8FbZHuW8/edit%23) (这来自官方文档)
 
-[hlopko/bazel_platforms_examples](https://link.zhihu.com/?target=https%3A//github.com/hlopko/bazel_platforms_examples/tree/master/examples/05_select_on_platform)
+[hlopko/bazel_platforms_examples](https://github.com/hlopko/bazel_platforms_examples/tree/master/examples/05_select_on_platform)
 
-总之，对这个要进一步研究，可以从 [https://docs.bazel.build/versions/master/platforms-intro.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/platforms-intro.html) 这里开始，原文开篇也提到：
+总之，对这个要进一步研究，可以从 [https://docs.bazel.build/versions/master/platforms-intro.html](https://docs.bazel.build/versions/master/platforms-intro.html) 这里开始，原文开篇也提到：
 
 > Bazel has sophisticated support for modeling platforms and toolchains. Integrating this into real projects requires coherent cooperation between project and library owners, rule maintainers, and core Bazel devs.
 
@@ -209,7 +209,7 @@ $build --remote_executor=grpc://localhost:8980 //src/main:app
 
 关于bazel rule的编写，根据airbnb/pinterest朋友的反馈，开发人员一般也就是写BUILD文件，而前面Bazel介绍文章也推荐尽量用网上已有的开源的Rule（其实就是一段基于所谓Skylark语言的描述性语言），而不建议自己写（大公司有资源的当然自己决定）。
 
-Bazel rule的基本逻辑其实很直白，[https://docs.bazel.build/versions/master/skylark/rules-tutorial.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/master/skylark/rules-tutorial.html) 有浅显易懂的介绍。我在这里选一个例子来说明：
+Bazel rule的基本逻辑其实很直白，[https://docs.bazel.build/versions/master/skylark/rules-tutorial.html](https://docs.bazel.build/versions/master/skylark/rules-tutorial.html) 有浅显易懂的介绍。我在这里选一个例子来说明：
 
 创建一个新目录，在其中创建两个文件：
 
@@ -241,7 +241,7 @@ test_binary(name = "test_result")
 
 我们看到build过程执行了我们在_test_binary_impl中定义的行为，print了hello world，加上对应的label。当然这是个很trivial的实现，只是体现rule该怎么写，没有什么作用，实际上我们希望用rule定制我们需要的功能，而rule实际上是对我们要做的行为(action)的编排。
 
-我们在前面讨论bazel时说到bazel的最小单位是action, bazel中有一堆预定义的action可以用([https://docs.bazel.build/versions/2.0.0/skylark/lib/actions.html](https://link.zhihu.com/?target=https%3A//docs.bazel.build/versions/2.0.0/skylark/lib/actions.html) ）：
+我们在前面讨论bazel时说到bazel的最小单位是action, bazel中有一堆预定义的action可以用([https://docs.bazel.build/versions/2.0.0/skylark/lib/actions.html](https://docs.bazel.build/versions/2.0.0/skylark/lib/actions.html) ）：
 
 ![img](assets/v2-53c0a9e30b139bfdbb72e4b96be3cdbb_1440w.jpg)
 
@@ -281,6 +281,6 @@ test_binary(name = "test_result")
 
 ![img](assets/v2-cb2bd8faacf495bf3da8ef953755e3eb_1440w.jpg)
 
-能够调用终端命令和脚本命令，基本上就解锁了一切能力（可以把网络接口调用封装到脚本里），剩下的就是具体的执行和想象力发挥。Rules编写有很多官方示例，可以参考 [bazelbuild/examples](https://link.zhihu.com/?target=https%3A//github.com/bazelbuild/examples/tree/master/rules)
+能够调用终端命令和脚本命令，基本上就解锁了一切能力（可以把网络接口调用封装到脚本里），剩下的就是具体的执行和想象力发挥。Rules编写有很多官方示例，可以参考 [bazelbuild/examples](https://github.com/bazelbuild/examples/tree/master/rules)
 
 Have Fun！！

@@ -4,7 +4,7 @@
 
 ![img](./assets/8a135395a6354596b2f43abfd065c228tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.gif)
 
-滤镜是大家经常使用的功能，美颜、相机以及短视频App中都经常使用，因此除了了解 [GPUImage](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2FBradLarson%2FGPUImage) 框架，熟悉滤镜的实现原理是非常重要的。
+滤镜是大家经常使用的功能，美颜、相机以及短视频App中都经常使用，因此除了了解 [GPUImage](https://link.juejin.cn?target=https://github.com/BradLarson/GPUImage) 框架，熟悉滤镜的实现原理是非常重要的。
 
 ## 分屏效果原理
 
@@ -685,7 +685,7 @@ typedef struct {
 
 ## 附Demo地址：
 
-[Github完整Demo](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fpeiliuzhen%2FOpenGL-ES-FiliterDemo) 
+[Github完整Demo](https://link.juejin.cn?target=https://github.com/peiliuzhen/OpenGL-ES-FiliterDemo) 
 
 001--OpenGL-ES实现滤镜效果(分屏)
 

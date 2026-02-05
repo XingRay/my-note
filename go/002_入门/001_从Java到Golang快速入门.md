@@ -339,5 +339,5 @@ go最终生成的是一个可执行文件，不管你的程序依赖多少库，
 
 如果你感兴趣，那么开始吧，提前准备，机会来的时候，就不会错过了。
 
-尊重原创文章转载自 [飞雪无情](https://link.jianshu.com/?t=http%3A%2F%2Fblog.csdn.net%2Fmichael__li)
-[http://blog.csdn.net/michael__li/article/details/53941388](https://link.jianshu.com/?t=http%3A%2F%2Fblog.csdn.net%2Fmichael__li%2Farticle%2Fdetails%2F53941388)
+尊重原创文章转载自 [飞雪无情](https://link.jianshu.com/?t=http://blog.csdn.net/michael__li)
+[http://blog.csdn.net/michael__li/article/details/53941388](https://link.jianshu.com/?t=http://blog.csdn.net/michael__li/article/details/53941388)

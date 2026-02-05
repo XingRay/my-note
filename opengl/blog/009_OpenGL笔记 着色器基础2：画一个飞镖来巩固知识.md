@@ -2,7 +2,7 @@
 
 关于OpenGL的教材，除了[红宝书](https://zhida.zhihu.com/search?content_id=214435599&content_type=Article&match_order=1&q=红宝书&zhida_source=entity)之外
 
-[你好，三角形 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/)
+[你好，三角形 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/01 Getting started/04 Hello Triangle/)
 
 这个教程也相当不错，这篇文章是在完成“你好，三角形”的练习作业，并且整理梳理知识点。
 
@@ -283,7 +283,7 @@ void display()
 
 更多的教程信息可以看
 
-[你好，三角形 - LearnOpenGL CN (learnopengl-cn.github.io)](https://link.zhihu.com/?target=https%3A//learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/)
+[你好，三角形 - LearnOpenGL CN (learnopengl-cn.github.io)](https://learnopengl-cn.github.io/01 Getting started/04 Hello Triangle/)
 
 ### 这写的比我好多了，run出来的图像很酷
 

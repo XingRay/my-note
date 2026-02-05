@@ -8,7 +8,7 @@
 
 ### `glTF`是什么？
 
-它是`GL Transmission Format`的缩写，是`khronos`推出的一种描述3D模型的格式，目标是使其成为一种通用的3D模型格式。它的官方github是[github.com/KhronosGrou…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FKhronosGroup%2FglTF%EF%BC%8C%E6%9C%AC%E6%96%87%E7%9A%84%E4%B8%AD%E5%9B%BE%E7%89%87%E6%9D%A5%E8%87%AA%E4%BA%8E%E5%85%B6%E4%B8%AD%E3%80%82)
+它是`GL Transmission Format`的缩写，是`khronos`推出的一种描述3D模型的格式，目标是使其成为一种通用的3D模型格式。它的官方github是[github.com/KhronosGrou…](https://link.juejin.cn/?target=https://github.com/KhronosGroup/glTF%EF%BC%8C%E6%9C%AC%E6%96%87%E7%9A%84%E4%B8%AD%E5%9B%BE%E7%89%87%E6%9D%A5%E8%87%AA%E4%BA%8E%E5%85%B6%E4%B8%AD%E3%80%82)
 
 我们知道3D模型有各种各样的格式，如`obj`、`FBX`、`dea`等，格式的多种多样带来了一个问题的就是各种软件、渲染引擎、游戏引擎之间的3D模型的不通用，例如在3D设计软件中设计好一个3D模型之后，想把它放到一个渲染引擎中渲染，如果没有一个通用的格式，渲染引擎可能也有一套自己的格式，这样就要做格式转换，而有些格式是不开源的，需要官方提供转换工具，非常麻烦。
 
@@ -93,7 +93,7 @@
 
 ### 完整例子
 
-我们来看一下完整的例子，`glTF`官方提供了很多`sample models`：[github.com/KhronosGrou…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FKhronosGroup%2FglTF-Sample-Models)
+我们来看一下完整的例子，`glTF`官方提供了很多`sample models`：[github.com/KhronosGrou…](https://link.juejin.cn/?target=https://github.com/KhronosGroup/glTF-Sample-Models)
 
 我选取了一个比较简单的立方体，大家看完文章可以尝试阅读一下它的`glTF`文件，看看是否能理解其中的描述：
 
@@ -293,10 +293,10 @@ json复制代码{
 }
 ```
 
-`glTF`有很多方法能方便地查看效果，可以在线看，比如[gltf-viewer.donmccurdy.com](https://link.juejin.cn/?target=https%3A%2F%2Fgltf-viewer.donmccurdy.com)，上面那个`glTF`例子的渲染效果是这样的：
+`glTF`有很多方法能方便地查看效果，可以在线看，比如[gltf-viewer.donmccurdy.com](https://link.juejin.cn/?target=https://gltf-viewer.donmccurdy.com)，上面那个`glTF`例子的渲染效果是这样的：
 
 ![img](D:\my-note\opengl\assets\f722634c25a24d18a1586b37d2672a97tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp)
 
 谢谢阅读！如有疑问，欢迎在评论区交流~
 
-欢迎关注我的github：[www.github.com/kenneycode](https://link.juejin.cn/?target=https%3A%2F%2Fwww.github.com%2Fkenneycode)
+欢迎关注我的github：[www.github.com/kenneycode](https://link.juejin.cn/?target=https://www.github.com/kenneycode)
