@@ -106,7 +106,6 @@ json复制代码{
          "componentType" : 5123,
          "count" : 36,
          "max" : [
-            35
          ],
          "min" : [
             0

@@ -32,24 +32,6 @@ ClassFile {
     u2             attributes_count;
     attribute_info attributes[attributes_count];
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
 可以看到，class文件总是一个魔数开头，后面跟着版本号，然后就是常量定义、访问标志、类索引、父类索引、接口个数和索引表、字段个数和索引表、方法个数和索引表、属性个数和索引表。
 
 class文件本质上是一个字节码流，每个字节码所处的位置代表着一定的指令和含义。如何对class文件中定义的指令和字节码进行解读、增强定义、编排，这是字节码增强技术所要完成的事情。
@@ -79,36 +61,17 @@ The Java™ Platform Debugger Architecture is structured as follows:
                      |--------------|  <------- JDI - Java Debug Interface （客户端调试接口和调试应用）
                      |      UI      |
                      |--------------|
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
 JVM启动支持加载agent代理，而agent代理本身就是一个JVM TI的客户端，其通过监听事件的方式获取Java应用运行状态，调用JVM TI提供的接口对应用进行控制。
 
 我们可以看下Java agent代理的两个入口函数定义，
 
 // 用于JVM刚启动时调用，其执行时应用类文件还未加载到JVM
+```java
 public static void premain(String agentArgs, Instrumentation inst);
 
 // 用于JVM启动后，在运行时刻加载
 public static void agentmain(String agentArgs, Instrumentation inst);
-1
-2
-3
-4
-5
+```
 这两个入口函数定义分别对应于JVM TI专门提供了执行 字节码增强（bytecode instrumentation） 的两个接口。
 
 加载时刻增强（JVM 启动时加载），类字节码文件在JVM加载的时候进行增强，。
@@ -124,13 +87,11 @@ public static void agentmain(String agentArgs, Instrumentation inst);
 入口函数如下所示：
 
  // 函数1
+```java
 public static void premain(String agentArgs, Instrumentation inst);
 // 函数2
 public static void premain(String agentArgs);
-1
-2
-3
-4
+```
 JVM 首先寻找函数1，如果没有发现函数1，则会寻找函数2
 
 2、JVM 运行时加载
@@ -138,18 +99,17 @@ JVM 首先寻找函数1，如果没有发现函数1，则会寻找函数2
 入口函数如下所示：
 
 // 函数1
+```java
 public static void agentmain(String agentArgs, Instrumentation inst);
 // 函数2
 public static void agentmain(String agentArgs);
-1
-2
-3
-4
+```
 与上述一致，JVM 首先寻找函数1，如果没有发现函数1，则会寻找函数2
 
 这两组方法的第一个参数 agentArgs 是随同 “-javaagent” 一起传入的程序参数，如果这个字符串代表了多个参数，就需要自己解析这参数，inst 是 Instrumentation 类型的对象，是 JVM 自己传入的，我们可以那这个参数进行参数的增强操作。
 
 演示类AgentDemo
+```java
 package com.crazymaker.agent.javassist.demo;
 import java.lang.instrument.Instrumentation;
 
@@ -177,34 +137,8 @@ public class AgentDemo {
     }
 
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
 生效的声明方法
+```
 当定义完这两组方法后，要使之生效还需要手动声明，声明方式有两种：
 
 1、使用 MANIFEST.MF 文件
@@ -216,11 +150,6 @@ Can-Redefine-Classes: true   # true表示能重定义此代理所需的类，默
 Can-Retransform-Classes: true    # true 表示能重转换此代理所需的类，默认值为 false （可选）
 Premain-Class:  com.crazymaker.agent.javassist.demo.AgentDemo   #premain方法所在类的位置
 
-1
-2
-3
-4
-5
 2、如果是maven项目，在pom.xml加入
 
         <profile>
@@ -293,76 +222,6 @@ Premain-Class:  com.crazymaker.agent.javassist.demo.AgentDemo   #premain方法�
             </build>
         </profile>
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
 Agent的简单使用
 要让目标JVM认你这个 Agent ，你就要给目标JVM介绍这个 Agent
 
@@ -374,12 +233,7 @@ Agent的简单使用
 java -javaagent:-javaagent:D:\dev\SuperAPM\apm-agent\target\javassist-demo.jar  TargetJvm
 
 
-1
-2
-3
-4
 /** * VM options： * -javaagent:D:\dev\SuperAPM\apm-agent\target\javassist-demo.jar */
-1
 
 
 2、JVM 运行时加载
@@ -410,10 +264,6 @@ ClassFileTransformer
 // 第一个参数：transformer，类转换器
 // 第二个参数：canRetransform，经过transformer转换过的类是否允许再次转换
 void Instrumentation.addTransformer(ClassFileTransformer transformer, boolean canRetransform)
-1
-2
-3
-4
 而 ClassFileTransformer 则提供了tranform()方法，用于对加载的类进行增强重定义，返回新的类字节码流。
 
 需要特别注意的是，若不进行任何增强，当前方法返回null即可，若需要增强转换，则需要先拷贝一份classfileBuffer，在拷贝上进行增强转换，然后返回拷贝。
@@ -426,14 +276,6 @@ void Instrumentation.addTransformer(ClassFileTransformer transformer, boolean ca
 // 第五个参数：classfileBuffer，待重定义/转换的类字节码（不要直接在这个classfileBuffer对象上修改，需拷贝后进行）
 // 注：若不进行任何增强，当前方法返回null即可，若需要增强转换，则需要先拷贝一份classfileBuffer，在拷贝上进行增强转换，然后返回拷贝。
 byte[] ClassFileTransformer.transform(ClassLoader loader, String className, Class classBeingRedefined, ProtectionDomain protectionDomain, byte classfileBuffer)
-1
-2
-3
-4
-5
-6
-7
-8
 演示类TransformerAgentDemo
 
 
@@ -445,8 +287,8 @@ Javassist 修改字节码
 在 transform 方法中，通过 Javassist 修改字节码
 
 
-
 测试案例
+```java
 package com.crazymaker.circle.agent;
 
 public class Helloworld {
@@ -455,16 +297,6 @@ public class Helloworld {
         System.out.println("hello  world from 疯狂创客圈");  // Hello World!
     }
 }
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
 
 
 执行结果
@@ -480,19 +312,8 @@ Transformer:org/junit/runner/notification/RunNotifier$7   transforming skip, not
 Transformer:org/junit/runner/notification/RunNotifier$2   transforming skip, not the target class.
 Transformer:java/lang/Shutdown   transforming skip, not the target class.
 Transformer:java/lang/Shutdown$Lock   transforming skip, not the target class.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 Instrumentation接口和ClassFileTransformer
+```
 上面的例子，使用 Java Instrumentation 来完成动态类修改的功能，并且在 Instrumentation 接口中我们可以通过 addTransformer() 方法来增加一个类转换器，
 
 类转换器由类 ClassFileTransformer 接口实现。
@@ -550,8 +371,6 @@ Javassist 是一个非常早的字节码操作类库，开始于1999年，
 
 CtMethod m = cc.getDeclaredMethod("sayHello");
 m.insertBefore("{ System.out.println(\"begin of sayhello()\"); }");
-1
-2
 相信大多数程序员更愿意接受源码级别编辑方式，翻译成直接码指令的工作就交给Javassist完成，目前源码级别方式Javassist只支持Java语言语法。
 
 演示代码
@@ -563,7 +382,6 @@ m.insertBefore("{ System.out.println(\"begin of sayhello()\"); }");
 运行命令
 
 java -javaagent:./demo-javaassist/target/agent-jassist.jar -jar ./demo-app/target/demo-app.jar
-1
 可以通过控制台查看日志。
 Java字节码增强类库 - ASM
 ASM 是一个Java字节码解析和操作框架，整个类包非常小，还不到120KB，但其非常注重对类字节码的操作速度，
@@ -575,9 +393,6 @@ ASM是直接操作类字节码数据，因此其读写的是字节码指令，�
 mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
 mv.visitLdcInsn("begin of sayhello().");
 mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
-1
-2
-3
 这种指令比较晦涩难懂，在实际操作过程中，会先将期望的类源码文件写好，编译后查看字节码文件，然后复制相关字节码指令。
 
 演示代码
@@ -589,7 +404,6 @@ mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang
 运行命令
 
 java -javaagent:./demo-asm/target/agent-asm.jar -jar ./demo-app/target/demo-app.jar
-1
 可以通过控制台查看日志。
 Java字节码增强工具关系图
 
@@ -647,17 +461,14 @@ byte-buddy 1.10.19
 byte-buddy-agent 1.10.19
 使用bytebuddy只需要简单的引入其maven依赖即可
 
+```xml
       <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>1.10.19</version>
         </dependency>
-1
-2
-3
-4
-5
 官网经典例子
+```
 在我们看官网文档中，从它的介绍了就已经提供了一个非常简单的例子，用于输出 HelloWorld，
 
 我们在这展示并讲解下。
@@ -673,20 +484,10 @@ String helloWorld = new ByteBuddy()
             .newInstance()
             .toString();    
 
+```java
 System.out.println(helloWorld);  // Hello World!
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
+```
 他的运行结果就是一行，Hello World!，
 
 整个代码块核心功能:
@@ -700,7 +501,6 @@ step 2:再通过拦截 intercept，设定此方法的返回值。FixedValue.valu
 step 3:接下来的这一段主要是用于加载生成后的 Class
 stetp4: newInstance().toString(); 的作用 是： 执行以及调用方法 toString()。
 也就是最终我们输出了想要的结果。
-
 
 
 各个调用是干啥的：
@@ -719,11 +519,9 @@ newInstance() ：Java 反射的API，创建实例
 在Byte buddy中默认提供了一个 dynamicType.saveIn() 方法，可以保存编译后的Class文件
 
 
-
 可以更加清晰的看到每一步对字节码编程后，所创建出来的方法样子(clazz)
 
 输出的class 文件，反编译过来的 java 文件，idea打开 如下：
-
 
 
 输出的class 文件
@@ -734,9 +532,9 @@ ObjectB y t e B u d d y ByteBuddyByteBuddyXXX
 如果不写类名， dynamicType.saveIn() 方法会自动生成要给类名。
 
 
-
 可以拿到字节码之后，自定义输出字节码方法
 
+```java
 private static void outputClazz(byte[] bytes,String clazzName) {
         FileOutputStream out = null;
         try {
@@ -755,24 +553,7 @@ private static void outputClazz(byte[] bytes,String clazzName) {
         }
     }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
+```
 这个方主要就是一个 Java 基础的内容，输出字节码到文件中。
 
 接下来，使用这个方法。
@@ -784,9 +565,7 @@ step1： name 设置 类名
 step2： output 里边，设置文件名称
 
 
-
 输出的class 文件，反编译过来的 java 文件，idea打开 如下：
-
 
 
 为了可以更加清晰的看到每一步对字节码编程后，所创建出来的方法样子(clazz)，
@@ -806,11 +585,6 @@ DynamicType.Unloaded<?> dynamicType = new ByteBuddy()
         .name("com.crazymaker.circle.bytecode.enhancement.HelloWorld")
         .make();
 
-1
-2
-3
-4
-5
 通过增强之后，得到 DynamicType.Unloaded 对象，
 
 三种动态增强方式
@@ -818,10 +592,6 @@ DynamicType.Unloaded<?> dynamicType = new ByteBuddy()
         .subclass(Object.class) // 生成 Object的子类
         .name("com.fatsnake.Type")   // 生成类的名称为"com.xxx.Type"
         .make();
-1
-2
-3
-4
 subclass：
 
 对应 ByteBuddy.subclass() 方法。这种方式比较好理解，就是为目标类（即被增强的类）生成一个子类，在子类方法中插入动态代码。
@@ -840,6 +610,7 @@ rebasing：
 
 例如：
 
+```java
 class Foo { // Foo的原始定义
 
   String bar() { return "bar"; }
@@ -849,17 +620,9 @@ class Foo { // 增强后的Foo定义
   String bar() { return "foo" + bar$original(); }
 // 目标类原有方法
   private String bar$original() { return "bar"; }
-1
-2
-3
-4
-5
-6
-7
-8
-9
 redefinition：
 
+```
 对应 ByteBuddy.redefine() 方法。
 
 当重定义一个类时，Byte Buddy 可以对一个已有的类添加属性和方法，删除已经存在的方法实现。
@@ -868,13 +631,12 @@ redefinition：
 
 例如，这里依然是增强 Foo 类的 bar() 方法使其直接返回 “unknow” 字符串，增强结果如下：
 
+```java
 class Foo { // 增强后的Foo定义
   String bar() { return "unknow"; }
 }
-1
-2
-3
 类加载策略
+```
 DynamicType.Unloaded 对象，表示的是一个未加载的类型，通过在 ClassLoadingStrategy.Default中定义的加载策略，加载此类型。
 
 Class<?> loaded = new ByteBuddy()
@@ -885,14 +647,6 @@ Class<?> loaded = new ByteBuddy()
         .load(Main2.class.getClassLoader(), 
               ClassLoadingStrategy.Default.WRAPPER)
         .getLoaded();
-1
-2
-3
-4
-5
-6
-7
-8
 WRAPPER 策略：创建一个新的 ClassLoader 来加载动态生成的类型。
 CHILD_FIRST 策略：创建一个子类优先加载的 ClassLoader，即打破了双亲委派模型。
 INJECTION 策略：使用反射, 将动态生成的类型直接注入到当前 ClassLoader 中。
@@ -901,7 +655,6 @@ defineMethod 定义方法
 withParameter 设置参数
 intercept 拦截设置返回值
 创建main方法的代码如下：
-
 
 
 与上面相比新增的代码片段；
@@ -923,7 +676,6 @@ intercept(FixedValue.value(“Hello World!”))，
 输出的class 文件，反编译过来的 java 文件，idea打开 如下：
 
 
-
 此时基本已经可以看到我们平常编写的 Hello World 影子了，但还能输出结果。
 
 注意，如果返回值为void，那么 intercept设置的，变成了 一个局部变量了
@@ -939,9 +691,7 @@ implement() 方法：实现接口。
 下面是一个例子
 
 
-
 输出的class 文件，反编译过来的 java 文件，idea打开 如下：
-
 
 
 重点：委托函数调用
@@ -968,9 +718,7 @@ intercept(MethodDelegation.to(new DelegateClazz()) // 委托到 DelegateClazz �
 输出的class 文件，反编译过来的 java 文件，idea打开 如下：
 
 
-
 那么此时就可以输出我们需要的内容了，
-
 
 
 委托并不是根据名称来的，而是和 Java 编译器在选重载时用的参数绑定类似
@@ -982,10 +730,6 @@ intercept(MethodDelegation.to(new DelegateClazz()) // 委托到 DelegateClazz �
 intercept(MethodDelegation.to(DelegateClazz.class)) // 委托到 Interceptor的静态方法
     
 MethodDelegation.to(new DelegateClazz()) // 委托到 DelegateClazz 的实例方法
-1
-2
-3
-4
 通过反射执行方法
 这个和bytebuddy已经没有太多关系了
 
@@ -1001,6 +745,7 @@ Class<?> clazz = type.getLoaded();
 // 反射调用
 try {
 String bar = (String) clazz.getMethod("foo").invoke(clazz.newInstance());
+```java
 System.out.println(bar);
 
 } catch (InvocationTargetException e) {
@@ -1009,58 +754,57 @@ e.printStackTrace();
 e.printStackTrace();
 }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-
 
 注解方式
+```
 除了通过上述 API 拦截方法并将方法实现委托给 Interceptor 增强之外，Byte Buddy 还提供了一些预定义的注解，
 
 通过这些注解我们可以告诉 Byte Buddy 将哪些需要的数据注入到 Interceptor 中
 
 常用注解含义
+```java
 @RuntimeType 注解：
 
+```
 告诉 Byte Buddy 不要进行严格的参数类型检测，在参数匹配失败时，尝试使用类型转换方式（runtime type casting）进行类型转换，匹配相应方法。
 
+```java
 @This 注解：
 
 注入被拦截的目标对象。
 
 @AllArguments 注解：
 
+```
 注入目标方法的全部参数，是不是感觉与 Java 反射的那套 API 有点类似了？
 
+```java
 @Origin 注解：
 
+```
 注入目标方法对应的 Method 对象。如果拦截的是字段的话，该注解应该标注到 Field 类型参数。
 
+```java
 @Super 注解：
 
+```
 注入目标对象。通过该对象可以调用目标对象的所有方法。
 
+```java
 @SuperCall：
 
+```
 这个注解比较特殊，我们要在 intercept() 方法中调用目标方法的话，需要通过这种方式注入，
 
+```java
 @SuperCall与 Spring AOP 中的 ProceedingJoinPoint.proceed() 方法有点类似，需要注意的是，这里不能修改调用参数，从上面的示例的调用也能看出来，参数不用单独传递，都包含在其中了。
 
+```
 另外，@SuperCall 注解还可以修饰 Runnable 类型的参数，只不过目标方法的返回值就拿不到了。
 
 使用注解的例子
 
+```java
   public   static  class DelegeteFoo {
         public String hello(String name) {
             System.out.println("DelegeteFoo:" + name);
@@ -1074,12 +818,15 @@ e.printStackTrace();
         public Object intercept(
                 @This Object obj, // 目标对象
                 @AllArguments Object[] allArguments, // 注入目标方法的全部参数
+```
                 @SuperCall Callable<?> zuper, // 调用目标方法，必不可少哦
+```java
                 @Origin Method method, // 目标方法
                 @Super DelegeteFoo delegeteFoo // 目标对象
         ) throws Exception {
             System.out.println("obj="+obj);
             System.out.println("delegeteFoo ="+ delegeteFoo);
+```
             // 从上面两行输出可以看出，obj和db是一个对象
             try {
                 return zuper.call(); // 调用目标方法
@@ -1090,6 +837,7 @@ e.printStackTrace();
     }
 
 
+```java
 @Test
     public void annotateDelegateTest() throws IllegalAccessException, InstantiationException {
 
@@ -1123,69 +871,6 @@ e.printStackTrace();
 
 
     }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
 执行的结果
 
 obj=com.crazymaker.circle.bytecode.enhancement.Foo@5e316c74
@@ -1193,16 +878,13 @@ delegeteFoo =com.crazymaker.circle.bytecode.enhancement.Foo@5e316c74
 DelegeteFoo:bar - from 疯狂创客圈
  result from DelegeteFoo 
 
-1
-2
-3
-4
-5
+```
 输出的class 文件，反编译过来的 java 文件，idea打开 如下：
 
 
-
+```java
 @Morph与@SuperCall
+```
 @SuperCall 注解注入的 Callable 参数来调用目标方法时，是无法动态修改参数的，
 
 如果想要动态修改参数，则需要用到 @Morph 注解以及一些绑定操作
@@ -1218,19 +900,9 @@ DelegeteFoo:bar - from 疯狂创客圈
                         Morph.Binder.install(OverrideCallable.class)
                 ).to(new InterceptorMorph()))
                 .make();
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 Interceptor 会使用 @Morph 注解注入一个 OverrideCallable 对象作为参数，然后通过该 OverrideCallable 对象调用目标方法
 
+```java
  public  static   class InterceptorMorph {
         @RuntimeType
         public Object intercept(@This Object obj,
@@ -1246,9 +918,11 @@ Interceptor 会使用 @Morph 注解注入一个 OverrideCallable 对象作为参
                 System.out.println("callable ="+callable);
                 System.out.println("allArguments ="+allArguments);
                 System.out.println("before");
+```
                 // 通过 OverrideCallable.call()方法调用目标方法，此时需要传递参数
                 allArguments[0]="word replaced";
                 Object result = callable.call(allArguments);
+```java
                 System.out.println("result ="+result);
                 System.out.println("after");
                 return result;
@@ -1260,46 +934,16 @@ Interceptor 会使用 @Morph 注解注入一个 OverrideCallable 对象作为参
         }
     }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
+```
 最后，这里使用的 OverrideCallable 是一个自定义的接口，如下所示：
 
+```java
 public interface OverrideCallable {
     Object call(Object[] args);
 }
 
-1
-2
-3
-4
 拦截构造方法
+```
 除了拦截 static 方法和实例方法，Byte Buddy 还可以拦截构造方法，这里依然通过一个示例进行说明。
 
 拦截构造方法的步骤：
@@ -1311,6 +955,7 @@ public interface OverrideCallable {
 首先修改 DelegeteFoo 这个类，为它添加一个构造方法，如下所示：
 
 
+```java
   public   static  class DelegeteFoo {
 
       public DelegeteFoo(String name) {
@@ -1322,18 +967,6 @@ public interface OverrideCallable {
         }
     }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 使用的 Interceptor 与前文使用的类似：
 
     class ConstructorInterceptor {
@@ -1344,18 +977,12 @@ public interface OverrideCallable {
         }
     }
 
-1
-2
-3
-4
-5
-6
-7
-8
+```
 这里不再使用 method() 方法拦截，而是使用 constructor() 方法拦截构造方法，
 
 并且使用 SuperMethodCall 调用构造方法并委托给 Interceptor 实例，具体实现如下：
 
+```java
 @Test
     public void constructorInterceptTest() throws IllegalAccessException, InstantiationException {
 
@@ -1364,6 +991,7 @@ public interface OverrideCallable {
                 .name("com.crazymaker.circle.bytecode.enhancement.Foo")
                 .constructor(any())
                 // 通过constructor()方法拦截所有构造方法
+```
                 // 拦截的操作：首先调用目标对象的构造方法，根据前面自动匹配，
                 // 这里直接匹配到参数为String.class的构造方法
                 .intercept(SuperMethodCall.INSTANCE.andThen(
@@ -1388,6 +1016,7 @@ public interface OverrideCallable {
     
             Constructor<?> constructor = clazz.getConstructor(String.class);
             DelegeteFoo foo = (DelegeteFoo) constructor.newInstance("name from 疯狂创客圈");
+```java
             System.out.println(foo.hello("hello form 疯狂创客圈"));
     
         } catch (InvocationTargetException e) {
@@ -1399,49 +1028,7 @@ public interface OverrideCallable {
 
     }
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
+```
 SuperMethodCall 会在新生成的方法中先调用目标方法，
 
 如果未找到目标方法则抛出异常，如果目标方法是构造方法，则根据方法签名匹配。
@@ -1453,13 +1040,9 @@ after constructor!
 DelegeteFoo:hello form 疯狂创客圈
  result of DelegeteFoo 
 
-1
-2
-3
-4
-5
 拦截实例通过bytebuddy进行耗时计算
 拦截器代码
+```java
 package com.crazymaker.agent.demo.bytebuddy;
 
 import net.bytebuddy.implementation.bind.annotation.Origin;
@@ -1483,29 +1066,6 @@ public class MethodCostTime {
     }
 
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
 拦截器的使用
 package com.crazymaker.agent.demo.bytebuddy;
 
@@ -1607,106 +1167,6 @@ public class ByteBuddyAgentDemo {
     }
 
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
 测试效果
 
     /**
@@ -1723,24 +1183,8 @@ public class ByteBuddyAgentDemo {
     }
 
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-
-
 性能
+```
 在选择字节码操作库时，往往需要考虑库本身的性能。对于许多应用程序，生成代码的运行时特性更有可能确定最佳选择。而在生成的代码本身的运行时间之外，用于创建动态类的运行时也是一个问题。官网对库进行了性能测试，给出以下结果图：
 
 

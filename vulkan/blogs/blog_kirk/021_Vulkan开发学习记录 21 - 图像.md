@@ -36,9 +36,11 @@
 
 ```cpp
 #define STB_IMAGE_IMPLEMENTATION
+```cpp
 #include <stb_image.h>
 ```
 
+```
 默认情况下stb_Image.h文件只定义了[函数原型](https://zhida.zhihu.com/search?content_id=223592074&content_type=Article&match_order=1&q=函数原型&zhida_source=entity)，我们需要在包含stb_Image.h文件前定义`STB_IMAGE_IMPLEMENTATION`宏，来让它将函数实现包含进来。
 
 ```cpp
@@ -420,7 +422,6 @@ region.imageOffset = {0, 0, 0};
 region.imageExtent = {
     width,
     height,
-    1
 };
 ```
 

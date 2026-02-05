@@ -4,6 +4,7 @@
 以产生[uuid](https://so.csdn.net/so/search?q=uuid&spm=1001.2101.3001.7020)的时候使用nextBytes产生随机数为入口，我们看一下SecureRandom的代码逻辑。
 
 ```java
+```java
    public static UUID randomUUID() {
         SecureRandom ng =Holder.numberGenerator;
         byte[] randomBytes = new byte[16];
@@ -17,10 +18,12 @@
 12345678910
 ```
 
+```
 使用了SecureRandom.next*的方法。
 
 在使用SecureRandom产生下一个随机数的时候调用nextLong或者nextBytes，最终会调用SecureRandom的nextBytes。
 
+```java
 ```java
  public long nextLong() { 
         // it's okay that the bottom wordremains signed. 
@@ -41,13 +44,13 @@
 12345678910111213141516
 ```
 
+```
 而nextBytes是一个同步的方法，在多线程使用时，可能会产生性能瓶颈。
 
 ```java
 synchronized public void nextBytes(byte[] bytes) { 
        secureRandomSpi.engineNextBytes(bytes); 
     }
-123
 ```
 
 secureRandomSpi被初始化为sun.security.provider.SecureRandom
@@ -58,11 +61,11 @@ secureRandomSpi是SecureRandom.NativePRNG的一个实例。
 
 ```java
 Provider: Set SUN provider property[SecureRandom.NativePRNG/sun.security.provider.NativePRNG]
-1
 ```
 
 分析openjdk的源码，NativePRNG.engineNextBytes调用了NativePRNG.RandomIO.ensureBufferValid，而ensureBufferValid直接从urandom读取数据：
 
+```java
 ```java
 private void ensureBufferValid() throws IOException {
             ...
@@ -72,6 +75,7 @@ private void ensureBufferValid() throws IOException {
 12345
 ```
 
+```
 通过测试可以发现**，hotspot需要使用配置项"-Djava.security.egd=file:/dev/./urandom"才能从urandom读取数据，这里openjdk做了优化，直接从urandom读取数据**。
 
 **/dev/random在产生大量随机数的时候比/dev/urandom慢**，所以，建议在大量使用随机数的时候，**将随机数发生器指定为/dev/./urandom**。
@@ -120,9 +124,6 @@ abstract class SeedGenerator {
 借鉴：https://blog.51cto.com/leo01/1795447
 
 
-
-
-
 ### java.security.SecureRandom源码分析
 
 # java.security.SecureRandom源码分析
@@ -138,7 +139,7 @@ SecureRandom在java各种组件中使用广泛，可以可靠的产生随机数�
 以产生uuid的时候使用nextBytes产生随机数为入口，我们看一下SecureRandom的代码逻辑。
 
  
-
+```java
 ```java
    public static UUID randomUUID() {
         SecureRandom ng =Holder.numberGenerator;
@@ -154,13 +155,13 @@ SecureRandom在java各种组件中使用广泛，可以可靠的产生随机数�
 ```
 
 
-
+```
  使用了SecureRandom.next*的方法。
 
  
-
 在使用SecureRandom产生下一个随机数的时候调用nextLong或者nextBytes，最终会调用SecureRandom的nextBytes。
 
+```java
 ```java
     public long nextLong() { 
         // it's okay that the bottom wordremains signed. 
@@ -180,7 +181,7 @@ SecureRandom在java各种组件中使用广泛，可以可靠的产生随机数�
 ```
 
 
-
+```
 而nextBytes是一个同步的方法，在多线程使用时，可能会产生性能瓶颈。
 
 ```java
@@ -190,11 +191,9 @@ synchronized public void nextBytes(byte[] bytes) {
 ```
 
 
-
 secureRandomSpi被初始化为sun.security.provider.SecureRandom
 
 secureRandomSpi是SecureRandom.NativePRNG的一个实例。
-
 
 
 使用jvm参数-Djava.security.debug=all ，可以打印securityprovider列表，从中可以看出，SecureRandom.NativePRNG由sun.security.provider.NativePRNG提供服务。
@@ -202,9 +201,9 @@ secureRandomSpi是SecureRandom.NativePRNG的一个实例。
 **Provider: Set SUN provider property[SecureRandom.NativePRNG/sun.security.provider.NativePRNG]**
 
 
-
 分析openjdk的源码，NativePRNG.engineNextBytes调用了NativePRNG.RandomIO.ensureBufferValid，而ensureBufferValid直接从urandom读取数据：
 
+```java
 ```java
 private void ensureBufferValid() throws IOException {
             ...
@@ -213,12 +212,11 @@ private void ensureBufferValid() throws IOException {
         }1.2.3.4.5.
 ```
 
+```
 通过测试可以发现，hotspot需要使用配置项[ "-Djava.security.egd=](http://file/dev/urandom"这个参数将不生效。)[ file:/dev/./urandom](http://file/dev/urandom)[ "](http://file/dev/urandom"这个参数将不生效。)才能从urandom读取数据，这里openjdk做了优化，直接从urandom读取数据。
 
  
-
 /dev/random在产生大量随机数的时候比/dev/urandom慢，所以，建议在大量使用随机数的时候，将随机数发生器指定为/dev/./urandom。
-
 
 
 注意：jvm参数值为/dev/./urandom而不是/dev/urandom，这里是jdk的一个bug引起。
@@ -258,6 +256,4 @@ abstract class SeedGenerator {
 ......
     }1.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.
 ```
-
-
 

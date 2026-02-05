@@ -70,89 +70,58 @@ nginx中有两个模块都有`proxy_pass`指令。
 server {
 
 
-
     listen 127.0.0.1:12345;
-
 
 
     proxy_pass 127.0.0.1:8080;
 
 
-
 }
 
 
-
- 
-
-
-
 server {
-
 
 
     listen 12345;
 
 
-
     proxy_connect_timeout 1s;
-
 
 
     proxy_timeout 1m;
 
 
-
     proxy_pass example.com:12345;
-
 
 
 }
 
 
-
- 
-
-
-
 server {
-
 
 
     listen 53 udp;
 
 
-
     proxy_responses 1;
-
 
 
     proxy_timeout 20s;
 
 
-
     proxy_pass dns.example.com:53;
-
 
 
 }
 
 
-
- 
-
-
-
 server {
-
 
 
     listen [::1]:12345;
 
 
-
     proxy_pass unix:/tmp/stream.socket;
-
 
 
 }
@@ -164,125 +133,76 @@ server {
 server {
 
 
-
     listen      80;
-
 
 
     server_name www.test.com;
 
 
-
- 
-
-
-
     # 正常代理，不修改后端url的
-
 
 
     location /some/path/ {
 
 
-
         proxy_pass http://127.0.0.1;
 
 
-
     }
-
-
-
- 
-
 
 
     # 修改后端url地址的代理（本例后端地址中，最后带了一个斜线)
 
 
-
     location /testb {
-
 
 
         proxy_pass http://www.other.com:8801/;
 
 
-
     }
-
-
-
- 
-
 
 
     # 使用 if in location
 
 
-
     location /google {
-
 
 
         if ( $geoip_country_code ~ (RU|CN) ) {
 
 
-
             proxy_pass http://www.google.hk;
-
 
 
         }
 
 
-
     }
-
-
-
- 
-
 
 
     location /yongfu/ {
 
 
-
         # 没有匹配 limit_except 的，代理到 unix:/tmp/backend.socket:/uri/
-
 
 
         proxy_pass http://unix:/tmp/backend.socket:/uri/;;
 
 
-
- 
-
-
-
         # 匹配到请求方法为: PUT or DELETE, 代理到9080
-
 
 
         limit_except PUT DELETE {
 
 
-
             proxy_pass http://127.0.0.1:9080;
-
 
 
         }
 
 
-
     }
-
-
-
- 
-
 
 
 }
@@ -294,343 +214,216 @@ server {
 server {
 
 
-
     listen      80;
 
 
-
     server_name www.test.com;
-
-
-
- 
-
 
 
     # 情形A
 
 
-
     # 访问 http://www.test.com/testa/aaaa
-
 
 
     # 后端的request_uri为: /testa/aaaa
 
 
-
     location ^~ /testa/ {
-
 
 
         proxy_pass http://127.0.0.1:8801;
 
 
-
     }
-
-
-
-    
-
 
 
     # 情形B
 
 
-
     # 访问 http://www.test.com/testb/bbbb
-
 
 
     # 后端的request_uri为: /bbbb
 
 
-
     location ^~ /testb/ {
-
 
 
         proxy_pass http://127.0.0.1:8801/;
 
 
-
     }
-
-
-
- 
-
 
 
     # 情形C
 
 
-
     # 下面这段location是正确的
-
 
 
     location ~ /testc {
 
 
-
         proxy_pass http://127.0.0.1:8801;
 
 
-
     }
-
-
-
- 
-
 
 
     # 情形D
 
 
-
     # 下面这段location是错误的
 
 
-
     #
-
 
 
     # nginx -t 时，会报如下错误: 
 
 
-
     #
-
 
 
     # nginx: [emerg] "proxy_pass" cannot have URI part in location given by regular 
 
 
-
     # expression, or inside named location, or inside "if" statement, or inside 
-
 
 
     # "limit_except" block in /opt/app/nginx/conf/vhost/test.conf:17
 
 
-
     # 
-
 
 
     # 当location为正则表达式时，proxy_pass 不能包含URI部分。本例中包含了"/"
 
 
-
     location ~ /testd {
-
 
 
         proxy_pass http://127.0.0.1:8801/;   # 记住，location为正则表达式时，不能这样写！！！
 
 
-
     }
-
-
-
- 
-
 
 
     # 情形E
 
 
-
     # 访问 http://www.test.com/ccc/bbbb
-
 
 
     # 后端的request_uri为: /aaa/ccc/bbbb
 
 
-
     location /ccc/ {
-
 
 
         proxy_pass http://127.0.0.1:8801/aaa$request_uri;
 
 
-
     }
-
-
-
- 
-
 
 
     # 情形F
 
 
-
     # 访问 http://www.test.com/namea/ddd
-
 
 
     # 后端的request_uri为: /yongfu?namea=ddd
 
 
-
     location /namea/ {
-
 
 
         rewrite    /namea/([^/]+) /yongfu?namea=$1 break;
 
 
-
         proxy_pass http://127.0.0.1:8801;
 
 
-
     }
-
-
-
- 
-
 
 
     # 情形G
 
 
-
     # 访问 http://www.test.com/nameb/eee
-
 
 
     # 后端的request_uri为: /yongfu?nameb=eee
 
 
-
     location /nameb/ {
-
 
 
         rewrite    /nameb/([^/]+) /yongfu?nameb=$1 break;
 
 
-
         proxy_pass http://127.0.0.1:8801/;
 
 
-
     }
-
-
-
- 
-
 
 
     access_log /data/logs/www/www.test.com.log;
 
 
-
 }
-
-
-
- 
-
 
 
 server {
 
 
-
     listen      8801;
-
 
 
     server_name www.test.com;
 
 
-
-    
-
-
-
     root        /data/www/test;
-
 
 
     index       index.php index.html;
 
 
-
- 
-
-
-
     rewrite ^(.*)$ /test.php?u=$1 last;
-
-
-
- 
-
 
 
     location ~ \.php$ {
 
 
-
         try_files $uri =404;
-
 
 
         fastcgi_pass unix:/tmp/php-cgi.sock;
 
 
-
         fastcgi_index index.php;
-
 
 
         include fastcgi.conf;
 
 
-
     }
-
-
-
- 
-
 
 
     access_log /data/logs/www/www.test.com.8801.log;
 
 
-
 }
 
 
-
- 
-
-
-
- 
 ```
 
 文件: `/data/www/test/test.php`
 
 ```php
 <?php
-
 
 
 echo '$_SERVER[REQUEST_URI]:' . $_SERVER['REQUEST_URI'];
@@ -644,11 +437,6 @@ echo '$_SERVER[REQUEST_URI]:' . $_SERVER['REQUEST_URI'];
 情形D说明，当location为正则表达式时，`proxy_pass`不能包含URI部分。
 情形E通过变量($request_uri, 也可以是其他变量)，对后端的`request_uri`进行改写。
 情形F和情形G通过rewrite配合break标志,对url进行改写，并改写后端的`request_uri`。需要注意，`proxy_pass`地址的URI部分在情形G中无效，不管如何设置，都会被忽略。
-
-
-
-
-
 
 
 nginx中proxy_pass配置说明
@@ -675,9 +463,6 @@ nginx中proxy_pass配置说明
 location /hussarApi/ {
 	proxy_pass http://192.168.2.188:8280;	
 }
-1
-2
-3
 代理地址：http://192.168.2.188:8280/hussarApi/test/getList
 //url后无/，为相对路径,连同匹配部分hussarApi也追加到代理地址上
 
@@ -686,9 +471,6 @@ location /hussarApi/ {
 location /hussarApi/ {
 	proxy_pass http://192.168.2.188:8280/;	
 }
-1
-2
-3
 代理地址：http://192.168.2.188:8280/test/getList
 //url后有/，为绝对根路径，会将hussarApi部分去掉，代理地址拼接hussarApi后面路径
 
@@ -697,9 +479,6 @@ location /hussarApi/ {
 location /hussarApi/ {
 	proxy_pass http://192.168.2.188:8280/hussarApi;	
 }
-1
-2
-3
 代理地址：http://192.168.2.188:8280/hussarApitest/getList
 //url后有上下文，会将访问地址hussarApi去掉，代理地址直接拼接访问地址hussarApi后面路径
 
@@ -708,9 +487,6 @@ location /hussarApi/ {
 location /hussarApi/ {
 	proxy_pass http://192.168.2.188:8280/hussarApi/;	
 }
-1
-2
-3
 代理地址：http://192.168.2.188:8280/hussarApi/test/getList
 //url后有上下文，会将访问地址hussarApi去掉，代理地址直接拼接访问地址hussarApi后面路径
 
@@ -722,17 +498,11 @@ location 正则情况，url后面不能加 /
 location ~ /hussarApi/ {
 	proxy_pass http://192.168.2.188:8280/;
 }
-1
-2
-3
 location 非正则情况，可以添加/
 
 location /hussarApi/ {
 	proxy_pass http://192.168.2.188:8280/;
 }
-1
-2
-3
 特别鸣谢大神贴：https://blog.csdn.net/u010433704/article/details/99945557
 ————————————————
 版权声明：本文为CSDN博主「吃爆米花的怪蜀黍」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。

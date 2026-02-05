@@ -22,21 +22,17 @@ rabbitmq数据目录：/var/lib/rabbitmq/
 目录文件有：
 
 
-
 3.日志文件
 rabbitmq日志文件: /var/log/rabbitmq
 
  目录文件有：
 
 
-
 4.脚本目录
 rabbitmq命令脚本：/usr/lib/rabbitmq/
 
 
-
 1.bin目录
-
 
 
 bin目录脚本是由目录/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.6/sbin/创建的软链接
@@ -44,7 +40,6 @@ bin目录脚本是由目录/usr/lib/rabbitmq/lib/rabbitmq_server-3.8.6/sbin/创�
 2.lib目录
 
 ll ./rabbitmq_server-3.8.6
-1
 
 
 escript目录存放rabbitmq真正启动的命令

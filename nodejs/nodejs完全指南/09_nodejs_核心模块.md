@@ -4,7 +4,6 @@
 window 是浏览器的宿主对象 node中是没有的
 
 
-
 ## global
 
 global 是node中的全局对象，作用类似于window
@@ -13,10 +12,10 @@ ES标准下，全局对象的标准名应该是 globalThis
 在浏览器中的 globalThis 就是 window , 在 node 中就是 global
 
 
-
 在node中
 
 ```javascript
+```java
 console.log(globalThis)
 ```
 
@@ -60,18 +59,18 @@ console.log(globalThis)
 ```
 
 
-
+```
 ## process
 
 表示当前的node进程
 通过该对象可以获取进程的信息，或者对进程做各种操作
 
 
-
 如何使用
 1  process是一个全局变量，不需要导入任何模块就可以直接使用
 
 ```javascript
+```java
 console.log(process)
 ```
 
@@ -206,11 +205,10 @@ process {
 ```
 
 
-
 2  有哪些属性和方法：
 
 
-
+```
 ### exit()
 
 结束当前进程，终止node
@@ -222,6 +220,7 @@ process.exit()
 示例:
 
 ```javascript
+```java
 console.log(11111)
 process.exit(0)
 console.log(22222)
@@ -237,7 +236,7 @@ Process finished with exit code 0
 ```
 
 
-
+```
 ### nextTick()
 
 将函数插入到 **tick队列** 中
@@ -255,6 +254,7 @@ tick队列中的代码，会在下一次事件循环之前执行
 
 ```javascript
 setTimeout(() => {
+```java
     console.log(1) // 宏任务队列
 })
 
@@ -272,19 +272,14 @@ console.log(4) // 调用栈
 输出:
 
 ```shell
-4
-2
-3
-1
 ```
 
 
-
+```
 ## path
 
 表示的路径
 通过path可以用来获取各种路径
-
 
 
 要使用path，需要先对其进行引入
@@ -292,7 +287,6 @@ console.log(4) // 调用栈
 ```javascript
 const path = require("node:path")
 ```
-
 
 
 #### resolve()
@@ -304,13 +298,13 @@ path.resolve([…paths])
 ```
 
 
-
 相对路径：./xxx  ../xxx/xxx
 
 ```
 const path = require("node:path")
 
 const result = path.resolve("./m1.js")
+```java
 console.log(result)
 ```
 
@@ -319,7 +313,6 @@ console.log(result)
 ```shell
 D:\code\study\front\test01\src\m1.js
 ```
-
 
 
 ```javascript
@@ -341,7 +334,6 @@ C:\Users\lilichao\Desktop\hello.js
 ```
 
 
-
 绝对路径：
 在计算机本地
 c:\xxx
@@ -359,7 +351,6 @@ console.log(result)
 ```shell
 D:\tmp\file.txt
 ```
-
 
 
 在网络中
@@ -380,17 +371,19 @@ D:\code\study\front\test01\src\https:\img2.baidu.com\it\u=1772657338,1845236717&
 ```
 
 
-
+```
 如果直接调用resolve，则返回当前的工作目录
 
 ```javascript
 const path = require("node:path")
 
 const result = path.resolve()
+```java
 console.log(result)
 ```
 
 
+```
 注意，我们通过不同的方式执行代码时，它的工作目录是有可能发生变化的
 
 如果将一个相对路径作为参数，
@@ -402,13 +395,13 @@ console.log(result)
 这样它会自动计算出最终的路径
 
 
-
 最终形态
 以后在使用路径时，尽量通过path.resolve()来生成路径
 
 ```javascript
 const path = require("node:path")
 const result = path.resolve(__dirname, "./hello.js")
+```java
 console.log(result)
 ```
 
@@ -421,13 +414,12 @@ D:\code\study\front\test01\src\hello.js
 这样的好处是在不同的运行方式下得到的结果是一致的 .
 
 
-
+```
 ## fs
 
 fs （File System）
 fs用来帮助node来操作磁盘中的文件
 文件操作也就是所谓的I/O，input output
-
 
 
 ### 普通版 api
@@ -439,7 +431,6 @@ const fs = require("node:fs")
 ```
 
 
-
 #### 同步读取文件
 
 readFileSync()
@@ -447,6 +438,7 @@ readFileSync()
 ```javascript
 const fs = require("node:fs")
 const buff = fs.readFileSync(path.resolve(__dirname, "./hello.txt"))
+```java
 console.log(buff)
 console.log(buff.toString())
 ```
@@ -461,7 +453,7 @@ hello nodejs
 注意这个api会导致阻塞, 不要用于读取大文件
 
 
-
+```
 #### 异步读取文件
 
 readFile()
@@ -474,6 +466,7 @@ fs.readFile(
     path.resolve(__dirname, "./hello.txt"),
     (err, buffer) => {
         if (err) {
+```java
             console.log("出错了~")
         } else {
             console.log(buffer)
@@ -491,7 +484,7 @@ hello nodejs
 ```
 
 
-
+```
 ### promise版api
 
 使用fs promise版api，需要引入
@@ -508,6 +501,7 @@ api 返回值均为 promise
 const fs = require("node:fs/promises")
 fs.readFile(path.resolve(__dirname, "./hello.txt"))
     .then(buffer => {
+```java
         console.log(buffer.toString())
     })
     .catch(e => {
@@ -520,7 +514,6 @@ fs.readFile(path.resolve(__dirname, "./hello.txt"))
 ```shell
 hello nodejs
 ```
-
 
 
 使用 await
@@ -544,15 +537,12 @@ hello nodejs
 ```
 
 
-
-
-
+```
 ### 其他常用api
 
 #### fs.readFile()
 
 读取文件
-
 
 
 #### fs.appendFile() 
@@ -566,12 +556,13 @@ fs.appendFile(
     path.resolve(__dirname, "./hello.txt"),
     "hahahaha"
 ).then(r => {
+```java
     console.log("添加成功")
 })
 ```
 
 
-
+```
 #### fs.mkdir() 
 
 创建目录
@@ -588,6 +579,7 @@ const fs = require("node:fs/promises")
 const path = require("node:path")
 fs.mkdir(path.resolve(__dirname, "./hello/abc"), { recursive: true })
     .then(r => {
+```java
         console.log("操作成功~")
     })
     .catch(err => {
@@ -596,7 +588,7 @@ fs.mkdir(path.resolve(__dirname, "./hello/abc"), { recursive: true })
 ```
 
 
-
+```
 #### fs.rmdir() 
 
 删除目录
@@ -606,16 +598,16 @@ const fs = require("node:fs/promises")
 const path = require("node:path")
 fs.rmdir(path.resolve(__dirname, "./hello"), { recursive: true })
     .then(r => {
+```java
         console.log("删除成功")
     })
 ```
 
 
-
+```
 #### fs.rm() 
 
 删除文件
-
 
 
 #### fs.rename() 
@@ -631,16 +623,16 @@ fs.rename(
     path.resolve(__dirname, "../abc.jpg"),
     path.resolve(__dirname, "./def.jpg")
 ).then(r => {
+```java
     console.log("重命名成功")
 })
 ```
 
 
-
+```
 #### fs.copyFile() 
 
 复制文件
-
 
 
 组合应用 - 复制文件
@@ -656,11 +648,10 @@ fs.readFile(path.resolve(__dirname, "./hello.txt"))
         )
     })
     .then(() => {
+```java
         console.log("操作结束")
     })
 ```
 
 
-
-
-
+```

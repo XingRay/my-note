@@ -14,7 +14,6 @@
 | releaseImplementation     | releaseCompile     | 只在release模式有效 打包到release包 |
 
 
-
 ## 2. 关键字说明
 
 ### api
@@ -54,7 +53,6 @@
 #### 本地项目依赖
 
 
-
 ```java
 dependencies {
     implementation project(':projectABC')
@@ -62,7 +60,6 @@ dependencies {
 ```
 
 #### 本地包依赖
-
 
 
 ```java
@@ -79,7 +76,6 @@ dependencies {
 #### 远程包依赖
 
 
-
 ```java
 dependencies {
     // 简写
@@ -90,7 +86,6 @@ dependencies {
 ```
 
 ###### 根据Task类型（debug, release, test）引入
-
 
 
 ```java
@@ -110,7 +105,6 @@ dependencies {
 ###### 排除引用（解决引入冲突）
 
 
-
 ```java
 dependencies {
     implementation ('com.github.bumptech.glide:glide:4.9.0'){
@@ -123,9 +117,6 @@ dependencies {
 ```
 
 最后编辑于 ：2022.11.07 11:47:59
-
-
-
 
 
 依赖的方式
@@ -141,30 +132,17 @@ dependencies {
     // 3、直接依赖
     implementation 'org.apache.logging.log4j:log4j:2.17.2'
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 直接依赖
 在项目中直接导入的依赖，即为直接依赖，如：
 
     implementation 'org.apache.logging.log4j:log4j:2.17.2'
-1
 完整写法如下，其中group/name/version共同定位一个远程jar包：
 
     implementation group: 'org.apache.logging.log4j', name: 'log4j;, version: '2.17.2'
-1
 项目依赖
 依赖项目中的另一个模块，被依赖的模块需要是library模块，并且在settings.gradle中配置：
 
     implementation project(':subject01')
-1
 本地jar包依赖
 即依赖本地jar包，有如下两种方式：
 
@@ -172,10 +150,6 @@ dependencies {
     implementation files('libs/foo.jar', 'libs/bar.jar')
     // 2、配置某文件夹作为依赖项
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-1
-2
-3
-4
 依赖的类型
 
 其中java插件的功能，java-library插件都提供。
@@ -222,19 +196,6 @@ dependencies {
     // 排除之后,使用手动的引入即可。
     implementation 'org.slf4j:slf4j-api:1.4.0'
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
 不允许依赖传递
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
@@ -246,16 +207,6 @@ dependencies {
     // 排除之后,使用手动的引入即可
     implementation 'org.slf4j:slf4j-api:1.4.0'
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 不允许依赖传递，则该依赖的所有内部依赖均不会添加到编译或运行时的类路径中，
 
 强制使用某个版本
@@ -272,19 +223,6 @@ dependencies {
         }
     }
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
 依赖冲突时立刻构建失败
 事实上，我们可以配置当Gradle遇到依赖冲突时，立刻构建失败，从而找出项目或模块中的所有的依赖冲突：
 
@@ -296,11 +234,3 @@ configurations.all {
         config.resolutionStrategy.failOnVersionConflict()
     }
 }
-1
-2
-3
-4
-5
-6
-7
-8

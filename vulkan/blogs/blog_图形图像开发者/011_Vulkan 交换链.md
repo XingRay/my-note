@@ -5,7 +5,6 @@
 ![图片](./assets/640-1741509894619-77.webp)
 
 
-
 FIFO 呈现模式的交换链
 
 Vulkan 交换链（Swapchain）是 Vulkan 应用程序与窗口系统之间的一座桥梁，负责将渲染结果呈现给用户。
@@ -37,7 +36,6 @@ Vulkan 交换链（Swapchain）是 Vulkan 应用程序与窗口系统之间的�
 
 ```
  1VkSurfaceKHR surface;
- 2
  3//获取表面的特性
  4VkSurfaceCapabilitiesKHR surfaceCapabilities;
  5vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface,
@@ -45,7 +43,6 @@ Vulkan 交换链（Swapchain）是 Vulkan 应用程序与窗口系统之间的�
  7uint32_t formatCount = 0;
  8vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface,
  9                                   &formatCount, nullptr);
-10
 11//获取表面所支持的格式
 12VkSurfaceFormatKHR* formats = new VkSurfaceFormatKHR[formatCount];
 13vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface,
@@ -63,7 +60,6 @@ Vulkan 交换链（Swapchain）是 Vulkan 应用程序与窗口系统之间的�
 4    const VkAllocationCallbacks*    pAllocator,              // 自定义的内存分配器回调函数指针，可以为 NULL 表示使用默认分配器
 5    VkSwapchainKHR*                 pSwapchain               // 指向 VkSwapchainKHR 句柄的指针，函数成功返回时，包含创建的交换链
 6)
-7
 ```
 
 VkSwapchainCreateInfoKHR 是一个用于描述交换链创建信息的结构体。它包含了创建交换链所需的所有参数，如表面、图像数量、格式、分辨率等。
@@ -154,7 +150,6 @@ VkImageUsageFlags 表示图像的用途标志，例如 VK_IMAGE_USAGE_COLOR_ATTA
 VkSurfaceTransformFlagBitsKHR 枚举类型定义了交换链图像在显示之前可以应用的变换操作。
 
 
-
 ```
  1typedef enum VkSurfaceTransformFlagBitsKHR {
  2    VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 0x00000001,                    // 不进行任何变换。
@@ -188,25 +183,20 @@ VkPresentModeKHR 枚举类型定义了**交换链的呈现模式。呈现模式�
 
 ```
  1VkSurfaceKHR surface;//上一节获取的表面
- 2
  3// 获取表面的特性
  4VkSurfaceCapabilitiesKHR surfaceCapabilities;
  5vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, &surfaceCapabilities);
- 6
  7uint32_t formatCount = 0;
  8vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &formatCount, nullptr);
- 9
 10// 获取表面所支持的格式
 11VkSurfaceFormatKHR* formats = new VkSurfaceFormatKHR[formatCount];
 12vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, &formatCount, formats);
-13
 14// 查找 VK_FORMAT_R8G8B8A8_UNORM 格式
 15uint32_t targetFormatIdx;
 16for (targetFormatIdx = 0; targetFormatIdx < formatCount; targetFormatIdx++) {
 17    if (formats[targetFormatIdx].format == VK_FORMAT_R8G8B8A8_UNORM) break;
 18}
 19assert(targetFormatIdx < formatCount); // 确保找到目标格式
-20
 21VkSwapchainCreateInfoKHR swapchainCreateInfo = {};
 22swapchainCreateInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR; // 设置结构体类型
 23swapchainCreateInfo.surface = surface; // 设置表面句柄
@@ -222,19 +212,16 @@ VkPresentModeKHR 枚举类型定义了**交换链的呈现模式。呈现模式�
 33swapchainCreateInfo.presentMode = VK_PRESENT_MODE_FIFO_KHR; // 显示模式
 34swapchainCreateInfo.clipped = VK_FALSE; // 是否剪辑
 35swapchainCreateInfo.oldSwapchain = VK_NULL_HANDLE; // 旧交换链句柄
-36
 37VkSwapchainKHR swapchain;
 38VkResult result = vkCreateSwapchainKHR(device, &swapchainCreateInfo, nullptr, &swapchain); // 创建交换链
 39if (result != VK_SUCCESS) {
 40    // 错误处理
 41}
-42
 43// 获取交换链中的图像
 44uint32_t imageCount;
 45vkGetSwapchainImagesKHR(device, swapchain, &imageCount, nullptr);
 46std::vector<VkImage> swapChainImages(imageCount);
 47vkGetSwapchainImagesKHR(device, swapchain, &imageCount, swapChainImages.data());
-48
 49// 为每个交换链图像创建图像视图，这些图像视图将会作为帧缓冲区的 attachments
 50std::vector<VkImageView> swapChainImageViews(swapChainImages.size());
 51for (size_t i = 0; i < swapChainImages.size(); i++) {
@@ -252,12 +239,10 @@ VkPresentModeKHR 枚举类型定义了**交换链的呈现模式。呈现模式�
 63    createInfo.subresourceRange.levelCount = 1;
 64    createInfo.subresourceRange.baseArrayLayer = 0;
 65    createInfo.subresourceRange.layerCount = 1;
-66
 67    if (vkCreateImageView(device, &createInfo, nullptr, &swapChainImageViews[i]) != VK_SUCCESS) {
 68        throw std::runtime_error("failed to create image views!"); // 错误处理
 69    }
 70}
-71
 72// 销毁交换链、释放资源
 73for (size_t i = 0; i < swapChainImages.size(); i++) {
 74    vkDestroyImageView(device, swapChainImageViews[i], nullptr); // 销毁图像视图

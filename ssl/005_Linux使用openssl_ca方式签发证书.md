@@ -3,7 +3,6 @@ Linux 使用openssl ca方式签发证书
 https://blog.csdn.net/QianLiStudent/article/details/109291424
 
 
-
 前言
 Linux 使用openssl x509方式签发证书（推荐用这种方式）：https://blog.csdn.net/QianLiStudent/article/details/109818208
 
@@ -41,7 +40,6 @@ Tip：下面统一称为CA证书和应用证书（服务端证书、客户端证
 2、事先创建上述目录和文件，以在生成证书的过程中使用（其中cakey.pem和cacert.pem是CA证书的私钥和证书，后续步骤会创建）
 
 
-
 步骤
 证书的生成步骤有5步：
 1、生成CA证书的私钥（用来生成CA证书）；
@@ -51,11 +49,6 @@ openssl genrsa -des3 -out cakey.pem 1024
 #des3是一种加密方式，如果指定则需要设置密码，如果不指定则不用设置密码
 #out表示输出的文件名，这里是cakey.pem
 #1024表示生成的私钥长度
-1
-2
-3
-4
-5
 生成的秘钥文件：
 
 
@@ -65,10 +58,6 @@ openssl rsa -in private/cakey.pem -out private/cakey.pem
 #rsa表示加密算法
 #in表示输入的文件
 #out表示输出的文件
-1
-2
-3
-4
 
 
 2、用CA私钥来生成CA证书，即CA证书自签名（用来给服务端证书或客户端证书做签名）；
@@ -80,13 +69,6 @@ openssl req -new -x509 -key private/cakey.pem -out cacert.pem -days 180
 #key表示指定私钥文件
 #out表示输出的证书文件
 #day表示证书的有效期，不填则使用openssl.cnf配置文件中的默认值
-1
-2
-3
-4
-5
-6
-7
 
 生成证书过程中的参数：
 
@@ -98,10 +80,6 @@ openssl genrsa -des3 -out app.key 2048
 #rsa表示加密算法
 #in表示输入的文件
 #out表示输出的文件
-1
-2
-3
-4
 生成应用的私钥：
 
 
@@ -114,11 +92,6 @@ openssl req -new -key app.key -out app.csr
 #new表示创建证书（crt）文件或证书签名请求（csr）文件
 #key表示指定私钥文件
 #out表示指定输出文件，这里指证书签名请求文件
-1
-2
-3
-4
-5
 
 
 5、用CA证书给4中的csr签名得到使用证书；
@@ -132,13 +105,6 @@ openssl ca -cert cacert.pem -keyfile private/cakey.pem -config openssl.cnf -in a
 #in表示指定输入的文件，这里是待签名的csr文件
 #out表示输出签名后的应用证书
 #day表示应用证书的有效期
-1
-2
-3
-4
-5
-6
-7
 
 
 FAQ

@@ -30,9 +30,11 @@
 ```cpp
 // 引入加载纹理所需要的库
 #define STB_IMAGE_IMPLEMENTATION
+```cpp
 #include <stb_image.h>
 ```
 
+```
 创建一个新的函数createTextureImage，在这里我们将加载一个图像并将其上传到一个VulkanImage Object中。我们将使用Command Buffer，所以它应该在createCommandPool之后被调用。并且在Shader目录旁边创建一个新的目录textures来存储纹理图像。我们将从该目录中加载一张名为texture.jpg的图片。自己想用什么图就可以哦
 
 ```cpp
@@ -350,7 +352,6 @@ region.imageOffset = {0, 0, 0};
 region.imageExtent = {
     width,
     height,
-    1
 };
 ```
 
@@ -643,6 +644,7 @@ samplerLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
 samplerLayoutBinding.pImmutableSamplers = nullptr;
 samplerLayoutBinding.stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
 
+```cpp
 std::array<VkDescriptorSetLayoutBinding, 2> bindings = {uboLayoutBinding, samplerLayoutBinding};
 VkDescriptorSetLayoutCreateInfo layoutInfo{};
 layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
@@ -650,10 +652,12 @@ layoutInfo.bindingCount = static_cast<uint32_t>(bindings.size());
 layoutInfo.pBindings = bindings.data();
 ```
 
+```
 stageFlags 设置为VK_SHADER_STAGE_FRAGMENT_BIT表明我们打算在片段着色器中使用该Descriptor。这就是片段的颜色要被确定的地方。在[顶点着色器](https://zhida.zhihu.com/search?content_id=212163049&content_type=Article&match_order=1&q=顶点着色器&zhida_source=entity)中使用纹理采样是可能的，例如通过高度图对顶点的网格进行动态变形。
 
 我们还必须创建一个更大的Descriptor Pool，为新的Descriptor分配腾出空间，在VkDescriptorPoolCreateInfo中增加一个VkPoolSize类型的VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER。转到createDescriptorPool函数，修改它以包括这个Descriptor的VkDescriptorPoolSize。
 
+```cpp
 ```cpp
 std::array<VkDescriptorPoolSize, 2> poolSizes{};
 poolSizes[0].type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
@@ -668,6 +672,7 @@ poolInfo.pPoolSizes = poolSizes.data();
 poolInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 ```
 
+```
 Descriptor Pool不足是一个很好的例子，验证层不会抓住这个问题。从Vulkan 1.1开始，如果Descriptor Pool不够大，vkAllocateDescriptorSets可能会以错误代码VK_ERROR_POOL_OUT_OF_MEMORY失败，但[驱动程序](https://zhida.zhihu.com/search?content_id=212163049&content_type=Article&match_order=1&q=驱动程序&zhida_source=entity)也可能会尝试在内部解决这个问题。这意味着，有时（取决于硬件、池的大小和分配的大小）驱动程序会让我们的分配超过Descriptor Pool的限制。其他时候，vkAllocateDescriptorSets会失败并返回VK_ERROR_POOL_OUT_OF_MEMORY。如果在某些机器上分配成功，但在其他机器上分配失败，这可能会让人特别沮丧。
 
 由于Vulkan将分配的责任转移给了驱动程序，因此不再严格要求只分配某种类型的Descriptor(VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER等)的数量，这些Descriptor是在创建Descriptor Pool时由相应的descriptorCount成员指定。然而，这样做仍然是最好的做法，在未来，如果你启用[最佳实践](https://zhida.zhihu.com/search?content_id=212163049&content_type=Article&match_order=1&q=最佳实践&zhida_source=entity)验证，VK_LAYER_KHRONOS_validation会对这种类型的问题发出警告。
@@ -693,6 +698,7 @@ for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
 组合图像采样器结构的资源必须在VkDescriptorImageInfo结构中指定，就像Uniform Buffer Descriptor的Buffer在VkDescriptorBufferInfo结构中指定。
 
 ```cpp
+```cpp
 std::array<VkWriteDescriptorSet, 2> descriptorWrites{};
 
 descriptorWrites[0].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -714,6 +720,7 @@ descriptorWrites[1].pImageInfo = &imageInfo;
 vkUpdateDescriptorSets(device, static_cast<uint32_t>(descriptorWrites.size()), descriptorWrites.data(), 0, nullptr);
 ```
 
+```
 Descriptor必须用这些Image信息进行更新，就像Buffer一样。这一次我们使用pImageInfo数组而不是pBufferInfo。现在Descriptor已经准备好被着色器使用了!
 
 ### **Texture coordinates**
@@ -734,6 +741,7 @@ struct Vertex {
     }
 
     static std::array<VkVertexInputAttributeDescription, 3> getAttributeDescriptions() {
+```cpp
         std::array<VkVertexInputAttributeDescription, 3> attributeDescriptions{};
 
         attributeDescriptions[0].binding = 0;
@@ -756,6 +764,7 @@ struct Vertex {
 };
 ```
 
+```
 修改Vertex数据结构以包括一个用于纹理坐标的vec2。确保同时添加一个VkVertexInputAttributeDescription，这样我们就可以使用纹理坐标作为顶点着色器的输入。这是必要的，因为我们可以将它们传递给片段着色器，以便在正方形的表面进行插值。
 
 ```cpp

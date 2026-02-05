@@ -1,11 +1,9 @@
 # OpenGL 创建OpenGL上下文(OpenGL Context WGL)
 
 
-
 ## OpenGL Context
 
 OpenGL Context是实现完整的opengl的一部分。OpenGL直到创建了OpenGL Context后才会存在。由不同平台的API自己去创建。 以下讨论的是基于Windows平台的，所以叫WGL， 而Linux 平台借助X11接口，称为GLX。因此，许多Windows平台下的接口都以wgl开头。
-
 
 
 ## 窗口
@@ -32,7 +30,6 @@ HDC hdc = GetDC(hwnd);					// Device Context
 ```
 
 ​    
-
 
 
 ### Pixel Format
@@ -79,14 +76,12 @@ int pixelFormat = ChoosePixelFormat(hdc, &pfd); //入参为device context 和 pf
 ```
 
 
-
 该结构传递给一个函数（ChoosePixelFormat， 如上所示），该函数返回一系列匹配上述结构体的pixel format的列表的数量。 然后这个数量被用来设置DC下的pixel format的数量。
 使用的接口为：SetPixelFormat
 
 ```
 SetPixelFormat(hdc, pixelFormat, &pfd)
 ```
-
 
 
 ### 创建上下文(Create Context)
@@ -105,13 +100,11 @@ wglMakeCurrent(hdc, hglrc)
 ```
 
 
-
 ### MakeCurrent
 
 当新创建的OpengGL Context通过结果wglMakeCurrent设置之后，原来旧的上下文(old context)就会被新的OpenGL context替代。在这之后，OpenGL API就会参考新的上下文的状态。
 
 当前上下文(current context)是线程相关的(thread-specific), 每个线程可以拥有一个不同的current context。 多线程公用一个current context是非常危险的。
-
 
 
 ### 删除上下文(Delete Context)
@@ -124,11 +117,9 @@ wglDeleteContext(hglrc);
 ```
 
 
-
 ### 如何正确创建Context
 
 除非是非常简单的Application, 否则不应使用上述简单的创建步骤。有一系列WGL extension 来更好的创建Context。当然这比上面简单的创建过程相对复杂一些。
-
 
 
 ### 创建一个假的Context
@@ -136,9 +127,7 @@ wglDeleteContext(hglrc);
 key point: 用于获取WGL extension的接口自身，就是一个OpenGL extension. 因此像其他OpenGL API一样，调用该接口需要一个OpenGL Context。 因此我们不得不创建一个OpenGL Context， 用来为接口调用创造环境，幸运的是，该上下文并不是最终的context。我们要做的就是创建一个dummy context，来获取函数指针(get function pointers), 然后直接使用这些接口。
 
 
-
 注意： 不幸的是， Windows 不允许用户修改窗口的pixel format. 你只能设置一次。因此，如果你想使用不同于dummy context使用的像素格式，你需要销毁窗口，在我们使用完dummy context之后重新创建你想要的特定pixel format。
-
 
 
 一个较好的dummy context正如我们上面所示的pixel format, 这通常会得到硬件加速的像素格式。
@@ -146,11 +135,9 @@ key point: 用于获取WGL extension的接口自身，就是一个OpenGL extensi
 因此这一步就意味着创建一个像之前小节里面的Context。
 
 
-
 ### 获取WGL Extensions
 
 如果借助扩展加载库(extension loading library), 现在是时候调用所需的函数来加载感兴趣的函数指针了。 如果不借助扩展加载库，那么需要手动完成。
-
 
 
 ### 加载OpenGL Functions
@@ -158,7 +145,6 @@ key point: 用于获取WGL extension的接口自身，就是一个OpenGL extensi
 在创建完OpenGL Context之后，加载OpenGL Functions是非常中还要的任务。
 
 查询函数指针并不在OpenGL API中，而是和具体平台相关。
-
 
 
 ### Windows
@@ -183,7 +169,6 @@ void *GetAnyGLFuncAddress(const char *name)     //name 表示function的名称�
 
 
 wglGetProcAddress 不会返回 从OpenGL32.DLL 里面通过export 声明的任何OpenGL API的函数指针。OpenGL version 1.1也是如此。 幸运的是，这些接口可以通过Win32下的GetProcAddress来获取。换句话说，GetProcAddress不会得到wglGetProcAddress能获取到的函数指针。因此在wglGetProcAddress失败的情况下，继续使用GetProcAddress接口来尝试获取。
-
 
 
 ### 函数原型(Function Prototypes)
@@ -219,7 +204,6 @@ PFNGLUSEPROGRAMPROC glUseProgram;
 这不是头文件定义的;我们必须自己定义它。而大多数OpenGL加载库不需要你自己定义它们（这就是推荐使用OpenGL加载库的原因，如GLAD）。
 
 
-
 ### 函数检索(Function Retrieval)
 
 一旦我们有了一个实际的函数指针和我们的函数检索函数，我们就可以得到问题中的函数指针了。然而一个问题产生了： 我们应该得到这个函数吗？
@@ -230,6 +214,8 @@ PFNGLUSEPROGRAMPROC glUseProgram;
 
 ```
 //In a header somewhere.
+```cpp
+```cpp
 #include <glext.h>
 PFNGLUSEPROGRAMPROC glUseProgram;
 
@@ -238,7 +224,8 @@ glUseProgram = (PFNGLUSEPROGRAMPROC)wglGetProcAddress("glUseProgram");
 ```
 
 
-
+```
+```
 ### Pixel Format Extension
 
 之前小节描述的PFD struct有一个巨大的漏洞： 不可扩展。因此，有一个可扩展的pixel format:
@@ -258,7 +245,6 @@ BOOL wglChoosePixelFormatARB(   HDC hdc,
 该函数的作用和ChoosePixelFormat作用一样，这里的入口参数从PFD struct 变成了属性和值的列表。
 
 
-
 **piAttribIList**: 一系列整数属性， 每个元素由属性/值(attribute/value) 构成。 属性0表示属性列表结束，并且不需要值。
 
 **pfAttribFList** 是浮点属性列表（a list of floating-point attributes), 每个元素由属性/值构成。 如何将属性是整数的类型放入到float类型的列表呢？ 必须非常小心，如果是C++， 需要使用static_cast ， 如果是C, 其他技巧使C保持整数和浮点数之间的位模式相同。
@@ -268,7 +254,6 @@ BOOL wglChoosePixelFormatARB(   HDC hdc,
 **piFormats**: 包含条目的列表
 
 **nNumFormats** 是一个返回值，表示有多少条目存储在上述列表中
-
 
 
 如果上述函数返回False， 表示未找到合适的pixel format. 尽管没有找到pixel format, piFormat 列表处于未定义的状态。
@@ -304,13 +289,11 @@ WGL_ARB_multisample(...)        // Allows for multisampled framebuffers.
 一旦获取了pixel format的数量，接下来就可以调用**SetPixelFormat** 设置
 
 
-
 ### 创建带有属性的上下文
 
 WGL_ARB_create_context， 替代之前的wglCreateContext. 就像wglChoosePixelFormatARB, 该接口也增加了扩展机制。
 如果上下文没有暴露这个扩展， 则不能使用该特性，而只能使用常规的wglCreateContext。
 如果明确声明了这个扩展，则具有以下新的特性：
-
 
 
 保证获取到的OpenGL Context 版本不低于3.0
@@ -336,10 +319,9 @@ wglMakeCurrent(hdc = hdc_1, hglrc = gc_2);
 ```
 
 
-
 ### 示例
 
-```
+```C++
 #include <Windows.h>
 #include <GL/gl.h>
 #include <tchar.h>
@@ -703,8 +685,6 @@ WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmd_line, int show)
 
     ShowWindow(window, show);
     UpdateWindow(window);
-
-
 
 
     bool running = true;

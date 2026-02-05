@@ -18,13 +18,6 @@ MyLibraryProject/
 └── src/                 # 存放源代码文件
     └── MyLibrary.cpp
 AI写代码
-1
-2
-3
-4
-5
-6
-7
 3. 编写代码
 MyLibrary.h
 这个头文件中定义了 DLL 导出和导入的宏，用于控制符号的可见性：
@@ -44,42 +37,27 @@ AI写代码
 cpp
 运行
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 MYLIBRARY_EXPORTS 宏应在 DLL 项目的编译设置中定义，但不在使用 DLL 的客户端项目中定义。
 MyLibrary.cpp
 实现你的公共函数：
 
+```cpp
 #include "../include/MyLibrary.h"
+```
 #include <iostream>
 
 extern "C" {
     MYLIB_API void sayHello() {
+```cpp
         std::cout << "Hello from DLL!" << std::endl;
     }
 }
 AI写代码
 cpp
 运行
-1
-2
-3
-4
-5
-6
-7
-8
 4. 编写 CMake 配置
 CMakeLists.txt
+```
 设置你的 CMake 配置，以自动化编译和链接过程：
 
 cmake_minimum_required(VERSION 3.10)
@@ -101,22 +79,6 @@ set_target_properties(MyLibrary PROPERTIES
 AI写代码
 cmake
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
 5. 构建 DLL
 使用 CMake 和 Visual Studio 的编译器构建你的 DLL：
 
@@ -126,10 +88,6 @@ cmake ..
 cmake --build . --config Release
 AI写代码
 bash
-1
-2
-3
-4
 6. 使用 DLL
 为客户端应用程序创建另一个 CMake 项目，并链接到 .lib 文件：
 
@@ -148,17 +106,8 @@ target_link_libraries(MyExecutable "${CMAKE_BINARY_DIR}/MyLibrary/lib/MyLibrary.
 AI写代码
 cmake
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 main.cpp
+```cpp
 #include "MyLibrary.h"
 
 int main() {
@@ -168,13 +117,8 @@ int main() {
 AI写代码
 cpp
 运行
-1
-2
-3
-4
-5
-6
 7. 编译和运行客户端应用程序
+```
 确保 .dll 文件在可执行文件可访问的路径上，如放在同一目录或通过 PATH 环境变量指定的目录中。
 
 8. 总结

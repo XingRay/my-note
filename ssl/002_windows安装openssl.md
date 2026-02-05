@@ -5,29 +5,9 @@
 https://github.com/openssl/openssl
 
 
-
 下载已经编译好的安装包
 
 https://slproweb.com/products/Win32OpenSSL.html
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Windows 下OpenSSL安装过程及错误解决办法
@@ -54,9 +34,6 @@ http://www.openssl.org/source/
 以下是我在网上找到的配置OpenSSL的方法，这里我上链接吧：https://blog.csdn.net/houjixin/article/details/25806151
 
 
-
-
-
 注意：
 我按照他的方法进行操作，出现两种错误，
 1.
@@ -64,31 +41,22 @@ http://www.openssl.org/source/
 tmp32dll\sha1-586.asm(1432) : error A2070:invalid instruction operands
 tmp32dll\sha1-586.asm(1576) : error A2070:invalid instruction operands
 NMAKE : fatal error U1077: “"E:\Visuol Studio 2012\VC\BIN\cl.EXE"”: 返回代码“0x1”
-1
-2
-3
 2.
 
 tmp32dll\sha1-586.asm(1432) : error A2070:invalid instruction operands
 tmp32dll\sha1-586.asm(1576) : error A2070:invalid instruction operandsN
 MAKE : fatal error U1077: “"E:\Visuol Studio 2012\VC\BIN\cl.EXE"”: 返回代码“0x2”
-1
-2
-3
 废了九牛二虎之力才找到了解决的方法，
 针对第一种错误的解决方法是：禁用汇编
 
 perl Configure VC-WIN32 no-asm
-1
 第二种错误的解决方法为：这个在openssl官方网站上找到了,方法是禁用IPV6
 可以参考：http://rt.openssl.org/Ticket/Display.html?id=2097&user=guest&pass=guest
 
 perl Configure VC-WIN32 -DOPENSSL_USE_IPV6=0
-1
 最终我改成了：
 
 perl Configure VC-WIN32 -DOPENSSL_USE_IPV6=0 no-asm
-1
 到这里很开心啊，刷刷的一直在编译，说明成功啦，duangduangduang，结果出现了：
 
   link /nologo /subsystem:console /opt:ref /debug /dll /out:out32dll\libeay32.dll /def:ms/LIBEAY32.def @C:\Users\ADMINI~1\AppData\Local\Temp\nmE10C.tmp
@@ -101,17 +69,6 @@ sha256.obj : error LNK2019: 无法解析的外部符号 _sha256_block_data_order
 sha512.obj : error LNK2019: 无法解析的外部符号 _sha512_block_data_order，该符号在函数 _SHA512_Final 中被引用
 out32dll\libeay32.dll : fatal error LNK1120: 6 个无法解析的外部命令
 NMAKE : fatal error U1077: “"E:\Visuol Studio 2012\VC\BIN\link.EXE"”: 返回代码“0x460”
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 
 这就很蛋疼啊，但是我还是没有放弃，这个问题我觉得不是很难解决。后来我在百度上找到了这样一篇文章：https://blog.csdn.net/mfcing/article/details/43059105，其实跟出现的这个错误并没有什么相关联的，但是我看到了一条这样的代码：
 
@@ -129,37 +86,18 @@ NMAKE : fatal error U1077: “"E:\Visuol Studio 2012\VC\BIN\link.EXE"”: 返回
     nmake -f ms\ntdll.mak clean
     清除上次静态库的编译，以便重新编译：
     nmake -f ms\nt.mak clean
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
 我就在想是不是跟我之前编译过了一次有关系？于是我敲了：
 
 nmake -f ms\ntdll.mak clean
-1
 再从头来了一遍
 
 1.perl Configure VC-WIN32 -DOPENSSL_USE_IPV6=0 no-asm
 2.ms\do_ms.bat
 3.nmake -f ms\ntdll.mak
-1
-2
-3
 刷刷刷刷刷刷。。。。。。。。。。等了一分多钟，，，终于可以了！
 
 
 我又执行了一下nmake -f ms\ntdll.mak test 测试了一下。
-
 
 
 说明：本次测试在WIN10 64 VS2012 openssl-1.0.2o 版本测试成功，其他情况并不确保成功。

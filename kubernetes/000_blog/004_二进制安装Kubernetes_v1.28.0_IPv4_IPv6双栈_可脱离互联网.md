@@ -4,7 +4,6 @@
 https://www.oiox.cn/index.php/archives/381/
 
 
-
 二进制安装Kubernetes（k8s）v1.28.0
 
 https://github.com/cby-chen/Kubernetes
@@ -22,17 +21,13 @@ kubernetes（k8s）二进制高可用安装部署，支持IPv4+IPv6双栈。
 若不要IPv6 ，不给网卡配置IPv6即可，不要对IPv6相关配置删除或操作，否则会出问题。
 
 
-
 强烈建议在Github上查看文档 ！！！
-
 
 
 Github出问题会更新文档，并且后续尽可能第一时间更新新版本文档 ！！！
 
 
-
 手动项目地址：https://github.com/cby-chen/Kubernetes
-
 
 
 # 1.环境
@@ -53,11 +48,9 @@ service：10.96.0.0/12
 pod：172.16.0.0/12
 
 
-
 安装包已经整理好：https://ghproxy.com/https://github.com/cby-chen/Kubernetes/releases/download/v1.28.0/kubernetes-v1.28.0.tar
 
 ## 1.1.k8s基础系统环境配置
-
 
 
 ### 1.2.配置IP
@@ -106,8 +99,6 @@ ssh root@192.168.0.156 "nmcli con mod eth0 ipv4.addresses 192.168.0.32/24; nmcli
 ssh root@192.168.0.164 "nmcli con mod eth0 ipv4.addresses 192.168.0.33/24; nmcli con mod eth0 ipv4.gateway  192.168.0.1; nmcli con mod eth0 ipv4.method manual; nmcli con mod eth0 ipv4.dns "8.8.8.8"; nmcli con up eth0"
 ssh root@192.168.0.166 "nmcli con mod eth0 ipv4.addresses 192.168.0.34/24; nmcli con mod eth0 ipv4.gateway  192.168.0.1; nmcli con mod eth0 ipv4.method manual; nmcli con mod eth0 ipv4.dns "8.8.8.8"; nmcli con up eth0"
 ssh root@192.168.0.167 "nmcli con mod eth0 ipv4.addresses 192.168.0.35/24; nmcli con mod eth0 ipv4.gateway  192.168.0.1; nmcli con mod eth0 ipv4.method manual; nmcli con mod eth0 ipv4.dns "8.8.8.8"; nmcli con up eth0"
-
-
 
 
 nmcli con mod eth0 ipv4.gateway 192.168.0.200; nmcli con mod eth0 ipv4.method manual; nmcli con mod eth0 ipv4.dns "8.8.8.8"; nmcli con up eth0
@@ -192,7 +183,6 @@ DNS2=2400:3200::1
 [root@localhost ~]# 
 
 
-
 # 参数解释
 # 
 # TYPE=Ethernet
@@ -263,7 +253,6 @@ DNS2=2400:3200::1
 ```
 
 
-
 ### 1.3.设置主机名
 
 ```shell
@@ -281,7 +270,6 @@ hostnamectl set-hostname k8s-node02
 # 参数: k8s-master01
 # 解释: 这是要设置的主机名，将系统的主机名设置为"k8s-master01"。
 ```
-
 
 
 ### 1.4.配置yum源
@@ -324,7 +312,6 @@ sed -e 's|^mirrorlist=|#mirrorlist=|g' -e 's|^#baseurl=http://mirror.centos.org/
 ```
 
 
-
 ### 1.5.安装一些必备工具
 
 ```shell
@@ -339,11 +326,9 @@ yum update -y && yum -y install wget psmisc vim net-tools nfs-utils telnet yum-u
 ```
 
 
-
 #### 1.5.1 下载离线所需文件(可选)
 
 在互联网服务器上安装一个一模一样的系统进行下载所需包
-
 
 
 ##### CentOS7
@@ -407,7 +392,6 @@ yum install /root/centos7/* --skip-broken -y
 ```
 
 
-
 ##### CentOS8
 
 ```shell
@@ -456,7 +440,6 @@ yum clean all
 yum makecache
 yum install /root/centos8/* --skip-broken -y
 ```
-
 
 
 ##### Ubuntu 下载包和依赖
@@ -514,7 +497,6 @@ deb file:////root/ ubuntu/
 # 安装deb包
 apt install ./*.deb
 ```
-
 
 
 ### 1.6.选择性下载需要工具
@@ -596,14 +578,12 @@ done
 ```
 
 
-
 ### 1.7.关闭防火墙
 
 ```shell
 # Ubuntu忽略，CentOS执行
 systemctl disable --now firewalld
 ```
-
 
 
 ### 1.8.关闭SELinux
@@ -621,7 +601,6 @@ sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/selinux/config
 # sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/selinux/config
 # 该命令使用 sed 工具来编辑 /etc/selinux/config 文件。其中 '-i' 参数表示直接修改原文件，而不是输出到终端或另一个文件。's#SELINUX=enforcing#SELINUX=disabled#g' 是 sed 的替换命令，它将文件中所有的 "SELINUX=enforcing" 替换为 "SELINUX=disabled"。这里的 '#' 是分隔符，用于替代传统的 '/' 分隔符，以避免与路径中的 '/' 冲突。
 ```
-
 
 
 ### 1.9.关闭交换分区
@@ -642,7 +621,6 @@ cat /etc/fstab
 # swapoff -a: 这个命令用于关闭所有启用的交换分区。
 # sysctl -w vm.swappiness=0: 这个命令用于修改vm.swappiness参数的值为0，表示系统在物理内存充足时更倾向于使用物理内存而非交换分区。
 ```
-
 
 
 ### 1.10.网络配置（俩种方式二选一）
@@ -673,7 +651,6 @@ systemctl restart NetworkManager
 # 
 # 通过使用这个参数，可以将特定的接口排除在 NetworkManager 的管理范围之外，以便其他工具或进程可以独立地管理和配置这些接口。
 ```
-
 
 
 ### 1.11.进行时间同步
@@ -745,7 +722,6 @@ chronyc sources -v
 ```
 
 
-
 ### 1.12.配置ulimit
 
 ```shell
@@ -781,7 +757,6 @@ EOF
 ```
 
 
-
 ### 1.13.配置免密登录
 
 ```shell
@@ -814,7 +789,6 @@ done
 ```
 
 
-
 ### 1.14.添加启用源
 
 ```shell
@@ -833,7 +807,6 @@ sed -i "s@elrepo.org/linux@mirrors.tuna.tsinghua.edu.cn/elrepo@g" /etc/yum.repos
 # 查看可用安装包
 yum  --disablerepo="*"  --enablerepo="elrepo-kernel"  list  available
 ```
-
 
 
 ### 1.15.升级内核至4.18版本以上
@@ -866,7 +839,6 @@ yum install https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm -y ; s
 # 离线版本 
 yum install -y /root/cby/kernel-lt-*-1.el7.elrepo.x86_64.rpm ; grubby --set-default $(ls /boot/vmlinuz-* | grep elrepo) ; grubby --default-kernel ; reboot 
 ```
-
 
 
 ### 1.16.安装ipvsadm
@@ -945,7 +917,6 @@ libcrc32c              16384  3 nf_conntrack,xfs,ip_vs
 # ipip
 # 这是一个内核模块，用于实现 IP 封装在 IP（IP-over-IP）的隧道功能。它可以在不同网络之间创建虚拟隧道来传输 IP 数据包。
 ```
-
 
 
 ### 1.17.修改内核参数
@@ -1063,7 +1034,6 @@ sysctl --system
 ```
 
 
-
 ### 1.18.所有节点配置hosts本地解析
 
 ```shell
@@ -1081,11 +1051,9 @@ EOF
 ```
 
 
-
 # 2.k8s基本组件安装
 
 **注意 ： 2.1 和 2.2 二选其一即可**
-
 
 
 ## 2.1.安装Containerd作为Runtime （推荐）
@@ -1190,7 +1158,6 @@ EOF
 ```
 
 
-
 ### 2.1.1配置Containerd所需的模块
 
 ```shell
@@ -1211,7 +1178,6 @@ EOF
 ```
 
 
-
 ### 2.1.2加载模块
 
 ```shell
@@ -1225,7 +1191,6 @@ systemctl restart systemd-modules-load.service
 # 将上述参数结合在一起来解释`systemctl restart systemd-modules-load.service`的含义：
 # 这个命令用于重新启动系统服务`systemd-modules-load.service`，它是负责加载内核模块的服务。在重新启动该服务后，系统会重新加载所有的内核模块。
 ```
-
 
 
 ### 2.1.3配置Containerd所需的内核
@@ -1252,7 +1217,6 @@ sysctl --system
 # 
 # 这些参数的值可以通过修改操作系统的配置文件（通常是'/etc/sysctl.conf'）来进行设置。修改完成后，需要使用'sysctl -p'命令重载配置文件使参数生效。
 ```
-
 
 
 ### 2.1.4创建Containerd的配置文件
@@ -1305,7 +1269,6 @@ EOF
 ```
 
 
-
 ### 2.1.5启动并设置为开机启动
 
 ```shell
@@ -1327,7 +1290,6 @@ systemctl restart containerd.service
 systemctl status containerd.service
 # 显示docker.service单元的当前状态，包括运行状态、是否启用等信息。
 ```
-
 
 
 ### 2.1.6配置crictl客户端连接的运行时位置
@@ -1371,9 +1333,7 @@ crictl info
 ```
 
 
-
 ## 2.2 安装docker作为Runtime
-
 
 
 ### 2.2.1 解压docker程序
@@ -1387,7 +1347,6 @@ tar xf docker-*.tgz
 #拷贝二进制文件
 cp docker/* /usr/bin/
 ```
-
 
 
 ### 2.2.2 创建containerd的service文件
@@ -1446,7 +1405,6 @@ EOF
 # 设置开机自启
 systemctl enable --now containerd.service
 ```
-
 
 
 ### 2.2.3 准备docker的service文件
@@ -1523,7 +1481,6 @@ EOF
 ```
 
 
-
 ### 2.2.4 准备docker的socket文件
 
 ```shell
@@ -1558,7 +1515,6 @@ EOF
 # 
 # 该配置文件的作用是为Docker提供API访问的通道，它监听在/var/run/docker.sock上，具有root用户权限，但只接受docker用户组的成员的连接，并且其他用户无法访问。这样，只有docker用户组的成员可以通过该socket与Docker守护进程进行通信。
 ```
-
 
 
 ### 2.2.5 配置加速器
@@ -1596,7 +1552,6 @@ EOF
 ```
 
 
-
 ### 2.2.6 启动docker
 
 ```shell
@@ -1624,10 +1579,11 @@ systemctl restart docker.service
 systemctl status docker.service
 # 显示docker.service单元的当前状态，包括运行状态、是否启用等信息。
 
+```bash
 docker info
+```
 #验证
 ```
-
 
 
 ### 2.2.7 解压cri-docker
@@ -1643,7 +1599,6 @@ tar xvf cri-dockerd-*.amd64.tgz
 cp -r cri-dockerd/  /usr/bin/
 chmod +x /usr/bin/cri-dockerd/cri-dockerd
 ```
-
 
 
 ### 2.2.8 写入启动cri-docker配置文件
@@ -1707,7 +1662,6 @@ EOF
 ```
 
 
-
 ### 2.2.9 写入cri-docker的socket配置文件
 
 ```shell
@@ -1745,7 +1699,6 @@ EOF
 ```
 
 
-
 ### 2.2.10 启动cri-docker
 
 ```shell
@@ -1763,9 +1716,7 @@ systemctl status docker.service
 ```
 
 
-
 ## 2.3.k8s与etcd下载及安装（仅在master01操作）
-
 
 
 ### 2.3.1解压k8s安装包
@@ -1813,7 +1764,6 @@ containerd-stress        etcd         kubelet
 ```
 
 
-
 ### 2.3.2查看版本
 
 ```shell
@@ -1824,7 +1774,6 @@ etcdctl version: 3.5.9
 API version: 3.5
 [root@k8s-master01 ~]# 
 ```
-
 
 
 ### 2.3.3将组件发送至其他k8s节点
@@ -1855,7 +1804,6 @@ mkdir -p /opt/cni/bin
 ```
 
 
-
 ## 2.3创建证书相关文件
 
 ```shell
@@ -1864,7 +1812,6 @@ https://github.com/cby-chen/Kubernetes/
 https://github.com/cby-chen/Kubernetes/tags
 https://github.com/cby-chen/Kubernetes/releases/download/v1.27.3/kubernetes-v1.27.3.tar
 ```
-
 
 
 # 3.相关证书生成
@@ -1883,11 +1830,9 @@ chmod +x /usr/local/bin/cfssl /usr/local/bin/cfssljson
 ```
 
 
-
 ## 3.1.生成etcd证书
 
 特别说明除外，以下操作在所有master节点操作
-
 
 
 ### 3.1.1所有master节点创建证书存放目录
@@ -1895,7 +1840,6 @@ chmod +x /usr/local/bin/cfssl /usr/local/bin/cfssljson
 ```shell
 mkdir /etc/etcd/ssl -p
 ```
-
 
 
 ### 3.1.2master01节点生成etcd证书
@@ -2045,7 +1989,6 @@ cfssl gencert \
 ```
 
 
-
 ### 3.1.3将证书复制到其他节点
 
 ```shell
@@ -2056,11 +1999,9 @@ for NODE in $Master; do ssh $NODE "mkdir -p /etc/etcd/ssl"; for FILE in etcd-ca-
 ```
 
 
-
 ## 3.2.生成k8s相关证书
 
 特别说明除外，以下操作在所有master节点操作
-
 
 
 ### 3.2.1 所有k8s节点创建证书存放目录
@@ -2068,7 +2009,6 @@ for NODE in $Master; do ssh $NODE "mkdir -p /etc/etcd/ssl"; for FILE in etcd-ca-
 ```shell
 mkdir -p /etc/kubernetes/pki
 ```
-
 
 
 ### 3.2.2 master01节点生成k8s证书
@@ -2183,7 +2123,6 @@ cfssl gencert   \
 ```
 
 
-
 ### 3.2.3 生成apiserver聚合证书
 
 ```shell
@@ -2262,7 +2201,6 @@ cfssl gencert  \
 ```
 
 
-
 ### 3.2.4 生成controller-manage的证书
 
 在《5.高可用配置》选择使用那种高可用方案
@@ -2329,11 +2267,13 @@ cfssl gencert \
 # 在《5.高可用配置》选择使用那种高可用方案
 # 若使用 haproxy、keepalived 那么为 `--server=https://192.168.0.36:8443`
 # 若使用 nginx方案，那么为 `--server=https://127.0.0.1:8443`
+```bash
 kubectl config set-cluster kubernetes \
      --certificate-authority=/etc/kubernetes/pki/ca.pem \
      --embed-certs=true \
      --server=https://127.0.0.1:8443 \
      --kubeconfig=/etc/kubernetes/controller-manager.kubeconfig
+```
 # kubectl config set-cluster命令用于配置集群信息。
 # --certificate-authority选项指定了集群的证书颁发机构（CA）的路径，这个CA会验证kube-apiserver提供的证书是否合法。
 # --embed-certs选项用于将证书嵌入到生成的kubeconfig文件中，这样就不需要在kubeconfig文件中单独指定证书文件路径。
@@ -2343,10 +2283,12 @@ kubectl config set-cluster kubernetes \
 
 
 # 设置一个环境项，一个上下文
+```bash
 kubectl config set-context system:kube-controller-manager@kubernetes \
     --cluster=kubernetes \
     --user=system:kube-controller-manager \
     --kubeconfig=/etc/kubernetes/controller-manager.kubeconfig
+```
 # 这个命令用于配置 Kubernetes 控制器管理器的上下文信息。下面是各个参数的详细解释：
 # 1. `kubectl config set-context system:kube-controller-manager@kubernetes`: 设置上下文的名称为 `system:kube-controller-manager@kubernetes`，这是一个标识符，用于唯一标识该上下文。
 # 2. `--cluster=kubernetes`: 指定集群的名称为 `kubernetes`，这是一个现有集群的标识符，表示要管理的 Kubernetes 集群。
@@ -2355,13 +2297,14 @@ kubectl config set-context system:kube-controller-manager@kubernetes \
 # 通过运行这个命令，可以将这些配置信息保存到 `/etc/kubernetes/controller-manager.kubeconfig` 文件中，以便在后续的操作中使用。
 
 
-
 # 设置一个用户项
+```bash
 kubectl config set-credentials system:kube-controller-manager \
      --client-certificate=/etc/kubernetes/pki/controller-manager.pem \
      --client-key=/etc/kubernetes/pki/controller-manager-key.pem \
      --embed-certs=true \
      --kubeconfig=/etc/kubernetes/controller-manager.kubeconfig
+```
 # 上述命令是用于设置 Kubernetes 的 controller-manager 组件的客户端凭据。下面是每个参数的详细解释：
 # 
 # - `kubectl config`: 是使用 kubectl 命令行工具的配置子命令。
@@ -2376,15 +2319,16 @@ kubectl config set-credentials system:kube-controller-manager \
 
 
 # 设置默认环境
+```bash
 kubectl config use-context system:kube-controller-manager@kubernetes \
      --kubeconfig=/etc/kubernetes/controller-manager.kubeconfig
+```
 # 这个命令是用来指定kubectl使用指定的上下文环境来执行操作。上下文环境是kubectl用来确定要连接到哪个Kubernetes集群以及使用哪个身份验证信息的配置。
 # 
 # 在这个命令中，`kubectl config use-context`是用来设置当前上下文环境的命令。 `system:kube-controller-manager@kubernetes`是指定的上下文名称，它告诉kubectl要使用的Kubernetes集群和身份验证信息。 
 # `--kubeconfig=/etc/kubernetes/controller-manager.kubeconfig`是用来指定使用的kubeconfig文件的路径。kubeconfig文件是存储集群连接和身份验证信息的配置文件。
 # 通过执行这个命令，kubectl将使用指定的上下文来执行后续的操作，包括部署和管理Kubernetes资源。
 ```
-
 
 
 ### 3.2.5 生成kube-scheduler的证书
@@ -2450,16 +2394,17 @@ cfssl gencert \
 # 总结来说，这个命令的目的是根据根证书、根证书私钥、证书配置文件、CSR文件等生成Kubernetes Scheduler的证书和私钥文件。
 
 
-
 # 在《5.高可用配置》选择使用那种高可用方案
 # 若使用 haproxy、keepalived 那么为 `--server=https://192.168.0.36:8443`
 # 若使用 nginx方案，那么为 `--server=https://127.0.0.1:8443`
 
+```bash
 kubectl config set-cluster kubernetes \
      --certificate-authority=/etc/kubernetes/pki/ca.pem \
      --embed-certs=true \
      --server=https://127.0.0.1:8443 \
      --kubeconfig=/etc/kubernetes/scheduler.kubeconfig
+```
 # 该命令用于配置一个名为"kubernetes"的集群，并将其应用到/etc/kubernetes/scheduler.kubeconfig文件中。
 # 
 # 该命令的解释如下：
@@ -2469,11 +2414,13 @@ kubectl config set-cluster kubernetes \
 # - `--server=https://127.0.0.1:8443`: 指定集群的 API server 位置。
 # - `--kubeconfig=/etc/kubernetes/scheduler.kubeconfig`: 指定要保存 kubeconfig 文件的路径和名称。
 
+```bash
 kubectl config set-credentials system:kube-scheduler \
      --client-certificate=/etc/kubernetes/pki/scheduler.pem \
      --client-key=/etc/kubernetes/pki/scheduler-key.pem \
      --embed-certs=true \
      --kubeconfig=/etc/kubernetes/scheduler.kubeconfig
+```
 # 这段命令是用于设置 kube-scheduler 组件的身份验证凭据，并生成相应的 kubeconfig 文件。
 # 
 # 解释每个选项的含义如下：
@@ -2485,10 +2432,12 @@ kubectl config set-credentials system:kube-scheduler \
 # 
 # 该命令的目的是为 kube-scheduler 组件生成一个 kubeconfig 文件，以便进行身份验证和访问集群资源。kubeconfig 文件是一个包含了连接到 Kubernetes 集群所需的所有配置信息的文件，包括服务器地址、证书和秘钥等。
 
+```bash
 kubectl config set-context system:kube-scheduler@kubernetes \
      --cluster=kubernetes \
      --user=system:kube-scheduler \
      --kubeconfig=/etc/kubernetes/scheduler.kubeconfig
+```
 # 该命令用于设置一个名为"system:kube-scheduler@kubernetes"的上下文，具体配置如下：
 # 
 # 1. --cluster=kubernetes: 指定集群的名称为"kubernetes"，这个集群是在当前的kubeconfig文件中已经定义好的。
@@ -2497,8 +2446,10 @@ kubectl config set-context system:kube-scheduler@kubernetes \
 # 
 # 这个命令的作用是将上述的配置信息保存到指定的kubeconfig文件中，以便后续使用该文件进行认证和授权访问Kubernetes集群。
 
+```bash
 kubectl config use-context system:kube-scheduler@kubernetes \
      --kubeconfig=/etc/kubernetes/scheduler.kubeconfig
+```
 # 上述命令是使用`kubectl`命令来配置Kubernetes集群中的调度器组件。
 # 
 # `kubectl config use-context`命令用于切换`kubectl`当前使用的上下文。上下文是Kubernetes集群、用户和命名空间的组合，用于确定`kubectl`的连接目标。下面解释这个命令的不同部分：
@@ -2509,7 +2460,6 @@ kubectl config use-context system:kube-scheduler@kubernetes \
 # 
 # 通过运行以上命令，`kubectl`将使用指定的上下文和配置文件，以便在以后的命令中能正确地与Kubernetes集群中的调度器组件进行交互。
 ```
-
 
 
 ### 3.2.6 生成admin的证书配置
@@ -2576,11 +2526,13 @@ cfssl gencert \
 # 若使用 haproxy、keepalived 那么为 `--server=https://192.168.0.36:8443`
 # 若使用 nginx方案，那么为 `--server=https://127.0.0.1:8443`
 
+```bash
 kubectl config set-cluster kubernetes     \
   --certificate-authority=/etc/kubernetes/pki/ca.pem     \
   --embed-certs=true     \
   --server=https://127.0.0.1:8443     \
   --kubeconfig=/etc/kubernetes/admin.kubeconfig
+```
 # 该命令用于配置一个名为"kubernetes"的集群，并将其应用到/etc/kubernetes/scheduler.kubeconfig文件中。
 # 
 # 该命令的解释如下：
@@ -2590,11 +2542,13 @@ kubectl config set-cluster kubernetes     \
 # - `--server=https://127.0.0.1:8443`: 指定集群的 API server 位置。
 # - `--kubeconfig=/etc/kubernetes/admin.kubeconfig`: 指定要保存 kubeconfig 文件的路径和名称。
 
+```bash
 kubectl config set-credentials kubernetes-admin  \
   --client-certificate=/etc/kubernetes/pki/admin.pem     \
   --client-key=/etc/kubernetes/pki/admin-key.pem     \
   --embed-certs=true     \
   --kubeconfig=/etc/kubernetes/admin.kubeconfig
+```
 # 这段命令是用于设置 kubernetes-admin 组件的身份验证凭据，并生成相应的 kubeconfig 文件。
 # 
 # 解释每个选项的含义如下：
@@ -2607,10 +2561,12 @@ kubectl config set-credentials kubernetes-admin  \
 # 该命令的目的是为 admin 组件生成一个 kubeconfig 文件，以便进行身份验证和访问集群资源。kubeconfig 文件是一个包含了连接到 Kubernetes 集群所需的所有配置信息的文件，包括服务器地址、证书和秘钥等。
 
 
+```bash
 kubectl config set-context kubernetes-admin@kubernetes    \
   --cluster=kubernetes     \
   --user=kubernetes-admin     \
   --kubeconfig=/etc/kubernetes/admin.kubeconfig
+```
 # 该命令用于设置一个名为"kubernetes-admin@kubernetes"的上下文，具体配置如下：
 # 
 # 1. --cluster=kubernetes: 指定集群的名称为"kubernetes"，这个集群是在当前的kubeconfig文件中已经定义好的。
@@ -2620,7 +2576,9 @@ kubectl config set-context kubernetes-admin@kubernetes    \
 # 这个命令的作用是将上述的配置信息保存到指定的kubeconfig文件中，以便后续使用该文件进行认证和授权访问Kubernetes集群。
 
 
+```bash
 kubectl config use-context kubernetes-admin@kubernetes  --kubeconfig=/etc/kubernetes/admin.kubeconfig
+```
 # 上述命令是使用`kubectl`命令来配置Kubernetes集群中的调度器组件。
 # 
 # `kubectl config use-context`命令用于切换`kubectl`当前使用的上下文。上下文是Kubernetes集群、用户和命名空间的组合，用于确定`kubectl`的连接目标。下面解释这个命令的不同部分：
@@ -2631,7 +2589,6 @@ kubectl config use-context kubernetes-admin@kubernetes  --kubeconfig=/etc/kubern
 # 
 # 通过运行以上命令，`kubectl`将使用指定的上下文和配置文件，以便在以后的命令中能正确地与Kubernetes集群中的调度器组件进行交互。
 ```
-
 
 
 ### 3.2.7 创建kube-proxy证书
@@ -2703,11 +2660,13 @@ cfssl gencert \
 # 若使用 haproxy、keepalived 那么为 `--server=https://192.168.0.36:8443`
 # 若使用 nginx方案，那么为 `--server=https://127.0.0.1:8443`
 
+```bash
 kubectl config set-cluster kubernetes     \
   --certificate-authority=/etc/kubernetes/pki/ca.pem     \
   --embed-certs=true     \
   --server=https://127.0.0.1:8443     \
   --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig
+```
 # 该命令用于配置一个名为"kubernetes"的集群，并将其应用到/etc/kubernetes/kube-proxy.kubeconfig文件中。
 # 
 # 该命令的解释如下：
@@ -2717,11 +2676,13 @@ kubectl config set-cluster kubernetes     \
 # - `--server=https://127.0.0.1:8443`: 指定集群的 API server 位置。
 # - `--kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig`: 指定要保存 kubeconfig 文件的路径和名称。
 
+```bash
 kubectl config set-credentials kube-proxy  \
   --client-certificate=/etc/kubernetes/pki/kube-proxy.pem     \
   --client-key=/etc/kubernetes/pki/kube-proxy-key.pem     \
   --embed-certs=true     \
   --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig
+```
 # 这段命令是用于设置 kube-proxy 组件的身份验证凭据，并生成相应的 kubeconfig 文件。
 # 
 # 解释每个选项的含义如下：
@@ -2733,10 +2694,12 @@ kubectl config set-credentials kube-proxy  \
 # 
 # 该命令的目的是为 kube-proxy 组件生成一个 kubeconfig 文件，以便进行身份验证和访问集群资源。kubeconfig 文件是一个包含了连接到 Kubernetes 集群所需的所有配置信息的文件，包括服务器地址、证书和秘钥等。
 
+```bash
 kubectl config set-context kube-proxy@kubernetes    \
   --cluster=kubernetes     \
   --user=kube-proxy     \
   --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig
+```
 # 该命令用于设置一个名为"kube-proxy@kubernetes"的上下文，具体配置如下：
 # 
 # 1. --cluster=kubernetes: 指定集群的名称为"kubernetes"，这个集群是在当前的kubeconfig文件中已经定义好的。
@@ -2745,7 +2708,9 @@ kubectl config set-context kube-proxy@kubernetes    \
 # 
 # 这个命令的作用是将上述的配置信息保存到指定的kubeconfig文件中，以便后续使用该文件进行认证和授权访问Kubernetes集群。
 
+```bash
 kubectl config use-context kube-proxy@kubernetes  --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig
+```
 # 上述命令是使用`kubectl`命令来配置Kubernetes集群中的调度器组件。
 # 
 # `kubectl config use-context`命令用于切换`kubectl`当前使用的上下文。上下文是Kubernetes集群、用户和命名空间的组合，用于确定`kubectl`的连接目标。下面解释这个命令的不同部分：
@@ -2756,7 +2721,6 @@ kubectl config use-context kube-proxy@kubernetes  --kubeconfig=/etc/kubernetes/k
 # 
 # 通过运行以上命令，`kubectl`将使用指定的上下文和配置文件，以便在以后的命令中能正确地与Kubernetes集群中的调度器组件进行交互。
 ```
-
 
 
 ### 3.2.8 创建ServiceAccount Key ——secret
@@ -2786,7 +2750,6 @@ openssl rsa -in /etc/kubernetes/pki/sa.key -pubout -out /etc/kubernetes/pki/sa.p
 ```
 
 
-
 ### 3.2.9 将证书发送到其他master节点
 
 ```shell
@@ -2795,7 +2758,6 @@ openssl rsa -in /etc/kubernetes/pki/sa.key -pubout -out /etc/kubernetes/pki/sa.p
 
 for NODE in k8s-master02 k8s-master03; do  for FILE in $(ls /etc/kubernetes/pki | grep -v etcd); do  scp /etc/kubernetes/pki/${FILE} $NODE:/etc/kubernetes/pki/${FILE}; done;  for FILE in admin.kubeconfig controller-manager.kubeconfig scheduler.kubeconfig; do  scp /etc/kubernetes/${FILE} $NODE:/etc/kubernetes/${FILE}; done; done
 ```
-
 
 
 ### 3.2.10 查看证书
@@ -2814,13 +2776,10 @@ ca.pem             front-proxy-client.pem
 
 # 一共26个就对了
 ls /etc/kubernetes/pki/ |wc -l
-26
 ```
 
 
-
 # 4.k8s系统组件配置
-
 
 
 ## 4.1.etcd配置
@@ -2858,7 +2817,6 @@ ls /etc/kubernetes/pki/ |wc -l
 
 这些参数和选项可以根据实际需求进行调整和配置。
 ```
-
 
 
 ### 4.1.1master01配置
@@ -2916,7 +2874,6 @@ EOF
 ```
 
 
-
 ### 4.1.2master02配置
 
 ```shell
@@ -2970,7 +2927,6 @@ log-outputs: [default]
 force-new-cluster: false
 EOF
 ```
-
 
 
 ### 4.1.3master03配置
@@ -3028,9 +2984,7 @@ EOF
 ```
 
 
-
 ## 4.2.创建service（所有master节点操作）
-
 
 
 ### 4.2.1创建etcd.service并启动
@@ -3067,7 +3021,6 @@ EOF
 ```
 
 
-
 ### 4.2.2创建etcd证书目录
 
 ```shell
@@ -3086,7 +3039,6 @@ systemctl restart etcd.service
 systemctl status etcd.service
 # etcd.service单元的当前状态，包括运行状态、是否启用等信息。
 ```
-
 
 
 ### 4.2.3查看etcd状态
@@ -3115,10 +3067,8 @@ etcdctl --endpoints="192.168.0.33:2379,192.168.0.32:2379,192.168.0.31:2379" --ca
 # 通过执行这个命令，可以获取到etcd集群节点的健康状态，并以表格形式展示。
 
 
-
 etcdctl --endpoints="192.168.0.33:2379,192.168.0.32:2379,192.168.0.31:2379" --cacert=/etc/kubernetes/pki/etcd/etcd-ca.pem --cert=/etc/kubernetes/pki/etcd/etcd.pem --key=/etc/kubernetes/pki/etcd/etcd-key.pem  cluster-health
 ```
-
 
 
 # 5.高可用配置（在Master服务器上操作）
@@ -3135,9 +3085,7 @@ etcdctl --endpoints="192.168.0.33:2379,192.168.0.32:2379,192.168.0.31:2379" --ca
 若使用 haproxy、keepalived 那么为 `--server=https://192.168.0.36:9443`
 
 
-
 ## 5.1 NGINX高可用方案
-
 
 
 ### 5.1.1 进行编译
@@ -3172,7 +3120,6 @@ for NODE in $node; do scp -r /usr/local/nginx/ $NODE:/usr/local/nginx/; done
 # 
 # 总之，这个命令序列用于编译一个配置了特定选项的Web服务器，并将其安装到系统中。
 ```
-
 
 
 ### 5.1.2 写入启动配置
@@ -3264,9 +3211,7 @@ systemctl status kube-nginx.service
 ```
 
 
-
 ## 5.2 keepalived和haproxy 高可用方案
-
 
 
 ### 5.2.1安装keepalived和haproxy服务
@@ -3277,7 +3222,6 @@ setenforce 0
 sed -i 's#SELINUX=enforcing#SELINUX=disabled#g' /etc/selinux/config
 yum -y install keepalived haproxy
 ```
-
 
 
 ### 5.2.2修改haproxy配置文件（配置文件一样）
@@ -3378,7 +3322,6 @@ EOF
 ```
 
 
-
 ### 5.2.3Master01配置keepalived master节点
 
 ```shell
@@ -3419,7 +3362,6 @@ vrrp_instance VI_1 {
 
 EOF
 ```
-
 
 
 ### 5.2.4Master02配置keepalived backup节点
@@ -3463,7 +3405,6 @@ vrrp_instance VI_1 {
 
 EOF
 ```
-
 
 
 ### 5.2.5Master03配置keepalived backup节点
@@ -3538,7 +3479,6 @@ EOF
 ```
 
 
-
 ### 5.2.6健康检查脚本配置（lb主机）
 
 ```shell
@@ -3586,7 +3526,6 @@ chmod +x /etc/keepalived/check_apiserver.sh
 ```
 
 
-
 ### 5.2.7启动服务
 
 ```shell
@@ -3601,7 +3540,6 @@ systemctl status haproxy.service
 systemctl status keepalived.service
 # keepalived.service单元的当前状态，包括运行状态、是否启用等信息。
 ```
-
 
 
 ### 5.2.8测试高可用
@@ -3619,7 +3557,6 @@ systemctl status keepalived.service
 ```
 
 
-
 # 6.k8s组件配置
 
 所有k8s节点创建以下目录
@@ -3629,9 +3566,7 @@ mkdir -p /etc/kubernetes/manifests/ /etc/systemd/system/kubelet.service.d /var/l
 ```
 
 
-
 ## 6.1.创建apiserver（所有master节点）
-
 
 
 ### 6.1.1master01节点配置
@@ -3688,7 +3623,6 @@ EOF
 ```
 
 
-
 ### 6.1.2master02节点配置
 
 ```shell
@@ -3741,7 +3675,6 @@ WantedBy=multi-user.target
 
 EOF
 ```
-
 
 
 ### 6.1.3master03节点配置
@@ -3853,7 +3786,6 @@ EOF
 ```
 
 
-
 ### 6.1.4启动apiserver（所有master节点）
 
 ```shell
@@ -3869,7 +3801,6 @@ systemctl restart kube-apiserver.service
 systemctl status kube-apiserver.service
 # kube-apiserver.service单元的当前状态，包括运行状态、是否启用等信息。
 ```
-
 
 
 ## 6.2.配置kube-controller-manager service
@@ -3957,7 +3888,6 @@ WantedBy：指定了服务单元所属的 target，这里是 multi-user.target�
 ```
 
 
-
 ### 6.2.1启动kube-controller-manager，并查看状态
 
 ```shell
@@ -3975,9 +3905,7 @@ systemctl status kube-controller-manager.service
 ```
 
 
-
 ## 6.3.配置kube-scheduler service
-
 
 
 ### 6.3.1所有master节点配置，且配置相同
@@ -4035,7 +3963,6 @@ WantedBy：指定了服务单元所属的 target，这里是 multi-user.target�
 ```
 
 
-
 ### 6.3.2启动并查看服务状态
 
 ```shell
@@ -4053,9 +3980,7 @@ systemctl status kube-scheduler.service
 ```
 
 
-
 # 7.TLS Bootstrapping配置
-
 
 
 ## 7.1在master01上配置
@@ -4067,10 +3992,12 @@ systemctl status kube-scheduler.service
 
 cd bootstrap
 
+```bash
 kubectl config set-cluster kubernetes     \
 --certificate-authority=/etc/kubernetes/pki/ca.pem     \
 --embed-certs=true     --server=https://127.0.0.1:8443     \
 --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig
+```
 # 这是一个使用 kubectl 命令设置 Kubernetes 集群配置的命令示例。下面是对每个选项的详细解释：
 # 
 # config set-cluster kubernetes：指定要设置的集群名称为 "kubernetes"，表示要修改名为 "kubernetes" 的集群配置。
@@ -4080,9 +4007,11 @@ kubectl config set-cluster kubernetes     \
 # --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig：指定 kubeconfig 文件的路径和名称，这里是 /etc/kubernetes/bootstrap-kubelet.kubeconfig。
 # 通过执行此命令，你可以设置名为 "kubernetes" 的集群配置，并提供 CA 证书、API 服务器地址和端口，并将这些配置信息嵌入到 bootstrap-kubelet.kubeconfig 文件中。这个 kubeconfig 文件可以用于认证和授权 kubelet 组件与 Kubernetes API 服务器之间的通信。请确保路径和文件名与实际环境中的配置相匹配。
 
+```bash
 kubectl config set-credentials tls-bootstrap-token-user     \
 --token=c8ad9c.2e4d610cf3e7426e \
 --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig
+```
 # 这是一个使用 kubectl 命令设置凭证信息的命令示例。下面是对每个选项的详细解释：
 # 
 # config set-credentials tls-bootstrap-token-user：指定要设置的凭证名称为 "tls-bootstrap-token-user"，表示要修改名为 "tls-bootstrap-token-user" 的用户凭证配置。
@@ -4090,10 +4019,12 @@ kubectl config set-credentials tls-bootstrap-token-user     \
 # --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig：指定 kubeconfig 文件的路径和名称，这里是 /etc/kubernetes/bootstrap-kubelet.kubeconfig。
 # 通过执行此命令，你可以设置名为 "tls-bootstrap-token-user" 的用户凭证，并将令牌信息加入到 bootstrap-kubelet.kubeconfig 文件中。这个 kubeconfig 文件可以用于认证和授权 kubelet 组件与 Kubernetes API 服务器之间的通信。请确保路径和文件名与实际环境中的配置相匹配。
 
+```bash
 kubectl config set-context tls-bootstrap-token-user@kubernetes     \
 --cluster=kubernetes     \
 --user=tls-bootstrap-token-user     \
 --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig
+```
 # 这是一个使用 kubectl 命令设置上下文信息的命令示例。下面是对每个选项的详细解释：
 # 
 # config set-context tls-bootstrap-token-user@kubernetes：指定要设置的上下文名称为 "tls-bootstrap-token-user@kubernetes"，表示要修改名为 "tls-bootstrap-token-user@kubernetes" 的上下文配置。
@@ -4102,8 +4033,10 @@ kubectl config set-context tls-bootstrap-token-user@kubernetes     \
 # --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig：指定 kubeconfig 文件的路径和名称，这里是 /etc/kubernetes/bootstrap-kubelet.kubeconfig。
 # 通过执行此命令，你可以设置名为 "tls-bootstrap-token-user@kubernetes" 的上下文，并将其关联到名为 "kubernetes" 的集群配置和名为 "tls-bootstrap-token-user" 的用户凭证配置。这样，bootstrap-kubelet.kubeconfig 文件就包含了完整的上下文信息，可以用于指定与 Kubernetes 集群建立连接时要使用的集群和凭证。请确保路径和文件名与实际环境中的配置相匹配。
 
+```bash
 kubectl config use-context tls-bootstrap-token-user@kubernetes     \
 --kubeconfig=/etc/kubernetes/bootstrap-kubelet.kubeconfig
+```
 # 这是一个使用 kubectl 命令设置当前上下文的命令示例。下面是对每个选项的详细解释：
 # 
 # config use-context tls-bootstrap-token-user@kubernetes：指定要使用的上下文名称为 "tls-bootstrap-token-user@kubernetes"，表示要将当前上下文切换为名为 "tls-bootstrap-token-user@kubernetes" 的上下文。
@@ -4116,10 +4049,10 @@ mkdir -p /root/.kube ; cp /etc/kubernetes/admin.kubeconfig /root/.kube/config
 ```
 
 
-
 ## 7.2查看集群状态，没问题的话继续后续操作
 
 ```shell
+```bash
 kubectl get cs
 Warning: v1 ComponentStatus is deprecated in v1.19+
 NAME                 STATUS    MESSAGE                         ERROR
@@ -4129,14 +4062,15 @@ etcd-0               Healthy   {"health":"true","reason":""}
 etcd-2               Healthy   {"health":"true","reason":""}   
 etcd-1               Healthy   {"health":"true","reason":""} 
 
+```
 # 切记执行，别忘记！！！
+```bash
 kubectl create -f bootstrap.secret.yaml
 ```
 
 
-
+```
 # 8.node节点配置
-
 
 
 ## 8.1.在master01上将证书复制到node节点
@@ -4148,11 +4082,9 @@ for NODE in k8s-master02 k8s-master03 k8s-node01 k8s-node02; do ssh $NODE mkdir 
 ```
 
 
-
 ## 8.2.kubelet配置
 
 **注意 ： 8.2.1 和 8.2.2 需要和 上方 2.1 和 2.2 对应起来**
-
 
 
 ### 8.2.1当使用docker作为Runtime
@@ -4195,7 +4127,6 @@ EOF
 # WantedBy=multi-user.target：指定了在 multi-user.target 被启动时，该服务应该被启用。
 # 通过这个单位文件，你可以配置 Kubelet 服务的启动参数，指定相关的配置文件和凭证文件，以及定义节点的标签。请确认路径和文件名与你的实际环境中的配置相匹配。
 ```
-
 
 
 ### 8.2.2当使用Containerd作为Runtime （推荐）
@@ -4241,7 +4172,6 @@ EOF
 # WantedBy=multi-user.target：指定了在 multi-user.target 被启动时，该服务应该被启用。
 # 通过这个单位文件，你可以配置 Kubelet 服务的启动参数，并指定了它依赖的 containerd 服务。确保路径和文件名与你实际环境中的配置相匹配。
 ```
-
 
 
 ### 8.2.3所有k8s节点创建kubelet的配置文件
@@ -4390,7 +4320,6 @@ EOF
 ```
 
 
-
 ### 8.2.4启动kubelet
 
 ```shell
@@ -4408,7 +4337,6 @@ systemctl status kubelet.service
 ```
 
 
-
 ### 8.2.5查看集群
 
 ```shell
@@ -4421,7 +4349,6 @@ k8s-node01     Ready    <none>   14s   v1.28.0
 k8s-node02     Ready    <none>   14s   v1.28.0
 [root@k8s-master01 ~]#
 ```
-
 
 
 ### 8.2.6查看容器运行时
@@ -4442,9 +4369,7 @@ k8s-node02     Ready    <none>   14s   v1.28.0
 ```
 
 
-
 ## 8.3.kube-proxy配置
-
 
 
 ### 8.3.1将kubeconfig发送至其他节点
@@ -4453,7 +4378,6 @@ k8s-node02     Ready    <none>   14s   v1.28.0
 # master-1执行
 for NODE in k8s-master02 k8s-master03 k8s-node01 k8s-node02; do scp /etc/kubernetes/kube-proxy.kubeconfig $NODE:/etc/kubernetes/kube-proxy.kubeconfig; done
 ```
-
 
 
 ### 8.3.2所有k8s节点添加kube-proxy的service文件
@@ -4494,7 +4418,6 @@ EOF
 # WantedBy: 指定了该服务单元的安装目标为 multi-user.target（多用户目标），表示该服务将在多用户模式下启动。
 # 通过配置这些字段，你可以启动和管理 Kubernetes Kube Proxy 服务。请注意，你需要根据实际情况修改 ExecStart 中的路径和文件名，确保与你的环境一致。另外，可以根据需求修改其他字段的值，以满足你的特定要求。
 ```
-
 
 
 ### 8.3.3所有k8s节点添加kube-proxy的配置
@@ -4651,7 +4574,6 @@ EOF
 ```
 
 
-
 ### 8.3.4启动kube-proxy
 
 ```shell
@@ -4667,7 +4589,6 @@ systemctl restart kube-proxy.service
 systemctl status kube-proxy.service
 # kube-proxy.service单元的当前状态，包括运行状态、是否启用等信息。
 ```
-
 
 
 # 9.安装网络插件
@@ -4696,9 +4617,7 @@ libseccomp-2.5.1-1.el8.x86_64
 ```
 
 
-
 ## 9.1安装Calico
-
 
 
 ### 9.1.1更改calico网段
@@ -4751,12 +4670,13 @@ sed -i "s#m.daocloud.io/docker.io/calico/#docker.io/calico/#g" calico.yaml
 sed -i "s#m.daocloud.io/docker.io/calico/#docker.io/calico/#g" calico-ipv6.yaml
 
 # 本地没有公网 IPv6 使用 calico.yaml
+```bash
 kubectl apply -f calico.yaml
 
+```
 # 本地有公网 IPv6 使用 calico-ipv6.yaml 
 # kubectl apply -f calico-ipv6.yaml 
 ```
-
 
 
 ### 9.1.2查看容器状态
@@ -4775,9 +4695,7 @@ kube-system   calico-typha-6cdc4b4fbc-57snb              1/1     Running   0    
 ```
 
 
-
 ## 9.2 安装cilium
-
 
 
 ### 9.2.1 安装helm
@@ -4791,7 +4709,6 @@ wget https://mirrors.huaweicloud.com/helm/v3.12.3/helm-v3.12.3-linux-amd64.tar.g
 tar xvf helm-*-linux-amd64.tar.gz
 cp linux-amd64/helm /usr/local/bin/
 ```
-
 
 
 ### 9.2.2 安装cilium
@@ -4817,7 +4734,6 @@ helm install  cilium ./cilium/ -n kube-system
 ```
 
 
-
 ### 9.2.3 查看
 
 ```shell
@@ -4831,7 +4747,6 @@ kube-system   cilium-smx5v                       1/1     Running       0        
 kube-system   cilium-tdjq4                       1/1     Running       0             5m3s
 [root@k8s-master01 ~]#
 ```
-
 
 
 ### 9.2.4 下载专属监控面板
@@ -4861,7 +4776,6 @@ deployment.apps/prometheus created
 ```
 
 
-
 ### 9.2.5 下载部署测试用例
 
 说明 测试用例 需要在 安装CoreDNS 之后即可完成
@@ -4872,11 +4786,12 @@ wget https://mirrors.chenby.cn/https://raw.githubusercontent.com/cilium/cilium/m
 sed -i "s#google.com#baidu.cn#g" connectivity-check.yaml
 sed -i "s#quay.io/#m.daocloud.io/quay.io/#g" connectivity-check.yaml
 
+```bash
 kubectl  apply -f connectivity-check.yaml
 ```
 
 
-
+```
 ### 9.2.6 查看pod
 
 ```shell
@@ -4916,7 +4831,6 @@ kube-system         metrics-server-776f58c94b-c6zgs                          1/1
 ```
 
 
-
 ### 9.2.7 修改为NodePort
 
 安装时候没有创建 监控可以忽略
@@ -4934,7 +4848,6 @@ service/prometheus edited
 
 type: NodePort
 ```
-
 
 
 ### 9.2.8 查看端口
@@ -4955,7 +4868,6 @@ kube-system         hubble-ui              NodePort    10.102.253.59    <none>  
 ```
 
 
-
 ### 9.2.9 访问
 
 安装时候没有创建 监控可以忽略
@@ -4967,13 +4879,10 @@ http://192.168.0.31:31219
 ```
 
 
-
 # 10.安装CoreDNS
 
 
-
 ## 10.1以下步骤只在master01操作
-
 
 
 ### 10.1.1修改文件
@@ -5015,13 +4924,10 @@ helm install  coredns ./coredns/ -n kube-system
 ```
 
 
-
 # 11.安装Metrics Server
 
 
-
 ## 11.1以下步骤只在master01操作
-
 
 
 ### 11.1.1安装Metrics-server
@@ -5073,15 +4979,17 @@ defaultArgs:
 sed -i "s#registry.k8s.io/#m.daocloud.io/registry.k8s.io/#g" *.yaml
 
 # 二选一
+```bash
 kubectl apply -f components.yaml
+```
 # kubectl apply -f high-availability.yaml
 ```
-
 
 
 ### 11.1.2稍等片刻查看状态
 
 ```shell
+```bash
 kubectl  top node
 NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
 k8s-master01   197m         4%     1497Mi          39%       
@@ -5092,9 +5000,8 @@ k8s-node02     71m          1%     682Mi           17%
 ```
 
 
-
+```
 # 12.集群验证
-
 
 
 ## 12.1部署pod资源
@@ -5118,22 +5025,26 @@ spec:
 EOF
 
 # 查看
+```bash
 kubectl  get pod
 NAME      READY   STATUS    RESTARTS   AGE
 busybox   1/1     Running   0          17s
 ```
 
 
-
+```
 ## 12.2用pod解析默认命名空间中的kubernetes
 
 ```shell
 # 查看name
+```bash
 kubectl get svc
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   17h
 
+```
 # 进行解析
+```bash
 kubectl exec  busybox -n default -- nslookup kubernetes
 3Server:    10.96.0.10
 Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
@@ -5143,11 +5054,12 @@ Address 1: 10.96.0.1 kubernetes.default.svc.cluster.local
 ```
 
 
-
+```
 ## 12.3测试跨命名空间是否可以解析
 
 ```shell
 # 查看有那些name
+```bash
 kubectl  get svc -A
 NAMESPACE     NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE
 default       kubernetes        ClusterIP   10.96.0.1       <none>        443/TCP         76m
@@ -5155,7 +5067,9 @@ kube-system   calico-typha      ClusterIP   10.105.100.82   <none>        5473/T
 kube-system   coredns-coredns   ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP   8m14s
 kube-system   metrics-server    ClusterIP   10.105.60.31    <none>        443/TCP         109s
 
+```
 # 进行解析
+```bash
 kubectl exec  busybox -n default -- nslookup coredns-coredns.kube-system
 Server:    10.96.0.10
 Address 1: 10.96.0.10 coredns-coredns.kube-system.svc.cluster.local
@@ -5166,7 +5080,7 @@ Address 1: 10.96.0.10 coredns-coredns.kube-system.svc.cluster.local
 ```
 
 
-
+```
 ## 12.4每个节点都必须要能访问Kubernetes的kubernetes svc 443和kube-dns的service 53
 
 ```shell
@@ -5185,10 +5099,10 @@ curl: (52) Empty reply from server
 ```
 
 
-
 ## 12.5Pod和Pod之前要能通
 
 ```shell
+```bash
 kubectl get po -owide
 NAME      READY   STATUS    RESTARTS   AGE   IP              NODE         NOMINATED NODE   READINESS GATES
 busybox   1/1     Running   0          17m   172.27.14.193   k8s-node02   <none>           <none>
@@ -5205,8 +5119,10 @@ calico-typha-59d75c5dd4-gbhfp              1/1     Running   0          38m     
 coredns-coredns-c5c6d4d9b-bd829            1/1     Running   0          10m     172.25.92.65     k8s-master02   <none>           <none>
 metrics-server-7c8b55c754-w7q8v            1/1     Running   0          3m56s   172.17.125.3     k8s-node01     <none>           <none>
 
+```
 # 进入busybox ping其他节点上的pod
 
+```bash
 kubectl exec -ti busybox -- sh
 / # ping 192.168.0.34
 PING 192.168.0.34 (192.168.0.34): 56 data bytes
@@ -5216,9 +5132,9 @@ PING 192.168.0.34 (192.168.0.34): 56 data bytes
 64 bytes from 192.168.0.34: seq=3 ttl=63 time=0.624 ms
 64 bytes from 192.168.0.34: seq=4 ttl=63 time=0.907 ms
 
+```
 # 可以连通证明这个pod是可以跨命名空间和跨主机通信的
 ```
-
 
 
 ## 12.6创建三个副本，可以看到3个副本分布在不同的节点上（用完可以删了）
@@ -5249,6 +5165,7 @@ spec:
 
 EOF
 
+```bash
 kubectl  apply -f deployments.yaml 
 deployment.apps/nginx-deployment created
 
@@ -5259,11 +5176,11 @@ nginx-deployment-9456bbbf9-4bmvk   1/1     Running   0          8s
 nginx-deployment-9456bbbf9-9rcdk   1/1     Running   0          8s
 nginx-deployment-9456bbbf9-dqv8s   1/1     Running   0          8s
 
+```
 # 删除nginx
 
 [root@k8s-master01 ~]# kubectl delete -f deployments.yaml 
 ```
-
 
 
 # 13.安装dashboard
@@ -5274,27 +5191,28 @@ helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --na
 ```
 
 
-
 ## 13.1更改dashboard的svc为NodePort，如果已是请忽略
 
 ```shell
+```bash
 kubectl edit svc kubernetes-dashboard -n kube-system
 
   type: NodePort
 ```
 
 
-
+```
 ## 13.2查看端口号
 
 ```shell
+```bash
 kubectl get svc kubernetes-dashboard -n kube-system
 NAME                   TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 kubernetes-dashboard   NodePort   10.108.120.110   <none>        443:30034/TCP   34s
 ```
 
 
-
+```
 ## 13.3创建token
 
 ```shell
@@ -5319,23 +5237,24 @@ subjects:
   namespace: kube-system
 EOF
 
+```bash
 kubectl  apply -f dashboard-user.yaml
 
+```
 # 创建token
+```bash
 kubectl -n kube-system create token admin-user
 eyJhbGciOiJSUzI1NiIsImtpZCI6IksxY2U2U19KUWlRMzJSVXdtU2wzak1PdXpJYXVxQTBlbGJHUWlQZWN0ZU0ifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjkyNDQ3NzA3LCJpYXQiOjE2OTI0NDQxMDcsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi11c2VyIiwidWlkIjoiNmE4MWEwY2ItM2U0Yi00ZTNhLTk0N2EtY2ViNDNkOTNjZmUzIn19LCJuYmYiOjE2OTI0NDQxMDcsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbi11c2VyIn0.Ww8zpmguHtxAuUn1EWtNCP2A-d25PGOYO3_FkHyOtj6f0iLm_HTvwM0InlTgIAWnfWMDOHzBLc9m1gYzoaC5efgBVtZkpy900NIhW_-yiQK3cMpiNasKOH7jiPnNMXNXczw3ElZWMqFYXkYRmQRVgVd6t0DmYK_TCXjDiZIU9jCzIDdSWDDI9nIieRGQwY8CzfEM9CKeYYC4a5wOG6t4ZuTcnRAYdZ1KZ7PZ1R73JLauessAtiDUArTIB2xWcWxy_b_J4-wXtsQyW5YOYOQ3Ie9NbERQj9wlprNSLhFqSxq-RUwizGBZ7z7t1RmW134DStU25uA4GkSJBQWK4b1cWA
 ```
 
 
-
+```
 ## 13.3登录dashboard
 
 [https://192.168.0.31](https://192.168.0.31/):30034/
 
 
-
 # 14.ingress安装
-
 
 
 ## 14.1执行部署
@@ -5400,6 +5319,7 @@ spec:
     app.kubernetes.io/name: default-http-backend
 EOF
 
+```bash
 kubectl  apply -f deploy.yaml 
 kubectl  apply -f backend.yaml 
 
@@ -5502,7 +5422,9 @@ spec:
               number: 8000
 EOF
 
+```
 # 等创建完成后在执行：
+```bash
 kubectl  apply -f ingress-demo-app.yaml 
 
 kubectl  get ingress
@@ -5511,11 +5433,12 @@ ingress-host-bar   nginx   hello.chenby.cn,demo.chenby.cn   192.168.0.32   80   
 ```
 
 
-
+```
 ## 14.2过滤查看ingress端口
 
 ```shell
 # 修改为nodeport
+```bash
 kubectl edit svc -n ingress-nginx   ingress-nginx-controller
 type: NodePort
 
@@ -5526,7 +5449,7 @@ ingress-nginx          ingress-nginx-controller-admission   ClusterIP   10.101.8
 ```
 
 
-
+```
 # 15.IPv6测试
 
 ```shell
@@ -5621,7 +5544,6 @@ Accept-Ranges: bytes
 ```
 
 
-
 # 16.安装命令行自动补全功能
 
 ```shell
@@ -5630,7 +5552,6 @@ source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 ```
-
 
 
 # 附录
@@ -5652,12 +5573,11 @@ registry.opensource.zalan.do/  ===> m.daocloud.io/registry.opensource.zalan.do/
 rocks.canonical.com/  ===> m.daocloud.io/rocks.canonical.com/
 
 
-
-
 # 镜像版本要自行查看，因为镜像版本是随时更新的，文档无法做到实时更新
 
 # docker pull 镜像
 
+```bash
 docker pull registry.cn-hangzhou.aliyuncs.com/chenby/cni:master 
 docker pull registry.cn-hangzhou.aliyuncs.com/chenby/node:master
 docker pull registry.cn-hangzhou.aliyuncs.com/chenby/kube-controllers:master
@@ -5678,7 +5598,9 @@ docker pull quay.io/cilium/clustermesh-apiserver:v1.12.6
 docker pull quay.io/coreos/etcd:v3.5.4
 docker pull quay.io/cilium/startup-script:d69851597ea019af980891a4628fb36b7880ec26
 
+```
 # docker 保存镜像
+```bash
 docker save registry.cn-hangzhou.aliyuncs.com/chenby/cni:master -o cni.tar 
 docker save registry.cn-hangzhou.aliyuncs.com/chenby/node:master -o node.tar 
 docker save registry.cn-hangzhou.aliyuncs.com/chenby/typha:master -o typha.tar 
@@ -5699,6 +5621,7 @@ docker save quay.io/cilium/clustermesh-apiserver:v1.12.6 -o clustermesh-apiserve
 docker save quay.io/coreos/etcd:v3.5.4 -o etcd.tar 
 docker save quay.io/cilium/startup-script:d69851597ea019af980891a4628fb36b7880ec26 -o startup-script.tar 
 
+```
 # 传输到各个节点
 for NODE in k8s-master01 k8s-master02 k8s-master03 k8s-node01 k8s-node02; do scp -r images/  $NODE:/root/ ; done
 
@@ -5791,8 +5714,5 @@ root@hello:~/cilium# cat values.yaml| grep tag: -C1
 > **文章主要发布于微信公众号：《Linux运维交流社区》**
 
 
-
 0
-
-
 

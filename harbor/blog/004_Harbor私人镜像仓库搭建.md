@@ -62,18 +62,6 @@ nginx               nginx -g daemon off;             Up (healthy)   0.0.0.0:2008
 redis               redis-server /etc/redis.conf     Up (healthy)                                             
 registry            /home/harbor/entrypoint.sh       Up (healthy)                                             
 registryctl         /home/harbor/start.sh            Up (healthy)      
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 这几个容器通过Docker link的形式连接在一起，这样，在容器之间可以通过容器名字互相访问。对终端用户而言，只需要暴露proxy （即Nginx）的服务端口。
 
 安装并配置Harbor
@@ -84,11 +72,6 @@ Linux node3 3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018 x86_64 x86
 [root@node3 harbor]# cat /etc/redhat-release 
 CentOS Linux release 7.5.1804 (Core) 
 #本机IP：192.168.9.132
-1
-2
-3
-4
-5
 2、安装Docker
 使用阿里云的Docker的Yum源，这里放个网址，不再演示，有需要自己复制粘贴即可。
 https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.3e221b11g0gJxB
@@ -99,12 +82,6 @@ systemctl enable docker
 #查看docker的版本
 [root@node3 ~]# docker --version
 Docker version 20.10.13, build a224086
-1
-2
-3
-4
-5
-6
 3、安装docker-compose
 官方网址：https://docs.docker.com/compose/install/。
 其实就一行命令，粘贴复制即可：
@@ -116,13 +93,6 @@ chmod +x /usr/local/bin/docker-compose
 #查看docker-compose版本
 [root@node3 ~]# docker-compose --version
 docker-compose version 1.29.2, build 5becea4c
-1
-2
-3
-4
-5
-6
-7
 安装Harbor
 下载地址：https://github.com/goharbor/harbor/releases
 这里我们下载在线安装，并且是最新版本：2.4.2版本
@@ -132,13 +102,10 @@ docker-compose version 1.29.2, build 5becea4c
 1、解压Harbor到root目录下
 
 tar xzvf harbor-online-installer-v2.4.2.tgz
-1
 2、配置Harbor，进入harbor解压目录根据harbor配置模板文件拷贝一份harbor配置文件
 
 cd harbor
 cp harbor.yml.tmpl harbor.yml
-1
-2
 3、修改harbor.yml文件
 
 vi harbor.yml
@@ -149,14 +116,6 @@ harbor_admin_password: admin           #设置登陆Harbor的密码
 data_volume: /root/bo                  #设置Harbor的数据存放目录，需要提前自己创建此目录
 location: /var/log/harbor              #设置Harbor日志存放目录，需要提前自己创建
 ...
-1
-2
-3
-4
-5
-6
-7
-8
 现在的docker都需要https协议去拉取镜像，配置Harbor的https连接放到文章末尾讲解，这里我们先把https注释掉。如果想使用https取登陆Harbor需要认证证书，这里我们先把https注释掉，下文介绍Harbor的自签证书。
 注释还是编辑harbor.yml，注释Https内容：
 
@@ -165,11 +124,9 @@ location: /var/log/harbor              #设置Harbor日志存放目录，需要�
 执行以下命令后，会开始下载镜像，并生成docker-compose.yml文件。
 
 ./prepare
-1
 执行 ./install.sh 脚本进行安装
 
 ./install.sh
-1
 执行以上命令后，会开始进行所需要镜像的下载，并进行安装（可能会比较慢）安装成功，并已成功启动harbor,如下图所示
 
 使用docker-compose ps 命令可以查看容器启动情况
@@ -191,23 +148,6 @@ registryctl         /home/harbor/start.sh            Up (healthy)
 #docker-compose down        删除全部容器
 #docker-compose up -d       启动容器...
 #众多命令参考：docker-compose --help
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
 5、登陆Harbor
 在浏览器中输入：IP:20080
 用户/密码：admin/自己设置的密码
@@ -223,17 +163,10 @@ registryctl         /home/harbor/start.sh            Up (healthy)
   "registry-mirrors": ["https://pve03e8m.mirror.aliyuncs.com"],       #这个是使用阿里云的加速器
   "insecure-registries": ["192.168.9.132:20080"]                      #我们需要添加这一行，ip:20080需要换成自己的
 }
-1
-2
-3
-4
-5
 重启docker
 
 systemctl daemon-reload
 systemctl restart docker
-1
-2
 2、命令行登陆
 
 [root@node2 ~]# docker login http://192.168.9.132:20080
@@ -244,24 +177,20 @@ Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded           #看见"Login Succeeded"表示登陆成功。
-1
-2
-3
-4
-5
-6
-7
-8
 3、push，和pull镜像到harbor
 （1）首先我们先从互联网中拉取个nginx镜像
 
+```bash
 docker pull nginx
-1
 （2）将原nginx镜像改标签
 
+```
 #改标签
+```bash
 docker tag nginx:latest 192.168.9.132:20080/library/nginx:2.5
+```
 #查看镜像
+```bash
 docker images
 REPOSITORY                          TAG       IMAGE ID       CREATED        SIZE
 goharbor/redis-photon               v2.4.2    61d136910774   8 days ago     158MB
@@ -276,25 +205,9 @@ goharbor/harbor-db                  v2.4.2    91d13ec46b2c   8 days ago     226M
 goharbor/prepare                    v2.4.2    d2100ed70ba4   8 days ago     269MB
 192.168.9.132:20080/library/nginx   2.5       605c77e624dd   2 months ago   141MB        #可以发现已经改tag成功了
 nginx                               latest    605c77e624dd   2 months ago   141MB
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
 （3）将192.168.9.132:20080/library/nginx:2.5镜像push到harbor仓库中去：
 
+```
 [root@node3 ~]# docker push 192.168.9.132:20080/library/nginx:2.5         #由于我已经push过了，所以显示已存在
 The push refers to repository [192.168.9.132:20080/library/nginx]
 d874fd2bc83b: Layer already exists 
@@ -304,15 +217,6 @@ b8d6e692a25e: Layer already exists
 e379e8aedd4d: Layer already exists 
 2edcec3590a4: Layer already exists 
 2.5: digest: sha256:ee89b00528ff4f02f2405e4ee221743ebc3f8e8dd0bfd5c4c20a2fa2aaa7ede3 size: 1570
-1
-2
-3
-4
-5
-6
-7
-8
-9
 （4）在Web界面查看，点击"library"仓库，这个仓库是默认的，由于我们没有创建其它的镜像仓库，所以我们使用默认的"library"
 
 (5)从harbor中pull"192.168.9.132:20080/library/nginx:2.5"镜像
@@ -339,28 +243,6 @@ goharbor/harbor-db                  v2.4.2    91d13ec46b2c   9 days ago     226M
 goharbor/prepare                    v2.4.2    d2100ed70ba4   9 days ago     269MB
 nginx                               latest    605c77e624dd   2 months ago   141MB
 192.168.9.132:20080/library/nginx   2.5       605c77e624dd   2 months ago   141MB
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
 配置Harbor的HTTPS访问
 我们知道Https相较于Http更安全，而且目前docker已经采用https的连接去拉取镜像，因此我们还需要给Harbor颁发自签证书，在实验和开发环境我们自己签发的ca证书就能满足需要。从而配置Harbor的https连接访问。
 
@@ -377,40 +259,27 @@ https://goharbor.io/docs/2.4.0/install-config/configure-https/
 1、生成 CA 证书私钥：
 
 openssl genrsa -out ca.key 4096
-1
 2、生成 CA 证书：
 
 openssl req -x509 -new -nodes -sha512 -days 3650 \
  -subj "/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=192.168.9.132" \
  -key ca.key \
  -out ca.crt
-1
-2
-3
-4
 3、查看CA密钥和证书
 
 [root@node3 ~]# ll
 -rw-r--r--. 1 root root  2033 Mar 23 23:43 ca.crt
 -rw-r--r--. 1 root root  3243 Mar 23 23:42 ca.key
-1
-2
-3
 生成服务器证书
 1、生成 CA 证书私钥：
 
 openssl genrsa -out ca.key 4096
-1
 2、生成 CA 证书：
 
 openssl req -sha512 -new \
     -subj "/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=192.168.9.132" \
     -key yourdomain.com.key \
     -out yourdomain.com.csr
-1
-2
-3
-4
 3、生成 x509 v3 扩展文件：
 
 cat > v3.ext <<-EOF
@@ -419,12 +288,6 @@ basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = IP:192.168.9.132
-1
-2
-3
-4
-5
-6
 4、使用v3.ext文件为 Harbor 主机生成证书：
 
 openssl x509 -req -sha512 -days 3650 \
@@ -432,11 +295,6 @@ openssl x509 -req -sha512 -days 3650 \
     -CA ca.crt -CAkey ca.key -CAcreateserial \
     -in 192.168.9.132.csr \
     -out 192.168.9.132.crt
-1
-2
-3
-4
-5
 向Harbor和Docker提供证书
 1、向Harbor提供证书。编辑harbor.ml文件，将https注释取消（默认是没有取消的，在上面我做实验先注释掉了）
 
@@ -446,36 +304,24 @@ https:
   # The path of cert and key files for nginx
   certificate: /root/192.168.9.132.crt                 #填写crt文件的位置，这里我是直接放在root目录下的
   private_key: /root/192.168.9.132.key                 #填写key文件的位置，这里我是直接放在root目录下的
-1
-2
-3
-4
-5
-6
 2、为Docker提供证书
 （1）使Docker 守护程序将文件解释为 CA 证书，将文件解释为客户端证书：
 
 openssl x509 -inform PEM -in 192.168.9.132.crt -out 192.168.9.132.cert
-1
 （2）将服务器证书、密钥和 CA 文件复制到 Harbor 主机上的 Docker 证书文件夹中。您必须先创建相应的文件夹：
 
 [root@node3 ~]# cp 192.168.9.132.cert /etc/docker/certs.d/192.168.9.132/
 [root@node3 ~]# cp 192.168.9.132.key /etc/docker/certs.d/192.168.9.132/
 [root@node3 ~]# cp ca.crt /etc/docker/certs.d/192.168.9.132/
-1
-2
-3
 这里端口就是用户默认的443端口
 
 （3）重新启动 Docker 引擎：
 
 systemctl restart docker
-1
 部署或重新配置Harbor
 （1）如果还未安装，就直接运行：
 
 ./install.sh 
-1
 （2）如果已使用 HTTP 部署了 Harbor，并希望将其重新配置为使用 HTTPS，请执行以下步骤：
 
 #运行脚本以启用 HTTPS：
@@ -486,14 +332,6 @@ docker-compose down -v
 
 #重新启动Harbor：
 docker-compose up -d
-1
-2
-3
-4
-5
-6
-7
-8
 验证HTTPS连接
 在浏览器中输入：
 https://192.168.9.132

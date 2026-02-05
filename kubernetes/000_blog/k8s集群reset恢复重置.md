@@ -1,7 +1,6 @@
 ## k8s集群reset恢复重置
 
 
-
 一、概述
 因k8s集群故障，无法恢复，所以进行重置k8s集群。
 
@@ -41,39 +40,12 @@ to reset your system's IPVS tables.
 
 The reset process does not clean your kubeconfig files and you must remove them manually.
 Please, check the contents of the $HOME/.kube/config file.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
 2、手动清除配置信息
 手动清除配置信息，这一步很关键：
 
 （1）清除遗留文件
 [root@master1 cni]# rm -rf /root/.kube
 [root@master1 cni]# rm -rf /etc/cni/net.d
-1
-2
 （2）清理ipvsadm
 [root@master1 cni]# yum install -y ipvsadm
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager
@@ -85,20 +57,8 @@ Installed:
   ipvsadm.x86_64 0:1.27-8.el7                                                                                                                                                             
 
 Complete!
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 [root@master1 cni]# ipvsadm -C
 [root@master1 cni]# iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
-1
-2
 3、重新引导集群
 （1）初始化
 [root@master1 cni]# cd /root/
@@ -140,58 +100,15 @@ Then you can join any number of worker nodes by running the following on each as
 
 kubeadm join 192.168.0.212:6443 --token 5nokjb.i1okf7ljckcxdis8 \
 	--discovery-token-ca-cert-hash sha256:aad97ca5808e6e01aec8f730bd900e6722573b3d2f830ac79e641837285c9600 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
 可能出现的问题
 1、初始化失败问题处理：
 
 [ERROR CRI]: container runtime is not running: output: time="2022-08-27T10:20:58+08:00" level=fatal msg="getting status of runtime: rpc error: code = Unimplemented desc = unknown service runtime.v1alpha2.RuntimeService"
-1
 解决方式：
 
 [root@k8s-master01 ~]# rm /etc/containerd/config.toml
 rm：是否删除普通文件 "/etc/containerd/config.toml"？y
 [root@k8s-master01 ~]# systemctl restart containerd
-1
-2
-3
 （2）复制目录
 创建配置目录，并复制权限配置文件到用户目录下
 
@@ -203,14 +120,6 @@ rm：是否删除普通文件 "/etc/containerd/config.toml"？y
 [root@master1 ~]# kubectl get nodes
 NAME      STATUS     ROLES                  AGE   VERSION
 master1   NotReady   control-plane,master   74s   v1.21.2
-1
-2
-3
-4
-5
-6
-7
-8
 （3）健康检查
 [root@master1 ~]# cd k8s/
 [root@master1 k8s]# ls
@@ -235,29 +144,6 @@ NAME                 STATUS    MESSAGE             ERROR
 controller-manager   Healthy   ok                  
 scheduler            Healthy   ok                  
 etcd-0               Healthy   {"health":"true"}   
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
 4、部署网络插件
 # 部署网络插件
 [root@master1 k8s]# ls
@@ -280,27 +166,6 @@ daemonset.apps/kube-flannel-ds-s390x created
 [root@master1 k8s]# kubectl get nodes
 NAME      STATUS   ROLES                  AGE     VERSION
 master1   Ready    control-plane,master   7m32s   v1.21.2
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
 5、部署dashboard
 [root@master1 k8s]# ls
 admin.conf  dashboard  desktop.ini  elk  harbor-registry.yaml  helm  images  ingress  kafka  kube-flannel.yml  postgresql  pv  redis  storage-class  vm
@@ -368,72 +233,6 @@ kubernetes-dashboard   dashboard-metrics-scraper-6ddd77bc75-fdrbg   1/1     Runn
 kubernetes-dashboard   kubernetes-dashboard-8c9c48775-7z7h4         1/1     Running   0          47s
 [root@master1 dashboard]# ls
 dashboard-adminuser.yaml  dashboard-admin.yaml  kubernetes-dashboard.yaml  metrics-server-master  metrics-server.zip
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
 6、部署监控
 [root@master1 dashboard]# cd metrics-server
 -bash: cd: metrics-server: No such file or directory
@@ -498,69 +297,6 @@ kube-system            kube-dns                    ClusterIP   10.96.0.10     <n
 kube-system            metrics-server              ClusterIP   10.98.47.6     <none>        443/TCP                  98s
 kubernetes-dashboard   dashboard-metrics-scraper   ClusterIP   10.97.65.41    <none>        8000/TCP                 3m28s
 kubernetes-dashboard   kubernetes-dashboard        NodePort    10.97.63.207   <none>        443:30043/TCP            3m28s
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
 三、master2重置
 1、重置
 [root@master2 ~]# kubeadm reset
@@ -587,36 +323,10 @@ to reset your system's IPVS tables.
 
 The reset process does not clean your kubeconfig files and you must remove them manually.
 Please, check the contents of the $HOME/.kube/config file.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
 2、手动清除配置信息
 （1）清除遗留文件
 [root@master2 ~]# rm -rf /root/.kube
 [root@master2 ~]# rm -rf /etc/cni/net.d
-1
-2
 （2）清理ipvsadm
 [root@master2 ~]# yum install -y ipvsadm
 Loaded plugins: fastestmirror, product-id, search-disabled-repos, subscription-manager
@@ -630,18 +340,6 @@ Installed:
 Complete!
 [root@master2 ~]# ipvsadm -C
 [root@master2 ~]# iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 3、重新加入集群
 [root@master2 ~]# kubeadm join 192.168.0.212:6443 --token 5nokjb.i1okf7ljckcxdis8 \
 > --discovery-token-ca-cert-hash sha256:aad97ca5808e6e01aec8f730bd900e6722573b3d2f830ac79e641837285c9600 \
@@ -666,29 +364,6 @@ Run 'kubectl get nodes' to see this node join the cluster.
 NAME      STATUS   ROLES                  AGE   VERSION
 master1   Ready    control-plane,master   11m   v1.21.2
 master2   Ready    control-plane,master   23s   v1.21.2
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
 四、node1
 1、重置
 [root@node1 ~]# kubeadm reset
@@ -714,44 +389,15 @@ to reset your system's IPVS tables.
 
 The reset process does not clean your kubeconfig files and you must remove them manually.
 Please, check the contents of the $HOME/.kube/config file.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
 2、手动清除配置信息
 （1）清除遗留文件
 [root@node1 ~]# rm -rf /root/.kube
 [root@node1 ~]# rm -rf /etc/cni/net.d
 [root@node1 ~]# rm -rf /etc/kubernetes/*
-1
-2
-3
 （2）清理ipvsadm
 [root@node1 ~]# ipvsadm -C
 -bash: ipvsadm: command not found
 [root@node1 ~]# iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
-1
-2
-3
 3、重新加入集群
 [root@node1 ~]# kubeadm join 192.168.0.212:6443 --token 5nokjb.i1okf7ljckcxdis8 \
 > --discovery-token-ca-cert-hash sha256:aad97ca5808e6e01aec8f730bd900e6722573b3d2f830ac79e641837285c9600 

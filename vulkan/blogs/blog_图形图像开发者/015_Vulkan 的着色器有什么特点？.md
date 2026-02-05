@@ -30,12 +30,10 @@ SPIR-V 的全称是 Standard Portable Intermediate Representation，而“V”�
 
 ```
  1#version 450  // 指定GLSL的版本号为450，对应于OpenGL 4.5或Vulkan 1.0
- 2
  3// 输入属性
  4layout(location = 0) in vec3 inPos;     // 顶点位置，location = 0 表示从顶点输入中读取第一个属性
  5layout(location = 1) in vec2 inUV;      // 纹理坐标，location = 1 表示从顶点输入中读取第二个属性
  6layout(location = 2) in vec3 inNormal;  // 顶点法线，location = 2 表示从顶点输入中读取第三个属性
- 7
  8// Uniform 缓冲对象 (UBO)，用于传递投影、模型、视图矩阵
  9layout(binding = 0) uniform UBO 
 10{
@@ -43,15 +41,12 @@ SPIR-V 的全称是 Standard Portable Intermediate Representation，而“V”�
 12    mat4 modelMatrix;       // 模型矩阵
 13    mat4 viewMatrix;        // 视图矩阵
 14} ubo;  // `ubo` 是这个 uniform 块的实例名，着色器中通过它访问矩阵
-15
 16// 输出变量，传递到片段着色器
 17layout(location = 0) out vec2 outUV;  // 纹理坐标输出，location = 0 表示传递给片段着色器的第一个输出变量
-18
 19// 顶点着色器的主函数
 20void main() 
 21{
 22    outUV = inUV;  // 将输入的纹理坐标传递给输出变量 `outUV`
-23
 24    // 计算最终顶点位置并赋值给gl_Position
 25    gl_Position = ubo.projectionMatrix * ubo.viewMatrix * ubo.modelMatrix * vec4(inPos.xyz, 1.0);  
 26    // 将输入的顶点位置转换为世界坐标系中的位置，再转换为观察空间坐标系，最后转换为裁剪空间坐标系，并传递给gl_Position
@@ -62,20 +57,16 @@ SPIR-V 的全称是 Standard Portable Intermediate Representation，而“V”�
 
 ```
  1#version 450  // 指定GLSL的版本号为450，对应于OpenGL 4.5或Vulkan 1.0
- 2
  3// Uniform 变量，用于传递2D纹理采样器
  4layout (binding = 1) uniform sampler2D samplerColor;
  5// sampler2D：用于在片段着色器中采样2D纹理的统一变量
  6// binding = 1：指定了该采样器在着色器中的绑定点为1
- 7
  8// 输入变量，从顶点着色器传递过来的纹理坐标
  9layout (location = 0) in vec2 inUV;  
 10// location = 0：指定输入变量的位置为0
-11
 12// 输出变量，片段的最终颜色
 13layout (location = 0) out vec4 outFragColor;  
 14// location = 0：指定输出变量的位置为0，表示片段着色器输出的颜色
-15
 16// 片段着色器的主函数
 17void main() 
 18{
@@ -95,19 +86,15 @@ glslangValidator 是由 Khronos Group 提供的，一个用于验证和编译 GL
 
 ```
  1#version 450  // 指定GLSL的版本号为450，对应于OpenGL 4.5或Vulkan 1.0
- 2
  3// 输入属性
  4layout(location = 0) in vec3 inPosition;  // 顶点位置，location = 0 表示从顶点输入中第一个属性读取
  5layout(location = 1) in vec3 inColor;     // 顶点颜色，location = 1 表示从顶点输入中第二个属性读取
- 6
  7// 输出变量，传递到片段着色器
  8layout(location = 0) out vec3 fragColor;  // 片段颜色输出，location = 0 表示传递给片段着色器的第一个输出变量
- 9
 10// 顶点着色器主函数
 11void main() {
 12    // 将输入的顶点位置转换为标准化设备坐标系中的位置并赋值给gl_Position
 13    gl_Position = vec4(inPosition, 1.0);  // gl_Position 是GLSL中的内建变量，表示顶点位置
-14
 15    // 将输入的颜色传递给片段着色器
 16    fragColor = inColor;  // 将输入的颜色直接赋值给fragColor，这个值将传递到片段着色器
 17}
@@ -135,10 +122,8 @@ ShaderC 是一个基于 glslang 的库，专门为自动化和编程场景设计
 ```
  1#include <shaderc.h>
  2std::vector<char> glslShader;  // 用于存储加载的GLSL着色器代码字符串
- 3
  4// 使用shaderc编译器将GLSL代码编译成SPIR-V字节码
  5shaderc_compiler_t compiler = shaderc_compiler_initialize();  // 初始化shaderc编译器
- 6
  7shaderc_compilation_result_t spvShader = shaderc_compile_into_spv(
  8    compiler,                          // 编译器实例
  9    glslShader.data(),                 // GLSL着色器代码数据指针
@@ -148,18 +133,15 @@ ShaderC 是一个基于 glslang 的库，专门为自动化和编程场景设计
 13    "main",                            // 着色器入口点函数名
 14    nullptr                            // 可选的编译选项
 15);
-16
 17// 获取编译状态，检查是否成功
 18int status = shaderc_result_get_compilation_status(spvShader);
 19if (status != shaderc_compilation_status_success) {  // 如果编译不成功
 20    LOGCATE("compilation status error = %d", status); // 输出错误状态
 21    return static_cast<VkResult>(-1);                // 返回错误代码
 22}
-23
 24// 获取 SPIR-V 二进制
 25size_t  codeSize = shaderc_result_get_length(spvShader);
 26const uint32_t*  pCode = (const uint32_t*)shaderc_result_get_bytes(spvShader);
-27
 28// 释放shaderc编译器和编译结果的资源
 29shaderc_result_release(spvShader);    // 释放SPIR-V编译结果资源
 30shaderc_compiler_release(compiler);   // 释放shaderc编译器资源
@@ -183,7 +165,6 @@ VkShaderModule 是 Vulkan 中表示着色器模块的结构体。
 
 ```
  1char *shaderCode = new char[size];//加载我们编译好的 SPIR-V 字节码数据
- 2
  3// 创建Vulkan着色器模块（shader module）
  4VkShaderModule shaderModule;
  5VkShaderModuleCreateInfo moduleCreateInfo;
@@ -192,14 +173,12 @@ VkShaderModule 是 Vulkan 中表示着色器模块的结构体。
  8moduleCreateInfo.codeSize = size;
  9moduleCreateInfo.pCode = (uint32_t*)shaderCode;
 10moduleCreateInfo.flags = 0;
-11
 12// 调用Vulkan函数创建着色器模块，结果存储在 shaderModule
 13VkResult result = vkCreateShaderModule(vkDevice, &moduleCreateInfo, 
 14                                       nullptr, &shaderModule);
 15if(result!= VK_SUCCESS) {
 16    throw std::runtime_error("failed to create shader module!");
 17}
-18
 19VkPipelineShaderStageCreateInfo shaderStage = {};
 20shaderStage.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
 21shaderStage.pNext = nullptr;
@@ -208,9 +187,7 @@ VkShaderModule 是 Vulkan 中表示着色器模块的结构体。
 24shaderStage.module = shaderModule;
 25shaderStage.pName = "main";
 26shaderStage.pSpecializationInfo = nullptr;
-27
 28// 基于上述结构体创建管线
-29
 30//管线创建完毕注意销毁 shaderModule
 31delete[] shaderCode;
 32vkDestroyShaderModule(vkDevice, shaderModule, nullptr);

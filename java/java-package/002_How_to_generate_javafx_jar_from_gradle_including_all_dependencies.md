@@ -1,11 +1,7 @@
 # How to generate javafx jar from gradle including all dependencies
 
 
-
 https://stackoverflow.com/questions/70175403/how-to-generate-javafx-jar-from-gradle-including-all-dependencies
-
-
-
 
 
 [Ask Question](https://stackoverflow.com/questions/ask)
@@ -17,9 +13,7 @@ Modified [2 years, 2 months ago](https://stackoverflow.com/questions/70175403/ho
 Viewed 2k times
 
 
-
 0
-
 
 
 Been stuck with this issue for days. I'm trying to export a jar file using the gradle build command but it provides a small jar file. When I run the jar file it gives the following error, indicating that the javafx dependency was not included in the build:
@@ -88,9 +82,9 @@ javafx{
 mainClassName = 'newcare.home.Main_1'
 
 
-
-
 jar {
+```java
+```java
     from {
         configurations.runtime.collect {
             it.isDirectory() ? it : zipTree(it)
@@ -105,8 +99,6 @@ jar {
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
 }
-
-
 
 
 sourceSets {
@@ -166,23 +158,13 @@ asked Nov 30, 2021 at 20:05
 [Add a comment](https://stackoverflow.com/questions/70175403/how-to-generate-javafx-jar-from-gradle-including-all-dependencies#)
 
 
-
+```
+```
 ## 1 Answer
 
 Sorted by:
 
 ​                              Highest score (default)                                            Trending (recent votes count more)                                            Date modified (newest first)                                            Date created (oldest first)                    
-
-
-
-
-
-7
-
-
-
-
-
 
 
 ***Preface:** Although it's possible to create a fat/uber JAR file which includes JavaFX, this is not the preferred approach. That results in JavaFX being loaded from the class-path, which is not a supported configuration. However, if you really want to create a fat/uber JAR file then skip to the "Creating a Fat/Uber JAR" section.*
@@ -280,6 +262,8 @@ tasks {
 **Main.java**
 
 ```java
+```java
+```java
 package sample;
 
 import javafx.application.Application;
@@ -329,7 +313,6 @@ A few notes:
   - If you want a cross-platform JAR then you need to manually add the JavaFX dependencies for each platform so that the native code for each platform is embedded in the JAR file.
 
 
-
 [Share](https://stackoverflow.com/a/70175935/8273792)
 
 [Edit](https://stackoverflow.com/posts/70175935/edit)
@@ -377,3 +360,5 @@ answered Nov 30, 2021 at 20:53
   – [Slaw](https://stackoverflow.com/users/6395627/slaw)
 
    [Aug 17, 20](https://stackoverflow.com/questions/70175403/how-to-generate-javafx-jar-from-gradle-including-all-dependencies#comment129612038_70175935)
+```
+```

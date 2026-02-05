@@ -35,63 +35,55 @@ Vulkan 系统中的内存有四种类型（并不是所有设备都支持这四�
 
 ## VkPhysicalDeviceMemoryProperties
 
+```c
+typedef struct VkPhysicalDeviceMemoryProperties {
+    uint32_t        memoryTypeCount;//支持的内存类型数量
+    VkMemoryType    memoryTypes[VK_MAX_MEMORY_TYPES];
+    uint32_t        memoryHeapCount;//支持的内存类型数量
+    VkMemoryHeap    memoryHeaps[VK_MAX_MEMORY_HEAPS];
+} VkPhysicalDeviceMemoryProperties;
 ```
-1typedef struct VkPhysicalDeviceMemoryProperties {
-2    uint32_t        memoryTypeCount;//支持的内存类型数量
-3    VkMemoryType    memoryTypes[VK_MAX_MEMORY_TYPES];
-4    uint32_t        memoryHeapCount;//支持的内存类型数量
-5    VkMemoryHeap    memoryHeaps[VK_MAX_MEMORY_HEAPS];
-6} VkPhysicalDeviceMemoryProperties;
-```
-
-其中 memoryHeaps 中就是用于获取具体内存堆是哪一种。其中 VkMemoryHeap 定义如下：
 
 ## VkMemoryHeap
 
+```c
+// 由 VK_VERSION_1_0 提供
+typedef struct VkMemoryHeap {
+    VkDeviceSize         size;//该堆大小。单位为字节。
+    VkMemoryHeapFlags    flags;//该堆类型标志位。
+} VkMemoryHeap;
 ```
-1// 由 VK_VERSION_1_0 提供
-2typedef struct VkMemoryHeap {
-3    VkDeviceSize         size;//该堆大小。单位为字节。
-4    VkMemoryHeapFlags    flags;//该堆类型标志位。
-5} VkMemoryHeap;
-```
-
-其中 flags 就是用于指示该堆的类型。其有效值定义于 VkMemoryHeapFlagBits 中，如下：
 
 #### VkMemoryHeapFlagBits
 
+```c
+typedef enum VkMemoryHeapFlagBits {
+    VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = 0x00000001,// 表示内存堆是设备本地的。这种内存通常是最快的，因为它与 GPU 紧密集成，适合存储需要频繁访问的数据。
+    VK_MEMORY_HEAP_MULTI_INSTANCE_BIT = 0x00000002,//用于多 GPU 配置，表示内存堆在多个物理设备实例中是独立的。
+    VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT,//这是 VK_MEMORY_HEAP_MULTI_INSTANCE_BIT 的一个别名，为了兼容性而定义。KHR 后缀表示这是一个 Khronos 扩展（Khronos 是 Vulkan 标准的管理机构）。
+    VK_MEMORY_HEAP_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF//用于强制枚举类型为 32 位整数。这个值不实际使用，仅作为枚举类型的大小限制。
+} VkMemoryHeapFlagBits;
 ```
-1typedef enum VkMemoryHeapFlagBits {
-2    VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = 0x00000001,// 表示内存堆是设备本地的。这种内存通常是最快的，因为它与 GPU 紧密集成，适合存储需要频繁访问的数据。
-3    VK_MEMORY_HEAP_MULTI_INSTANCE_BIT = 0x00000002,//用于多 GPU 配置，表示内存堆在多个物理设备实例中是独立的。
-4    VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT,//这是 VK_MEMORY_HEAP_MULTI_INSTANCE_BIT 的一个别名，为了兼容性而定义。KHR 后缀表示这是一个 Khronos 扩展（Khronos 是 Vulkan 标准的管理机构）。
-5    VK_MEMORY_HEAP_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF//用于强制枚举类型为 32 位整数。这个值不实际使用，仅作为枚举类型的大小限制。
-6} VkMemoryHeapFlagBits;
-```
-
-其中每个堆自身可以包含一到多个类型的内存，堆上的内存类型信息被定义在 memoryTypes 中，其 VkMemoryType 定义如下：
 
 ## VkMemoryType
 
+```c
+typedef struct VkMemoryType {
+    VkMemoryPropertyFlags    propertyFlags;//内存类型标志位。
+    uint32_t                 heapIndex;//对应的 memoryHeaps 堆索引。
+} VkMemoryType;
 ```
-1typedef struct VkMemoryType {
-2VkMemoryPropertyFlags    propertyFlags;//内存类型标志位。
-3uint32_t                 heapIndex;//对应的 memoryHeaps 堆索引。
-4} VkMemoryType;
-```
-
-其中 propertyFlags 有效值被定义在了 VkMemoryPropertyFlagBits 枚举中，其定义如下：
 
 #### VkMemoryPropertyFlagBits（重点关注）
 
-```
-1typedef enum VkMemoryPropertyFlagBits {
-2VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = 0x00000001,
-3VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT = 0x00000002,
-4VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = 0x00000004,
-5VK_MEMORY_PROPERTY_HOST_CACHED_BIT = 0x00000008,
-6VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT = 0x00000010,
-7} VkMemoryPropertyFlagBits;
+```c
+typedef enum VkMemoryPropertyFlagBits {
+    VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = 0x00000001,
+    VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT = 0x00000002,
+    VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = 0x00000004,
+    VK_MEMORY_PROPERTY_HOST_CACHED_BIT = 0x00000008,
+    VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT = 0x00000010,
+} VkMemoryPropertyFlagBits;
 ```
 
 - VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT 表示在此内存类型上分配的内存可被物理设备高效访问。只有对应的堆为 VK_MEMORY_HEAP_DEVICE_LOCAL_BIT 才会有该内存类型。
@@ -112,65 +104,59 @@ Vulkan 系统中的内存有四种类型（并不是所有设备都支持这四�
 
 #### vkAllocateMemory
 
+```c
+VkResult vkAllocateMemory(
+    VkDevice                                    device,
+    const VkMemoryAllocateInfo*                 pAllocateInfo,
+    const VkAllocationCallbacks*                pAllocator,
+    VkDeviceMemory*                             pMemory);
 ```
-1VkResult vkAllocateMemory(
-2    VkDevice                                    device,
-3    const VkMemoryAllocateInfo*                 pAllocateInfo,
-4    const VkAllocationCallbacks*                pAllocator,
-5    VkDeviceMemory*                             pMemory);
-```
-
-其中主要的内存分配信息被定义在了 pAllocateInfo ，对应的 VkMemoryAllocateInfo 定义如下：
 
 #### VkMemoryAllocateInfo
 
-```
-1typedef struct VkMemoryAllocateInfo {
-2    VkStructureType    sType;//必须 是 VkStructureType::VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO 。
-3    const void*        pNext;
-4    VkDeviceSize       allocationSize;//要分配的内存大小。单位为 字节 。
-5    uint32_t           memoryTypeIndex;//分配内存的目标内存类型索引。
-6} VkMemoryAllocateInfo;
+```c
+typedef struct VkMemoryAllocateInfo {
+    VkStructureType    sType;//必须 是 VkStructureType::VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO 。
+    const void*        pNext;
+    VkDeviceSize       allocationSize;//要分配的内存大小。单位为 字节 。
+    uint32_t           memoryTypeIndex;//分配内存的目标内存类型索引。
+} VkMemoryAllocateInfo;
 ```
 
-其中 memoryTypeIndex 尤为重要，用于指定在 memoryTypes[memoryTypeIndex] 对应的内存类型上进行内存分配，对应分配的堆为 memoryHeaps[memoryTypes[memoryTypeIndex].heapIndex] 。
+```c
+VkDevice device; 
+VkPhysicalDevice physicalDevice;
+VkDeviceSize size = 1024;
+VkDeviceMemory* memory = nullptr;
 
-由于每个 memoryTypes 都有着不同的属性，所以一般会根据功能需求在某个内存类型上进行分配。
+// 获取物理设备内存属性
+vkGetPhysicalDeviceMemoryProperties(physicalDevice, &memoryProperties);
 
-```
- 1VkDevice device; 
- 2VkPhysicalDevice physicalDevice;
- 3VkDeviceSize size = 1024;
- 4VkDeviceMemory* memory = nullptr;
- 5
- 6// 获取物理设备内存属性
- 7vkGetPhysicalDeviceMemoryProperties(physicalDevice, &memoryProperties);
- 8
- 9// 查找一个主机可见的内存类型
-10uint32_t memoryTypeIndex = VK_MAX_MEMORY_TYPES;
-11for (uint32_t i = 0; i < memoryProperties.memoryTypeCount; i++) {
-12    if ((memoryProperties.memoryTypes[i].propertyFlags & VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT) &&
-13        (memoryProperties.memoryTypes[i].propertyFlags & VK_MEMORY_PROPERTY_HOST_COHERENT_BIT)) {
-14        memoryTypeIndex = i;
-15        break;
-16    }
-17}
-18
-19if (memoryTypeIndex == VK_MAX_MEMORY_TYPES) {
-20    fprintf(stderr, "Could not find a suitable memory type!\n");
-21    exit(EXIT_FAILURE);
-22}
-23
-24// 准备内存分配信息
-25VkMemoryAllocateInfo allocInfo = {};
-26allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
-27allocInfo.allocationSize = size;
-28allocInfo.memoryTypeIndex = memoryTypeIndex;
-29
-30// 分配内存
-31VK_CHECK_RESULT(vkAllocateMemory(device, &allocInfo, nullptr, memory));
-32
-33printf("Memory allocated successfully!\n");
+// 查找一个主机可见的内存类型
+uint32_t memoryTypeIndex = VK_MAX_MEMORY_TYPES;
+for (uint32_t i = 0; i < memoryProperties.memoryTypeCount; i++) {
+    if ((memoryProperties.memoryTypes[i].propertyFlags & VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT) &&
+        (memoryProperties.memoryTypes[i].propertyFlags & VK_MEMORY_PROPERTY_HOST_COHERENT_BIT)) {
+        memoryTypeIndex = i;
+        break;
+    }
+}
+
+if (memoryTypeIndex == VK_MAX_MEMORY_TYPES) {
+    fprintf(stderr, "Could not find a suitable memory type!\n");
+    exit(EXIT_FAILURE);
+}
+
+// 准备内存分配信息
+VkMemoryAllocateInfo allocInfo = {};
+allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+allocInfo.allocationSize = size;
+allocInfo.memoryTypeIndex = memoryTypeIndex;
+
+// 分配内存
+VK_CHECK_RESULT(vkAllocateMemory(device, &allocInfo, nullptr, memory));
+
+printf("Memory allocated successfully!\n");
 ```
 
 # 内存映射
@@ -187,6 +173,35 @@ Vulkan 系统中的内存有四种类型（并不是所有设备都支持这四�
 
 #### vkMapMemory
 
+```c
+VkResult vkMapMemory(
+    VkDevice                                    device,
+    VkDeviceMemory                              memory,//要映射的目标内存
+    VkDeviceSize                                offset,//从内存首地址开始的偏移量。从 0 开始,单位为 字节 。
+    VkDeviceSize                                size,//要映射的内存大小。单位为 字节 。
+    VkMemoryMapFlags                            flags,
+    void**                                      ppData//内存映射结果。为 void* 的指针。
+);
+```
+
+内存映射代码示例：
+
+```c
+// 映射内存
+void* data;
+VK_CHECK_RESULT(vkMapMemory(device, *memory, 0, size, 0, &data));
+printf("Memory mapped successfully!\n");
+
+// 写入数据到内存
+int* intData = (int*)data;
+for (size_t i = 0; i < size / sizeof(int); i++) {
+    intData[i] = i;
+}
+printf("Data written to memory successfully!\n");
+
+// 解除内存映射
+vkUnmapMemory(device, *memory);
+printf("Memory unmapped successfully!\n");
 ```
 1VkResult vkMapMemory(
 2    VkDevice                                    device,
@@ -211,14 +226,12 @@ Vulkan 系统中的内存有四种类型（并不是所有设备都支持这四�
  2void* data;
  3VK_CHECK_RESULT(vkMapMemory(device, *memory, 0, size, 0, &data));
  4printf("Memory mapped successfully!\n");
- 5
  6// 写入数据到内存
  7int* intData = (int*)data;
  8for (size_t i = 0; i < size / sizeof(int); i++) {
  9    intData[i] = i;
 10}
 11printf("Data written to memory successfully!\n");
-12
 13// 解除内存映射
 14vkUnmapMemory(device, *memory);
 15printf("Memory unmapped successfully!\n");
@@ -245,6 +258,43 @@ Vulkan 系统中的内存有四种类型（并不是所有设备都支持这四�
 
 ##### vkFlushMappedMemoryRanges
 
+```c
+VkResult vkFlushMappedMemoryRanges(
+    VkDevice                                    device,
+    uint32_t                                    memoryRangeCount,//指定 pMemoryRanges 数组长度
+    const VkMappedMemoryRange*                  pMemoryRanges);//指向 VkMappedMemoryRange 数组。用于配置虚拟内存到设备内存的同步。
+```
+
+##### vkInvalidateMappedMemoryRanges
+
+```c
+VkResult vkInvalidateMappedMemoryRanges(
+    VkDevice                                    device,
+    uint32_t                                    memoryRangeCount,
+    const VkMappedMemoryRange*                  pMemoryRanges
+);
+```
+
+#### VkMappedMemoryRange
+
+```c
+typedef struct VkMappedMemoryRange {
+    VkStructureType    sType;//必须 是 VkStructureType::VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE 。
+    const void*        pNext;
+    VkDeviceMemory     memory;//同步的目标设备内存。
+    VkDeviceSize       offset;//要同步的目标设备内存的偏移。单位为 字节 。
+    VkDeviceSize       size;//要同步的目标设备内存的大小。单位为 字节 。
+} VkMappedMemoryRange;
+```
+
+#### vkFreeMemory
+
+```c
+void vkFreeMemory(
+    VkDevice                                    device,
+    VkDeviceMemory                              memory,
+    const VkAllocationCallbacks*                pAllocator
+);
 ```
 1VkResult vkFlushMappedMemoryRanges(
 2    VkDevice                                    device,

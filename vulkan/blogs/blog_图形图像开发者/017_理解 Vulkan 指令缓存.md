@@ -3,17 +3,13 @@
 在 Vulkan 中，指令缓存（Command Buffer）是**用于记录和存储一系列绘图和计算指令的对象**。
 
 
-
 这些指令将在 GPU 上执行，可以用于执行不同类型的工作，包括绑定顶点缓存、绑定流水线、录制渲染通道指令、设置视口和裁切矩形、设置绘制指令、执行图像和缓存内容的复制操作等。
-
 
 
 **指令缓存提交到硬件队列的过程和它们被执行的过程是异步进行的。**
 
 
-
 指令缓存的类型主要有两种：主指令缓存和次指令缓存。
-
 
 
 - **主指令缓存**（primary command buffer）：包含次指令缓存，负责执行它们，可以直接提交给队列执行。
@@ -24,9 +20,7 @@
 ![图片](./assets/640-1741510204014-105.webp)
 
 
-
 一个应用程序中指令缓存的数量可能成百上千。Vulkan API 的设计是为了最大化地提升性能，**指令缓存的分配通过指令池 VkCommandPool 来完成**，从而降低多个指令缓存之间的资源创建带来的性能消耗。
-
 
 
 指令缓存可以是一直存在的，它们只需要创建一次，就可以一直反复地使用。如果不想继续使用某一个指令缓存了，可以通过一个简单的休眠指令让它恢复到可复用的状态。
@@ -45,7 +39,6 @@
 3poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
 4poolInfo.queueFamilyIndex = graphicsQueueFamilyIndex; // 指定队列族索引
 5poolInfo.flags = 0; // 可以指定一些标志，如 VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT
-6
 7if (vkCreateCommandPool(device, &poolInfo, nullptr, &commandPool) != VK_SUCCESS) {
 8    throw std::runtime_error("failed to create command pool!");
 9}
@@ -78,7 +71,6 @@
  3allocInfo.commandPool = commandPool; // 指定指令池
  4allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY; // 指定缓存类型
  5allocInfo.commandBufferCount = 1; // 分配的指令缓存数量
- 6
  7VkCommandBuffer commandBuffer;
  8if (vkAllocateCommandBuffers(device, &allocInfo, &commandBuffer) != VK_SUCCESS) {
  9    throw std::runtime_error("failed to allocate command buffers!");
@@ -113,15 +105,12 @@
  3beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO; // 指定结构体类型为 VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO
  4beginInfo.flags = 0; // 设置为 0 或 VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT 表示一次性使用
  5beginInfo.pInheritanceInfo = nullptr; // 仅在次级命令缓冲区中使用，如果是主命令缓冲区则为 nullptr
- 6
  7// 开始录制命令缓冲区
  8VkResult result = vkBeginCommandBuffer(commandBuffer, &beginInfo); // 开始录制命令缓冲区，传入初始化的 beginInfo
  9if (result != VK_SUCCESS) {
 10    throw std::runtime_error("Failed to begin recording command buffer!"); // 检查录制是否成功，若失败则抛出异常
 11}
-12
 13// 录制 Vulkan 指令
-14
 15// 1. 设置视口（可选）
 16VkViewport viewport = {}; // 初始化 VkViewport 结构体
 17viewport.x = 0.0f; // 视口左上角的 X 坐标
@@ -131,13 +120,11 @@
 21viewport.minDepth = 0.0f; // 最小深度值
 22viewport.maxDepth = 1.0f; // 最大深度值
 23vkCmdSetViewport(commandBuffer, 0, 1, &viewport); // 录制设置视口的指令，绑定到命令缓冲区
-24
 25// 2. 设置剪裁区域（可选）
 26VkRect2D scissor = {}; // 初始化 VkRect2D 结构体
 27scissor.offset = {0, 0}; // 剪裁区域的偏移量，从左上角开始
 28scissor.extent = swapChainExtent; // 剪裁区域的大小，通常是交换链的尺寸
 29vkCmdSetScissor(commandBuffer, 0, 1, &scissor); // 录制设置剪裁区域的指令
-30
 31// 3. 开始渲染通道（Render Pass）
 32VkRenderPassBeginInfo renderPassInfo = {}; // 初始化 VkRenderPassBeginInfo 结构体
 33renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO; // 指定结构体类型
@@ -145,28 +132,21 @@
 35renderPassInfo.framebuffer = framebuffer; // 指定要渲染的帧缓冲区
 36renderPassInfo.renderArea.offset = {0, 0}; // 渲染区域的起点，通常是从左上角（0, 0）开始
 37renderPassInfo.renderArea.extent = swapChainExtent; // 渲染区域的大小，通常与交换链一致
-38
 39VkClearValue clearColor = {{{0.0f, 0.0f, 0.0f, 1.0f}}}; // 定义清屏颜色为黑色
 40renderPassInfo.clearValueCount = 1; // 清屏的值数量，这里只设置一个清屏颜色
 41renderPassInfo.pClearValues = &clearColor; // 指向清屏颜色的指针
-42
 43// 开始录制渲染通道
 44vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE); // 开始渲染通道的录制
-45
 46// 4. 绑定图形管线
 47vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline); // 绑定图形管线到命令缓冲区
-48
 49// 5. 绑定顶点缓冲区（可选）
 50VkBuffer vertexBuffers[] = {vertexBuffer}; // 顶点缓冲区数组，包含顶点数据的缓冲区
 51VkDeviceSize offsets[] = {0}; // 偏移量数组，表示从缓冲区的哪个位置开始读取数据
 52vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets); // 绑定顶点缓冲区，设置偏移量
-53
 54// 6. 绘制图元
 55vkCmdDraw(commandBuffer, static_cast<uint32_t>(vertexCount), 1, 0, 0); // 录制绘制指令，指定要绘制的顶点数量
-56
 57// 结束渲染通道
 58vkCmdEndRenderPass(commandBuffer); // 结束当前渲染通道
-59
 60// 结束命令缓冲区的录制
 61result = vkEndCommandBuffer(commandBuffer); // 结束命令缓冲区的录制
 62if (result != VK_SUCCESS) {
@@ -183,13 +163,10 @@
  2submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
  3submitInfo.commandBufferCount = 1;
  4submitInfo.pCommandBuffers = &commandBuffer;
- 5
  6if (vkQueueSubmit(graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE) != VK_SUCCESS) {
  7    throw std::runtime_error("failed to submit draw command buffer!");
  8}
- 9
 10vkQueueWaitIdle(graphicsQueue); // 等待队列完成执行
-11
 12//GPU 渲染完成（渲染指令执行完毕）
 ```
 

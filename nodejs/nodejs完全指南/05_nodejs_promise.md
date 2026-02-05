@@ -19,6 +19,7 @@ sum(123, 456, (result)=>{
         sum(result, 8, result => {
             sum(result, 9, result => {
                 sum(result, 10, result => {
+```java
                     console.log(result)
                 })
             })
@@ -28,8 +29,8 @@ sum(123, 456, (result)=>{
 ```
 
 问题：
+```
 异步必须通过回调函数来返回结果，回调函数一多就很痛苦
-
 
 
 Promise
@@ -37,7 +38,6 @@ Promise可以帮助我们解决异步中的回调函数的问题
 Promise就是一个用来存储数据的容器
 它拥有着一套特殊的存取数据的方式
 这个方式使得它里边可以存储异步调用的结果
-
 
 
 ## 创建Promise
@@ -56,13 +56,13 @@ const promise = new Promise((resolve, reject) => {
     resolve("resolve返回的数据")
 })
 
+```java
 console.log(promise)
 ```
 
 ```shell
 Promise {[[PromiseState]]: "fulfilled", [[PromiseResult]]: "resolve返回的数据", Symbol(async_id_symbol): 2, Symbol(trigger_async_id_symbol): 1}
 ```
-
 
 
 ```javascript
@@ -79,7 +79,6 @@ Promise {[[PromiseState]]: "pending", [[PromiseResult]]: undefined, Symbol(async
 ```
 
 
-
 ```javascript
 const promise = new Promise((resolve, reject) => {
     // 执行错误
@@ -93,19 +92,20 @@ Promise {[[PromiseState]]: "rejected", [[PromiseResult]]: "reject返回的数据
 ```
 
 
-
 ```javascript
 const promise = new Promise((resolve, reject) => {
     // 执行出错
+```
     throw new Error("哈哈，出错了")
 })
+```java
 console.log(promise)
 ```
 
 ```shell
+```
 Promise {[[PromiseState]]: "rejected", [[PromiseResult]]: Error: 哈哈，出错了\n at D:\code\study\front\test01\src\test.js:3:11\n at new Promise (<anonymous>)\n …, Symbol(async_id_symbol): 2, Symbol(trigger_async_id_symbol): 1}
 ```
-
 
 
 ## then()
@@ -120,6 +120,7 @@ then需要两个回调函数作为参数，回调函数用来获取Promise中的
 
 ```javascript
 promise.then((result) => {
+```java
     console.log("1", result)
 }, (reason) => {
     console.log("2", reason)
@@ -127,7 +128,7 @@ promise.then((result) => {
 ```
 
 
-
+```
 ## PromiseResult 和 PromiseState
 
 ### PromiseResult
@@ -147,7 +148,6 @@ promise.then((result) => {
 **PromiseState 只能修改一次** ，修改以后永远不会在变
 
 
-
 ### 状态转换流程
 
 当Promise创建时，PromiseState 初始值为pending，
@@ -158,11 +158,9 @@ PromiseResult 变为存储的数据
 PromiseResult 变为存储的数据 或 异常对象
 
 
-
 当我们通过then读取数据时，相当于为Promise设置了回调函数，
 如果 PromiseState 变为fulfilled，则调用then的第一个回调函数来返回数据
 如果 PromiseState 变为rejected，则调用then的第二个回调函数来返回数据
-
 
 
 示例:
@@ -172,6 +170,7 @@ const promise = new Promise((resolve, reject) => {
     resolve("哈哈")
 })
 
+```java
 console.log(promise)
 promise.then(result => {
     console.log(result)
@@ -181,7 +180,7 @@ promise.then(result => {
 ```
 
 
-
+```
 ## catch()
 
 catch() 用法和then类似，但是只需要一个回调函数作为参数
@@ -194,6 +193,7 @@ const promise = new Promise((resolve, reject) => {
     reject("出错了")
 })
 
+```java
 console.log(promise)
 
 promise.catch(reason => {
@@ -203,7 +203,7 @@ promise.catch(reason => {
 ```
 
 
-
+```
 ## finally()
 
 无论是正常存储数据还是出现异常了，finally总会执行
@@ -215,6 +215,7 @@ const promise = new Promise((resolve, reject) => {
     reject("出错了")
 })
 
+```java
 console.log(promise)
 
 promise
@@ -229,7 +230,7 @@ promise
 ```
 
 
-
+```
 ## 调用链
 
 Promise就是一个用来存储数据对象
@@ -252,6 +253,7 @@ promise
         throw new Error("报个错玩")
     
     	// 前面报错, 后面不会执行
+```java
         console.log("出错了")
         return "嘻嘻"
     })
@@ -262,7 +264,6 @@ promise
         console.log("出错了")
     })
 ```
-
 
 
 promise中的
@@ -298,16 +299,15 @@ test.js:12result: 111
 ```
 
 
-
 then 的 两个回调 (result => {} , reason => {})
 catch
 
 的回调方法相当于里面最后调用了 `return new Promise(xxx)`
 
+```
 这个返回的 Promise 对象中会存储回调函数(then / catch )的返回值 , 如果 回调函数没有返回值, 则 promise 中的数据字段为 undefined 
 
 注意上面流程的执行顺序, 由于 promise 是异步调用,  `console.log(promise2)` 实际是在 `promise.then(...)` 之前执行的, 所以调用 `console.log(promise2)` 时, promise2 还没有设置数据, 因此状态为  pending , 要正确获取 promise2 中数据, 要通过 promise2 调用 then 方法.
-
 
 
 finally 的回调函数的返回值不会存储到 finally 方法返回的 promise 对象中
@@ -322,6 +322,7 @@ const p2 = p1.then(result => {
 })
 
 p2.then(result => {
+```java
     console.log("p2 result:", result)
 }, reason => {
     console.log("p2 reason:", reason)
@@ -345,7 +346,6 @@ p3.then(result => {
 p2 result: 111
 p3 result: 111
 ```
-
 
 
 利用 then 和 catch 回调函数的返回值成为新的 promise 对象数据这一点, 可以形成链式调用:
@@ -373,7 +373,6 @@ const p1 = new Promise((resolve, reject) => {
 ```
 
 
-
 回到开始的问题:
 
 ```javascript
@@ -397,7 +396,6 @@ function sum(a, b) {
 ```
 
 
-
 错误的调用方式:
 
 ```javascript
@@ -413,7 +411,6 @@ sum(123, 456).then(result => {
 这样会虽然可以获得结果, 但是还是有回调地域 , 失去了 promise 的意义了
 
 
-
 正确的调用方式:
 
 ```javascript
@@ -426,7 +423,7 @@ sum(123, 456)
 利用 then 返回新的 promise 的特点, 实现链式调用, 这样的代码逻辑清晰
 
 
-
+```
 ## 静态方法
 
 ### Promise.resolve() 
@@ -438,19 +435,19 @@ Promise.resolve(10).then(r => console.log(r))
 ```
 
 
-
 ### Promise.reject() 
 
 创建一个立即拒绝的Promise
 
 ```javascript
 Promise.reject("错误").catch((reason)=>{
+```java
     console.log(reason)
 })
 ```
 
 
-
+```
 ### Promise.all([...]) 
 
 同时返回多个Promise的执行结果
@@ -470,6 +467,7 @@ Promise.all([
     sum(5, 6),
     sum(33, 44)
 ]).then(result => {
+```java
     console.log("result:", result)
 }).catch(reason => {
     console.log("reason:", reason)
@@ -495,7 +493,7 @@ result: [ 579, 11, 77 ]
 ```
 
 
-
+```
 ### Promise.allSettled([...]) 
 
 同时返回多个Promise的执行结果(无论成功或失败)
@@ -516,6 +514,7 @@ Promise.allSettled([
     sum(5, 6),
     sum(33, 44)
 ]).then(result => {
+```java
     console.log("result:", result)
 }).catch(reason => {
     console.log("reason:", reason)
@@ -550,7 +549,7 @@ result: [
 ```
 
 
-
+```
 ### Promise.race([...]) 
 
 返回执行最快的Promise（不考虑对错）
@@ -569,6 +568,7 @@ Promise.race([
     sum(5, 6),
     sum(33, 44)
 ]).then(result => {
+```java
     console.log("result:", result)
 }).catch(reason => {
     console.log("reason:", reason)
@@ -594,7 +594,7 @@ result: 579
 ```
 
 
-
+```
 ### Promise.any([...])
 
 返回执行最快的完成的Promise, 优先考虑正确执行的, 如果有一个正确执行的,就返回正确执行的结果, 如果所有的 promise 都返回错误, 则会将所有的错误的 reason 放入 errors 数组返回
@@ -613,6 +613,7 @@ Promise.any([
     sum(5, 6),
     sum(33, 44)
 ]).then(result => {
+```java
     console.log("result:", result)
 }).catch(reason => {
     console.log("reason:", reason)
@@ -649,9 +650,7 @@ result: 579
 ```
 
 
-
-
-
+```
 ## 执行原理
 
 Promise在执行，then就相当于给Promise了回调函数
@@ -659,17 +658,13 @@ Promise在执行，then就相当于给Promise了回调函数
 then的回调函数会被放入到任务队列中
 
 
-
 promise 内部通过 `queueMicrotask()` 用来向**微任务队列**中添加一个任务
-
 
 
 `setTimeout()` 开启了一个定时器, 定时器的作用是间隔一段时间后，将函数放入到任务队列中, 这个任务队列叫做 **宏任务队列**
 
 
-
 JS是单线程的，它的运行时基于事件循环机制（event loop）
-
 
 
 调用栈
@@ -678,22 +673,18 @@ JS是单线程的，它的运行时基于事件循环机制（event loop）
 调用栈中，放的是要执行的代码
 
 
-
 任务队列
 队列
 队列是一种数据结构，先进先出
 任务队列的是将要执行的代码
 
 
-
 当调用栈中的代码执行完毕后，队列中的代码才会按照顺序依次进入到栈中执行
-
 
 
 在JS中任务队列有两种
 宏任务队列 （大部分代码都去宏任务队列中去排队）
 微任务队列 （Promise的回调函数（then、catch、finally））
-
 
 
 整个流程
@@ -702,11 +693,11 @@ JS是单线程的，它的运行时基于事件循环机制（event loop）
 ③ 执行宏任务队列中的所有任务
 
 
-
 ### 测试
 
 ```javascript
 setTimeout(() => {
+```java
     console.log(1)
 }, 0)
 
@@ -718,12 +709,9 @@ Promise.resolve(1).then(() => {
 输出:
 
 ```shell
-2
-1
 ```
 
 从这个实验可以看出:  **微任务队列 优先级高于 宏任务队列**
-
 
 
 ```javascript
@@ -741,12 +729,9 @@ Promise.resolve().then(() => {
 输出:
 
 ```shell
-1
-2
 ```
 
 注意: 这里 promise 在 微任务队列执行时往 宏任务队列 中放入一个任务
-
 
 
 ```javascript
@@ -764,19 +749,18 @@ queueMicrotask(() => {
 输出:
 
 ```shell
-2
-1
 ```
 
 这里可以看出 queueMicrotask 与 promise 都是放在同一个队列, promise 任务在队列前面, queueMicrotask 在队列后面, 但是 promise 在执行时又往 微任务队列中插入一个 任务, 这个插入的任务在 queueMicrotask  任务的后面, 所以输出为 2 1 
 
 
-
+```
 ### 练习
 
 阅读下列代码，并说出执行结果
 
 ```javascript
+```java
 console.log(1);
 setTimeout(() => console.log(2));
 Promise.resolve().then(() => console.log(3));
@@ -787,14 +771,7 @@ console.log(7);
 ```
 
 ```javascript
-1
-7
-3
-5
-2
-6
-4
 ```
 
 
-
+```

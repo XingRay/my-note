@@ -7,7 +7,6 @@
 ***文章标签\*[bootstrap](https://blog.51cto.com/topic/bootstrap.html)[spring](https://blog.51cto.com/topic/spring-1.html)[配置文件](https://blog.51cto.com/topic/peizhiwenjian.html)*****文章分类\*[运维](https://blog.51cto.com/nav/ops)*****阅读数\**\*1627\****
 
 
-
 \1. 若application.yml 和bootStrap.yml 在同一目录下，则bootStrap.yml 的加载顺序要高于application.yml,即bootStrap.yml 会优先被加载。
 
   原理：bootstrap.yml 用于应用程序上下文的引导阶段。
@@ -17,8 +16,6 @@
 ​      •application.yml 可以用来定义应用级别的，如果搭配 spring-cloud-config 使用 application.yml 里面定义的文件可以实现动态替换。
 ​      使用Spring Cloud Config Server时，应在 bootstrap.yml 中指定：
 ?
-1
-2
 spring.application.name
 spring.cloud.config.server.git.uri
 \2. 不同位置的配置文件的加载顺序：
@@ -75,13 +72,6 @@ b. 在start 脚本里指定了配置文件：spring.config.location=./applicatio
 所以，不管是jar包内还是jar运行的同级目录下，只要包含bootstrap.yml ，且为云配置，则云配置文件会覆盖其他配置文件；
 
 
-
-
-
-
-
-
-
 # Springboot中application.yml、application.properties和bootStrap.yml的加载顺序
 
  原创
@@ -116,15 +106,9 @@ bootstrap.yml 由⽗Spring ApplicationContext加载。
 •application.yml 可以⽤来定义应⽤级别的，如果搭配 spring-cloud-config 使⽤ application.yml ⾥⾯定义的⽂件可以实现动态替换。
 
 
-
-
-
 # springboot如何查找配置文件路径的顺序和其优先级别
 
 时间：2022-08-29*|*作者：艾尚波*|*点击：173次
-
-
-
 
 
 ##### 目录
@@ -137,12 +121,9 @@ bootstrap.yml 由⽗Spring ApplicationContext加载。
 - [springboot配置文件不生效的原因](http://www.zhano.cn/Java/67111.html#_label1)
 
 
-
-
 ## 查找配置文件路径的顺序和其优先级别
 
 提示：以下是本篇文章正文内容，下面案例仅供参考
-
 
 
 ### 一、springboot查找配置文件路径的顺序和其优先级别
@@ -160,7 +141,6 @@ bootstrap.yml 由⽗Spring ApplicationContext加载。
 1)其文件生效优先级别，从上到下，即如果在不同路径有相同属性，会优先选择上面的路径属性（1>2>3>4）
 
 2)路径扫描顺序和其优先级别相反（4>3>2>1）,后面的会覆盖前面的，并且所有路径都会扫描，形成互补。
-
 
 
 ### 二、同路径下
@@ -209,7 +189,6 @@ application.yml 可以用来定义应用级别的， 应用程序特有配置信
 小结：在同级目录下，优先级别application>bootstrap,.properties>,yml，前缀大于后缀，文件路径大于文件名称
 
 
-
 ## springboot配置文件不生效的原因
 
 1、将打包方式改为jar 。
@@ -237,11 +216,6 @@ application.yml 可以用来定义应用级别的， 应用程序特有配置信
 4.重构项目
 
 ![springboot如何查找配置文件路径的顺序和其优先级别](
-
-
-
-
-
 
 
 )

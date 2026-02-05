@@ -29,17 +29,13 @@ linux
 　　（注：最后我们会对比两种方法的利弊，大家可以根据自己的情况选用最适合的方法。）
 
 
-
-
 1、修改家目录下的 .bashrc 文件
 　　.bashrc 文件主要保存着个人的一些个性化设置，如：命令别名、环境变量等。
 
 　　1）先切换回家目录
 cd ~
-1
 　　2）修改 .bashrc 文件
 vi .bashrc
-1
 　　3）在 .bashrc 文件的 最后 加入环境变量
 变量名=变量值
 ...=...
@@ -48,19 +44,10 @@ export 变量名 ...
 　　CLASSPATH=.:./bin
 　　PATH=$JAVA_HOME/bin:$PATH
 　　export JAVA_HOME CLASSPATH PATH
-1
-2
-3
-4
-5
-6
-7
 　　4）退出并保存
 :wq
-1
 　　5）立即生效（此时应该在家目录下）
 source .bashrc
-1
 　　注：如果不执行 source 命令，则需重启系统才能生效
 
 2、修改 /etc/profile 文件
@@ -68,7 +55,6 @@ source .bashrc
 
 　　1）修改 /etc/profile 文件
 sudo vi /etc/profile
-1
 　　2）在 /etc/profile 文件的 最后 加入环境变量
 变量名=变量值
 ...=...
@@ -77,19 +63,10 @@ export 变量名 ...
 　　CLASSPATH=.:./bin
 　　PATH=$JAVA_HOME/bin:$PATH
 　　export JAVA_HOME CLASSPATH PATH
-1
-2
-3
-4
-5
-6
-7
 　　3）退出并保存
 :wq
-1
 　　4）立即生效
 source /etc/profile
-1
 　　注：如果不执行 source 命令，则需重启系统才能生效
 
 3、对比两种方法
@@ -101,13 +78,7 @@ source /etc/profile
 原文链接：https://blog.csdn.net/sun8112133/article/details/79901527
 
 
-
-
-
-
-
 # ~/.bashrc-Linux环境变量配置超详细教程
-
 
 
 ### 文章目录
@@ -128,7 +99,6 @@ source /etc/profile
     - [单引号的效果：](https://huaweicloud.csdn.net/63560e35d3efff3090b59115.html?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~activity-1-115130945-blog-79901527.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~activity-1-115130945-blog-79901527.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=2#_178?login=from_csdn)
   - [总结：](https://huaweicloud.csdn.net/63560e35d3efff3090b59115.html?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~activity-1-115130945-blog-79901527.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~activity-1-115130945-blog-79901527.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=2#_193?login=from_csdn)
   - [联系方式：](https://huaweicloud.csdn.net/63560e35d3efff3090b59115.html?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~activity-1-115130945-blog-79901527.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~activity-1-115130945-blog-79901527.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=2#_198?login=from_csdn)
-
 
 
 ## 前言：

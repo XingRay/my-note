@@ -1,7 +1,6 @@
 ## MongoDB用户和密码登录
 
 
-
 ### 一、MongoDB中内置角色
 
 | **角色**             | **介绍**                                                     |
@@ -19,7 +18,6 @@
 | root                 | 尽在admin 数据库中使用，提供超级权限                         |
 
 
-
 ### 二、创建管理员用户
 
 **创建管理员**
@@ -27,13 +25,11 @@
 连接mongodb
 
  
-
 ```
 mongo --host 10.10.18.11
 ```
 
  
-
 ```
 use admin
 db.createUser(
@@ -46,11 +42,9 @@ db.createUser(
 ```
 
 
-
 创建管理员账号：myUserAdmin 密码：abc123
 
  
-
 查看创建的管理员账号
 
 ```
@@ -91,7 +85,6 @@ mongo --host 10.10.18.11
 rs0:PRIMARY> use admin
 switched to db admin
 rs0:PRIMARY> db.auth("myUserAdmin", "abc123" )
-1
 ```
 
 **三、创建普通用户**
@@ -101,7 +94,6 @@ rs0:PRIMARY> db.auth("myUserAdmin", "abc123" )
 用户名：myTester
 密码：xyz123
 权限：读写数据库 test， 只读数据库 reporting。
-
 
 
 ```
@@ -115,7 +107,6 @@ db.createUser(
   }
 )
 ```
-
 
 
 **普通用户连接MongoDB实例**

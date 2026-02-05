@@ -81,7 +81,6 @@ VkPhysicalDeviceMemoryProperties结构描述了多个内存堆以及可用于访
 至少有一个堆必须在VkMemoryHeap:：flags中包括VK_MEMORY_heap_DEVICE_LOCAL_BIT。如果有多个堆都具有相似的性能特性，则它们可以都包括VK_MEMORY_HEAP_DEVICE_LOCAL_BIT。在统一内存体系结构（UMA）系统中，通常只有一个内存堆，它被认为是host和device的同等“本地”内存堆，并且这样的实现必须将该堆宣传为设备本地内存堆。
 
  
-
 # 2. Memory Heaps与types
 
 Heaps: Physical memory，描述了memory的物理属性，Heap限制了Type flags的值
@@ -135,7 +134,6 @@ GPU 读通过snoop CPU cache，snoop 是一种硬件管理的Cache 一致性处�
 [![复制代码](./assets/copycode.gif)](javascript:void(0);)
 
  
-
 ## 2.2 常用Memory Types解析
 
 - **VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT**：表示以此flag分配的内存，对device access来说是最高效的。需要注意的是仅当heap的flag为VK_MEMORY_HEAP_DEVICE_LOCAL_BIT时才可以设置，Device-Local Memory就是指显存；
@@ -406,7 +404,6 @@ VkResult vkGetMemoryAndroidHardwareBufferANDROID(
 [![复制代码](./assets/copycode.gif)](javascript:void(0);)
 
  
-
 ## 3.3 Vulkan Memory申请流程
 
 Step1: 获取physical device支持的memory属性
@@ -422,13 +419,11 @@ Step5: 调用vkAllocateMemory申请内存
 Step6: 调用vkBindImageMemory把申请的内存memory和resource image绑定在一起
 
  
-
 # 4. VkMemoryPropertyFlagBits描述
 
 https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryPropertyFlagBits.html
 
  
-
 # 5. Vulkan的缓冲(Buffer)与图像(Image)
 
 解决了内存分配的问题，但目前仍还有一个巨大的问题等待着我们去解决：GPU绘制需要各种资源，但资源通常是存储在CPU内存中的，和GPU内存并不互通，无法被GPU直接访问，因此我们需要一个方法把资源放到GPU内存中而且能被GPU按照一定的规矩访问，而不是乱来，那么接下来我们就来解决这个问题。
@@ -436,7 +431,6 @@ https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkMemoryProper
 Vulkan为我们提供了两种不同的资源类型，分别是缓冲（Buffer）和图像（Image），这两个都是vulkan中的resource。在利用相应的vulkan API 创建完VkBuffer或者VkImage之后，就可以遵循上文3.3 Vulkan Memory申请流程进行memory的申请和resource/memory绑定了。
 
  
-
 ## 参考链接
 
 - Vulkan Memory Management：https://www.youtube.com/watch?v=gM93bbKQ0P8

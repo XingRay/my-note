@@ -70,7 +70,6 @@ sudo make install
 ```powershell
 cd 软件目录
 sudo make uninstall
-12
 ```
 
 ### 3.通过 apt-get 在线安装
@@ -96,14 +95,12 @@ sudo make uninstall
 
 ```powershell
 /etc/apt/sources.list
-1
 ```
 
 1. apt 的下载的 deb 包存在哪里？
 
 ```powershell
 /var/cache/apt/archives
-1
 ```
 
 我是如何知道的呢？使用 `man apt-get` 来查看，定位到 FILES 即可看到这两个路径，还有其他路径，有兴趣可以去了解，这里主要是告诉大家解决问题的思路，**在 Linux 下通过 man 可以解决很多问题，一定要善于使用。**
@@ -121,14 +118,12 @@ sudo make uninstall
 
 ```powershell
 sudo apt-get install aptitiude
-1
 ```
 
 如果你使用 apt-get 安装软件的过程中提示你需要安装依赖，那么你换成下面的命令重新安装即可：
 
 ```powershell
 sudo aptitiude software_name
-1
 ```
 
 这样当你安装的软件需要安装其他的依赖的软件包的时候，这个工具会帮助你自动安装，就不需要你手动安装了，是不是特别方便。
@@ -138,14 +133,12 @@ sudo aptitiude software_name
 ```powershell
 deb http://mirrors.aliyun.com/ubuntu/ yakkety main universe multiverse restricted
 deb http://security.ubuntu.com/ubuntu/ yakkety-security multiverse main universe restricted
-12
 ```
 
 然后执行更新：
 
 ```powershell
 sudo apt-get update
-1
 ```
 
 之后就可以使用 `apt-get` 安装软件了，这是经常使用的安装方法，务必学会！
@@ -160,7 +153,6 @@ sudo apt-get update
 
 ```powershell
 https://pkgs.org/download/vim
-1
 ```
 
 下载完成后，直接双击安装包或者通过 dpkg 安装，我在 Ubuntu 下直接双击使用软件中心即可安装，要卸载的时候点击卸载按钮即可卸载，非常简单。
@@ -171,14 +163,12 @@ https://pkgs.org/download/vim
 
 ```powershell
 http://www.vim.org/sources.php
-1
 ```
 
 下载完成后，打开命令行，进入下载文件的目录，使用下面的命令解压：
 
 ```powershell
 tar xjvf vim-7.4.tar.bz2
-1
 ```
 
 解压完后的目录是 vim74
@@ -187,7 +177,6 @@ tar xjvf vim-7.4.tar.bz2
 ```powershell
 cd vim74/
 ./configure
-12
 ```
 
 注意：配置过程中可能提示缺少 libncurses5-dev 这个依赖而结束，我们使用 `sudo apt-get install libncurses5-dev` 安装即可，在重新配置之前，需要使用 `make clean` 先清理一次。
@@ -196,14 +185,12 @@ cd vim74/
 
 ```powershell
 make
-1
 ```
 
 make 完成，直接使用 root 安装：
 
 ```powershell
 sudo make install
-1
 ```
 
 查看是否安装成功：
@@ -212,7 +199,6 @@ sudo make install
 
 ```powershell
 vim --version
-1
 ```
 
 使用下面的命令卸载 vim，不过你应该不想卸载它：
@@ -220,7 +206,6 @@ vim --version
 ```powershell
 cd vim74/
 sudo make uninstall
-12
 ```
 
 再强调一遍：如果你在安装过程中遇到任何问题，请仔细阅读错误提示信息，然后尝试使用 Google 来搜索提示的错误信息，**一般情况下，你在 stackoverflow 网站上都能得到正确的答案，但是前提是你要有基本的英文阅读能力。**
@@ -231,14 +216,12 @@ sudo make uninstall
 
 ```powershell
 sudo apt-get install vim
-1
 ```
 
 使用下面的命令来卸载 vim：
 
 ```powershell
 sudo apt-get remove --purge vim
-1
 ```
 
 使用这种方法可以说非常的简单，前提是需要联网。

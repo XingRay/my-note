@@ -1,7 +1,6 @@
 # [Spring Security 入门（基本使用） ](https://www.cnblogs.com/CF1314/p/14766623.html)
 
 
-
 **目录**
 
 - [1、入门](https://www.cnblogs.com/CF1314/p/14766623.html#_label0)
@@ -34,7 +33,6 @@
 - [7、参考资料](https://www.cnblogs.com/CF1314/p/14766623.html#_label6)
 
  
-
 ------
 
 ## Spring Security 入门（基本使用）
@@ -50,76 +48,17 @@
 ![spring security 访问url路径图](https://gitee.com/xiaoshengstudy/typoraPicture/raw/master/202407291403148.png)
 
 
-
 #### 1.1、什么是 spring security
 
 - spring security 是一个比 shiro 更加强大的安全管理框架，权限颗粒度更细。
 - 源自于 spring 家族，能跟 springboot 无缝整合，对 oauth2 的支持也更好。
 
 
-
 #### 1.2、依赖配置
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
     <parent>
+```xml
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.5</version>
@@ -180,17 +119,13 @@
 ```
 
 
-
+```
 #### 1.3、测试接口
 
 添加一个简单的 /hello 接口：
 
 ```undefined
-1
-2
-3
-4
-5
+```java
 @RequestMapping("/hello")
 @ResponseBody
 public String hello() {
@@ -198,6 +133,7 @@ public String hello() {
 }
 ```
 
+```
 启动项目，访问 /hello 接口，会发现自动跳转到 spring security 提供的登录页面：
 
 ![image-20210513103731379](https://gitee.com/xiaoshengstudy/typoraPicture/raw/master/202407291403776.png)
@@ -217,26 +153,11 @@ public String hello() {
 ![image-20210514174013950](https://gitee.com/xiaoshengstudy/typoraPicture/raw/master/202407291404917.png)
 
 
-
 #### 2.1、自定义登录页面
 
 1、登录页面 **login.html** :
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -256,17 +177,6 @@ public String hello() {
 2、登录成功跳转页 **main.html**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -283,16 +193,6 @@ public String hello() {
 3、登录失败跳转页 **error.html**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -310,16 +210,6 @@ public String hello() {
 **main.html **如果有权限，则能访问该页面，否则报 **403**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -333,33 +223,12 @@ public String hello() {
 ```
 
 
-
 #### 2.2、自定义登录逻辑
 
 自定义登录逻辑主要用于对用户名和密码进行校验，**需要实现 UserDetailService 接口**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
+```java
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
@@ -369,6 +238,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("=======执行自定义登录逻辑====");
+```
         //校验用户名，实际环境中需要从数据库查询
         if (!username.equals("admin")) {
             throw new UsernameNotFoundException("用户不存在");
@@ -384,31 +254,12 @@ public class UserDetailServiceImpl implements UserDetailsService {
 ```
 
 
-
 #### 2.3、自定义登录成功处理器
 
 登录成功处理器**实现 AuthenticationSuccessHandler 接口**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
+```java
 public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private String url;
@@ -431,26 +282,13 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 ```
 
 
-
+```
 #### 2.4、自定义登录失败处理器
 
 登录失败处理器**实现 AuthenticationFailureHandler接口**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+```java
 public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     private String url;
@@ -468,24 +306,11 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
 ```
 
 
-
+```
 #### 2.5、自定义异常处理器
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+```java
 @Component
 public class MyAccessDeniedHandler implements AccessDeniedHandler {
     @Override
@@ -495,6 +320,7 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
         //返回格式
         response.setHeader("Content-Type", "application/json;charset=utf-8");
         PrintWriter writer = response.getWriter();
+```
         writer.write("{status: \"error\",\"msg\": \"权限不足，请联系管理员\"}");
         writer.flush();
         writer.close();
@@ -503,74 +329,12 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
 ```
 
 
-
 #### 2.6、配置 Spring Security
 
 该类是 Spring Security 的配置类, **继承 WebSecurityConfigurerAdapter**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
+```java
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -596,6 +360,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password123")
                 //自定义登录页面
                 .loginPage("/showLogin")
+```
                 //必须和表单提交的接口一样，执行自定义登录逻辑
                 .loginProcessingUrl("/login")
                 //自定义登录成功处理器
@@ -627,6 +392,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * @param web
      * @throws Exception
      */
+```java
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**")
@@ -636,7 +402,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 ```
 
 
-
+```
 #### 2.7、运行测试
 
 1、运行后访问 `http://localhost:8080/login.html`，加载的自定义登录页面如下：
@@ -658,23 +424,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 4、修改登录成功的权限为 **permission2**,
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
+```java
 @Override
 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     System.out.println("=======执行自定义登录逻辑====");
+```
     //校验用户名，实际环境中需要从数据库查询
     if (!username.equals("admin")) {
         throw new UsernameNotFoundException("用户不存在");
@@ -701,7 +455,6 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 ### 3、自定义用户退出登录
 
 
-
 #### 3.1、默认的退出登录
 
 spring security 有默认的退出登录接口，直接访问 **/logout** 接口，就能实现退出登录,下面是简单演示：
@@ -709,18 +462,6 @@ spring security 有默认的退出登录接口，直接访问 **/logout** 接口
 **main.html** 添加退出登录的访问链接`logout`:
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -744,7 +485,6 @@ spring security 有默认的退出登录接口，直接访问 **/logout** 接口
 ![image-20210513172226418](https://gitee.com/xiaoshengstudy/typoraPicture/raw/master/202407291404411.png)
 
 
-
 #### 3.2、自定义退出登录
 
 如果默认的退出登录无法满足，可以自定义处理器来解决。
@@ -756,19 +496,10 @@ spring security 有默认的退出登录接口，直接访问 **/logout** 接口
 这个 **LogoutHandle** 主要用来处理用户信息。
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
 /**
  * 登出接口处理器
  */
+```java
 public class MyLogoutHandler implements LogoutHandler {
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
@@ -778,6 +509,7 @@ public class MyLogoutHandler implements LogoutHandler {
 }
 ```
 
+```
 ##### 3.2.2、自定义 LogoutSuccessHandler
 
 这个 **LogoutSuccessHandler** 用于返回响应信息给前端，可以返回 json、重定向页面。
@@ -785,25 +517,10 @@ public class MyLogoutHandler implements LogoutHandler {
 注意配置这个处理器之后，就不需要配置 `logoutSuccessUrl`了。
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
 /**
  * 登出成功处理器
  */
+```java
 public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 
     private String url;
@@ -819,50 +536,11 @@ public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 }
 ```
 
+```
 ##### 3.3.3、spring security 添加配置
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
+```java
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     //表单提交
@@ -872,6 +550,7 @@ protected void configure(HttpSecurity http) throws Exception {
         .passwordParameter("password123")
         //自定义登录页面
         .loginPage("/login.html")
+```
         //必须和表单提交的接口一样，执行自定义登录逻辑
         .loginProcessingUrl("/login")
         //自定义登录成功处理器
@@ -911,18 +590,6 @@ protected void configure(HttpSecurity http) throws Exception {
 **main.html** 修改如下：
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -944,7 +611,6 @@ protected void configure(HttpSecurity http) throws Exception {
 ### 4、基于注解的权限控制
 
 
-
 #### 4.1、权限注解参数
 
 关于权限的注解参数共有三个：
@@ -954,20 +620,12 @@ protected void configure(HttpSecurity http) throws Exception {
 - @Secured：类似于 @PreAuthorize
 
 
-
 #### 4.2、启动类添加 @EnableGlobalMethodSecurity
 
 启动类配置如下：
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
+```java
 @SpringBootApplication
 @EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class SpringSecurityStudyApplication {
@@ -979,7 +637,7 @@ public class SpringSecurityStudyApplication {
 ```
 
 
-
+```
 #### 4.3、运行测试
 
 ##### 4.3.1、修改 spring security 和 自定义登录逻辑
@@ -987,45 +645,7 @@ public class SpringSecurityStudyApplication {
 successHander(登录成功处理器) 修改为 successForwardUrl（登录成功访问路径），删除 **permission1**的权限判断，改成访问接口时进行权限判断。
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
+```java
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     //表单提交
@@ -1035,6 +655,7 @@ protected void configure(HttpSecurity http) throws Exception {
         .passwordParameter("password123")
         //自定义登录页面
         .loginPage("/login.html")
+```
         //必须和表单提交的接口一样，执行自定义登录逻辑
         .loginProcessingUrl("/login")
         //登录成功跳转的页面，post请求
@@ -1070,21 +691,10 @@ protected void configure(HttpSecurity http) throws Exception {
 自定义登录逻辑如下：
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
+```java
 @Override
 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+```
     //校验用户名，实际环境中需要从数据库查询
     if (!username.equals("admin")) {
         throw new UsernameNotFoundException("用户不存在");
@@ -1101,19 +711,8 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 ##### 4.3.2、添加测试接口
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
 //登录成功跳转页
+```java
 @PostMapping("/toMain")
 //判断是否拥有permission1的权限
 @PreAuthorize("hasPermission('permission1')")
@@ -1127,6 +726,7 @@ public String toMain() {
 }
 ```
 
+```
 ##### 4.3.3、运行测试
 
 登录成功，通过 `/toMain`接口重定向到 `main.html`:
@@ -1140,44 +740,16 @@ public String toMain() {
 当默认的 `UserDetailsService` 无法满足需求，例如增加图形验证码校验，此时可以自己创建登录过滤器 **UsernamePasswordAuthenticationFilter** 及登录认证处理 **AuthenticationProvider**，对业务逻辑进行拓展。
 
 
-
 #### 5.1、自定义身份认证处理
 
 实现 **AuthenticationProvider**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
 /**
  * 登录认证处理
  * @author Lin
  */
+```java
 public class MyAuthenticationProvider implements AuthenticationProvider {
 
     @Override
@@ -1188,6 +760,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
         if (!username.equals("admin")) {
             throw new UsernameNotFoundException("用户不存在");
         }
+```
         //校验密码，实际需要加密并与DB的password比较
         if (!password.equals("123456")) {
             throw new InternalAuthenticationServiceException("密码错误");
@@ -1197,6 +770,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
                 AuthorityUtils.commaSeparatedStringToAuthorityList("permission1,ROLE_abc,/main.html"));
     }
 
+```java
     @Override
     public boolean supports(Class<?> authentication) {
         return true;
@@ -1205,44 +779,17 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
 ```
 
 
-
+```
 #### 5.2、自定义登录过滤器
 
 实现 **UsernamePasswordAuthenticationFilter**
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
 /**
 * 登录过滤器
 * @author Lin
 */
+```java
 public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
    public MyUsernamePasswordAuthenticationFilter() {
@@ -1270,28 +817,13 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
 ```
 
 
-
+```
 #### 5.3、修改spring security 的配置类
 
 中间代码忽略，改动部分如下，增加自定义登录过滤器的配置
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
+```java
 @Override
 protected void configure(HttpSecurity http) throws Exception {
     //表单提交
@@ -1301,6 +833,7 @@ protected void configure(HttpSecurity http) throws Exception {
         .passwordParameter("password123")
         //自定义登录页面
         .loginPage("/login.html")
+```
         //必须和表单提交的接口一样，执行自定义登录逻辑
         .loginProcessingUrl("/login")
 	....
@@ -1319,7 +852,6 @@ protected void configure(HttpSecurity http) throws Exception {
 上文演示了基于注解的权限控制，但在实际的开发中需要做到动态权限控制，spring security能够支持动态权限，需要实现 **FilterInvocationSecurityMetadataSource** 和 **AccessDecisionManager**。
 
 
-
 #### 6.1、自定义权限过滤器
 
 权限过滤器实现 **FilterInvocationSecurityMetadataSource**，用于返回访问 url 所需的权限。
@@ -1327,57 +859,13 @@ protected void configure(HttpSecurity http) throws Exception {
 注意：在添加权限过滤器后，所有的请求都会经过该过滤器，包括登录页面`/login.html`，即使 `permitAll()`,因此需要添加匿名角色`ROLE_ANONYMOUS`映射登录页面 `login.html`,如下面代码的`put("/login.html", "ROLE_ANONYMOUS")`。
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
 /**
  * 权限过滤器
  *
  * @author Lin
  * @Description 返回url需要的权限
  */
+```java
 @Component
 public class MyFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
@@ -1419,49 +907,18 @@ public class MyFilterInvocationSecurityMetadataSource implements FilterInvocatio
 ```
 
 
-
+```
 #### 6.2、自定义权限决策管理器
 
 权限决策管理器实现 **AccessDecisionManager**，判断用户是否有访问 url 的权限。
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
 /**
  * 权限决策管理器
  * @author Lin
  * @Description 根据url判断用户是否有访问权限
  */
+```java
 @Component
 public class MyAccessDecisionManager implements AccessDecisionManager {
     @Override
@@ -1492,59 +949,11 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
 ```
 
 
-
+```
 #### 6.3、修改 sprIng security 的配置类
 
 ```undefined
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
+```java
 @Override
 protected void configure(HttpSecurity http) throws Exception {
 
@@ -1555,6 +964,7 @@ protected void configure(HttpSecurity http) throws Exception {
         .passwordParameter("password123")
         //自定义登录页面
         .loginPage("/login.html")
+```
         //必须和表单提交的接口一样，执行自定义登录逻辑
         .loginProcessingUrl("/login");
 
@@ -1562,6 +972,7 @@ protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
         //动态权限控制
         .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+```java
             @Override
             public <O extends FilterSecurityInterceptor> O postProcess(O object) {
                 object.setSecurityMetadataSource(myFilterInvocationSecurityMetadataSource);
@@ -1571,6 +982,7 @@ protected void configure(HttpSecurity http) throws Exception {
         })
         //放行/login.html,不需要认证
         .antMatchers("/login.html").permitAll()
+```
         //放行/error.html，不需要认证
         .antMatchers("/error.html").permitAll();
 

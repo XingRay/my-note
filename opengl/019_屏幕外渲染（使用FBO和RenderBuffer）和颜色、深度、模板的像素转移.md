@@ -3,7 +3,6 @@
 https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth
 
 
-
 我必须在OpenGL中进行屏幕外渲染，然后将图像传递给QImage。另外，为了锻炼，我想把深度和模板缓冲区也转移到CPU上。
 
 对于在屏幕外绘制，我使用了帧缓冲区对象和渲染缓冲区（而不是纹理，因为我不需要纹理）。
@@ -151,6 +150,7 @@ glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDER
 ```
 QImage FBO::getDepth()
 {
+```cpp
     std::vector<uchar> pixels;
     pixels.reserve(width * height*4);
     for(int i=0; i < (width * height*4) ; i++ ) {
@@ -186,6 +186,7 @@ QImage FBO::getDepth()
 }
 ```
 
+```
 模具类似，但使用带有rgb组件的`p_模具`
 
 ..结果图像是深度和模板的黑色图像
@@ -198,6 +199,7 @@ QImage FBO1::getDepth()
     // sizeof( GLuint ) = 4 byte
     // sizeof( uchar ) = 1 byte
 
+```cpp
     std::vector<GLuint> pixels(width * height);
     glBindFramebuffer(GL_FRAMEBUFFER, fboId);
     glBindRenderbuffer(GL_RENDERBUFFER, depthStencilBuffer);
@@ -260,12 +262,10 @@ QImage FBO1::getStencil()
 }
 ```
 
+```
 ## 共2个答案
 
 **匿名用户**
-
-
-
 
 
 深度...我期待一个带有渐变灰色三角形的白色图像...
@@ -293,10 +293,12 @@ glReadPixels( 0,0,  width, height,  GL_DEPTH24_STENCIL8, GL_UNSIGNED_BYTE, pixel
 大小来自第二个参数，像素传输类型。在这种情况下，GL_UNSIGNED_BYTE意味着它将读取深度和模板，将每个值转换为无符号的8位值，并将其中两个每个像素存储到pixels.data（）中。
 深度缓冲区每像素仅存储1个值。仅限深度/模板存储2。你不能用OpenGL将它们复制成每像素4分量的格式。因此，无论以后如何构建QImage，它都必须为我提供一种每像素1或2个值的方法。
 一般来说，如果您想要读取深度缓冲区，并且希望深度缓冲区的数据实际上是有意义的，您可以这样做：
+```cpp
 std::vector<GLuint> pixels(width * height);  //std::vector value-initializes its elements.
 
 glBindFramebuffer(GL_FRAMEBUFFER, fboId);
 glReadPixels( 0,0,  width, height,  GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, pixels.data());
+```
 如何将它们放入QImage中进行可视化取决于您。但这会为您提供一个无符号整数数组，其中高24位是深度分量，低8位是模板。
 
 ```
@@ -313,11 +315,7 @@ QImage不知道如何处理浮点数，因此它将每组32位（在一个浮点
 ```
 
 
-
-
-
 https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth
-
 
 
 # [Render off screen (with FBO and RenderBuffer) and pixel transfer of color, depth, stencil](https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth)
@@ -329,11 +327,6 @@ Asked 10 years, 7 months ago
 Modified [10 years, 6 months ago](https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth?lastactivity)
 
 Viewed 6k times
-
-
-
-2
-
 
 
 I'have to render off screen in OpenGL and then pass the image to a QImage. Plus, just for exercise I'd like to transfer to the CPU also the depth and the stencil buffer.
@@ -485,6 +478,7 @@ pixel transfer of the depth:
 ```cpp
 QImage FBO::getDepth()
 {
+```cpp
     std::vector<uchar> pixels;
     pixels.reserve(width * height*4);
     for(int i=0; i < (width * height*4) ; i++ ) {
@@ -524,6 +518,7 @@ the stencil is similar but using `p_stencil` with rgb component
 
 .. the result image is a black image for both depth and stencil
 
+```
 ## EDIT
 
 thanks to Nicolas answer I managed to use a renderbuffer for both depth and stencil buffer and extract the depth component to fit a `QImage::Format_ARGB32` with this code:
@@ -534,6 +529,7 @@ QImage FBO1::getDepth()
     // sizeof( GLuint ) = 4 byte
     // sizeof( uchar ) = 1 byte
 
+```cpp
     std::vector<GLuint> pixels(width * height);
     glBindFramebuffer(GL_FRAMEBUFFER, fboId);
     glBindRenderbuffer(GL_RENDERBUFFER, depthStencilBuffer);
@@ -627,23 +623,12 @@ asked Jul 17, 2013 at 22:54
 [Add a comment](https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth#)
 
 
-
+```
 ## 2 Answers
 
 Sorted by:
 
 ​                              Highest score (default)                                            Trending (recent votes count more)                                            Date modified (newest first)                                            Date created (oldest first)                    
-
-
-
-
-
-3
-
-
-
-
-
 
 
 > The depth.. I'm expecting a white image with a gradient gray triangle..
@@ -692,6 +677,7 @@ Depth buffers only store 1 value per pixel. Depth/stencil only store 2. You *can
 Generally speaking, if you want to read the depth buffer, and you want the depth buffer's data to actually be meaningful, you do this:
 
 ```cpp
+```sql
 std::vector<GLuint> pixels(width * height);  //std::vector value-initializes its elements.
 
 glBindFramebuffer(GL_FRAMEBUFFER, fboId);
@@ -699,7 +685,6 @@ glReadPixels( 0,0,  width, height,  GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, pixe
 ```
 
 How you put those in a QImage for visualization is up to you. But this gets you an array of unsigned ints, where the high 24 bits are the depth component, and the low 8 bits are the stencil.
-
 
 
 [Share](https://stackoverflow.com/a/17711994/8273792)
@@ -739,13 +724,6 @@ answered Jul 17, 2013 at 23:27
 [Add a comment](https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth#)
 
 
-
-
-
-2
-
-
-
 Well, the depth picture looks like one can excpect from this code:
 
 ```cpp
@@ -763,7 +741,6 @@ QImage is really a very limited thing (it can't even deal with HDR configuration
 Also separate depth stencil is ditremental for performance. Always use a combined format, where possible.
 
 … well, there comes Nicol Bolas' answer, which is right the same as I wrote. Plus he pointed out the memory leak.
-
 
 
 [Share](https://stackoverflow.com/a/17712055/8273792)
@@ -807,5 +784,5 @@ answered Jul 17, 2013 at 23:33
 [Add a comment](https://stackoverflow.com/questions/17711673/render-off-screen-with-fbo-and-renderbuffer-and-pixel-transfer-of-color-depth#)
 
 
-
 Your Answer
+```

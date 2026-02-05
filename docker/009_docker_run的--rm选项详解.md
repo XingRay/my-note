@@ -1,6 +1,4 @@
-docker run的--rm选项详解
-
-
+# docker run的--rm选项详解
 
 在Docker容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。
 
@@ -8,8 +6,9 @@ docker run的--rm选项详解
 
 另外，当容器退出时，通过 docker ps是看不到，需要携带-a参数：
 
+```bash
  docker ps -a 
-1
+```
 如果此时携带--rm，那么及时-a参数，也看不到该容器信息。
 
 执行docker run命令带--rm命令选项，等价于在容器退出后，执行docker rm -v

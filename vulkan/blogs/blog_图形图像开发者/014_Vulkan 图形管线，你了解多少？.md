@@ -11,7 +11,6 @@
 它包括一系列固定和可编程阶段，这些阶段按照特定顺序执行，以完成渲染任务。
 
 
-
 Vulkan 渲染管线的许多阶段是可选的，你可以禁用它们，或者Vulkan实现可能根本不支持这些功能。
 
 **管线中唯一必须启用的阶段是顶点着色器（vertex shader）**, 其余的阶段和功能可以根据需要选择启用或禁用，比如几何着色器、片段着色器和光栅化阶段等。
@@ -38,7 +37,6 @@ Vulkan提供了高度的灵活性，让开发者能够根据具体需求配置�
  4    .stride = 8 * sizeof(float),          // 每个顶点的数据跨度，即每个顶点数据的字节大小（8个float：3个float顶点坐标，2个float纹理坐标，3float个法向量）
  5    .inputRate = VK_VERTEX_INPUT_RATE_VERTEX, // 指定输入率为每个顶点（每个顶点都有一组数据）
  6};
- 7
  8// 定义顶点输入属性描述符数组，指定每个顶点属性的格式和偏移量
  9VkVertexInputAttributeDescription vertex_input_attributes[3]{
 10    {
@@ -60,7 +58,6 @@ Vulkan提供了高度的灵活性，让开发者能够根据具体需求配置�
 26        .offset = sizeof(float) * 5,           // 数据在顶点中的偏移量，这里从第5个float开始
 27    },
 28};
-29
 30// 创建并初始化VkPipelineVertexInputStateCreateInfo结构体
 31VkPipelineVertexInputStateCreateInfo vertexInputInfo{
 32    .sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO, // 指定结构体类型
@@ -81,9 +78,7 @@ Vulkan提供了高度的灵活性，让开发者能够根据具体需求配置�
  4layout (location = 0) in vec4 pos;//顶点坐标
  5layout (location = 1) in vec2 attr;//纹理坐标
  6layout (location = 2) in vec3 normal;//顶点法向量
- 7
  8layout (location = 0) out vec2 texcoord;
- 9
 10void main() {
 11   texcoord = attr;
 12   gl_Position = pos;
@@ -274,9 +269,7 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
 **深度测试中，它可以根据片段的深度值决定是否更新帧缓冲区中的深度和颜色值。而模板测试是将绘制区域限定在任意形状的指定范围内。**
 
 
-
 结构体 VkPipelineDepthStencilStateCreateInfo 用于设置深度和模板测试。
-
 
 
 ```
@@ -310,7 +303,6 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
  9colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD; // alpha 混合方程为加法
 10colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
 11                                      VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT; // 颜色写掩码
-12
 13// 创建颜色混合状态信息结构体
 14VkPipelineColorBlendStateCreateInfo colorBlending = {};
 15colorBlending.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
@@ -329,13 +321,11 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
   2VkPipelineVertexInputStateCreateInfo vertexInputInfo = {};
   3vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
   4// 顶点绑定和属性描述略
-  5
   6// 创建输入装配状态信息结构体
   7VkPipelineInputAssemblyStateCreateInfo inputAssembly = {};
   8inputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
   9inputAssembly.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; // 基元拓扑类型为三角形列表
  10inputAssembly.primitiveRestartEnable = VK_FALSE; // 禁用基元重启
- 11
  12// 设置视口和剪裁矩形
  13VkViewport viewport = {};
  14viewport.x = 0.0f; // 视口左上角的X坐标
@@ -344,11 +334,9 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
  17viewport.height = (float)swapChainExtent.height; // 视口的高度
  18viewport.minDepth = 0.0f; // 视口的最小深度
  19viewport.maxDepth = 1.0f; // 视口的最大深度
- 20
  21VkRect2D scissor = {};
  22scissor.offset = {0, 0}; // 剪裁矩形的左上角偏移
  23scissor.extent = swapChainExtent; // 剪裁矩形的宽度和高度
- 24
  25// 创建视口状态信息结构体
  26VkPipelineViewportStateCreateInfo viewportState = {};
  27viewportState.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
@@ -356,7 +344,6 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
  29viewportState.pViewports = &viewport; // 指向视口的指针
  30viewportState.scissorCount = 1; // 剪裁矩形数量
  31viewportState.pScissors = &scissor; // 指向剪裁矩形的指针
- 32
  33// 创建光栅化状态信息结构体
  34VkPipelineRasterizationStateCreateInfo rasterizer = {};
  35rasterizer.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
@@ -367,13 +354,11 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
  40rasterizer.cullMode = VK_CULL_MODE_BACK_BIT; // 背面剔除
  41rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE; // 顺时针顶点顺序为正面
  42rasterizer.depthBiasEnable = VK_FALSE; // 禁用深度偏移
- 43
  44// 创建多重采样状态信息结构体
  45VkPipelineMultisampleStateCreateInfo multisampling = {};
  46multisampling.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
  47multisampling.sampleShadingEnable = VK_FALSE; // 禁用样本着色
  48multisampling.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT; // 采样数
- 49
  50// 创建深度和模板测试状态信息结构体
  51VkPipelineDepthStencilStateCreateInfo depthStencil = {};
  52depthStencil.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
@@ -382,31 +367,26 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
  55depthStencil.depthCompareOp = VK_COMPARE_OP_LESS; // 深度比较操作
  56depthStencil.depthBoundsTestEnable = VK_FALSE; // 禁用深度边界测试
  57depthStencil.stencilTestEnable = VK_FALSE; // 禁用模板测试
- 58
  59// 创建颜色混合附件状态信息结构体
  60VkPipelineColorBlendAttachmentState colorBlendAttachment = {};
  61colorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
  62                                      VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT; // 颜色写掩码
  63colorBlendAttachment.blendEnable = VK_FALSE; // 禁用颜色混合
- 64
  65// 创建颜色混合状态信息结构体
  66VkPipelineColorBlendStateCreateInfo colorBlending = {};
  67colorBlending.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
  68colorBlending.logicOpEnable = VK_FALSE; // 禁用逻辑操作
  69colorBlending.attachmentCount = 1; // 颜色混合附件数量
  70colorBlending.pAttachments = &colorBlendAttachment; // 指向颜色混合附件的指针
- 71
  72// 创建管线布局信息结构体
  73VkPipelineLayoutCreateInfo pipelineLayoutInfo = {};
  74pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
  75// 设置描述符集布局和推送常量布局略
- 76
  77// 创建管线布局
  78VkPipelineLayout pipelineLayout;
  79if (vkCreatePipelineLayout(device, &pipelineLayoutInfo, nullptr, &pipelineLayout) != VK_SUCCESS) {
  80    throw std::runtime_error("failed to create pipeline layout!"); // 创建失败则抛出异常
  81}
- 82
  83// 创建图形管线信息结构体
  84VkGraphicsPipelineCreateInfo pipelineInfo = {};
  85pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -422,7 +402,6 @@ VkPipelineRasterizationStateCreateInfo 是 Vulkan 渲染管线中用于配置光
  95pipelineInfo.layout = pipelineLayout; // 管线布局
  96pipelineInfo.renderPass = renderPass; // 渲染过程
  97pipelineInfo.subpass = 0; // 子通道索引
- 98
  99// 创建图形管线
 100VkPipeline graphicsPipeline;
 101if (vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) != VK_SUCCESS) {

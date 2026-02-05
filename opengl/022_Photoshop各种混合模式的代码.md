@@ -3,7 +3,6 @@
 https://zhuanlan.zhihu.com/p/356634851?utm_campaign=shareopn&utm_medium=social&utm_psn=1751543603506319360&utm_source=wechat_session
 
 
-
 最近在移植Photoshop种的各种功能到Unity中，刚好整理了一些资料。
 
 PS中的图层混合模式是非常经典的了，把这些功能集成到游戏引擎中可以便于美术进行材质或后处理调节。理论上可以还原所有艺术家在PS中实现的非手绘操作。
@@ -458,11 +457,6 @@ vec3 blendVividLight(vec3 base, vec3 blend, float opacity) {
 ```
 
 
-
-
-
-
-
 # 基于OpenGL实现PS部分混合模式
 
 ![img](./assets/reprint.png)
@@ -500,7 +494,6 @@ vec3 blendVividLight(vec3 base, vec3 blend, float opacity) {
 ```cpp
 glEnable( GL_BLEND ); // 开启混合
 glDisable( GL_BLEND ); // 关闭混合
-12
 ```
 
 第二步,如何设置混合模式?
@@ -509,7 +502,6 @@ glDisable( GL_BLEND ); // 关闭混合
 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);//对四通道统一进行混合操作
 glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);//为RGB和alpha通道分别设置不同的混合选项
 glBlendEquation(GLenum mode)//设置混合的运算符,与上两个函数搭配
-123
 ```
 
 glBlendFunc(GLenum sfactor, GLenum dfactor)
@@ -540,7 +532,6 @@ glBlendEquation(GLenum mode):
 GL_FUNC_ADD：默认选项，将两个分量相加：C¯result=Src+Dst。
 GL_FUNC_SUBTRACT：将两个分量相减： C¯result=Src−Dst。
 GL_FUNC_REVERSE_SUBTRACT：将两个分量相减，但顺序相反：C¯result=Dst−Src。
-123
 ```
 
 通常我们都可以省略调用glBlendEquation，因为GL_FUNC_ADD对大部分的操作来说都是我们希望的混合方程，但如果你真的想打破主流，其它的方程也可能符合你的要求。
@@ -570,7 +561,6 @@ GL_FUNC_REVERSE_SUBTRACT：将两个分量相减，但顺序相反：C¯result=D
 
 ```cpp
 vec4 result = blendColor * baseColor
-1
 ```
 
 上机一看,虽然对比 PS 有一些差别,但是看起来问题不大,内心开始暗自窃喜,原来这么简单(手动狗头),效果如图(左图为开发效果,右边为 PS 上效果对比图):
@@ -596,7 +586,6 @@ glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);由于拿到的是结果图的 rgb �
 
 ```cpp
 vec4 result = blendColor * baseColor + blendColor * (1.0 - baseColor.a) + baseColor * (1.0 - blendColor.a);
-1
 ```
 
 其他的模式不多做赘述,直接 po 出代码:

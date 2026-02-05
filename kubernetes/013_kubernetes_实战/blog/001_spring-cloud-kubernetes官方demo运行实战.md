@@ -3,7 +3,6 @@
 https://blog.csdn.net/boling_cavalry/article/details/91346780
 
 
-
 关于spring-cloud-kubernetes
 spring-cloud-kubernetes是springcloud官方推出的开源项目，用于将Spring Cloud和Spring Boot应用运行在kubernetes环境，并且提供了通用的接口来调用kubernetes服务，GitHub上官方地址是：https://github.com/spring-cloud/spring-cloud-kubernetes
 
@@ -35,10 +34,6 @@ spring-cloud-kubernetes：1.0.1.RELEASE
     <pluginGroup>io.fabric8</pluginGroup>
     <pluginGroup>org.springframework.boot</pluginGroup>
   </pluginGroups>
-1
-2
-3
-4
 修改完毕保存退出，maven设置完成；
 如果您想了解该错误的细节，请参考文章《使用fabric8-maven-plugin插件的错误处理(No plugin found for prefix ‘fabric8’)》；
 
@@ -80,44 +75,8 @@ spring-cloud-kubernetes：1.0.1.RELEASE
 [INFO] Finished at: 2019-06-08T19:32:19+08:00
 [INFO] ------------------------------------------------------------------------
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
 进入目录spring-cloud-kubernetes-1.0.1.RELEASE/spring-cloud-kubernetes-examples/kubernetes-hello-world-example,这里面就是官方的入门demo，执行以下命令开始构建并且会部署到minikube：
 mvn clean package fabric8:deploy -Pkubernetes
-1
 构建和部署完成后，控制台输出以下信息：
 
 ...
@@ -141,50 +100,19 @@ mvn clean package fabric8:deploy -Pkubernetes
 [INFO] Total time:  16.047 s
 [INFO] Finished at: 2019-06-08T19:50:50+08:00
 [INFO] ------------------------------------------------------------------------
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
 查看服务，已经创建了，类型是NodePort ,并且将8080端口映射到宿主机的30700端口，说明可以用http://宿主机IP:30700来访问此服务：
 [root@minikube kubernetes-hello-world-example]# kubectl get services
 NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 kubernetes               ClusterIP   10.96.0.1        <none>        443/TCP          10h
 kubernetes-hello-world   NodePort    10.108.214.207   <none>        8080:30700/TCP   4m
-1
-2
-3
-4
 查看部署，发现始终未能进入READY状态：
 [root@minikube kubernetes-hello-world-example]# kubectl get deployments
 NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
 kubernetes-hello-world   0/1     1            0           4m46s
-1
-2
-3
 查看pod，发现新建的pod始终未能进入READY状态：
 [root@minikube kubernetes-hello-world-example]# kubectl get pods
 NAME                                      READY   STATUS    RESTARTS   AGE
 kubernetes-hello-world-7578f45c5d-hr4r7   0/1     Running   1          6m
-1
-2
-3
 从上面的信息可以看出，部署虽然已经完成，但是pod是不可用的，访问网页试试，如下图，果然无法访问：
 
 检查问题
@@ -193,6 +121,7 @@ kubernetes-hello-world-7578f45c5d-hr4r7   0/1     Running   1          6m
 再看看控制台输出的pod基本情况，里面有探针的信息，如下图所示，两个探针的地址都是/health：
 
 打开demo的源码，如下所示，根本就没有路径为/health的服务：
+```java
 @RestController
 public class HelloController {
 
@@ -211,24 +140,7 @@ public class HelloController {
                 return this.discoveryClient.getServices();
         }
 }
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
+```
 现在真相大白了：部署到minikube上的pod，配置了探针地址是/health，但是服务中并没有此路径，因此探针检查一直无法通过；
 
 解决问题
@@ -239,17 +151,15 @@ public class HelloController {
 第一种方法很简单，留给读者您来完成吧，我们来试试第二种：
 
 执行以下命令，开始编辑deployment：
+```bash
 kubectl edit deployment kubernetes-hello-world
-1
+```
 在编辑页面上找到两个探针的配置，都从"/health"改成"/"，如下图两个红框所示：
 
 修改完毕后，像普通vim操作一样"wq"保存退出，配置会立即生效，稍等一会儿再看pod情况，发现pod的name已经变了，并且状态已经成为Ready，证明旧的pod已经销毁，新的pod被创建并且探针测试通过：
 [root@minikube examples]# kubectl get pods
 NAME                                      READY   STATUS    RESTARTS   AGE
 kubernetes-hello-world-6c5f75ff74-dnm2q   1/1     Running   0          15s
-1
-2
-3
 访问地址http://192.168.121.133:30700 ，服务正常(192.168.121.133是宿主机IP地址)，如下图：
 
 官方解释
@@ -260,19 +170,15 @@ kubernetes-hello-world-6c5f75ff74-dnm2q   1/1     Running   0          15s
 刚才我们看过了HelloController.java的源码，里面还有个路径为"/services"的接口，在minikube环境下访问此接口可以成功返回，内容是当前minikube环境的服务信息，但是如果部署在正式的kubernetes环境，访问此接口会返回以下错误：
 
 Message: Forbidden!Configured service account doesn't have access. Service account may have been revoked. services is forbidden: User "system:serviceaccount:default:default" cannot list resource "services" in API group "" in the namespace "default"
-1
 也就是说当前的system:serviceaccount账号是没有权限通过API server访问"services"资源的，此时最快的解决办法是提升账号权限：
 
+```bash
 kubectl create clusterrolebinding permissive-binding \
   --clusterrole=cluster-admin \
   --user=admin \
   --user=kubelet \
   --group=system:serviceaccounts
-1
-2
-3
-4
-5
+```
 注意：以上办法只能用于开发和测试环境，不要用在生产环境，在生产环境应该参考Kubernetes的RBAC授权相关设置来处理。
 
 修改源码时遇到的错误怎么规避
@@ -305,33 +211,6 @@ kubectl create clusterrolebinding permissive-binding \
 [ERROR] 
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
 出现上述问题的原因是maven-checkstyle-plugin插件检查代码的style没有通过，我试过在mvn命令中添加skip参数，也试过在pom.xml中添加maven-checkstyle-plugin节点并且配置为skip，结果都没有用，最终用以下方法成功规避了此问题：
 
 打开pom.xml文件；
@@ -340,10 +219,6 @@ kubectl create clusterrolebinding permissive-binding \
         <maven-checkstyle-plugin.failsOnError>false</maven-checkstyle-plugin.failsOnError>
         <maven-checkstyle-plugin.failsOnViolation>false</maven-checkstyle-plugin.failsOnViolation>
         <maven-checkstyle-plugin.includeTestSourceDirectory>false</maven-checkstyle-plugin.includeTestSourceDirectory></properties>
-1
-2
-3
-4
 至此，官方demo的部署和运行都完成了，对spring-cloud-kubernetes算是有了初步认识，接下来的实战中，我们一起去深入的了解spring-cloud-kubernetes，看看kubernetes上的springcloud应用怎么开发；
 
 问题处理
@@ -352,9 +227,6 @@ kubectl create clusterrolebinding permissive-binding \
 如果在deploy时遇到 “the server could not find the requested resource”问题，
 建议把fabric8.maven.plugin的版本升级到4.2.0即可。 
 <fabric8.maven.plugin.version>4.2.0</fabric8.maven.plugin.version>
-1
-2
-3
 欢迎关
 ————————————————
 版权声明：本文为CSDN博主「程序员欣宸」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
